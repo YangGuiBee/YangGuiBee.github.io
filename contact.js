@@ -1,5 +1,5 @@
 // ── Google Apps Script 배포 URL (설정 후 여기에 붙여넣기) ──
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhXGUIdTaV-MwpdT64LJelwytqCpvrjnhV28ebiOoRHTRE-GKl7Bji8qTKR6Bl0KOmcw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyleJhzM77_e9WM7Gmrf-7Cs2Evcb_9gx-OXvvNY7cBJuj6I9fQEue0rKLCVgmmXGKjpA/exec';
 
 // ── 탭 전환 ──
 document.querySelectorAll('.tab').forEach(tab => {
