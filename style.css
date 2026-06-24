@@ -355,51 +355,53 @@ body {
 @media (max-width: 480px) {
   /* 전체 여백 */
   .hero {
-    padding: 80px 1rem 40px;
+    padding: 72px 1rem 24px;
     min-height: auto;
   }
-  .hero-inner { gap: 1.75rem; }
+  .hero-inner { gap: 1.25rem; }
 
   /* 배지 */
-  .hero-badge { font-size: 0.72rem; padding: 0.3rem 0.75rem; }
+  .hero-badge { font-size: 0.7rem; padding: 0.25rem 0.65rem; margin-bottom: 0.9rem; }
 
   /* 헤드라인 */
   .hero-headline {
-    font-size: 1.85rem;
+    font-size: 1.7rem;
     letter-spacing: -0.5px;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.6rem;
   }
 
   /* 설명 */
-  .hero-sub { font-size: 0.88rem; margin-bottom: 1.5rem; word-break: keep-all; }
+  .hero-sub { font-size: 0.85rem; margin-bottom: 1.1rem; word-break: keep-all; line-height: 1.6; }
   .hero-sub br { display: none; }
 
   /* 버튼 */
-  .hero-btns { flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; }
-  .btn { justify-content: center; padding: 0.8rem 1.25rem; font-size: 0.9rem; }
+  .hero-btns { flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .btn { justify-content: center; padding: 0.7rem 1rem; font-size: 0.875rem; }
 
   /* 통계 */
-  .hero-stats { gap: 1rem; }
-  .stat-num { font-size: 1.3rem; }
-  .stat-label { font-size: 0.7rem; }
+  .hero-stats { gap: 0.85rem; }
+  .stat-num { font-size: 1.2rem; }
+  .stat-label { font-size: 0.68rem; }
+  .stat-divider { height: 28px; }
 
   /* 강사 카드 */
-  .profile-card { padding: 1.25rem; border-radius: 16px; }
-  .card-top { gap: 0.85rem; }
-  .avatar, .avatar-img { width: 52px; height: 52px; border-radius: 12px; }
+  .profile-card { padding: 1rem; border-radius: 14px; }
+  .card-top { gap: 0.75rem; margin-bottom: 0.9rem; }
+  .avatar, .avatar-img { width: 48px; height: 48px; border-radius: 10px; }
   .card-name { font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .card-name span { font-size: 0.88rem; }
-  .card-role { font-size: 0.65rem; }
-  .card-affil { font-size: 0.72rem; }
+  .card-name span { font-size: 0.85rem; }
+  .card-role { font-size: 0.63rem; }
+  .card-affil { font-size: 0.7rem; }
+  .card-divider { margin: 0.75rem 0; }
 
-  /* 강의 이력: 연도·점·텍스트 정렬 */
-  .card-history { gap: 0.55rem; }
+  /* 강의 이력 */
+  .card-history { gap: 0.4rem; }
   .card-history li { align-items: flex-start; }
-  .hist-year { font-size: 0.7rem; min-width: 2.9rem; }
-  .hist-text { font-size: 0.78rem; }
+  .hist-year { font-size: 0.68rem; min-width: 2.9rem; }
+  .hist-text { font-size: 0.75rem; line-height: 1.35; }
 
   /* 연락처 */
-  .contact-item { font-size: 0.74rem; }
+  .contact-item { font-size: 0.72rem; }
 
   /* 배지 */
   .card-badges { justify-content: flex-start; }
