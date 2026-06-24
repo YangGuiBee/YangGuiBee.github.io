@@ -61,20 +61,19 @@ function showSuccess() {
   document.querySelector('.tabs').style.display = 'none';
   document.querySelectorAll('.contact-form').forEach(f => {
     f.classList.remove('active');
-    f.style.display = 'none';
+    f.classList.add('hidden-form');
   });
   document.querySelector('.success-msg').hidden = false;
 }
 
 // ── 다시 문의하기 ──
 function resetForm() {
-  document.querySelector('.tabs').hidden = false;
+  document.querySelector('.tabs').style.display = '';
   document.querySelectorAll('.contact-form').forEach(f => {
-    f.hidden = false;
+    f.classList.remove('hidden-form', 'active');
     f.reset();
   });
   document.querySelector('#form-student').classList.add('active');
-  document.querySelector('#form-request').classList.remove('active');
   document.querySelectorAll('.tab')[0].classList.add('active');
   document.querySelectorAll('.tab')[1].classList.remove('active');
   document.querySelector('.success-msg').hidden = true;
