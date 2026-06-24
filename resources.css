@@ -267,7 +267,7 @@ textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
 .nav-links a.active { color: var(--accent); }
 
 @media (max-width: 480px) {
-  .page-hero { padding: 100px 1rem 36px; }
+  .page-hero { padding: 130px 1rem 36px; }
   .board-section { padding: 0 1rem 60px; }
   .form-grid { grid-template-columns: 1fr; }
   .board-item-author { display: none; }

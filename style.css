@@ -370,9 +370,9 @@ body {
 }
 
 @media (max-width: 480px) {
-  /* 전체 여백 */
+  /* 전체 여백 — 2줄 nav 높이(약 90px) 반영 */
   .hero {
-    padding: 68px 1rem 16px;
+    padding: 100px 1rem 16px;
     min-height: auto;
   }
   .hero-inner { gap: 0.9rem; }
