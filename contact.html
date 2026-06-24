@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>강의 문의 — AI Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">강의 소개</a></li>
+        <li><a href="#">강의 교안</a></li>
+        <li><a href="#">자료실</a></li>
+        <li><a href="contact.html" class="active">강의 질문</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+    </div>
+  </nav>
+
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <div class="contact-hero-inner">
+      <div class="hero-badge">문의 · 질문</div>
+      <h1 class="contact-title">무엇이든 물어보세요</h1>
+      <p class="contact-desc">수강생 질문과 강의 요청을 아래 폼으로 남겨주시면<br />빠르게 확인 후 회신드리겠습니다.</p>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="form-section">
+    <div class="form-wrap">
+
+      <!-- 탭 -->
+      <div class="tabs">
+        <button class="tab active" data-tab="student">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          수강생 질문
+        </button>
+        <button class="tab" data-tab="request">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          강의 요청
+        </button>
+      </div>
+
+      <!-- 수강생 질문 폼 -->
+      <form id="form-student" class="contact-form active" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="s-name">이름 <span class="req">*</span></label>
+            <input type="text" id="s-name" name="name" placeholder="홍길동" required />
+          </div>
+          <div class="field">
+            <label for="s-email">이메일 <span class="req">*</span></label>
+            <input type="email" id="s-email" name="email" placeholder="example@email.com" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="s-subject">과목 선택 <span class="req">*</span></label>
+          <select id="s-subject" name="subject" required>
+            <option value="" disabled selected>과목을 선택해 주세요</option>
+            <option>기계학습</option>
+            <option>머신러닝 기반의 연구방법론</option>
+            <option>IT거버넌스 : 관련 법과 국제표준</option>
+            <option>IT거버넌스 기반의 연구방법론</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="s-message">질문 내용 <span class="req">*</span></label>
+          <textarea id="s-message" name="message" placeholder="강의 내용에 대해 궁금한 점을 자유롭게 작성해 주세요." rows="6" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">질문 제출하기</span>
+          <span class="btn-spinner" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </span>
+        </button>
+      </form>
+
+      <!-- 강의 요청 폼 -->
+      <form id="form-request" class="contact-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="r-name">담당자 이름 <span class="req">*</span></label>
+            <input type="text" id="r-name" name="name" placeholder="홍길동" required />
+          </div>
+          <div class="field">
+            <label for="r-org">기관 / 회사명 <span class="req">*</span></label>
+            <input type="text" id="r-org" name="org" placeholder="○○대학교 / ○○기업" required />
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="r-contact">연락처 <span class="req">*</span></label>
+            <input type="text" id="r-contact" name="contact" placeholder="이메일 또는 전화번호" required />
+          </div>
+          <div class="field">
+            <label for="r-place">강의 장소</label>
+            <input type="text" id="r-place" name="place" placeholder="서울 / 온라인 / 미정 등" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-topic">희망 강의 주제 <span class="req">*</span></label>
+          <input type="text" id="r-topic" name="topic" placeholder="예) 머신러닝 기초, AI 거버넌스 입문 등" required />
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="r-date">희망 일정</label>
+            <input type="text" id="r-date" name="date" placeholder="예) 2026년 9월, 협의 가능" />
+          </div>
+          <div class="field">
+            <label for="r-people">대상 인원</label>
+            <input type="text" id="r-people" name="people" placeholder="예) 30명" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-message">기타 요청사항</label>
+          <textarea id="r-message" name="message" placeholder="강의 목적, 수준, 특이사항 등 자유롭게 작성해 주세요." rows="5"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">강의 요청 제출하기</span>
+          <span class="btn-spinner" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </span>
+        </button>
+      </form>
+
+      <!-- 완료 메시지 -->
+      <div class="success-msg" hidden>
+        <div class="success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>제출이 완료됐습니다!</h3>
+        <p>내용을 확인 후 빠르게 회신드리겠습니다.<br />감사합니다.</p>
+        <button class="reset-btn" onclick="resetForm()">다시 문의하기</button>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="contact.js"></script>
+</body>
+</html>
