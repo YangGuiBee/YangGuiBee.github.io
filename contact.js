@@ -1,5 +1,5 @@
 // ── Google Apps Script 배포 URL (설정 후 여기에 붙여넣기) ──
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsKXC9_HbUX5-Ke5nyplDyzzNe4WW9k8OE_TLY-k-rlbJAPsl1pABeFd2VmzD3sKEpyg/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhXGUIdTaV-MwpdT64LJelwytqCpvrjnhV28ebiOoRHTRE-GKl7Bji8qTKR6Bl0KOmcw/exec';
 
 // ── 탭 전환 ──
 document.querySelectorAll('.tab').forEach(tab => {
@@ -26,15 +26,15 @@ document.querySelectorAll('.contact-form').forEach(form => {
     btnSpinner.hidden = false;
 
     const activeTab = document.querySelector('.tab.active').dataset.tab;
-    const data = { type: activeTab, timestamp: new Date().toLocaleString('ko-KR') };
-    new FormData(form).forEach((v, k) => data[k] = v);
+    const fd = new FormData(form);
+    fd.append('type', activeTab);
+    fd.append('timestamp', new Date().toLocaleString('ko-KR'));
 
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: fd
       });
       showSuccess();
     } catch {
