@@ -60,12 +60,23 @@
 
       <!-- 자료 업로드 폼 (관리자) -->
       <div class="upload-section">
-        <button class="upload-toggle" onclick="toggleUpload()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          자료 등록
-        </button>
+        <div class="upload-bar">
+          <button id="uploadToggleBtn" class="upload-toggle" onclick="adminLogin()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            자료 등록
+          </button>
+          <div class="admin-bar">
+            <span id="adminStatus" class="admin-status"></span>
+            <button class="admin-logout-btn" onclick="adminLogout()">로그아웃</button>
+          </div>
+          <button class="admin-login-hint" onclick="openLoginModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            관리자
+          </button>
+        </div>
 
         <form id="uploadForm" class="upload-form" hidden novalidate>
+          <div class="form-section-title" id="formTitle">자료 등록</div>
           <div class="form-grid">
             <div class="field">
               <label for="u-category">분류 <span class="req">*</span></label>
@@ -103,6 +114,26 @@
 
     </div>
   </section>
+
+  <!-- 관리자 로그인 모달 -->
+  <div class="modal-overlay" id="loginOverlay" onclick="closeLoginModal()">
+    <div class="modal login-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeLoginModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="login-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <h3 class="login-title">관리자 로그인</h3>
+      <p class="login-desc">자료를 등록·수정·삭제하려면 비밀번호를 입력하세요.</p>
+      <div class="field">
+        <label for="loginPw">비밀번호</label>
+        <input type="password" id="loginPw" placeholder="비밀번호 입력" autocomplete="current-password" />
+      </div>
+      <p id="loginError" class="login-error" hidden>비밀번호가 올바르지 않습니다.</p>
+      <button class="submit-btn login-submit-btn" onclick="submitLogin()">확인</button>
+    </div>
+  </div>
 
   <!-- 게시글 상세 모달 -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">

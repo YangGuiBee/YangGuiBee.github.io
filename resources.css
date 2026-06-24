@@ -79,16 +79,66 @@
 
 /* 업로드 섹션 */
 .upload-section { margin-top: 2.5rem; }
+
+/* hidden 속성이 display:flex에 묻히지 않도록 보장 */
+.upload-form[hidden], .board-empty[hidden], .modal-overlay:not(.open) { display: none !important; }
+
+.upload-bar {
+  display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+}
+/* 기본: 등록 버튼 숨김 — 관리자 로그인 후에만 표시 */
 .upload-toggle {
-  display: inline-flex; align-items: center; gap: 0.5rem;
+  display: none; align-items: center; gap: 0.5rem;
   padding: 0.6rem 1.25rem;
-  background: var(--surface2); color: var(--text-muted);
-  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px;
   font-size: 0.85rem; font-weight: 600;
   font-family: 'Noto Sans KR', sans-serif;
   cursor: pointer; transition: all 0.2s;
 }
-.upload-toggle:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+.upload-toggle:hover { background: var(--accent2); }
+body.is-admin .upload-toggle { display: inline-flex; }
+
+/* 관리자 상태 표시 */
+.admin-bar {
+  display: none; align-items: center; gap: 0.5rem;
+}
+.admin-status {
+  font-size: 0.75rem; font-weight: 600;
+  color: #4ade80; /* green */
+  background: rgba(74,222,128,0.12);
+  border: 1px solid rgba(74,222,128,0.3);
+  padding: 0.2rem 0.6rem; border-radius: 99px;
+}
+.admin-logout-btn {
+  font-size: 0.75rem; color: var(--text-dim);
+  background: none; border: 1px solid var(--border);
+  border-radius: 6px; padding: 0.2rem 0.65rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+}
+.admin-logout-btn:hover { color: var(--text); }
+
+/* 관리자 모드일 때 admin-bar 표시 */
+body.is-admin .admin-bar { display: flex; }
+body.is-admin .admin-login-hint { display: none; }
+
+/* 잠금 버튼 (비로그인 시) */
+.admin-login-hint {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: none; border: none;
+  color: var(--text-dim); font-size: 0.75rem;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; padding: 0.3rem 0.5rem;
+  border-radius: 6px; transition: color 0.2s;
+  margin-left: auto;
+}
+.admin-login-hint:hover { color: var(--text-muted); }
+
+.form-section-title {
+  font-size: 0.95rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.25rem;
+}
 
 .upload-form {
   margin-top: 1.25rem;
@@ -163,6 +213,41 @@ textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
   display: flex; align-items: center; justify-content: center;
 }
 .modal-close:hover { color: var(--text); }
+
+/* 로그인 모달 */
+.login-modal { max-width: 380px; text-align: center; }
+.login-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: rgba(99,102,241,0.15); color: #818cf8;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+.login-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+.login-desc { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1.25rem; }
+.login-error { font-size: 0.8rem; color: #f87171; margin-top: 0.5rem; }
+.login-submit-btn { width: 100%; margin-top: 1rem; padding: 0.75rem; }
+
+/* 관리자 버튼 (모달) */
+.modal-admin-btns {
+  display: flex; gap: 0.5rem; margin: 0.75rem 0;
+}
+.modal-edit-btn, .modal-delete-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.35rem 0.85rem; border-radius: 7px;
+  font-size: 0.78rem; font-weight: 600;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; transition: all 0.2s;
+}
+.modal-edit-btn {
+  background: rgba(99,102,241,0.12); color: #a5b4fc;
+  border: 1px solid rgba(99,102,241,0.3);
+}
+.modal-edit-btn:hover { background: rgba(99,102,241,0.22); }
+.modal-delete-btn {
+  background: rgba(248,113,113,0.1); color: #fca5a5;
+  border: 1px solid rgba(248,113,113,0.3);
+}
+.modal-delete-btn:hover { background: rgba(248,113,113,0.2); }
 
 .modal-category { margin-bottom: 0.5rem; }
 .modal-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.35rem; }
