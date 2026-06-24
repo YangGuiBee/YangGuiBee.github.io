@@ -350,7 +350,8 @@ body {
   }
   .hero-right { justify-content: center; }
   .profile-card { max-width: 100%; }
-  .nav-links { display: none; }
+  .nav-links { display: flex; gap: 0; margin-left: auto; }
+  .nav-links a { font-size: 0.78rem; padding: 0.35rem 0.55rem; }
 }
 
 @media (max-width: 480px) {
