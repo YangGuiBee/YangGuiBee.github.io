@@ -69,6 +69,7 @@
   animation: fadeUp 0.3s ease both;
 }
 .contact-form.active { display: flex; }
+.contact-form.hidden-form { display: none !important; }
 
 .form-grid {
   display: grid;
