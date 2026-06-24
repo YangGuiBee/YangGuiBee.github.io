@@ -58,8 +58,11 @@ function validate(form) {
 
 // ── 성공 화면 ──
 function showSuccess() {
-  document.querySelector('.tabs').hidden = true;
-  document.querySelectorAll('.contact-form').forEach(f => f.hidden = true);
+  document.querySelector('.tabs').style.display = 'none';
+  document.querySelectorAll('.contact-form').forEach(f => {
+    f.classList.remove('active');
+    f.style.display = 'none';
+  });
   document.querySelector('.success-msg').hidden = false;
 }
 
