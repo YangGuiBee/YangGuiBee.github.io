@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>강의 소개 — AI Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="courses.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="courses.html" class="active">강의 소개</a></li>
+        <li><a href="resources.html">자료실</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="hero-badge">
+        <img src="konkuk.png" alt="건국대학교" class="badge-logo" />
+        건국대학교 공학대학원 AI 전공 강의
+      </div>
+      <h1 class="page-title">강의 소개</h1>
+      <p class="page-desc">카드를 클릭하면 강의 상세 내용을 확인할 수 있습니다.</p>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <section class="cards-section">
+    <div class="cards-wrap">
+
+      <!-- 카드 1 -->
+      <div class="course-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="card-header-text">
+            <span class="card-tag">머신러닝</span>
+            <h2 class="card-title">머신러닝 기반의 연구방법론</h2>
+          </div>
+          <div class="card-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <div class="card-objective">
+              <h3>학습 목표</h3>
+              <ul>
+                <li>머신러닝의 개념과 절차를 이해하고, 다양한 머신러닝 모델들을 활용하여 모델링을 수행할 수 있습니다.</li>
+                <li>학습한 머신러닝 모델을 통해 통찰력을 기르고, 머신러닝과 관련한 연구논문을 작성할 수 있는 기본 역량을 함양합니다.</li>
+              </ul>
+            </div>
+            <div class="card-meta-row">
+              <div class="card-meta-item">
+                <span class="meta-label">강의 자료</span>
+                <a href="https://github.com/YangGuiBee/ML" target="_blank" class="meta-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.92.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  github.com/YangGuiBee/ML
+                </a>
+              </div>
+              <div class="card-meta-item">
+                <span class="meta-label">개설 학기</span>
+                <span class="meta-value">2024.2 · 2025.2 · 2026.1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 2 -->
+      <div class="course-card" onclick="toggleCard(this)">
+        <div class="card-header">
+          <div class="card-icon card-icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="card-header-text">
+            <span class="card-tag card-tag-purple">IT거버넌스</span>
+            <h2 class="card-title">IT거버넌스 : 관련 법과 국제표준</h2>
+          </div>
+          <div class="card-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <div class="card-objective">
+              <h3>학습 목표</h3>
+              <ul>
+                <li>인공지능(AI) 기술의 개발·도입·운영 과정에서 요구되는 AI 거버넌스 체계를 중심으로, 국내외 AI 관련 법·규제와 국제표준의 핵심 개념을 학습합니다.</li>
+              </ul>
+            </div>
+            <div class="card-meta-row">
+              <div class="card-meta-item">
+                <span class="meta-label">강의 자료</span>
+                <a href="https://github.com/YangGuiBee/AIG" target="_blank" class="meta-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.92.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  github.com/YangGuiBee/AIG
+                </a>
+              </div>
+              <div class="card-meta-item">
+                <span class="meta-label">개설 학기</span>
+                <span class="meta-value">2026.1 · 2026.2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function toggleCard(card) {
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.course-card').forEach(c => c.classList.remove('open'));
+      if (!isOpen) card.classList.add('open');
+    }
+  </script>
+</body>
+</html>
