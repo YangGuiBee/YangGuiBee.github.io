@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyx6sgFFx0PFWf_IdrHjm6UY_UWnFfK6oYb-RTCOoWPNf5lyWUhU2EJhyKmsTwJlZzd8w/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzM1PzYVFR55mU9ZLFpKdhKYnHndrxBJUONajR8GAxkwP6vvorjSdZV156SLWUsQATlIQ/exec';
 
 // ── 관리자 비밀번호 ──
 const ADMIN_PW = 'konkuk2026';
