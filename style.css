@@ -99,6 +99,11 @@ body {
   color: #a5b4fc;
   margin-bottom: 1.5rem;
 }
+.badge-logo {
+  height: 18px; width: auto;
+  border-radius: 3px;
+  object-fit: contain;
+}
 
 .hero-headline {
   font-size: clamp(2.4rem, 4vw, 3.6rem);
@@ -253,13 +258,9 @@ body {
   font-size: 0.75rem; font-weight: 700;
   color: var(--accent); letter-spacing: 0.02em;
   flex-shrink: 0; padding-top: 2px;
-  min-width: 2.6rem;
+  min-width: 5rem;
 }
-.hist-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0; margin-top: 5px;
-  box-shadow: 0 0 6px var(--accent);
-}
+.hist-dot { display: none; }
 .hist-text { color: var(--text-muted); line-height: 1.4; }
 
 /* 연락처 */
