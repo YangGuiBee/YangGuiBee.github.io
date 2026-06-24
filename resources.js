@@ -1,10 +1,10 @@
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyleJhzM77_e9WM7Gmrf-7Cs2Evcb_9gx-OXvvNY7cBJuj6I9fQEue0rKLCVgmmXGKjpA/exec';
 
-// ── 관리자 비밀번호 (변경 원하시면 이 값을 수정하세요) ──
+// ── 관리자 비밀번호 ──
 const ADMIN_PW = 'konkuk2026';
 
 // ── 상태 ──
-let posts = JSON.parse(localStorage.getItem('ai_study_posts') || '[]');
+let posts = [];
 let currentFilter = 'all';
 let editingId = null;
 let isAdmin = sessionStorage.getItem('ai_admin') === 'true';
@@ -14,10 +14,39 @@ const catClass  = { notice: 'cat-notice', ml: 'cat-ml', itg: 'cat-itg' };
 
 function formatDate(iso) {
   const d = new Date(iso);
+  if (isNaN(d)) return '';
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
 }
 
-// ── 관리자 UI 표시 제어 ──
+// ── Google Sheets에서 게시글 불러오기 (JSONP) ──
+function loadPostsFromSheets() {
+  const cbName = '_loadPosts_' + Date.now();
+  window[cbName] = function(data) {
+    if (Array.isArray(data) && data.length > 0) {
+      posts = data;
+    } else {
+      // Sheets가 비어있으면 localStorage 캐시 사용
+      posts = JSON.parse(localStorage.getItem('ai_study_posts') || '[]');
+    }
+    renderPosts();
+    delete window[cbName];
+    const s = document.getElementById('jsonp-script');
+    if (s) s.remove();
+  };
+
+  const script = document.createElement('script');
+  script.id = 'jsonp-script';
+  script.onerror = function() {
+    // 네트워크 오류 시 캐시 사용
+    posts = JSON.parse(localStorage.getItem('ai_study_posts') || '[]');
+    renderPosts();
+    delete window[cbName];
+  };
+  script.src = `${SCRIPT_URL}?action=list&callback=${cbName}`;
+  document.head.appendChild(script);
+}
+
+// ── 관리자 UI ──
 function applyAdminUI() {
   if (isAdmin) {
     document.body.classList.add('is-admin');
@@ -97,11 +126,11 @@ function renderPosts() {
 function openModal(post) {
   const adminBtns = isAdmin ? `
     <div class="modal-admin-btns">
-      <button class="modal-edit-btn" onclick="startEdit(${post.id}); closeModal();">
+      <button class="modal-edit-btn" onclick="startEdit('${post.id}'); closeModal();">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         수정
       </button>
-      <button class="modal-delete-btn" onclick="deletePost(${post.id})">
+      <button class="modal-delete-btn" onclick="deletePost('${post.id}')">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
         삭제
       </button>
@@ -127,26 +156,25 @@ function closeModal() {
 
 // ── 수정 ──
 function startEdit(id) {
-  const post = posts.find(p => p.id === id);
+  const post = posts.find(p => String(p.id) === String(id));
   if (!post) return;
   editingId = id;
   const form = document.getElementById('uploadForm');
   form.category.value = post.category;
   form.author.value   = post.author;
   form.title.value    = post.title;
-  form.content.value  = post.content;
-  form.link.value     = post.link;
+  form.content.value  = post.content || '';
+  form.link.value     = post.link || '';
   document.getElementById('formTitle').textContent = '자료 수정';
   form.querySelector('.submit-btn').textContent = '수정 완료';
   form.hidden = false;
   form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── 삭제 ──
+// ── 삭제 (로컬에서만 제거, Sheets는 직접 관리) ──
 function deletePost(id) {
-  if (!confirm('이 게시글을 삭제할까요?')) return;
-  posts = posts.filter(p => p.id !== id);
-  localStorage.setItem('ai_study_posts', JSON.stringify(posts));
+  if (!confirm('이 게시글을 삭제할까요?\n(Google Sheets에서도 해당 행을 직접 삭제해 주세요)')) return;
+  posts = posts.filter(p => String(p.id) !== String(id));
   closeModal();
   renderPosts();
 }
@@ -185,8 +213,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   btn.textContent = editingId ? '수정 중...' : '등록 중...';
 
   if (editingId) {
-    // 수정
-    const idx = posts.findIndex(p => p.id === editingId);
+    const idx = posts.findIndex(p => String(p.id) === String(editingId));
     if (idx !== -1) {
       posts[idx] = { ...posts[idx],
         category: form.category.value,
@@ -195,12 +222,17 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
         content:  form.content.value.trim(),
         link:     form.link.value.trim(),
       };
+      // 수정도 Sheets에 전송 (새 행으로 추가됨 — 이전 행은 Sheets에서 직접 삭제)
+      const fd = new FormData();
+      fd.append('type', 'resource');
+      fd.append('timestamp', new Date().toLocaleString('ko-KR'));
+      Object.entries(posts[idx]).forEach(([k, v]) => fd.append(k, v));
+      try { await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd }); } catch {}
     }
     editingId = null;
   } else {
-    // 신규 등록
     const post = {
-      id: Date.now(),
+      id:       Date.now(),
       category: form.category.value,
       author:   form.author.value.trim(),
       title:    form.title.value.trim(),
@@ -216,7 +248,6 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     posts.push(post);
   }
 
-  localStorage.setItem('ai_study_posts', JSON.stringify(posts));
   form.reset();
   form.hidden = true;
   btn.disabled = false;
@@ -244,12 +275,9 @@ document.getElementById('loginPw').addEventListener('keydown', e => {
 
 // ── ESC 키 ──
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeModal();
-    closeLoginModal();
-  }
+  if (e.key === 'Escape') { closeModal(); closeLoginModal(); }
 });
 
 // ── 초기화 ──
 applyAdminUI();
-renderPosts();
+loadPostsFromSheets();  // Sheets에서 불러오기 (실패 시 로컬 캐시 사용)
