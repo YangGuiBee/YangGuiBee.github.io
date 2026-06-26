@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyttLrn3U2VhtUfaUs_ql3FD0uQXZPPd9gvy9nGZVhVtaNT30JPD0TA75g37ir6iGJJfw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx24U4D9vY3rxvBmORPDY0cXzHMf3iuHsAVEZERMBu6ALSFlfDNyxCSy8rhQFjBxYKwOw/exec';
 const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
 
 let authState = null; // null | { email, pwHash } | { isAdmin: true }
