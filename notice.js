@@ -1,6 +1,11 @@
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPPAOwi8rOnrG7x4MKUAXE-8AGkToLW0HrIK6WBii_00YDgQJrMy3mbJybklHnuHxx6A/exec';
 
-const ADMIN_PW = 'konkuk2026';
+const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
+
+async function hashPassword(pw) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
 
 let posts = [];
 let editingId = null;
@@ -49,9 +54,9 @@ function openLoginModal() {
 function closeLoginModal() {
   document.getElementById('loginOverlay').classList.remove('open');
 }
-function submitLogin() {
+async function submitLogin() {
   const pw = document.getElementById('loginPw').value;
-  if (pw === ADMIN_PW) {
+  if (await hashPassword(pw) === ADMIN_HASH) {
     isAdmin = true;
     sessionStorage.setItem('ai_admin', 'true');
     closeLoginModal();
