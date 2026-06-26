@@ -287,8 +287,25 @@ textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
 
 .nav-links a.active { color: var(--accent); }
 
+/* FAQ Q 뱃지 */
+.faq-q {
+  flex-shrink: 0;
+  font-size: 0.75rem; font-weight: 800;
+  color: #818cf8; background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.3);
+  border-radius: 6px; padding: 0.1rem 0.45rem;
+  letter-spacing: 0.02em;
+}
+.faq-modal-q, .faq-modal-a {
+  font-size: 0.8rem; font-weight: 800;
+  display: inline-block; margin-bottom: 0.3rem;
+  border-radius: 6px; padding: 0.1rem 0.5rem;
+}
+.faq-modal-q { color: #818cf8; background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.3); }
+.faq-modal-a { color: #4ade80; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); margin-top: 0.5rem; }
+
 @media (max-width: 480px) {
-  .page-hero { padding: 130px 1rem 36px; }
+  .page-hero { padding: 100px 1rem 24px; }
   .board-section { padding: 0 1rem 60px; }
   .form-grid { grid-template-columns: 1fr; }
   .board-item-author { display: none; }
