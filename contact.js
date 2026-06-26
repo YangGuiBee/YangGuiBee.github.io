@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPPAOwi8rOnrG7x4MKUAXE-8AGkToLW0HrIK6WBii_00YDgQJrMy3mbJybklHnuHxx6A/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyttLrn3U2VhtUfaUs_ql3FD0uQXZPPd9gvy9nGZVhVtaNT30JPD0TA75g37ir6iGJJfw/exec';
 
 // ── 탭 전환 ──
 document.querySelectorAll('.tab').forEach(tab => {
