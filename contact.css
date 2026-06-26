@@ -9,8 +9,10 @@
 .contact-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
-  letter-spacing: -1px;
-  margin: 1rem 0 0.75rem;
+  letter-spacing: -1.5px;
+  margin: 0 0 0.75rem;
+  background: linear-gradient(120deg, #eef2ff, #a5b4fc);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .contact-desc {
   font-size: 1rem;
@@ -197,11 +199,76 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 /* nav active */
 .nav-links a.active { color: var(--accent); }
 
+/* ── 제출 목록 ── */
+.contact-list-section {
+  margin-top: 2.5rem;
+  animation: fadeUp 0.4s cubic-bezier(.22,1,.36,1) both;
+}
+.contact-list-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+.contact-list-title {
+  font-size: 0.88rem; font-weight: 700; color: var(--text);
+}
+.contact-list-count {
+  font-size: 0.78rem; color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+}
+.contact-list-table {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.clist-head {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1.4fr;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.clist-row {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1.4fr;
+  gap: 0.5rem;
+  padding: 0.75rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background 0.15s;
+}
+.clist-row:last-child { border-bottom: none; }
+.clist-row:hover { background: rgba(99,102,241,0.06); }
+.clist-subject-badge {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700;
+  color: #a5b4fc; background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 5px; padding: 0.1rem 0.45rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 100%;
+}
+.clist-col-title {
+  font-size: 0.85rem; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.clist-col-date {
+  font-size: 0.75rem; color: var(--text-dim);
+  font-family: 'Inter', sans-serif; text-align: right;
+}
+.clist-empty {
+  padding: 2.5rem; text-align: center;
+  font-size: 0.88rem; color: var(--text-dim);
+}
+
 /* ── MOBILE ── */
 @media (max-width: 480px) {
-  .contact-hero { padding: 110px 1rem 40px; }
-  .contact-desc br { display: none; }
+  .contact-hero { padding: 100px 1rem 36px; }
   .form-section { padding: 0 1rem 60px; }
   .form-grid { grid-template-columns: 1fr; }
   .tab { font-size: 0.82rem; padding: 0.6rem 0.5rem; }
+  .clist-head, .clist-row { grid-template-columns: 1.8fr 2.5fr 1.2fr; padding: 0.6rem 0.85rem; }
+  .clist-col-title { font-size: 0.78rem; }
 }
