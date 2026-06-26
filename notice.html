@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>자료실 — AI Study</title>
+  <title>공지사항 — AI Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -17,8 +17,8 @@
       <a href="index.html" class="logo">AI <span>Study</span></a>
       <ul class="nav-links">
         <li><a href="courses.html">강의소개</a></li>
-        <li><a href="notice.html">공지사항</a></li>
-        <li><a href="resources.html" class="active">자료실</a></li>
+        <li><a href="notice.html" class="active">공지사항</a></li>
+        <li><a href="resources.html">자료실</a></li>
       </ul>
       <a href="contact.html" class="nav-cta">강의 문의</a>
     </div>
@@ -30,8 +30,8 @@
         <img src="konkuk.jpg" alt="건국대학교" class="badge-logo" />
         건국대학교 공학대학원 AI 전공 강의
       </div>
-      <h1 class="page-title">자료실</h1>
-      <p class="page-desc">자료실 내용을 확인하세요.</p>
+      <h1 class="page-title">공지사항</h1>
+      <p class="page-desc">강의 관련 공지사항을 확인하세요.</p>
     </div>
     <div class="bg-grid"></div>
     <div class="bg-blob blob-1"></div>
@@ -46,30 +46,21 @@
         <input type="text" id="searchInput" class="search-input" placeholder="제목 또는 내용으로 검색..." />
       </div>
 
-      <!-- 필터 탭 -->
-      <div class="board-tabs">
-        <button class="board-tab active" data-filter="all">전체</button>
-        <button class="board-tab" data-filter="ml">머신러닝</button>
-        <button class="board-tab" data-filter="itg">AI거버넌스</button>
-      </div>
-
       <!-- 게시글 목록 -->
-      <div class="board-list" id="boardList">
-        <!-- 게시글은 resources.js에서 렌더링 -->
-      </div>
+      <div class="board-list" id="boardList"></div>
 
       <!-- 빈 상태 -->
       <div class="board-empty" id="boardEmpty" hidden>
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        <p>등록된 자료가 없습니다.</p>
+        <p>등록된 공지가 없습니다.</p>
       </div>
 
-      <!-- 자료 업로드 폼 (관리자) -->
+      <!-- 공지 등록 폼 (관리자) -->
       <div class="upload-section">
         <div class="upload-bar">
           <button id="uploadToggleBtn" class="upload-toggle" onclick="adminLogin()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            자료 등록
+            공지 등록
           </button>
           <div class="admin-bar">
             <span id="adminStatus" class="admin-status"></span>
@@ -82,16 +73,8 @@
         </div>
 
         <form id="uploadForm" class="upload-form" hidden novalidate>
-          <div class="form-section-title" id="formTitle">자료 등록</div>
+          <div class="form-section-title" id="formTitle">공지 등록</div>
           <div class="form-grid">
-            <div class="field">
-              <label for="u-category">분류 <span class="req">*</span></label>
-              <select id="u-category" name="category" required>
-                <option value="" disabled selected>선택</option>
-                <option value="ml">머신러닝</option>
-                <option value="itg">AI거버넌스</option>
-              </select>
-            </div>
             <div class="field">
               <label for="u-author">작성자 <span class="req">*</span></label>
               <input type="text" id="u-author" name="author" placeholder="Yang Hee Jung" required />
@@ -99,7 +82,7 @@
           </div>
           <div class="field">
             <label for="u-title">제목 <span class="req">*</span></label>
-            <input type="text" id="u-title" name="title" placeholder="자료 제목을 입력하세요" required />
+            <input type="text" id="u-title" name="title" placeholder="공지 제목을 입력하세요" required />
           </div>
           <div class="field">
             <label for="u-content">내용</label>
@@ -130,7 +113,7 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
       </div>
       <h3 class="login-title">관리자 로그인</h3>
-      <p class="login-desc">자료를 등록·수정·삭제하려면 비밀번호를 입력하세요.</p>
+      <p class="login-desc">공지를 등록·수정·삭제하려면 비밀번호를 입력하세요.</p>
       <div class="field">
         <label for="loginPw">비밀번호</label>
         <input type="password" id="loginPw" placeholder="비밀번호 입력" autocomplete="current-password" />
@@ -150,6 +133,6 @@
     </div>
   </div>
 
-  <script src="resources.js"></script>
+  <script src="notice.js"></script>
 </body>
 </html>
