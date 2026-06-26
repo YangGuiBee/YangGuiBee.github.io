@@ -84,8 +84,21 @@ function resetForm() {
 
 // ── 수강생 질문 목록 로드 (JSONP) ──
 function loadContactList() {
+  // 로딩 표시
+  document.getElementById('contactListBody').innerHTML =
+    '<div style="padding:1.5rem;text-align:center;font-size:0.82rem;color:var(--text-dim)">불러오는 중...</div>';
+  document.getElementById('contactListEmpty').hidden = true;
+
   const cbName = '_loadContacts_' + Date.now();
+
+  // 5초 타임아웃 — Apps Script가 응답 없을 때 처리
+  const timer = setTimeout(() => {
+    renderContactList([]);
+    delete window[cbName];
+  }, 5000);
+
   window[cbName] = function(data) {
+    clearTimeout(timer);
     renderContactList(Array.isArray(data) ? data.filter(r => r.type === 'student') : []);
     delete window[cbName];
     const s = document.getElementById('jsonp-contact-script');
@@ -94,6 +107,7 @@ function loadContactList() {
   const script = document.createElement('script');
   script.id = 'jsonp-contact-script';
   script.onerror = function() {
+    clearTimeout(timer);
     renderContactList([]);
     delete window[cbName];
   };
