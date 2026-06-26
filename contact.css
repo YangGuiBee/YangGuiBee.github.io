@@ -207,7 +207,6 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 /* ── 제출 목록 ── */
 .contact-list-section {
   margin-top: 2.5rem;
-  animation: fadeUp 0.4s ease both;
 }
 .contact-list-header {
   display: flex; align-items: center; justify-content: space-between;
