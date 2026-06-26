@@ -30,7 +30,7 @@
   <section class="contact-hero">
     <div class="contact-hero-inner">
       <h1 class="contact-title">무엇이든 물어보세요</h1>
-      <p class="contact-desc">수강생 질문과 강의 요청을 아래 폼으로 남겨주시면<br />빠르게 확인 후 회신드리겠습니다.</p>
+      <p class="contact-desc">아래 폼으로 남겨주시면<br />확인 후 회신드리겠습니다.</p>
     </div>
     <div class="bg-grid"></div>
     <div class="bg-blob blob-1"></div>
@@ -54,16 +54,6 @@
 
       <!-- 수강생 질문 폼 -->
       <form id="form-student" class="contact-form active" novalidate>
-        <div class="form-grid">
-          <div class="field">
-            <label for="s-title">제목 <span class="req">*</span></label>
-            <input type="text" id="s-title" name="title" placeholder="질문 제목을 입력하세요" required />
-          </div>
-          <div class="field">
-            <label for="s-email">이메일 <span class="req">*</span></label>
-            <input type="email" id="s-email" name="email" placeholder="example@email.com" required />
-          </div>
-        </div>
         <div class="field">
           <label for="s-subject">과목 선택 <span class="req">*</span></label>
           <select id="s-subject" name="subject" required>
@@ -75,8 +65,16 @@
           </select>
         </div>
         <div class="field">
+          <label for="s-title">제목 <span class="req">*</span></label>
+          <input type="text" id="s-title" name="title" placeholder="질문 제목을 입력하세요" required />
+        </div>
+        <div class="field">
           <label for="s-message">질문 내용 <span class="req">*</span></label>
           <textarea id="s-message" name="question" placeholder="강의 내용에 대해 궁금한 점을 자유롭게 작성해 주세요." rows="6" required></textarea>
+        </div>
+        <div class="field">
+          <label for="s-email">이메일 <span class="req">*</span></label>
+          <input type="email" id="s-email" name="email" placeholder="example@email.com" required />
         </div>
         <button type="submit" class="submit-btn">
           <span class="btn-text">질문 제출하기</span>
