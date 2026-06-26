@@ -64,8 +64,8 @@ body {
 .nav-links { display: flex; gap: 0.1rem; list-style: none; margin-left: auto; }
 .nav-links a {
   display: block; padding: 0.4rem 0.9rem;
-  color: var(--text-muted); text-decoration: none;
-  font-size: 0.875rem; font-weight: 500;
+  color: #c0cce0; text-decoration: none;
+  font-size: 0.875rem; font-weight: 600;
   border-radius: 8px;
   transition: color 0.18s, background 0.18s;
 }
@@ -323,7 +323,7 @@ body {
   .logo { flex: 1; font-size: 1.1rem; }
   .nav-cta { margin-left: 0; font-size: 0.8rem; padding: 0.38rem 0.85rem; }
   .nav-links { display: flex; gap: 0; width: 100%; margin-left: 0; order: 3; border-top: 1px solid var(--border); padding-top: 0.3rem; }
-  .nav-links a { font-size: 0.82rem; padding: 0.3rem 0.7rem; }
+  .nav-links a { font-size: 0.85rem; font-weight: 700; color: #d0d8f0; padding: 0.35rem 0.7rem; }
 }
 @media (max-width: 480px) {
   .hero { padding: 86px 1rem 12px; min-height: auto; }
