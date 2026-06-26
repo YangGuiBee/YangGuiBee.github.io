@@ -39,12 +39,18 @@
   <section class="board-section">
     <div class="board-wrap">
 
+      <!-- 검색 -->
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="제목 또는 내용으로 검색..." />
+      </div>
+
       <!-- 필터 탭 -->
       <div class="board-tabs">
         <button class="board-tab active" data-filter="all">전체</button>
         <button class="board-tab" data-filter="notice">공지</button>
         <button class="board-tab" data-filter="ml">머신러닝</button>
-        <button class="board-tab" data-filter="itg">IT거버넌스</button>
+        <button class="board-tab" data-filter="itg">AI거버넌스</button>
       </div>
 
       <!-- 게시글 목록 -->
@@ -84,7 +90,7 @@
                 <option value="" disabled selected>선택</option>
                 <option value="notice">공지</option>
                 <option value="ml">머신러닝</option>
-                <option value="itg">IT거버넌스</option>
+                <option value="itg">AI거버넌스</option>
               </select>
             </div>
             <div class="field">

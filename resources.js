@@ -9,7 +9,7 @@ let currentFilter = 'all';
 let editingId = null;
 let isAdmin = sessionStorage.getItem('ai_admin') === 'true';
 
-const catLabel = { notice: '공지', ml: '머신러닝', itg: 'IT거버넌스' };
+const catLabel = { notice: '공지', ml: '머신러닝', itg: 'AI거버넌스' };
 const catClass  = { notice: 'cat-notice', ml: 'cat-ml', itg: 'cat-itg' };
 
 function formatDate(iso) {
@@ -22,12 +22,7 @@ function formatDate(iso) {
 function loadPostsFromSheets() {
   const cbName = '_loadPosts_' + Date.now();
   window[cbName] = function(data) {
-    if (Array.isArray(data) && data.length > 0) {
-      posts = data;
-    } else {
-      // Sheets가 비어있으면 localStorage 캐시 사용
-      posts = JSON.parse(localStorage.getItem('ai_study_posts') || '[]');
-    }
+    posts = Array.isArray(data) ? data : [];
     renderPosts();
     delete window[cbName];
     const s = document.getElementById('jsonp-script');
@@ -37,12 +32,11 @@ function loadPostsFromSheets() {
   const script = document.createElement('script');
   script.id = 'jsonp-script';
   script.onerror = function() {
-    // 네트워크 오류 시 캐시 사용
-    posts = JSON.parse(localStorage.getItem('ai_study_posts') || '[]');
+    posts = [];
     renderPosts();
     delete window[cbName];
   };
-  script.src = `${SCRIPT_URL}?action=list&callback=${cbName}`;
+  script.src = `${SCRIPT_URL}?action=list&callback=${cbName}&t=${Date.now()}`;
   document.head.appendChild(script);
 }
 
@@ -95,7 +89,14 @@ function adminLogout() {
 function renderPosts() {
   const list  = document.getElementById('boardList');
   const empty = document.getElementById('boardEmpty');
-  const filtered = currentFilter === 'all' ? posts : posts.filter(p => p.category === currentFilter);
+  const keyword = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+  let filtered = currentFilter === 'all' ? posts : posts.filter(p => p.category === currentFilter);
+  if (keyword) {
+    filtered = filtered.filter(p =>
+      (p.title || '').toLowerCase().includes(keyword) ||
+      (p.content || '').toLowerCase().includes(keyword)
+    );
+  }
   list.innerHTML = '';
   if (filtered.length === 0) {
     empty.hidden = false;
@@ -277,6 +278,9 @@ document.getElementById('loginPw').addEventListener('keydown', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeModal(); closeLoginModal(); }
 });
+
+// ── 검색 ──
+document.getElementById('searchInput').addEventListener('input', () => renderPosts());
 
 // ── 초기화 ──
 applyAdminUI();
