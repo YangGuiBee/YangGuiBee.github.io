@@ -26,7 +26,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
 
     const activeTab = document.querySelector('.tab.active').dataset.tab;
     const fd = new FormData(form);
-    fd.append('type', activeTab);
+    fd.append('type', activeTab === 'student' ? '수강생질문' : '기타요청');
     fd.append('timestamp', new Date().toLocaleString('ko-KR'));
 
     try {
