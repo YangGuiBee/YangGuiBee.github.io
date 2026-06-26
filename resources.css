@@ -11,6 +11,27 @@
 .board-section { padding: 0 2rem 80px; }
 .board-wrap { max-width: 800px; margin: 0 auto; }
 
+/* 검색 */
+.search-wrap {
+  position: relative; margin-bottom: 1rem;
+}
+.search-icon {
+  position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);
+  color: var(--text-dim); pointer-events: none;
+}
+.search-input {
+  width: 100%; padding: 0.65rem 0.9rem 0.65rem 2.4rem;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 0.875rem;
+  font-family: 'Noto Sans KR', sans-serif; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
 /* 탭 */
 .board-tabs {
   display: flex; gap: 0.4rem; flex-wrap: wrap;
