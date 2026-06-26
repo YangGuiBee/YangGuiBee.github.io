@@ -301,10 +301,10 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
   position: fixed; inset: 0; z-index: 200;
   background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
   display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
 }
-.cmodal-overlay.open { opacity: 1; pointer-events: auto; }
+.cmodal-overlay.open { opacity: 1; pointer-events: auto; visibility: visible; }
 .cmodal {
   position: relative; width: 90%; max-width: 420px; max-height: 90vh; overflow-y: auto;
   background: #0f1623; border: 1px solid rgba(255,255,255,0.1);
