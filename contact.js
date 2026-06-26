@@ -99,7 +99,13 @@ function loadContactList() {
 
   window[cbName] = function(data) {
     clearTimeout(timer);
-    renderContactList(Array.isArray(data) ? data.filter(r => r.type === 'student') : []);
+    // 시트에 헤더 없음 → 첫 데이터 행값이 키로 쓰임 → 인덱스로 접근
+    // 컬럼 순서: [0]timestamp [1]type [2]name [3]email [4]subject [5]question
+    const rows = Array.isArray(data) ? data.filter(r => {
+      const typeVal = String(Object.values(r)[1] || '');
+      return typeVal.includes('수강생') || typeVal === 'student';
+    }) : [];
+    renderContactList(rows);
     delete window[cbName];
     const s = document.getElementById('jsonp-contact-script');
     if (s) s.remove();
@@ -134,14 +140,19 @@ function renderContactList(rows) {
   // 최신순 정렬
   const sorted = rows.slice().reverse();
   sorted.forEach(row => {
+    const v = Object.values(row);
+    // [0]timestamp [1]type [2]name [3]email [4]subject [5]question
+    const subject  = String(v[4] || '-');
+    const title    = String(v[5] || v[2] || '-');
+    const tsRaw    = String(v[0] || '');
     const el = document.createElement('div');
     el.className = 'clist-row';
     el.innerHTML = `
       <span class="clist-col-subject">
-        <span class="clist-subject-badge">${row.subject || '-'}</span>
+        <span class="clist-subject-badge">${subject}</span>
       </span>
-      <span class="clist-col-title">${row.title || row.name || '-'}</span>
-      <span class="clist-col-date">${formatTs(row.timestamp)}</span>`;
+      <span class="clist-col-title">${title}</span>
+      <span class="clist-col-date">${formatTs(tsRaw)}</span>`;
     body.appendChild(el);
   });
 }
