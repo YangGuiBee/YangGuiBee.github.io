@@ -63,7 +63,7 @@ function showSuccess(tab) {
   // 수강생 질문 탭일 때만 목록 로드
   if (tab === 'student') {
     const listSection = document.querySelector('.contact-list-section');
-    listSection.hidden = false;
+    listSection.style.display = 'block';
     loadContactList();
   }
 }
@@ -79,7 +79,7 @@ function resetForm() {
   document.querySelectorAll('.tab')[0].classList.add('active');
   document.querySelectorAll('.tab')[1].classList.remove('active');
   document.querySelector('.success-msg').hidden = true;
-  document.querySelector('.contact-list-section').hidden = true;
+  document.querySelector('.contact-list-section').style.display = 'none';
 }
 
 // ── 수강생 질문 목록 로드 (JSONP) ──
