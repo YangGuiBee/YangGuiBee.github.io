@@ -255,6 +255,7 @@ function normalizeRow(r) {
 //  목록 렌더링
 // ════════════════════════════════════════
 function renderList(rows, title) {
+  document.querySelector('.contact-list-section').style.display = 'block';
   document.getElementById('listTitle').textContent = title;
   const body  = document.getElementById('contactListBody');
   const empty = document.getElementById('contactListEmpty');
