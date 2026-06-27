@@ -285,7 +285,8 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
   border: none; padding: 0;
 }
 .consent-label input[type="checkbox"].error { outline: 2px solid #f87171; border-radius: 2px; }
-.consent-retention { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.3rem; padding-left: 1.6rem; }
+.consent-retention { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.05rem; padding-left: 1.6rem; }
+.list-title-sub { font-size: 0.78rem; font-weight: 400; color: var(--text-dim); margin-left: 0.4rem; }
 .otp-back-btn { display: block; width: 100%; margin-top: 0.6rem; padding: 0.5rem; background: none; border: none; color: var(--text-dim); font-size: 0.82rem; cursor: pointer; text-align: center; }
 .otp-back-btn:hover { color: var(--accent); }
 .submit-otp-info { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.75rem; line-height: 1.6; padding: 0.65rem 0.85rem; background: rgba(99,102,241,0.08); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; }
