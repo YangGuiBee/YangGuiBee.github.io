@@ -270,6 +270,22 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 /* ── 비밀번호 선택 힌트 ── */
 .pw-opt { font-size: 0.75rem; font-weight: 400; color: var(--text-dim); }
 
+/* ── 필드 오류 메시지 ── */
+.field-error { font-size: 0.78rem; color: #f87171; margin-top: 0.3rem; }
+
+/* ── 개인정보 동의 체크박스 ── */
+.consent-field { margin-top: 0.25rem; }
+.consent-label {
+  display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;
+  font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.55;
+}
+.consent-label input[type="checkbox"] {
+  width: 16px; height: 16px; flex-shrink: 0; margin-top: 0.15rem;
+  accent-color: var(--accent); cursor: pointer;
+  border: none; padding: 0;
+}
+.consent-label input[type="checkbox"].error { outline: 2px solid #f87171; border-radius: 2px; }
+
 /* ── 내 질문 확인 섹션 ── */
 .myq-section { padding: 0 2rem 80px; }
 .myq-wrap { max-width: 680px; margin: 0 auto; }
