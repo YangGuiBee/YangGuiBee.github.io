@@ -52,7 +52,17 @@ document.querySelectorAll('.contact-form').forEach(form => {
 
     try {
       await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
-      showSuccess();
+      // 제출 후 본인 인증 상태 설정 → 목록에서 수정/삭제 가능
+      if (activeTab === 'student') {
+        authState = { email: (fd.get('email') || '').toLowerCase(), pwHash: fd.get('password') || '' };
+        showSuccess({
+          timestamp: fd.get('timestamp'), type: '수강생질문',
+          name: fd.get('name'), email: fd.get('email'),
+          subject: fd.get('subject'), question: fd.get('question'), password: fd.get('password') || ''
+        });
+      } else {
+        showSuccess(null);
+      }
     } catch {
       alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
       btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
@@ -83,13 +93,17 @@ function isValidPassword(pw) {
 }
 
 // ── 성공 화면 ──
-function showSuccess() {
+function showSuccess(submittedRow) {
   document.querySelector('.tabs').style.display = 'none';
   document.querySelectorAll('.contact-form').forEach(f => {
     f.classList.remove('active');
     f.classList.add('hidden-form');
   });
   document.querySelector('.success-msg').hidden = false;
+
+  if (submittedRow) {
+    renderList([submittedRow], '제출한 질문');
+  }
 }
 
 // ── 다시 문의하기 ──
