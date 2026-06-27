@@ -78,7 +78,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
             timestamp: pendingFd.get('timestamp'), type: '수강생질문',
             name: pendingFd.get('name'), email: pendingFd.get('email'),
             subject: pendingFd.get('subject'), question: pendingFd.get('question'),
-            _listTitle: '제출한 질문(등록시 작성한 이메일로 조회 : 상세내용은 비밀번호까지 확인후 조회)'
+            _listTitle: '제출한 질문<span class="list-title-sub">(등록시 작성한 이메일 인증으로 조회)</span>'
           });
         } catch {
           alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
@@ -372,7 +372,7 @@ function normalizeRow(r) {
 // ════════════════════════════════════════
 function renderList(rows, title) {
   document.querySelector('.contact-list-section').style.display = 'block';
-  document.getElementById('listTitle').textContent = title;
+  document.getElementById('listTitle').innerHTML = title;
   const body  = document.getElementById('contactListBody');
   const empty = document.getElementById('contactListEmpty');
   const count = document.getElementById('contactCount');
