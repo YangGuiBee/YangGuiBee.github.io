@@ -477,12 +477,15 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
   btn.disabled = true; btn.textContent = '저장 중…';
 
   try {
-    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 10000);
+    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd, signal: ctrl.signal });
+    clearTimeout(tid);
     closeEditModal();
     alert('수정됐습니다.');
     refreshList();
   } catch {
-    alert('수정 중 오류가 발생했습니다.');
+    alert('수정 중 오류가 발생했습니다. 다시 시도해 주세요.');
     btn.disabled = false; btn.textContent = '저장하기';
   }
 });
