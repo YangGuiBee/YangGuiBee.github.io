@@ -3,6 +3,8 @@ const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819
 
 let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: true }
 let currentRow = null; // 현재 상세보기 중인 row
+let submitStep = 'idle'; // 'idle' | 'otp_pending'
+let pendingFd  = null;  // OTP 인증 대기 중인 FormData
 
 // ── SHA-256 ──
 async function sha256(str) {
@@ -24,35 +26,95 @@ document.querySelectorAll('.tab').forEach(tab => {
 document.querySelectorAll('.contact-form').forEach(form => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!validate(form)) return;
+    const activeTab = document.querySelector('.tab.active').dataset.tab;
 
-    const btn = form.querySelector('.submit-btn');
-    const btnText = btn.querySelector('.btn-text');
+    // ── 기타요청: 기존 단순 제출 ──
+    if (activeTab !== 'student') {
+      if (!validate(form)) return;
+      const btn = form.querySelector('.submit-btn');
+      const btnText = btn.querySelector('.btn-text');
+      const btnSpinner = btn.querySelector('.btn-spinner');
+      btn.disabled = true; btnText.hidden = true; btnSpinner.hidden = false;
+      const fd = new FormData(form);
+      fd.append('type', '기타요청');
+      fd.append('timestamp', new Date().toLocaleString('ko-KR'));
+      try {
+        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+        showSuccess(null);
+      } catch {
+        alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+        btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
+      }
+      return;
+    }
+
+    // ── 수강생 질문: 2단계 (OTP 인증 후 제출) ──
+    const btn = document.getElementById('studentSubmitBtn');
+    const btnText = document.getElementById('studentSubmitText');
     const btnSpinner = btn.querySelector('.btn-spinner');
+
+    // 2단계: OTP 확인 후 실제 제출
+    if (submitStep === 'otp_pending') {
+      const otp = document.getElementById('submitOTP').value.trim();
+      const otpErr = document.getElementById('submitOtpError');
+      if (!otp) { otpErr.textContent = '인증코드를 입력해 주세요.'; otpErr.hidden = false; return; }
+      otpErr.hidden = true;
+      btn.disabled = true; btnText.hidden = true; btnSpinner.hidden = false;
+
+      const email = (pendingFd.get('email') || '').trim().toLowerCase();
+      doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, async result => {
+        if (!result || !result.ok) {
+          btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
+          otpErr.textContent = '인증코드가 일치하지 않거나 만료됐습니다.';
+          otpErr.hidden = false;
+          return;
+        }
+        // OTP 확인 완료 → 실제 저장
+        try {
+          await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: pendingFd });
+          submitStep = 'idle';
+          authState = { email, otp, otpVerified: true };
+          showSuccess({
+            timestamp: pendingFd.get('timestamp'), type: '수강생질문',
+            name: pendingFd.get('name'), email: pendingFd.get('email'),
+            subject: pendingFd.get('subject'), question: pendingFd.get('question'),
+            _listTitle: '제출한 질문(등록시 작성한 이메일로 조회 : 상세내용은 비밀번호까지 확인후 조회)'
+          });
+        } catch {
+          alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+          btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
+        }
+      });
+      return;
+    }
+
+    // 1단계: 폼 검증 후 OTP 발송
+    if (!validate(form)) return;
     btn.disabled = true; btnText.hidden = true; btnSpinner.hidden = false;
 
-    const activeTab = document.querySelector('.tab.active').dataset.tab;
     const fd = new FormData(form);
-    fd.append('type', activeTab === 'student' ? '수강생질문' : '기타요청');
+    fd.append('type', '수강생질문');
     fd.append('timestamp', new Date().toLocaleString('ko-KR'));
+    const email = (fd.get('email') || '').trim().toLowerCase();
 
-    try {
-      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
-      if (activeTab === 'student') {
-        authState = { email: (fd.get('email') || '').toLowerCase(), otpVerified: true };
-        showSuccess({
-          timestamp: fd.get('timestamp'), type: '수강생질문',
-          name: fd.get('name'), email: fd.get('email'),
-          subject: fd.get('subject'), question: fd.get('question'), password: fd.get('password') || '',
-          _listTitle: '제출한 질문(등록시 작성한 이메일로 조회 : 상세내용은 비밀번호까지 확인후 조회)'
-        });
-      } else {
-        showSuccess(null);
-      }
-    } catch {
-      alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    doJsonp(`${SCRIPT_URL}?action=sendOTP&email=${encodeURIComponent(email)}`, result => {
       btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
-    }
+      if (!result || !result.ok) {
+        alert('인증코드 발송에 실패했습니다: ' + (result && result.msg ? result.msg : '다시 시도해 주세요.'));
+        return;
+      }
+      pendingFd = fd;
+      submitStep = 'otp_pending';
+      // 폼 필드 잠금
+      form.querySelectorAll('input:not(#submitOTP), select, textarea').forEach(el => el.disabled = true);
+      // OTP 입력란 표시
+      document.getElementById('submitOtpInfo').innerHTML =
+        `<strong>${esc(email)}</strong>로 인증코드를 발송했습니다.<br>6자리 코드를 입력 후 제출하세요.`;
+      document.getElementById('submitOtpSection').style.display = '';
+      document.getElementById('submitOtpError').hidden = true;
+      btnText.textContent = '인증 후 제출하기';
+      setTimeout(() => document.getElementById('submitOTP').focus(), 100);
+    });
   });
 });
 
@@ -87,9 +149,18 @@ function showSuccess(submittedRow) {
 
 // ── 다시 문의하기 ──
 function resetForm() {
+  // OTP 제출 상태 초기화
+  submitStep = 'idle';
+  pendingFd  = null;
+  document.getElementById('submitOtpSection').style.display = 'none';
+  document.getElementById('submitOtpError').hidden = true;
+  document.getElementById('studentSubmitText').textContent = '질문 제출하기';
+
   document.querySelector('.tabs').style.display = '';
   document.querySelectorAll('.contact-form').forEach(f => {
     f.classList.remove('hidden-form', 'active');
+    // 잠금 해제
+    f.querySelectorAll('input, select, textarea').forEach(el => el.disabled = false);
     const btn = f.querySelector('.submit-btn');
     if (btn) {
       btn.disabled = false;
@@ -104,6 +175,7 @@ function resetForm() {
   document.querySelectorAll('.tab')[0].classList.add('active');
   document.querySelectorAll('.tab')[1].classList.remove('active');
   document.querySelector('.success-msg').hidden = true;
+  document.querySelector('.contact-list-section').style.display = 'none';
 }
 
 // ════════════════════════════════════════

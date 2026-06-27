@@ -288,6 +288,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 .consent-retention { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.3rem; padding-left: 1.6rem; }
 .otp-back-btn { display: block; width: 100%; margin-top: 0.6rem; padding: 0.5rem; background: none; border: none; color: var(--text-dim); font-size: 0.82rem; cursor: pointer; text-align: center; }
 .otp-back-btn:hover { color: var(--accent); }
+.submit-otp-info { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.75rem; line-height: 1.6; padding: 0.65rem 0.85rem; background: rgba(99,102,241,0.08); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; }
 
 /* ── 내 질문 확인 섹션 ── */
 .myq-section { padding: 0 2rem 80px; }
