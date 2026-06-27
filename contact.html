@@ -203,17 +203,33 @@
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </div>
       <h3 class="cmodal-title">내 질문 확인</h3>
-      <p class="cmodal-desc">등록 시 입력한 이메일과 비밀번호를 입력하세요.<br />비밀번호를 설정하지 않은 경우 이메일만 입력하세요.</p>
-      <div class="field">
-        <label for="authEmail">이메일</label>
-        <input type="email" id="authEmail" placeholder="example@email.com" />
+      <!-- Step 1: 이메일 입력 -->
+      <div id="authStep1">
+        <p class="cmodal-desc">등록 시 입력한 이메일을 입력하면<br />6자리 인증코드를 발송해 드립니다.</p>
+        <div class="field">
+          <label for="authEmail">이메일</label>
+          <input type="email" id="authEmail" placeholder="example@email.com" />
+        </div>
+        <p class="cmodal-error" id="authError" hidden></p>
+        <button class="submit-btn" style="margin-top:1.25rem;width:100%" id="otpSendBtn" onclick="sendOTP()">
+          <span class="btn-text">인증코드 발송</span>
+          <span class="btn-spinner" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+        </button>
       </div>
-      <div class="field" style="margin-top:0.85rem">
-        <label for="authPw">비밀번호 <span class="pw-opt">(미설정 시 공란)</span></label>
-        <input type="password" id="authPw" placeholder="비밀번호 (설정하지 않은 경우 공란)" />
+      <!-- Step 2: OTP 입력 -->
+      <div id="authStep2" style="display:none">
+        <p class="cmodal-desc" id="otpSentMsg"></p>
+        <div class="field">
+          <label for="authOTP">인증코드 <span class="pw-opt">(6자리 · 10분 유효)</span></label>
+          <input type="text" id="authOTP" placeholder="인증코드 6자리 입력" maxlength="6" inputmode="numeric" />
+        </div>
+        <p class="cmodal-error" id="otpError" hidden></p>
+        <button class="submit-btn" style="margin-top:1.25rem;width:100%" id="otpVerifyBtn" onclick="verifyOTP()">
+          <span class="btn-text">확인</span>
+          <span class="btn-spinner" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+        </button>
+        <button class="otp-back-btn" onclick="backToStep1()">← 이메일 다시 입력</button>
       </div>
-      <p class="cmodal-error" id="authError" hidden>이메일 또는 비밀번호가 일치하지 않습니다.</p>
-      <button class="submit-btn" style="margin-top:1.25rem;width:100%" onclick="submitAuth()">확인</button>
     </div>
   </div>
 

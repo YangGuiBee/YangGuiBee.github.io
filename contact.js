@@ -1,7 +1,7 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx24U4D9vY3rxvBmORPDY0cXzHMf3iuHsAVEZERMBu6ALSFlfDNyxCSy8rhQFjBxYKwOw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyInrLim31hUSZt6NOLrD1WgiYzVWysTCl56pno1lTMW8bhAmSwmgi8soGvMMbe91DNcg/exec';
 const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
 
-let authState = null; // null | { email, pwHash } | { isAdmin: true }
+let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: true }
 let currentRow = null; // 현재 상세보기 중인 row
 
 // ── SHA-256 ──
@@ -54,7 +54,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
       await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
       // 제출 후 본인 인증 상태 설정 → 목록에서 수정/삭제 가능
       if (activeTab === 'student') {
-        authState = { email: (fd.get('email') || '').toLowerCase(), pwHash: fd.get('password') || '' };
+        authState = { email: (fd.get('email') || '').toLowerCase(), otpVerified: true };
         showSuccess({
           timestamp: fd.get('timestamp'), type: '수강생질문',
           name: fd.get('name'), email: fd.get('email'),
@@ -131,51 +131,118 @@ function resetForm() {
 }
 
 // ════════════════════════════════════════
-//  본인 확인 모달
+//  본인 확인 모달 (OTP)
 // ════════════════════════════════════════
 function openAuthModal() {
-  document.getElementById('authEmail').value = '';
-  document.getElementById('authPw').value = '';
-  document.getElementById('authError').hidden = true;
+  backToStep1();
   document.getElementById('authOverlay').classList.add('open');
   setTimeout(() => document.getElementById('authEmail').focus(), 100);
 }
 function closeAuthModal() {
   document.getElementById('authOverlay').classList.remove('open');
 }
-document.getElementById('authPw').addEventListener('keydown', e => {
-  if (e.key === 'Enter') submitAuth();
+function backToStep1() {
+  document.getElementById('authStep1').style.display = '';
+  document.getElementById('authStep2').style.display = 'none';
+  document.getElementById('authEmail').value = '';
+  document.getElementById('authError').hidden = true;
+  document.getElementById('authOTP').value = '';
+  document.getElementById('otpError').hidden = true;
+  const sendBtn = document.getElementById('otpSendBtn');
+  sendBtn.disabled = false;
+  sendBtn.querySelector('.btn-text').hidden = false;
+  sendBtn.querySelector('.btn-spinner').hidden = true;
+}
+
+document.getElementById('authEmail').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendOTP();
+});
+document.getElementById('authOTP').addEventListener('keydown', e => {
+  if (e.key === 'Enter') verifyOTP();
 });
 
-async function submitAuth() {
+function sendOTP() {
   const email = document.getElementById('authEmail').value.trim().toLowerCase();
-  const pw    = document.getElementById('authPw').value;
   const errEl = document.getElementById('authError');
-
   if (!email) {
     errEl.textContent = '이메일을 입력해 주세요.';
     errEl.hidden = false;
     return;
   }
-  const pwHash = pw.trim() ? await sha256(pw) : '';
+  errEl.hidden = true;
 
-  loadContacts(rows => {
-    // 이메일 일치 + 비밀번호 확인
-    const matched = rows.filter(r => {
-      if (r.email.trim().toLowerCase() !== email) return false;
-      if (!r.password) return true;        // 비밀번호 미설정 → 이메일만 확인
-      return r.password === pwHash;
-    });
+  const btn = document.getElementById('otpSendBtn');
+  btn.disabled = true;
+  btn.querySelector('.btn-text').hidden = true;
+  btn.querySelector('.btn-spinner').hidden = false;
 
-    if (matched.length === 0) {
-      errEl.textContent = '일치하는 게시글이 없습니다. 이메일 또는 비밀번호를 확인해 주세요.';
+  doJsonp(`${SCRIPT_URL}?action=sendOTP&email=${encodeURIComponent(email)}`, result => {
+    btn.disabled = false;
+    btn.querySelector('.btn-text').hidden = false;
+    btn.querySelector('.btn-spinner').hidden = true;
+
+    if (!result || !result.ok) {
+      errEl.textContent = (result && result.msg) || '인증코드 발송에 실패했습니다. 이메일을 확인해 주세요.';
       errEl.hidden = false;
-    } else {
-      authState = { email, pwHash };
-      closeAuthModal();
-      renderList(matched, `내 질문 목록`);
+      return;
     }
+    document.getElementById('otpSentMsg').innerHTML =
+      `<strong>${esc(email)}</strong>로 인증코드를 발송했습니다.<br />이메일을 확인 후 6자리 코드를 입력하세요.`;
+    document.getElementById('authStep1').style.display = 'none';
+    document.getElementById('authStep2').style.display = '';
+    setTimeout(() => document.getElementById('authOTP').focus(), 100);
   });
+}
+
+function verifyOTP() {
+  const email = document.getElementById('authEmail').value.trim().toLowerCase();
+  const otp   = document.getElementById('authOTP').value.trim();
+  const errEl = document.getElementById('otpError');
+
+  if (!otp) {
+    errEl.textContent = '인증코드를 입력해 주세요.';
+    errEl.hidden = false;
+    return;
+  }
+
+  const btn = document.getElementById('otpVerifyBtn');
+  btn.disabled = true;
+  btn.querySelector('.btn-text').hidden = true;
+  btn.querySelector('.btn-spinner').hidden = false;
+
+  doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, result => {
+    btn.disabled = false;
+    btn.querySelector('.btn-text').hidden = false;
+    btn.querySelector('.btn-spinner').hidden = true;
+
+    if (!result || !result.ok) {
+      errEl.textContent = '인증코드가 일치하지 않거나 만료됐습니다.';
+      errEl.hidden = false;
+      return;
+    }
+    authState = { email, otp, otpVerified: true };
+    closeAuthModal();
+    const rows = (result.data || []).map(normalizeRow);
+    renderList(rows, '내 질문 목록');
+  });
+}
+
+// ── 범용 JSONP ──
+function doJsonp(url, onResult) {
+  const cbName = '_jp_' + Date.now();
+  const timer = setTimeout(() => { delete window[cbName]; onResult(null); }, 8000);
+  window[cbName] = function(data) {
+    clearTimeout(timer);
+    delete window[cbName];
+    const s = document.getElementById('jsonp-tmp-script');
+    if (s) s.remove();
+    onResult(data);
+  };
+  const script = document.createElement('script');
+  script.id = 'jsonp-tmp-script';
+  script.onerror = () => { clearTimeout(timer); delete window[cbName]; onResult(null); };
+  script.src = url + `&callback=${cbName}&t=${Date.now()}`;
+  document.head.appendChild(script);
 }
 
 // ════════════════════════════════════════
@@ -292,7 +359,7 @@ function openDetailModal(row) {
 
   const canEdit = authState && (
     authState.isAdmin ||
-    (row.email || '').trim().toLowerCase() === (authState.email || '')
+    (authState.otpVerified && (row.email || '').trim().toLowerCase() === authState.email)
   );
 
   document.getElementById('detailContent').innerHTML = `
@@ -377,14 +444,10 @@ function refreshList() {
   if (!authState) return;
   if (authState.isAdmin) {
     loadContacts(rows => renderList(rows, '전체 질문 목록'));
-  } else {
-    loadContacts(rows => {
-      const matched = rows.filter(r => {
-        if ((r.email||'').trim().toLowerCase() !== authState.email) return false;
-        if (!r.password) return true;
-        return r.password === authState.pwHash;
-      });
-      renderList(matched, '내 질문 목록');
+  } else if (authState.otpVerified) {
+    doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(authState.email)}&otp=${encodeURIComponent(authState.otp)}`, result => {
+      if (!result || !result.ok) { alert('인증이 만료됐습니다. 다시 인증해 주세요.'); authState = null; return; }
+      renderList((result.data || []).map(normalizeRow), '내 질문 목록');
     });
   }
 }
