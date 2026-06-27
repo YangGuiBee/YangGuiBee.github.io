@@ -285,6 +285,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
   border: none; padding: 0;
 }
 .consent-label input[type="checkbox"].error { outline: 2px solid #f87171; border-radius: 2px; }
+.consent-retention { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.3rem; padding-left: 1.6rem; }
 
 /* ── 내 질문 확인 섹션 ── */
 .myq-section { padding: 0 2rem 80px; }
