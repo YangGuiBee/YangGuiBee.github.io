@@ -58,7 +58,8 @@ document.querySelectorAll('.contact-form').forEach(form => {
         showSuccess({
           timestamp: fd.get('timestamp'), type: '수강생질문',
           name: fd.get('name'), email: fd.get('email'),
-          subject: fd.get('subject'), question: fd.get('question'), password: fd.get('password') || ''
+          subject: fd.get('subject'), question: fd.get('question'), password: fd.get('password') || '',
+          _listTitle: '제출한 질문(등록시 작성한 이메일로 조회 : 상세내용은 비밀번호까지 확인후 조회)'
         });
       } else {
         showSuccess(null);
@@ -102,7 +103,7 @@ function showSuccess(submittedRow) {
   document.querySelector('.success-msg').hidden = false;
 
   if (submittedRow) {
-    renderList([submittedRow], '제출한 질문');
+    renderList([submittedRow], submittedRow._listTitle || '제출한 질문');
   }
 }
 
