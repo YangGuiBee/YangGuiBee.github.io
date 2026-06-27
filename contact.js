@@ -6,6 +6,23 @@ let currentRow = null; // 현재 상세보기 중인 row
 let submitStep = 'idle'; // 'idle' | 'otp_pending'
 let pendingFd  = null;  // OTP 인증 대기 중인 FormData
 
+// ── sessionStorage에서 인증 상태 복원 (탭 내 페이지 이동 시 유지) ──
+try {
+  const saved = sessionStorage.getItem('authState');
+  if (saved) authState = JSON.parse(saved);
+} catch {}
+
+function saveAuthState(state) {
+  authState = state;
+  if (state && state.otpVerified) {
+    sessionStorage.setItem('authState', JSON.stringify(state));
+  }
+}
+function clearAuthState() {
+  authState = null;
+  sessionStorage.removeItem('authState');
+}
+
 // ── SHA-256 ──
 async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -73,7 +90,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
         try {
           await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: pendingFd });
           submitStep = 'idle';
-          authState = { email, otp, otpVerified: true };
+          saveAuthState({ email, otp, otpVerified: true });
           showSuccess({
             timestamp: pendingFd.get('timestamp'), type: '수강생질문',
             name: pendingFd.get('name'), email: pendingFd.get('email'),
@@ -182,6 +199,11 @@ function resetForm() {
 //  본인 확인 모달 (OTP)
 // ════════════════════════════════════════
 function openAuthModal() {
+  // 이미 OTP 인증된 상태면 모달 생략하고 바로 목록 로드
+  if (authState && authState.otpVerified) {
+    refreshList();
+    return;
+  }
   backToStep1();
   document.getElementById('authOverlay').classList.add('open');
   setTimeout(() => document.getElementById('authEmail').focus(), 100);
@@ -268,7 +290,7 @@ function verifyOTP() {
       errEl.hidden = false;
       return;
     }
-    authState = { email, otp, otpVerified: true };
+    saveAuthState({ email, otp, otpVerified: true });
     closeAuthModal();
     const rows = (result.data || []).map(normalizeRow);
     renderList(rows, '내 질문 목록');
@@ -494,7 +516,7 @@ function refreshList() {
     loadContacts(rows => renderList(rows, '전체 질문 목록'));
   } else if (authState.otpVerified) {
     doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(authState.email)}&otp=${encodeURIComponent(authState.otp)}`, result => {
-      if (!result || !result.ok) { alert('인증이 만료됐습니다. 다시 인증해 주세요.'); authState = null; return; }
+      if (!result || !result.ok) { alert('인증이 만료됐습니다. 다시 인증해 주세요.'); clearAuthState(); return; }
       renderList((result.data || []).map(normalizeRow), '내 질문 목록');
     });
   }
