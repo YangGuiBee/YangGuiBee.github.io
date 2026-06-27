@@ -76,8 +76,16 @@
           <input type="email" id="s-email" name="email" placeholder="example@email.com" required />
         </div>
         <div class="field">
-          <label for="s-pw">비밀번호 <span class="pw-opt">(선택 · 미입력 시 이메일만으로 본인 확인)</span></label>
-          <input type="password" id="s-pw" name="password" placeholder="게시글 비밀번호 (설정하지 않아도 됩니다)" autocomplete="new-password" />
+          <label for="s-pw">비밀번호 <span class="pw-opt">(미입력 시 이메일만으로 본인 확인)</span></label>
+          <input type="password" id="s-pw" name="password" placeholder="(비밀번호는 영문자, 숫자, 특수문자를 포함하여 총 8자 이상으로 작성을 권장)" autocomplete="new-password" />
+          <p class="field-error" id="pwError" hidden>비밀번호는 영문자·숫자·특수문자를 포함하여 8자 이상이어야 합니다.</p>
+        </div>
+        <div class="field consent-field">
+          <label class="consent-label">
+            <input type="checkbox" id="s-consent" name="consent" required />
+            <span>답변을 처리하기 위해 개인정보(이메일) 저장 동의에 체크해 주세요 <span class="req">*</span></span>
+          </label>
+          <p class="field-error" id="consentError" hidden>개인정보 수집·이용에 동의해 주세요.</p>
         </div>
         <button type="submit" class="submit-btn">
           <span class="btn-text">질문 제출하기</span>
@@ -141,7 +149,7 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h3>제출이 완료됐습니다!</h3>
-        <p>내용을 확인 후 빠르게 회신드리겠습니다.<br />감사합니다.</p>
+        <p>내용을 확인 후 이메일로 회신드리겠습니다.</p>
         <button class="reset-btn" onclick="resetForm()">다시 문의하기</button>
       </div>
 

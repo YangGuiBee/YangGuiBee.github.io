@@ -36,9 +36,16 @@ document.querySelectorAll('.contact-form').forEach(form => {
     fd.append('type', activeTab === 'student' ? '수강생질문' : '기타요청');
     fd.append('timestamp', new Date().toLocaleString('ko-KR'));
 
-    // 비밀번호 SHA-256 해시 (수강생 질문만)
+    // 비밀번호 검증 + SHA-256 해시 (수강생 질문만)
     if (activeTab === 'student') {
       const rawPw = fd.get('password') || '';
+      const pwErr = document.getElementById('pwError');
+      if (rawPw.trim() && !isValidPassword(rawPw)) {
+        pwErr.hidden = false;
+        btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
+        return;
+      }
+      pwErr.hidden = true;
       fd.delete('password');
       fd.append('password', rawPw.trim() ? await sha256(rawPw) : '');
     }
@@ -58,9 +65,21 @@ function validate(form) {
   let ok = true;
   form.querySelectorAll('[required]').forEach(el => {
     el.classList.remove('error');
-    if (!el.value.trim()) { el.classList.add('error'); ok = false; }
+    if (el.type === 'checkbox') {
+      if (!el.checked) { el.classList.add('error'); ok = false; }
+    } else if (!el.value.trim()) {
+      el.classList.add('error'); ok = false;
+    }
   });
   return ok;
+}
+
+// ── 비밀번호 정책 검사 ──
+function isValidPassword(pw) {
+  return pw.length >= 8 &&
+    /[a-zA-Z]/.test(pw) &&
+    /[0-9]/.test(pw) &&
+    /[!@#$%^&*()\-_=+\[\]{};':",.<>/?\\|`~]/.test(pw);
 }
 
 // ── 성공 화면 ──
@@ -78,8 +97,18 @@ function resetForm() {
   document.querySelector('.tabs').style.display = '';
   document.querySelectorAll('.contact-form').forEach(f => {
     f.classList.remove('hidden-form', 'active');
+    const btn = f.querySelector('.submit-btn');
+    if (btn) {
+      btn.disabled = false;
+      btn.querySelector('.btn-text').hidden = false;
+      btn.querySelector('.btn-spinner').hidden = true;
+    }
     f.reset();
   });
+  const pwErr = document.getElementById('pwError');
+  if (pwErr) pwErr.hidden = true;
+  const cErr = document.getElementById('consentError');
+  if (cErr) cErr.hidden = true;
   document.querySelector('#form-student').classList.add('active');
   document.querySelectorAll('.tab')[0].classList.add('active');
   document.querySelectorAll('.tab')[1].classList.remove('active');
