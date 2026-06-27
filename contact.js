@@ -483,7 +483,7 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
     clearTimeout(tid);
     closeEditModal();
     alert('수정됐습니다.');
-    refreshList();
+    setTimeout(refreshList, 1500);
   } catch {
     alert('수정 중 오류가 발생했습니다. 다시 시도해 주세요.');
     btn.disabled = false; btn.textContent = '저장하기';
