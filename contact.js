@@ -3,6 +3,8 @@ const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819
 
 let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: true }
 let currentRow = null; // 현재 상세보기 중인 row
+let currentRows = [];  // 현재 목록 캐시
+let currentListTitle = '';
 let submitStep = 'idle'; // 'idle' | 'otp_pending'
 let pendingFd  = null;  // OTP 인증 대기 중인 FormData
 
@@ -393,6 +395,8 @@ function normalizeRow(r) {
 //  목록 렌더링
 // ════════════════════════════════════════
 function renderList(rows, title) {
+  currentRows = rows;
+  currentListTitle = title;
   document.querySelector('.contact-list-section').style.display = 'block';
   document.getElementById('listTitle').innerHTML = title;
   const body  = document.getElementById('contactListBody');
@@ -481,9 +485,15 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
     const tid = setTimeout(() => ctrl.abort(), 10000);
     await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd, signal: ctrl.signal });
     clearTimeout(tid);
+    // 로컬 캐시 즉시 업데이트 → 서버 재조회 없이 바로 반영
+    if (currentRow) {
+      currentRow.name     = document.getElementById('edit-title').value;
+      currentRow.subject  = document.getElementById('edit-subject').value;
+      currentRow.question = document.getElementById('edit-question').value;
+    }
     closeEditModal();
     alert('수정됐습니다.');
-    setTimeout(refreshList, 1500);
+    renderList(currentRows, currentListTitle);
   } catch {
     alert('수정 중 오류가 발생했습니다. 다시 시도해 주세요.');
     btn.disabled = false; btn.textContent = '저장하기';
@@ -504,9 +514,11 @@ async function deleteFromDetail() {
 
   try {
     await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
+    // 로컬 캐시에서 즉시 제거
+    currentRows = currentRows.filter(r => r !== currentRow);
     closeDetailModal();
     alert('삭제됐습니다.');
-    refreshList();
+    renderList(currentRows, currentListTitle);
   } catch {
     alert('삭제 중 오류가 발생했습니다.');
   }
