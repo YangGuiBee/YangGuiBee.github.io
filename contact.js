@@ -537,3 +537,21 @@ function esc(s) {
 document.querySelectorAll('input, select, textarea').forEach(el => {
   el.addEventListener('input', () => el.classList.remove('error'));
 });
+
+// ── 모달 overlay 닫기: mousedown 시작점도 overlay여야만 닫힘 ──
+// (textarea 드래그 선택 후 바깥에서 놓을 때 닫히는 버그 방지)
+[
+  { id: 'authOverlay',   fn: closeAuthModal   },
+  { id: 'adminOverlay',  fn: closeAdminModal  },
+  { id: 'detailOverlay', fn: closeDetailModal },
+  { id: 'editOverlay',   fn: closeEditModal   }
+].forEach(({ id, fn }) => {
+  const el = document.getElementById(id);
+  let downOnSelf = false;
+  el.addEventListener('mousedown', e => { downOnSelf = (e.target === el); });
+  el.addEventListener('click', e => {
+    const sel = window.getSelection ? window.getSelection().toString() : '';
+    if (downOnSelf && e.target === el && !sel) fn();
+    downOnSelf = false;
+  });
+});
