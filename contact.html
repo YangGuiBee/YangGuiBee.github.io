@@ -179,8 +179,31 @@
     </div>
   </section>
 
+  <!-- ── 관리자 패널 (관리자 로그인 후에만 표시) ── -->
+  <section class="myq-section" id="adminPanel" style="display:none">
+    <div class="myq-wrap">
+      <div class="admin-panel-header">
+        <span class="admin-panel-title">관리자 모드</span>
+        <button class="admin-logout-btn" onclick="exitAdminMode()">로그아웃</button>
+      </div>
+      <div class="admin-tabs-wrap">
+        <button class="admin-tab active" data-type="contacts" onclick="switchAdminTab(this)">강의문의</button>
+        <button class="admin-tab" data-type="requests" onclick="switchAdminTab(this)">강의요청</button>
+      </div>
+      <div class="admin-list-wrap">
+        <div class="admin-list-head">
+          <span class="acol-subject">구분</span>
+          <span class="acol-title">제목</span>
+          <span class="acol-email">이메일</span>
+          <span class="acol-date">등록일시</span>
+        </div>
+        <div id="adminListBody"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- 내 질문 확인 섹션 -->
-  <section class="myq-section">
+  <section class="myq-section" id="userSection">
     <div class="myq-wrap">
       <div class="myq-bar">
         <span class="myq-label" id="myqLabel">수강생 질문 목록</span>
@@ -285,6 +308,56 @@
       <div class="detail-actions" id="detailActions" style="display:none">
         <button class="detail-edit-btn" onclick="openEditFromDetail()">수정</button>
         <button class="detail-delete-btn" onclick="deleteFromDetail()">삭제</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 관리자 상세/수정/답변 모달 ── -->
+  <div class="cmodal-overlay" id="adminDetailOverlay">
+    <div class="cmodal cmodal-admin" onclick="event.stopPropagation()">
+      <button class="cmodal-close" onclick="closeAdminDetail()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <!-- 기본 정보 -->
+      <div id="adminDetailHeader"></div>
+      <!-- 내용 수정 -->
+      <div class="admin-section">
+        <div class="admin-section-label">내용 수정</div>
+        <div id="aeStudentFields">
+          <div class="field" style="margin-top:0.75rem">
+            <label>과목</label>
+            <select id="ae-subject">
+              <option>기계학습</option>
+              <option>머신러닝 기반의 연구방법론</option>
+              <option>AI거버넌스 : 관련 법과 국제표준</option>
+              <option>AI거버넌스 기반의 연구방법론</option>
+            </select>
+          </div>
+          <div class="field" style="margin-top:0.6rem"><label>제목</label><input type="text" id="ae-title" maxlength="100"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>질문 내용</label><textarea id="ae-question" rows="5"></textarea></div>
+        </div>
+        <div id="aeRequestFields" style="display:none">
+          <div class="field" style="margin-top:0.75rem"><label>담당자</label><input type="text" id="ae-reqname" maxlength="50"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>희망 강의 주제</label><input type="text" id="ae-topic" maxlength="100"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>기관/회사명</label><input type="text" id="ae-org" maxlength="100"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>강의 장소</label><input type="text" id="ae-place" maxlength="100"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>희망 일정</label><input type="text" id="ae-date" maxlength="50"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>대상 인원</label><input type="text" id="ae-people" maxlength="30"/></div>
+          <div class="field" style="margin-top:0.6rem"><label>기타 요청사항</label><textarea id="ae-message" rows="4"></textarea></div>
+        </div>
+        <button class="admin-save-btn" onclick="saveAdminEdit()">수정 저장</button>
+      </div>
+      <!-- 답변 작성 -->
+      <div class="admin-section">
+        <div class="admin-section-label">답변 작성 <span class="admin-section-sub">(이메일로 발송됩니다)</span></div>
+        <textarea id="adminReplyText" class="admin-reply-textarea" rows="9" placeholder="답변 내용을 입력하세요..."></textarea>
+      </div>
+      <div class="admin-modal-footer">
+        <button class="reset-btn" onclick="closeAdminDetail()">닫기</button>
+        <button class="submit-btn admin-send-btn" id="adminSendBtn" onclick="sendAdminReply()">
+          <span id="adminSendText">이메일 발송</span>
+          <span id="adminSendSpinner" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+        </button>
       </div>
     </div>
   </div>
