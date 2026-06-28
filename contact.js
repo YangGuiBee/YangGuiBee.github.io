@@ -216,6 +216,9 @@ function validate(form) {
 
 // ── 성공 화면 ──
 function showSuccess(submittedRow) {
+  const isReqType = submittedRow && submittedRow.type === '기타요청';
+  document.getElementById('myqLabel').textContent       = isReqType ? '강의 요청 목록' : '수강생 질문 목록';
+  document.getElementById('myqAuthBtnText').textContent = isReqType ? '내 요청 확인'   : '내 질문 확인';
   document.querySelector('.tabs').style.display = 'none';
   document.querySelectorAll('.contact-form').forEach(f => {
     f.classList.remove('active');
