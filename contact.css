@@ -122,7 +122,7 @@ select {
   cursor: pointer;
 }
 select option { background: #1a2235; }
-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+textarea { resize: vertical; min-height: 60px; line-height: 1.6; }
 
 /* ── SUBMIT ── */
 .submit-btn {
