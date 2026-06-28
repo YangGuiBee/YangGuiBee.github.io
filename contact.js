@@ -781,7 +781,8 @@ function openAdminDetail(row, type) {
   if (isAns) {
     replyTA.style.display  = 'none';
     ansTime.style.display  = '';
-    ansTime.textContent    = '답변 이메일 발송 시각 : ' + formatTs(row.answeredAt);
+    ansTime.innerHTML = '답변 이메일 발송 시각 : ' + formatTs(row.answeredAt)
+      + (row.replyText ? '<div class="admin-reply-preview">' + esc(row.replyText).replace(/\n/g,'<br>') + '</div>' : '');
     secLabel.innerHTML     = '답변 완료';
     btn.style.display      = 'none';
   } else {
@@ -881,12 +882,13 @@ async function sendAdminReply() {
   </div>`;
 
   const fd = new FormData();
-  fd.append('action',   'reply');
-  fd.append('sheet',    isReq ? '강의요청' : '강의문의');
-  fd.append('ts',       adminCurrentRow.timestamp);
-  fd.append('email',    adminCurrentRow.email);
-  fd.append('subject',  isReq ? '[AI Study] 강의요청 검토 결과 안내드립니다.' : '[AI Study] 강의문의 답변 드립니다.');
-  fd.append('htmlBody', htmlBody);
+  fd.append('action',    'reply');
+  fd.append('sheet',     isReq ? '강의요청' : '강의문의');
+  fd.append('ts',        adminCurrentRow.timestamp);
+  fd.append('email',     adminCurrentRow.email);
+  fd.append('subject',   isReq ? '[AI Study] 강의요청 검토 결과 안내드립니다.' : '[AI Study] 강의문의 답변 드립니다.');
+  fd.append('htmlBody',  htmlBody);
+  fd.append('replyText', replyText);
 
   const btn = document.getElementById('adminSendBtn');
   const txt = document.getElementById('adminSendText');
@@ -900,6 +902,7 @@ async function sendAdminReply() {
     clearTimeout(tid);
     adminCurrentRow.status     = '답변완료';
     adminCurrentRow.answeredAt = new Date().toLocaleString('ko-KR');
+    adminCurrentRow.replyText  = replyText;
     closeAdminDetail();
     alert(`${adminCurrentRow.email} 으로 답변을 발송했습니다.`);
     loadAdminData(adminCurrentType);
