@@ -426,23 +426,24 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 
 .admin-list-wrap { padding: 0; }
 .admin-list-head {
-  display: grid; grid-template-columns: 1.4fr 4fr 1.8fr;
+  display: grid; grid-template-columns: 1.2fr 3.5fr 2.8fr;
   padding: 0.55rem 1rem; background: rgba(255,255,255,0.03);
   border-bottom: 1px solid var(--border);
   font-size: 0.7rem; font-weight: 600; color: var(--text-dim);
   letter-spacing: 0.05em; text-transform: uppercase;
+  align-items: center;
 }
 .admin-list-item {
-  display: grid; grid-template-columns: 1.4fr 4fr 1.8fr;
+  display: grid; grid-template-columns: 1.2fr 3.5fr 2.8fr;
   padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: background 0.15s; align-items: start;
+  cursor: pointer; transition: background 0.15s; align-items: center;
 }
 .admin-list-item:last-child { border-bottom: none; }
 .admin-list-item:hover { background: rgba(99,102,241,0.06); }
 .admin-list-item.answered { opacity: 0.7; }
 .acol-title { font-size: 0.82rem; color: var(--text); line-height: 1.4; }
 .acol-email { font-size: 0.75rem; color: var(--text-dim); word-break: break-all; }
-.acol-date  { font-size: 0.75rem; color: var(--text-dim); }
+.acol-date  { font-size: 0.75rem; color: var(--text-dim); white-space: nowrap; }
 .admin-answered-badge {
   display: inline-block; font-size: 0.65rem; font-weight: 600;
   color: #34d399; background: rgba(52,211,153,0.12);
