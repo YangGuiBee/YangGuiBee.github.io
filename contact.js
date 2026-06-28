@@ -664,6 +664,7 @@ let adminCurrentType = 'contacts';
 function showAdminPanel() {
   document.getElementById('userSection').style.display  = 'none';
   document.querySelector('.tabs').style.display         = 'none';
+  document.querySelector('.contact-hero').style.display = 'none';
   document.querySelectorAll('.contact-form').forEach(f => {
     f.classList.remove('active'); f.classList.add('hidden-form');
   });
@@ -681,6 +682,7 @@ function exitAdminMode() {
   document.getElementById('adminPanel').style.display  = 'none';
   document.getElementById('userSection').style.display = '';
   document.querySelector('.tabs').style.display = '';
+  document.querySelector('.contact-hero').style.display = '';
   document.querySelectorAll('.contact-form').forEach(f => f.classList.remove('hidden-form'));
   document.querySelector('.contact-form').classList.add('active');
 }
