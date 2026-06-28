@@ -351,7 +351,9 @@ function verifyOTP() {
   btn.querySelector('.btn-text').hidden = true;
   btn.querySelector('.btn-spinner').hidden = false;
 
-  doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, result => {
+  const onReqTab = isRequestTab();
+  const verifyAction = onReqTab ? 'verifyOTPReq' : 'verifyOTP';
+  doJsonp(`${SCRIPT_URL}?action=${verifyAction}&email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, result => {
     btn.disabled = false;
     btn.querySelector('.btn-text').hidden = false;
     btn.querySelector('.btn-spinner').hidden = true;
@@ -364,7 +366,7 @@ function verifyOTP() {
     saveAuthState({ email, otp, otpVerified: true });
     closeAuthModal();
     const rows = (result.data || []).map(normalizeRow);
-    renderList(rows, '내 질문 목록');
+    renderList(rows, onReqTab ? '내 요청 목록' : '내 질문 목록');
   });
 }
 
@@ -644,14 +646,22 @@ async function deleteFromDetail() {
 }
 
 // ── 목록 새로고침 ──
+function isRequestTab() {
+  const active = document.querySelector('.tab.active');
+  return !!(active && active.dataset.tab === 'request');
+}
+
 function refreshList() {
   if (!authState) return;
   if (authState.isAdmin) {
     loadContacts(rows => renderList(rows, '전체 질문 목록'));
   } else if (authState.otpVerified) {
-    doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(authState.email)}&otp=${encodeURIComponent(authState.otp)}`, result => {
+    const onReqTab = isRequestTab();
+    const action = onReqTab ? 'verifyOTPReq' : 'verifyOTP';
+    const title  = onReqTab ? '내 요청 목록' : '내 질문 목록';
+    doJsonp(`${SCRIPT_URL}?action=${action}&email=${encodeURIComponent(authState.email)}&otp=${encodeURIComponent(authState.otp)}`, result => {
       if (!result || !result.ok) { alert('인증이 만료됐습니다. 다시 인증해 주세요.'); clearAuthState(); return; }
-      renderList((result.data || []).map(normalizeRow), '내 질문 목록');
+      renderList((result.data || []).map(normalizeRow), title);
     });
   }
 }
