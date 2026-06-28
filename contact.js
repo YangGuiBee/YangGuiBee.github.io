@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyInrLim31hUSZt6NOLrD1WgiYzVWysTCl56pno1lTMW8bhAmSwmgi8soGvMMbe91DNcg/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-XFQhuS75Cp0PqGRDwRXicS-4sh8SILR7Pwtzill4aEk2S-E-CXENNVSbSDQXm6Tz-Q/exec';
 const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
 
 let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: true }
@@ -57,17 +57,6 @@ document.querySelectorAll('.contact-form').forEach(form => {
       const fd = new FormData(form);
       fd.append('type', '기타요청');
       fd.append('timestamp', new Date().toLocaleString('ko-KR'));
-      // 기타요청 필드 → Apps Script 컬럼 매핑
-      fd.append('email',   fd.get('contact') || '');
-      fd.append('subject', fd.get('topic')   || '');
-      const parts = [
-        fd.get('org')     ? '기관/회사명: ' + fd.get('org')   : '',
-        fd.get('place')   ? '강의 장소: '   + fd.get('place') : '',
-        fd.get('date')    ? '희망 일정: '   + fd.get('date')  : '',
-        fd.get('people')  ? '대상 인원: '   + fd.get('people'): '',
-        fd.get('message') ? '요청사항:\n'   + fd.get('message'): ''
-      ].filter(Boolean).join('\n');
-      fd.append('question', parts);
       try {
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
         showSuccess(null);
