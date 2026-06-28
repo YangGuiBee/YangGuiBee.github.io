@@ -42,7 +42,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.getElementById('form-' + tab.dataset.tab).classList.add('active');
     const isReq = tab.dataset.tab === 'request';
     document.getElementById('myqLabel').textContent      = isReq ? '강의 요청 목록'  : '수강생 질문 목록';
-    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 전체 목록'    : '내 질문 확인';
+    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 전체 목록'    : '내 질문 전체 목록';
   });
 });
 
@@ -218,7 +218,7 @@ function validate(form) {
 function showSuccess(submittedRow) {
   const isReqType = submittedRow && submittedRow.type === '기타요청';
   document.getElementById('myqLabel').textContent       = isReqType ? '강의 요청 목록' : '수강생 질문 목록';
-  document.getElementById('myqAuthBtnText').textContent = isReqType ? '내 요청 전체 목록'   : '내 질문 확인';
+  document.getElementById('myqAuthBtnText').textContent = isReqType ? '내 요청 전체 목록'   : '내 질문 전체 목록';
   document.getElementById('resetBtn').textContent       = isReqType ? '다시 요청하기'  : '다시 문의하기';
   document.querySelector('.contact-desc').style.display = 'none';
   document.querySelector('.tabs').style.display = 'none';
@@ -272,17 +272,21 @@ function resetForm() {
 //  본인 확인 모달 (OTP)
 // ════════════════════════════════════════
 function openAuthModal() {
-  // 이미 OTP 인증된 상태면 모달 생략하고 바로 목록 로드
   if (authState && authState.otpVerified) {
     refreshList();
     return;
   }
+  // 인증 안 된 상태 → 모달 표시
+  clearAuthState();
   backToStep1();
-  document.getElementById('authOverlay').classList.add('open');
-  setTimeout(() => document.getElementById('authEmail').focus(), 100);
+  const overlay = document.getElementById('authOverlay');
+  overlay.style.display = '';
+  overlay.classList.add('open');
+  setTimeout(() => document.getElementById('authEmail').focus(), 150);
 }
 function closeAuthModal() {
-  document.getElementById('authOverlay').classList.remove('open');
+  const overlay = document.getElementById('authOverlay');
+  overlay.classList.remove('open');
 }
 function backToStep1() {
   document.getElementById('authStep1').style.display = '';
@@ -953,15 +957,23 @@ function isRequestTab() {
 }
 
 function refreshList() {
-  if (!authState) return;
+  if (!authState) { openAuthModal(); return; }
   if (authState.isAdmin) {
     showAdminPanel(); return;
   } else if (authState.otpVerified) {
     const onReqTab = isRequestTab();
     const action = onReqTab ? 'verifyOTPReq' : 'verifyOTP';
     const title  = onReqTab ? '내 요청 목록' : '내 질문 목록';
+    // 로딩 표시
+    const listBody = document.getElementById('contactListBody');
+    if (listBody) listBody.innerHTML = '<div class="clist-loading">불러오는 중…</div>';
+    document.querySelector('.contact-list-section').style.display = 'block';
     doJsonp(`${SCRIPT_URL}?action=${action}&email=${encodeURIComponent(authState.email)}&otp=${encodeURIComponent(authState.otp)}`, result => {
-      if (!result || !result.ok) { alert('인증이 만료됐습니다. 다시 인증해 주세요.'); clearAuthState(); return; }
+      if (!result || !result.ok) {
+        clearAuthState();
+        openAuthModal();  // 만료 시 자동으로 모달 재표시
+        return;
+      }
       renderList((result.data || []).map(normalizeRow), title);
     });
   }

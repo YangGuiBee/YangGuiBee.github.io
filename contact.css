@@ -319,7 +319,7 @@ textarea { resize: vertical; min-height: 60px; line-height: 1.6; }
 
 /* ── 공통 모달 ── */
 .cmodal-overlay {
-  position: fixed; inset: 0; z-index: 200;
+  position: fixed; inset: 0; z-index: 9999;
   background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; visibility: hidden;
