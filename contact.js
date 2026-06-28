@@ -57,6 +57,17 @@ document.querySelectorAll('.contact-form').forEach(form => {
       const fd = new FormData(form);
       fd.append('type', '기타요청');
       fd.append('timestamp', new Date().toLocaleString('ko-KR'));
+      // 기타요청 필드 → Apps Script 컬럼 매핑
+      fd.append('email',   fd.get('contact') || '');
+      fd.append('subject', fd.get('topic')   || '');
+      const parts = [
+        fd.get('org')     ? '기관/회사명: ' + fd.get('org')   : '',
+        fd.get('place')   ? '강의 장소: '   + fd.get('place') : '',
+        fd.get('date')    ? '희망 일정: '   + fd.get('date')  : '',
+        fd.get('people')  ? '대상 인원: '   + fd.get('people'): '',
+        fd.get('message') ? '요청사항:\n'   + fd.get('message'): ''
+      ].filter(Boolean).join('\n');
+      fd.append('question', parts);
       try {
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
         showSuccess(null);
