@@ -42,7 +42,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.getElementById('form-' + tab.dataset.tab).classList.add('active');
     const isReq = tab.dataset.tab === 'request';
     document.getElementById('myqLabel').textContent      = isReq ? '강의 요청 목록'  : '수강생 질문 목록';
-    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 확인'    : '내 질문 확인';
+    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 전체 목록'    : '내 질문 확인';
   });
 });
 
@@ -218,7 +218,7 @@ function validate(form) {
 function showSuccess(submittedRow) {
   const isReqType = submittedRow && submittedRow.type === '기타요청';
   document.getElementById('myqLabel').textContent       = isReqType ? '강의 요청 목록' : '수강생 질문 목록';
-  document.getElementById('myqAuthBtnText').textContent = isReqType ? '내 요청 확인'   : '내 질문 확인';
+  document.getElementById('myqAuthBtnText').textContent = isReqType ? '내 요청 전체 목록'   : '내 질문 확인';
   document.getElementById('resetBtn').textContent       = isReqType ? '다시 요청하기'  : '다시 문의하기';
   document.querySelector('.contact-desc').style.display = 'none';
   document.querySelector('.tabs').style.display = 'none';
