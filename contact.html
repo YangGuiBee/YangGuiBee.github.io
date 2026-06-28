@@ -348,9 +348,10 @@
         <button class="admin-save-btn" onclick="saveAdminEdit()">수정 저장</button>
       </div>
       <!-- 답변 작성 -->
-      <div class="admin-section">
-        <div class="admin-section-label">답변 작성 <span class="admin-section-sub">(이메일로 발송됩니다)</span></div>
+      <div class="admin-section" id="adminReplySection">
+        <div class="admin-section-label" id="adminReplySectionLabel">답변 작성 <span class="admin-section-sub">(이메일로 발송됩니다)</span></div>
         <textarea id="adminReplyText" class="admin-reply-textarea" rows="9" placeholder="답변 내용을 입력하세요..."></textarea>
+        <div id="adminAnsweredTime" style="display:none" class="admin-answered-time"></div>
       </div>
       <div class="admin-modal-footer">
         <button class="reset-btn" onclick="closeAdminDetail()">닫기</button>
