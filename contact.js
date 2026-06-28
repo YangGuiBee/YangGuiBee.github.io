@@ -715,13 +715,12 @@ function renderAdminList(rows, type) {
     const isAns = row.status === '답변완료';
     const el = document.createElement('div');
     el.className = 'admin-list-item' + (isAns ? ' answered' : '');
+    const ansTime = isAns && row.answeredAt ? formatTs(row.answeredAt).split(' ')[1] || '' : '';
+    const dateStr = formatTs(row.timestamp) + (ansTime ? ` <span class="admin-ans-date">(${ansTime})</span>` : '');
     el.innerHTML = `
-      <span class="acol-subject">
-        <span class="clist-subject-badge">${esc(row.subject||'-')}</span>
-        ${isAns ? '<br><span class="admin-answered-badge">✓ 답변완료</span>' : ''}
-      </span>
-      <span class="acol-title">${esc(row.name||'-')}</span>
-      <span class="acol-date">${formatTs(row.timestamp)}${isAns && row.answeredAt ? '<br><span class="admin-ans-date">'+formatTs(row.answeredAt)+'</span>' : ''}</span>`;
+      <span class="acol-subject"><span class="clist-subject-badge">${esc(row.subject||'-')}</span></span>
+      <span class="acol-title">${esc(row.name||'-')}${isAns ? ' <span class="admin-answered-badge">✓ 답변완료</span>' : ''}</span>
+      <span class="acol-date">${dateStr}</span>`;
     el.addEventListener('click', () => openAdminDetail(row, type));
     body.appendChild(el);
   });
