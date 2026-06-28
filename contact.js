@@ -715,8 +715,8 @@ function renderAdminList(rows, type) {
     const isAns = row.status === '답변완료';
     const el = document.createElement('div');
     el.className = 'admin-list-item' + (isAns ? ' answered' : '');
-    const ansTime = isAns && row.answeredAt ? formatTs(row.answeredAt).split(' ')[1] || '' : '';
-    const dateStr = formatTs(row.timestamp) + (ansTime ? ` <span class="admin-ans-date">(${ansTime})</span>` : '');
+    const ansFormatted = isAns && row.answeredAt ? formatTs(row.answeredAt) : '';
+    const dateStr = formatTs(row.timestamp) + (ansFormatted ? ` <span class="admin-ans-date">(${ansFormatted})</span>` : '');
     el.innerHTML = `
       <span class="acol-subject"><span class="clist-subject-badge">${esc(row.subject||'-')}</span></span>
       <span class="acol-title">${esc(row.name||'-')}${isAns ? ' <span class="admin-answered-badge">✓ 답변완료</span>' : ''}</span>
