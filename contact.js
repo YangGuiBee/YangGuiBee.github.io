@@ -502,7 +502,7 @@ function openDetailModal(row) {
 
   const isReq = row.type === '기타요청';
 
-  const canEdit = !isReq && authState && (
+  const canEdit = authState && (
     authState.isAdmin ||
     (authState.otpVerified && (row.email || '').trim().toLowerCase() === authState.email)
   );
@@ -537,9 +537,23 @@ function closeDetailModal() {
 // ════════════════════════════════════════
 function openEditFromDetail() {
   if (!currentRow) return;
-  document.getElementById('edit-subject').value  = currentRow.subject || '';
-  document.getElementById('edit-title').value    = currentRow.name    || '';
-  document.getElementById('edit-question').value = currentRow.question|| '';
+  const isReq = currentRow.type === '기타요청';
+  document.getElementById('editModalTitle').textContent = isReq ? '강의 요청 수정' : '질문 수정';
+  document.getElementById('editStudentFields').style.display  = isReq ? 'none' : '';
+  document.getElementById('editRequestFields').style.display  = isReq ? ''     : 'none';
+  if (isReq) {
+    document.getElementById('edit-req-name').value = currentRow.reqName || '';
+    document.getElementById('edit-topic').value    = currentRow.name    || '';
+    document.getElementById('edit-org').value      = currentRow.org     || '';
+    document.getElementById('edit-place').value    = currentRow.place   || '';
+    document.getElementById('edit-date').value     = currentRow.date    || '';
+    document.getElementById('edit-people').value   = currentRow.people  || '';
+    document.getElementById('edit-message').value  = currentRow.message || '';
+  } else {
+    document.getElementById('edit-subject').value  = currentRow.subject  || '';
+    document.getElementById('edit-title').value    = currentRow.name     || '';
+    document.getElementById('edit-question').value = currentRow.question || '';
+  }
   closeDetailModal();
   document.getElementById('editOverlay').classList.add('open');
 }
@@ -551,13 +565,26 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
   e.preventDefault();
   if (!currentRow) return;
 
+  const isReq = currentRow.type === '기타요청';
   const fd = new FormData();
-  fd.append('action',   'update');
-  fd.append('ts',       currentRow.timestamp);
-  fd.append('email',    currentRow.email);
-  fd.append('name',     document.getElementById('edit-title').value);
-  fd.append('subject',  document.getElementById('edit-subject').value);
-  fd.append('question', document.getElementById('edit-question').value);
+  fd.append('action', 'update');
+  fd.append('ts',     currentRow.timestamp);
+  fd.append('email',  currentRow.email);
+
+  if (isReq) {
+    fd.append('sheet',   '강의요청');
+    fd.append('reqName', document.getElementById('edit-req-name').value);
+    fd.append('topic',   document.getElementById('edit-topic').value);
+    fd.append('org',     document.getElementById('edit-org').value);
+    fd.append('place',   document.getElementById('edit-place').value);
+    fd.append('date',    document.getElementById('edit-date').value);
+    fd.append('people',  document.getElementById('edit-people').value);
+    fd.append('message', document.getElementById('edit-message').value);
+  } else {
+    fd.append('name',     document.getElementById('edit-title').value);
+    fd.append('subject',  document.getElementById('edit-subject').value);
+    fd.append('question', document.getElementById('edit-question').value);
+  }
 
   const btn = this.querySelector('.edit-save-btn');
   btn.disabled = true; btn.textContent = '저장 중…';
@@ -567,11 +594,20 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
     const tid = setTimeout(() => ctrl.abort(), 10000);
     await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd, signal: ctrl.signal });
     clearTimeout(tid);
-    // 로컬 캐시 즉시 업데이트 → 서버 재조회 없이 바로 반영
     if (currentRow) {
-      currentRow.name     = document.getElementById('edit-title').value;
-      currentRow.subject  = document.getElementById('edit-subject').value;
-      currentRow.question = document.getElementById('edit-question').value;
+      if (isReq) {
+        currentRow.reqName = document.getElementById('edit-req-name').value;
+        currentRow.name    = document.getElementById('edit-topic').value;
+        currentRow.org     = document.getElementById('edit-org').value;
+        currentRow.place   = document.getElementById('edit-place').value;
+        currentRow.date    = document.getElementById('edit-date').value;
+        currentRow.people  = document.getElementById('edit-people').value;
+        currentRow.message = document.getElementById('edit-message').value;
+      } else {
+        currentRow.name     = document.getElementById('edit-title').value;
+        currentRow.subject  = document.getElementById('edit-subject').value;
+        currentRow.question = document.getElementById('edit-question').value;
+      }
     }
     closeEditModal();
     alert('수정됐습니다.');
@@ -593,6 +629,7 @@ async function deleteFromDetail() {
   fd.append('action', 'delete');
   fd.append('ts',     currentRow.timestamp);
   fd.append('email',  currentRow.email);
+  if (currentRow.type === '기타요청') fd.append('sheet', '강의요청');
 
   try {
     await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
