@@ -41,8 +41,15 @@ document.querySelectorAll('.tab').forEach(tab => {
     tab.classList.add('active');
     document.getElementById('form-' + tab.dataset.tab).classList.add('active');
     const isReq = tab.dataset.tab === 'request';
-    document.getElementById('myqLabel').textContent      = isReq ? '강의 요청 목록'  : '수강생 질문 목록';
-    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 전체 목록'    : '내 질문 전체 목록';
+    document.getElementById('myqLabel').textContent       = isReq ? '강의 요청 목록'   : '수강생 질문 목록';
+    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 전체 목록' : '내 질문 전체 목록';
+    // 목록 초기화 후 인증 상태면 해당 탭 목록 재로드
+    const listBody = document.getElementById('contactListBody');
+    if (listBody) listBody.innerHTML = '';
+    document.getElementById('contactListEmpty').hidden = true;
+    document.querySelector('.contact-list-section').style.display = 'none';
+    currentRows = [];
+    if (authState && authState.otpVerified) refreshList();
   });
 });
 
