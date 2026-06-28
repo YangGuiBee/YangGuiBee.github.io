@@ -415,7 +415,7 @@ async function submitAdminAuth() {
   }
   authState = { isAdmin: true };
   closeAdminModal();
-  loadContacts(rows => renderList(rows, `전체 질문 목록`));
+  showAdminPanel();
 }
 
 // ════════════════════════════════════════
@@ -449,18 +449,17 @@ function loadContacts(onResult) {
 
 // Apps Script가 named fields를 반환하거나, 인덱스 기반(구버전) 모두 대응
 function normalizeRow(r) {
-  // doGet이 named fields를 반환하는 경우 (업데이트 후)
   if (r.timestamp !== undefined) return r;
-  // 구버전: Object.values()로 인덱스 접근
   const v = Object.values(r);
   return {
-    timestamp: String(v[0]||''),
-    type:      String(v[1]||''),
-    name:      String(v[2]||''),
-    email:     String(v[3]||''),
-    subject:   String(v[4]||''),
-    question:  String(v[5]||''),
-    password:  String(v[12]||'')
+    timestamp:  String(v[0]||''),
+    type:       String(v[1]||''),
+    name:       String(v[2]||''),
+    email:      String(v[3]||''),
+    subject:    String(v[4]||''),
+    question:   String(v[5]||''),
+    status:     String(v[6]||''),
+    answeredAt: String(v[7]||''),
   };
 }
 
@@ -490,10 +489,11 @@ function renderList(rows, title) {
     const el = document.createElement('div');
     el.className = 'clist-row';
     el.onclick = () => openDetailModal(row);
+    const answered = row.status === '답변완료';
     el.innerHTML = `
       <span class="clist-col-subject"><span class="clist-subject-badge">${esc(row.subject||'-')}</span></span>
-      <span class="clist-col-title">${esc(row.name||'-')}</span>
-      <span class="clist-col-date">${formatTs(row.timestamp)}</span>`;
+      <span class="clist-col-title">${esc(row.name||'-')}${answered ? '<br><span class="answered-badge">✓ 답변완료</span>' : ''}</span>
+      <span class="clist-col-date">${formatTs(row.timestamp)}${answered && row.answeredAt ? '<br><span class="answered-date">'+formatTs(row.answeredAt)+'</span>' : ''}</span>`;
     body.appendChild(el);
   });
 }
@@ -506,9 +506,9 @@ function openDetailModal(row) {
 
   const isReq = row.type === '기타요청';
 
-  const canEdit = authState && (
-    authState.isAdmin ||
-    (authState.otpVerified && (row.email || '').trim().toLowerCase() === authState.email)
+  const isAnswered = row.status === '답변완료';
+  const canEdit = !isAnswered && authState && (
+    authState.otpVerified && (row.email || '').trim().toLowerCase() === authState.email
   );
 
   const bodyHtml = isReq
@@ -541,6 +541,10 @@ function closeDetailModal() {
 // ════════════════════════════════════════
 function openEditFromDetail() {
   if (!currentRow) return;
+  if (currentRow.status === '답변완료') {
+    alert('관리자가 답변완료한 내용은 수정 및 삭제가 불가합니다.');
+    return;
+  }
   const isReq = currentRow.type === '기타요청';
   document.getElementById('editModalTitle').textContent = isReq ? '강의 요청 수정' : '질문 수정';
   document.getElementById('editStudentFields').style.display  = isReq ? 'none' : '';
@@ -627,6 +631,10 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
 // ════════════════════════════════════════
 async function deleteFromDetail() {
   if (!currentRow) return;
+  if (currentRow.status === '답변완료') {
+    alert('관리자가 답변완료한 내용은 수정 및 삭제가 불가합니다.');
+    return;
+  }
   if (!confirm('이 게시글을 삭제하시겠습니까?')) return;
 
   const fd = new FormData();
@@ -647,6 +655,236 @@ async function deleteFromDetail() {
   }
 }
 
+// ════════════════════════════════════════
+//  관리자 패널
+// ════════════════════════════════════════
+let adminCurrentRow  = null;
+let adminCurrentType = 'contacts';
+
+function showAdminPanel() {
+  document.getElementById('userSection').style.display  = 'none';
+  document.querySelector('.tabs').style.display         = 'none';
+  document.querySelectorAll('.contact-form').forEach(f => {
+    f.classList.remove('active'); f.classList.add('hidden-form');
+  });
+  document.querySelector('.success-msg').hidden = true;
+  document.getElementById('adminPanel').style.display = '';
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.admin-tab[data-type="contacts"]').classList.add('active');
+  adminCurrentType = 'contacts';
+  loadAdminData('contacts');
+}
+
+function exitAdminMode() {
+  clearAuthState();
+  document.getElementById('adminPanel').style.display  = 'none';
+  document.getElementById('userSection').style.display = '';
+  document.querySelector('.tabs').style.display = '';
+  document.querySelectorAll('.contact-form').forEach(f => f.classList.remove('hidden-form'));
+  document.querySelector('.contact-form').classList.add('active');
+}
+
+function switchAdminTab(btn) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  adminCurrentType = btn.dataset.type;
+  loadAdminData(adminCurrentType);
+}
+
+function loadAdminData(type) {
+  const action = type === 'requests' ? 'adminRequests' : 'adminContacts';
+  document.getElementById('adminListBody').innerHTML = '<div class="clist-loading">불러오는 중…</div>';
+  doJsonp(`${SCRIPT_URL}?action=${action}&t=${Date.now()}`, result => {
+    if (!result || !result.ok) {
+      document.getElementById('adminListBody').innerHTML = '<div class="clist-loading">데이터를 불러올 수 없습니다.</div>';
+      return;
+    }
+    renderAdminList((result.data || []).map(normalizeRow), type);
+  });
+}
+
+function renderAdminList(rows, type) {
+  const body = document.getElementById('adminListBody');
+  if (!rows.length) {
+    body.innerHTML = '<div class="clist-loading">등록된 내용이 없습니다.</div>';
+    return;
+  }
+  body.innerHTML = '';
+  rows.slice().reverse().forEach(row => {
+    const isAns = row.status === '답변완료';
+    const el = document.createElement('div');
+    el.className = 'admin-list-item' + (isAns ? ' answered' : '');
+    el.innerHTML = `
+      <span class="acol-subject">
+        <span class="clist-subject-badge">${esc(row.subject||'-')}</span>
+        ${isAns ? '<br><span class="admin-answered-badge">✓ 답변완료</span>' : ''}
+      </span>
+      <span class="acol-title">${esc(row.name||'-')}</span>
+      <span class="acol-email">${esc(row.email||'')}</span>
+      <span class="acol-date">${formatTs(row.timestamp)}${isAns && row.answeredAt ? '<br><span class="admin-ans-date">'+formatTs(row.answeredAt)+'</span>' : ''}</span>`;
+    el.addEventListener('click', () => openAdminDetail(row, type));
+    body.appendChild(el);
+  });
+}
+
+function openAdminDetail(row, type) {
+  adminCurrentRow  = row;
+  adminCurrentType = type || 'contacts';
+  const isReq   = type === 'requests';
+  const isAns   = row.status === '답변완료';
+
+  document.getElementById('adminDetailHeader').innerHTML = `
+    <div class="admin-detail-info">
+      <div class="admin-detail-badge-row">
+        <span class="clist-subject-badge">${esc(row.subject||'-')}</span>
+        ${isAns ? ' <span class="admin-answered-badge">✓ 답변완료</span>' : ''}
+      </div>
+      <div class="admin-detail-title">${esc(row.name||'-')}</div>
+      <div class="admin-detail-meta">${esc(row.email||'')} · ${formatTs(row.timestamp)}</div>
+    </div>`;
+
+  const sf = document.getElementById('aeStudentFields');
+  const rf = document.getElementById('aeRequestFields');
+  if (isReq) {
+    sf.style.display = 'none'; rf.style.display = '';
+    document.getElementById('ae-reqname').value = row.reqName || '';
+    document.getElementById('ae-topic').value   = row.name    || '';
+    document.getElementById('ae-org').value     = row.org     || '';
+    document.getElementById('ae-place').value   = row.place   || '';
+    document.getElementById('ae-date').value    = row.date    || '';
+    document.getElementById('ae-people').value  = row.people  || '';
+    document.getElementById('ae-message').value = row.message || '';
+  } else {
+    sf.style.display = ''; rf.style.display = 'none';
+    document.getElementById('ae-subject').value  = row.subject  || '';
+    document.getElementById('ae-title').value    = row.name     || '';
+    document.getElementById('ae-question').value = row.question || '';
+  }
+
+  const originalTxt = isReq
+    ? `[강의요청 내용]\n담당자: ${row.reqName||''}\n기관/회사명: ${row.org||''}\n희망 강의 주제: ${row.name||''}\n강의 장소: ${row.place||''}\n희망 일정: ${row.date||''}\n대상 인원: ${row.people||''}\n기타 요청사항: ${row.message||''}`
+    : `[질문 내용]\n과목: ${row.subject||''}\n제목: ${row.name||''}\n\n${row.question||''}`;
+  document.getElementById('adminReplyText').value =
+    `안녕하세요, ${isReq ? (row.reqName||row.name) : row.name}님.\n\n아래 내용에 대해 답변 드립니다.\n\n${'─'.repeat(32)}\n${originalTxt}\n${'─'.repeat(32)}\n\n[이곳에 답변을 작성해 주세요]\n\n감사합니다.\nAI Study 강의 담당자 드림`;
+
+  document.getElementById('adminDetailOverlay').classList.add('open');
+}
+
+function closeAdminDetail() {
+  document.getElementById('adminDetailOverlay').classList.remove('open');
+}
+
+async function saveAdminEdit() {
+  if (!adminCurrentRow) return;
+  const isReq = adminCurrentType === 'requests';
+  const fd = new FormData();
+  fd.append('action', 'update');
+  fd.append('ts',    adminCurrentRow.timestamp);
+  fd.append('email', adminCurrentRow.email);
+  if (isReq) {
+    fd.append('sheet',   '강의요청');
+    fd.append('reqName', document.getElementById('ae-reqname').value);
+    fd.append('topic',   document.getElementById('ae-topic').value);
+    fd.append('org',     document.getElementById('ae-org').value);
+    fd.append('place',   document.getElementById('ae-place').value);
+    fd.append('date',    document.getElementById('ae-date').value);
+    fd.append('people',  document.getElementById('ae-people').value);
+    fd.append('message', document.getElementById('ae-message').value);
+  } else {
+    fd.append('name',     document.getElementById('ae-title').value);
+    fd.append('subject',  document.getElementById('ae-subject').value);
+    fd.append('question', document.getElementById('ae-question').value);
+  }
+  const btn = document.querySelector('.admin-save-btn');
+  btn.disabled = true; btn.textContent = '저장 중…';
+  try {
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 10000);
+    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd, signal: ctrl.signal });
+    clearTimeout(tid);
+    if (isReq) {
+      adminCurrentRow.reqName = document.getElementById('ae-reqname').value;
+      adminCurrentRow.name    = document.getElementById('ae-topic').value;
+      adminCurrentRow.org     = document.getElementById('ae-org').value;
+      adminCurrentRow.place   = document.getElementById('ae-place').value;
+      adminCurrentRow.date    = document.getElementById('ae-date').value;
+      adminCurrentRow.people  = document.getElementById('ae-people').value;
+      adminCurrentRow.message = document.getElementById('ae-message').value;
+    } else {
+      adminCurrentRow.subject  = document.getElementById('ae-subject').value;
+      adminCurrentRow.name     = document.getElementById('ae-title').value;
+      adminCurrentRow.question = document.getElementById('ae-question').value;
+    }
+    document.querySelector('.admin-detail-title').textContent = adminCurrentRow.name;
+    btn.textContent = '저장됐습니다 ✓';
+    setTimeout(() => { btn.disabled = false; btn.textContent = '수정 저장'; }, 2000);
+  } catch {
+    alert('저장 중 오류가 발생했습니다.');
+    btn.disabled = false; btn.textContent = '수정 저장';
+  }
+}
+
+async function sendAdminReply() {
+  if (!adminCurrentRow) return;
+  const replyText = document.getElementById('adminReplyText').value.trim();
+  if (!replyText) { alert('답변 내용을 입력해 주세요.'); return; }
+
+  const isReq  = adminCurrentType === 'requests';
+  const toName = isReq ? (adminCurrentRow.reqName || adminCurrentRow.name) : adminCurrentRow.name;
+
+  const originalHtml = isReq
+    ? `<p><b>담당자:</b> ${esc(adminCurrentRow.reqName||'')}</p>
+       <p><b>기관/회사명:</b> ${esc(adminCurrentRow.org||'')}</p>
+       <p><b>희망 강의 주제:</b> ${esc(adminCurrentRow.name||'')}</p>
+       <p><b>강의 장소:</b> ${esc(adminCurrentRow.place||'')}</p>
+       <p><b>희망 일정:</b> ${esc(adminCurrentRow.date||'')}</p>
+       <p><b>대상 인원:</b> ${esc(adminCurrentRow.people||'')}</p>
+       <p><b>기타 요청사항:</b> ${esc(adminCurrentRow.message||'')}</p>`
+    : `<p><b>과목:</b> ${esc(adminCurrentRow.subject||'')}</p>
+       <p><b>제목:</b> ${esc(adminCurrentRow.name||'')}</p>
+       <p style="margin-top:0.5rem;white-space:pre-wrap">${esc(adminCurrentRow.question||'')}</p>`;
+
+  const htmlBody = `<div style="font-family:sans-serif;max-width:600px;color:#333">
+    <p>안녕하세요, <b>${esc(toName)}</b>님.</p><br>
+    <div style="background:#f5f5f5;padding:16px;border-radius:8px;margin:16px 0;font-size:.9rem">
+      <p style="color:#666;margin:0 0 10px;font-weight:600">▶ 원문 내용</p>${originalHtml}
+    </div>
+    <div style="padding:16px;border-left:4px solid #4f46e5;background:#f8f7ff;margin:16px 0">
+      <p style="color:#4f46e5;margin:0 0 10px;font-weight:600">▶ 답변</p>
+      <p style="white-space:pre-wrap">${esc(replyText)}</p>
+    </div>
+    <p>감사합니다.</p><p><b>AI Study 강의 담당자 드림</b></p>
+  </div>`;
+
+  const fd = new FormData();
+  fd.append('action',   'reply');
+  fd.append('sheet',    isReq ? '강의요청' : '강의문의');
+  fd.append('ts',       adminCurrentRow.timestamp);
+  fd.append('email',    adminCurrentRow.email);
+  fd.append('subject',  isReq ? '[AI Study] 강의요청 검토 결과 안내드립니다.' : '[AI Study] 강의문의 답변 드립니다.');
+  fd.append('htmlBody', htmlBody);
+
+  const btn = document.getElementById('adminSendBtn');
+  const txt = document.getElementById('adminSendText');
+  const spn = document.getElementById('adminSendSpinner');
+  btn.disabled = true; txt.hidden = true; spn.hidden = false;
+
+  try {
+    const ctrl = new AbortController();
+    const tid = setTimeout(() => ctrl.abort(), 15000);
+    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd, signal: ctrl.signal });
+    clearTimeout(tid);
+    adminCurrentRow.status     = '답변완료';
+    adminCurrentRow.answeredAt = new Date().toLocaleString('ko-KR');
+    closeAdminDetail();
+    alert(`${adminCurrentRow.email} 으로 답변을 발송했습니다.`);
+    loadAdminData(adminCurrentType);
+  } catch {
+    alert('발송 중 오류가 발생했습니다. 다시 시도해 주세요.');
+    btn.disabled = false; txt.hidden = false; spn.hidden = true;
+  }
+}
+
 // ── 목록 새로고침 ──
 function isRequestTab() {
   const active = document.querySelector('.tab.active');
@@ -656,7 +894,7 @@ function isRequestTab() {
 function refreshList() {
   if (!authState) return;
   if (authState.isAdmin) {
-    loadContacts(rows => renderList(rows, '전체 질문 목록'));
+    showAdminPanel(); return;
   } else if (authState.otpVerified) {
     const onReqTab = isRequestTab();
     const action = onReqTab ? 'verifyOTPReq' : 'verifyOTP';
@@ -690,10 +928,11 @@ document.querySelectorAll('input, select, textarea').forEach(el => {
 // ── 모달 overlay 닫기: mousedown 시작점도 overlay여야만 닫힘 ──
 // (textarea 드래그 선택 후 바깥에서 놓을 때 닫히는 버그 방지)
 [
-  { id: 'authOverlay',   fn: closeAuthModal   },
-  { id: 'adminOverlay',  fn: closeAdminModal  },
-  { id: 'detailOverlay', fn: closeDetailModal },
-  { id: 'editOverlay',   fn: closeEditModal   }
+  { id: 'authOverlay',        fn: closeAuthModal    },
+  { id: 'adminOverlay',       fn: closeAdminModal   },
+  { id: 'detailOverlay',      fn: closeDetailModal  },
+  { id: 'editOverlay',        fn: closeEditModal    },
+  { id: 'adminDetailOverlay', fn: closeAdminDetail  }
 ].forEach(({ id, fn }) => {
   const el = document.getElementById(id);
   let downOnSelf = false;
