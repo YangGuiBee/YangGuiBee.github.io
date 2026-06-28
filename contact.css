@@ -429,8 +429,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
   display: grid; grid-template-columns: 1.2fr 3.5fr 2.8fr;
   padding: 0.55rem 1rem; background: rgba(255,255,255,0.03);
   border-bottom: 1px solid var(--border);
-  font-size: 0.7rem; font-weight: 600; color: var(--text-dim);
-  letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.75rem; font-weight: 600; color: var(--text-dim);
   align-items: center;
 }
 .admin-list-item {
