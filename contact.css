@@ -435,16 +435,17 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 .admin-list-empty { grid-column: 1 / -1; padding: 1.2rem 1rem; font-size: 0.85rem; color: var(--text-dim); }
 /* 헤더 셀 */
 .admin-list-head > span {
-  padding: 0.55rem 0;
+  padding: 0.55rem 0.6rem;
   background: rgba(255,255,255,0.03);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  border-right: 1px solid var(--border);
   font-size: 0.75rem; font-weight: 600; color: var(--text-dim);
 }
 .admin-list-head > span:first-child { padding-left: 1rem; }
-.admin-list-head > span:last-child  { padding-right: 1rem; }
+.admin-list-head > span:last-child  { padding-right: 1rem; border-right: none; }
 /* 데이터 셀 공통 */
 .admin-list-item > span {
-  padding: 0.75rem 0;
+  padding: 0.75rem 0.6rem;
   border-bottom: 1px solid var(--border);
   cursor: pointer; transition: background 0.15s;
   display: flex; align-items: center;
