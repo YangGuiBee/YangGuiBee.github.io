@@ -706,11 +706,19 @@ function loadAdminData(type) {
 
 function renderAdminList(rows, type) {
   const body = document.getElementById('adminListBody');
+  body.innerHTML = '';
+  // 헤더 행 (데이터와 동일 grid 컨테이너 내에 배치)
+  const head = document.createElement('div');
+  head.className = 'admin-list-head';
+  head.innerHTML = `<span class="acol-subject">구분</span><span class="acol-title">제목</span><span class="acol-date">등록일시(답변일시)</span>`;
+  body.appendChild(head);
   if (!rows.length) {
-    body.innerHTML = '<div class="clist-loading">등록된 내용이 없습니다.</div>';
+    const empty = document.createElement('div');
+    empty.className = 'admin-list-empty';
+    empty.textContent = '등록된 내용이 없습니다.';
+    body.appendChild(empty);
     return;
   }
-  body.innerHTML = '';
   rows.slice().reverse().forEach(row => {
     const isAns = row.status === '답변완료';
     const el = document.createElement('div');
@@ -721,7 +729,12 @@ function renderAdminList(rows, type) {
       <span class="acol-subject"><span class="clist-subject-badge">${esc(row.subject||'-')}</span></span>
       <span class="acol-title">${esc(row.name||'-')}${isAns ? ' <span class="admin-answered-badge">✓ 답변완료</span>' : ''}</span>
       <span class="acol-date">${dateStr}</span>`;
-    el.addEventListener('click', () => openAdminDetail(row, type));
+    const cells = el.querySelectorAll('span');
+    cells.forEach(cell => {
+      cell.addEventListener('mouseover', () => cells.forEach(c => c.classList.add('row-hover')));
+      cell.addEventListener('mouseout',  () => cells.forEach(c => c.classList.remove('row-hover')));
+      cell.addEventListener('click', () => openAdminDetail(row, type));
+    });
     body.appendChild(el);
   });
 }

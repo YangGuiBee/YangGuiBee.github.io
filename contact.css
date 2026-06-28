@@ -425,22 +425,35 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 .admin-tab:hover:not(.active) { color: var(--text); }
 
 .admin-list-wrap { padding: 0; }
-.admin-list-head {
-  display: grid; grid-template-columns: 1.2fr 3.5fr 2.8fr;
-  padding: 0.55rem 1rem; background: rgba(255,255,255,0.03);
+/* 단일 grid 컨테이너 — 헤더와 데이터 행이 동일한 컬럼 트랙 공유 */
+#adminListBody {
+  display: grid;
+  grid-template-columns: 1.2fr 3.5fr 2.8fr;
+}
+.admin-list-head { display: contents; }
+.admin-list-item { display: contents; }
+.admin-list-empty { grid-column: 1 / -1; padding: 1.2rem 1rem; font-size: 0.85rem; color: var(--text-dim); }
+/* 헤더 셀 */
+.admin-list-head > span {
+  padding: 0.55rem 0;
+  background: rgba(255,255,255,0.03);
   border-bottom: 1px solid var(--border);
   font-size: 0.75rem; font-weight: 600; color: var(--text-dim);
-  align-items: center;
 }
-.admin-list-item {
-  display: grid; grid-template-columns: 1.2fr 3.5fr 2.8fr;
-  padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: background 0.15s; align-items: center;
+.admin-list-head > span:first-child { padding-left: 1rem; }
+.admin-list-head > span:last-child  { padding-right: 1rem; }
+/* 데이터 셀 공통 */
+.admin-list-item > span {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.15s;
+  display: flex; align-items: center;
 }
-.admin-list-item:last-child { border-bottom: none; }
-.admin-list-item:hover { background: rgba(99,102,241,0.06); }
-.admin-list-item.answered { opacity: 0.7; }
-.acol-title { font-size: 0.82rem; color: var(--text); line-height: 1.4; }
+.admin-list-item > span:first-child { padding-left: 1rem; }
+.admin-list-item > span:last-child  { padding-right: 1rem; }
+.admin-list-item > span.row-hover   { background: rgba(99,102,241,0.06); }
+.admin-list-item.answered > span    { opacity: 0.7; }
+.acol-title { font-size: 0.82rem; color: var(--text); line-height: 1.4; flex-wrap: wrap; }
 .acol-email { font-size: 0.75rem; color: var(--text-dim); word-break: break-all; }
 .acol-date  { font-size: 0.75rem; color: var(--text-dim); white-space: nowrap; }
 .admin-answered-badge {
