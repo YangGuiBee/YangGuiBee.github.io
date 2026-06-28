@@ -708,9 +708,10 @@ function renderAdminList(rows, type) {
   const body = document.getElementById('adminListBody');
   body.innerHTML = '';
   // 헤더 행 (데이터와 동일 grid 컨테이너 내에 배치)
+  const isReqType = type === 'requests';
   const head = document.createElement('div');
   head.className = 'admin-list-head';
-  head.innerHTML = `<span class="acol-subject">구분</span><span class="acol-title">제목</span><span class="acol-date">등록일시(답변일시)</span>`;
+  head.innerHTML = `<span class="acol-subject">${isReqType ? '기관/회사명' : '구분'}</span><span class="acol-title">제목</span><span class="acol-date">등록일시(답변일시)</span>`;
   body.appendChild(head);
   if (!rows.length) {
     const empty = document.createElement('div');
@@ -726,7 +727,7 @@ function renderAdminList(rows, type) {
     const ansFormatted = isAns && row.answeredAt ? formatTs(row.answeredAt) : '';
     const dateStr = formatTs(row.timestamp) + (ansFormatted ? ` <span class="admin-ans-date">(${ansFormatted})</span>` : '');
     el.innerHTML = `
-      <span class="acol-subject"><span class="clist-subject-badge">${esc(row.subject||'-')}</span></span>
+      <span class="acol-subject"><span class="clist-subject-badge">${esc(isReqType ? (row.org||'-') : (row.subject||'-'))}</span></span>
       <span class="acol-title">${esc(row.name||'-')}${isAns ? ' <span class="admin-answered-badge">✓ 답변완료</span>' : ''}</span>
       <span class="acol-date">${dateStr}</span>`;
     const cells = el.querySelectorAll('span');
