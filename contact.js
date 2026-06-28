@@ -5,8 +5,10 @@ let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: t
 let currentRow = null; // 현재 상세보기 중인 row
 let currentRows = [];  // 현재 목록 캐시
 let currentListTitle = '';
-let submitStep = 'idle'; // 'idle' | 'otp_pending'
-let pendingFd  = null;  // OTP 인증 대기 중인 FormData
+let submitStep    = 'idle'; // 수강생 질문 OTP 단계
+let pendingFd     = null;
+let reqSubmitStep = 'idle'; // 강의 요청 OTP 단계
+let reqPendingFd  = null;
 
 // ── sessionStorage에서 인증 상태 복원 (탭 내 페이지 이동 시 유지) ──
 try {
@@ -47,23 +49,76 @@ document.querySelectorAll('.contact-form').forEach(form => {
     e.preventDefault();
     const activeTab = document.querySelector('.tab.active').dataset.tab;
 
-    // ── 기타요청: 기존 단순 제출 ──
+    // ── 기타요청: OTP 2단계 제출 ──
     if (activeTab !== 'student') {
-      if (!validate(form)) return;
-      const btn = form.querySelector('.submit-btn');
-      const btnText = btn.querySelector('.btn-text');
+      const btn     = document.getElementById('reqSubmitBtn');
+      const btnText = document.getElementById('reqSubmitText');
       const btnSpinner = btn.querySelector('.btn-spinner');
+
+      // 2단계: OTP 확인 후 실제 제출
+      if (reqSubmitStep === 'otp_pending') {
+        const otp    = document.getElementById('reqOTP').value.trim();
+        const otpErr = document.getElementById('reqOtpError');
+        if (!otp) { otpErr.textContent = '인증코드를 입력해 주세요.'; otpErr.hidden = false; return; }
+        otpErr.hidden = true;
+        btn.disabled = true; btnText.hidden = true; btnSpinner.hidden = false;
+
+        const email = (reqPendingFd.get('email') || '').trim().toLowerCase();
+        doJsonp(`${SCRIPT_URL}?action=verifyOTP&email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, async result => {
+          if (!result || !result.ok) {
+            btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
+            otpErr.textContent = '인증코드가 일치하지 않거나 만료됐습니다.';
+            otpErr.hidden = false;
+            return;
+          }
+          try {
+            await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: reqPendingFd });
+            reqSubmitStep = 'idle';
+            saveAuthState({ email, otp, otpVerified: true });
+            const fd = reqPendingFd;
+            showSuccess({
+              timestamp: fd.get('timestamp'), type: '기타요청',
+              name: fd.get('topic') || '', email: fd.get('email') || '',
+              subject: '강의요청',
+              reqName: fd.get('name') || '', org: fd.get('org') || '',
+              place: fd.get('place') || '', date: fd.get('date') || '',
+              people: fd.get('people') || '', message: fd.get('message') || '',
+              _listTitle: '제출한 강의요청<span class="list-title-sub">(등록시 작성한 이메일 인증으로 조회)</span>'
+            });
+          } catch {
+            alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+            btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
+          }
+        });
+        return;
+      }
+
+      // 1단계: 폼 검증 후 OTP 발송
+      if (!validate(form)) return;
       btn.disabled = true; btnText.hidden = true; btnSpinner.hidden = false;
+
       const fd = new FormData(form);
       fd.append('type', '기타요청');
       fd.append('timestamp', new Date().toLocaleString('ko-KR'));
-      try {
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd });
-        showSuccess(null);
-      } catch {
-        alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      fd.append('contact', fd.get('email') || ''); // Apps Script 호환
+      const email = (fd.get('email') || '').trim().toLowerCase();
+
+      doJsonp(`${SCRIPT_URL}?action=sendOTP&email=${encodeURIComponent(email)}`, result => {
         btn.disabled = false; btnText.hidden = false; btnSpinner.hidden = true;
-      }
+        if (!result || !result.ok) {
+          alert('인증코드 발송에 실패했습니다. 이메일을 확인해 주세요.');
+          return;
+        }
+        reqPendingFd  = fd;
+        reqSubmitStep = 'otp_pending';
+        form.querySelectorAll('input:not(#reqOTP), select, textarea').forEach(el => el.disabled = true);
+        document.getElementById('reqOtpInfo').innerHTML =
+          `<strong>${esc(email)}</strong>로 인증코드를 발송했습니다.<br>6자리 코드를 입력 후 제출하세요.`;
+        document.getElementById('reqOtpSection').style.display = '';
+        document.getElementById('reqOtpError').hidden = true;
+        btnText.textContent = '인증 후 제출하기';
+        setTimeout(() => document.getElementById('reqOTP').focus(), 100);
+      });
       return;
     }
 
@@ -169,11 +224,14 @@ function showSuccess(submittedRow) {
 // ── 다시 문의하기 ──
 function resetForm() {
   // OTP 제출 상태 초기화
-  submitStep = 'idle';
-  pendingFd  = null;
+  submitStep = 'idle'; pendingFd = null;
   document.getElementById('submitOtpSection').style.display = 'none';
   document.getElementById('submitOtpError').hidden = true;
   document.getElementById('studentSubmitText').textContent = '질문 제출하기';
+  reqSubmitStep = 'idle'; reqPendingFd = null;
+  document.getElementById('reqOtpSection').style.display = 'none';
+  document.getElementById('reqOtpError').hidden = true;
+  document.getElementById('reqSubmitText').textContent = '강의 요청 제출하기';
 
   document.querySelector('.tabs').style.display = '';
   document.querySelectorAll('.contact-form').forEach(f => {
@@ -431,17 +489,29 @@ function renderList(rows, title) {
 function openDetailModal(row) {
   currentRow = row;
 
-  const canEdit = authState && (
+  const canEdit = !isReq && authState && (
     authState.isAdmin ||
     (authState.otpVerified && (row.email || '').trim().toLowerCase() === authState.email)
   );
+
+  const isReq = row.type === '기타요청';
+  const bodyHtml = isReq
+    ? [
+        row.reqName ? `담당자: ${esc(row.reqName)}`       : '',
+        row.org     ? `기관/회사명: ${esc(row.org)}`       : '',
+        row.place   ? `강의 장소: ${esc(row.place)}`       : '',
+        row.date    ? `희망 일정: ${esc(row.date)}`        : '',
+        row.people  ? `대상 인원: ${esc(row.people)}`      : '',
+        row.message ? `요청사항:<br>${esc(row.message).replace(/\n/g,'<br>')}` : ''
+      ].filter(Boolean).join('<br>')
+    : esc(row.question||'').replace(/\n/g,'<br>');
 
   document.getElementById('detailContent').innerHTML = `
     <div class="detail-subject"><span class="clist-subject-badge">${esc(row.subject||'-')}</span></div>
     <h3 class="detail-title">${esc(row.name||'-')}</h3>
     <div class="detail-meta">${esc(row.email||'')} · ${formatTs(row.timestamp)}</div>
     <div class="detail-divider"></div>
-    <div class="detail-body">${esc(row.question||'').replace(/\n/g,'<br>')}</div>`;
+    <div class="detail-body">${bodyHtml}</div>`;
 
   document.getElementById('detailActions').style.display = canEdit ? 'flex' : 'none';
   document.getElementById('detailOverlay').classList.add('open');
