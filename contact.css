@@ -45,7 +45,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1rem;
+  padding: 0.45rem 1rem;
   border: none;
   border-radius: 9px;
   background: transparent;
@@ -95,7 +95,7 @@ input, select, textarea {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 0.55rem 1rem;
+  padding: 0.4rem 1rem;
   color: var(--text);
   font-size: 0.9rem;
   font-family: 'Noto Sans KR', sans-serif;
@@ -126,8 +126,8 @@ textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
 
 /* ── SUBMIT ── */
 .submit-btn {
-  margin-top: 0.5rem;
-  padding: 0.9rem 2rem;
+  margin-top: 0.25rem;
+  padding: 0.6rem 2rem;
   background: var(--accent);
   color: #fff;
   border: none;
@@ -274,18 +274,18 @@ textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
 .field-error { font-size: 0.78rem; color: #f87171; margin-top: 0.3rem; }
 
 /* ── 개인정보 동의 체크박스 ── */
-.consent-field { margin-top: 0.25rem; }
+.consent-field { margin-top: 0.1rem; }
 .consent-label {
   display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer;
-  font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.55;
+  font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.3;
 }
 .consent-label input[type="checkbox"] {
-  width: 16px; height: 16px; flex-shrink: 0; margin-top: 0.15rem;
+  width: 16px; height: 16px; flex-shrink: 0; margin-top: 0.1rem;
   accent-color: var(--accent); cursor: pointer;
   border: none; padding: 0;
 }
 .consent-label input[type="checkbox"].error { outline: 2px solid #f87171; border-radius: 2px; }
-.consent-retention { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.05rem; padding-left: 1.6rem; }
+.consent-retention { font-size: 0.75rem; color: var(--text-dim); margin-top: 0; padding-left: 1.6rem; line-height: 1.3; }
 .list-title-sub { font-size: 0.78rem; font-weight: 400; color: var(--text-dim); margin-left: 0.4rem; }
 .otp-back-btn { display: block; width: 100%; margin-top: 0.6rem; padding: 0.5rem; background: none; border: none; color: var(--text-dim); font-size: 0.82rem; cursor: pointer; text-align: center; }
 .otp-back-btn:hover { color: var(--accent); }
