@@ -721,7 +721,6 @@ function renderAdminList(rows, type) {
         ${isAns ? '<br><span class="admin-answered-badge">✓ 답변완료</span>' : ''}
       </span>
       <span class="acol-title">${esc(row.name||'-')}</span>
-      <span class="acol-email">${esc(row.email||'')}</span>
       <span class="acol-date">${formatTs(row.timestamp)}${isAns && row.answeredAt ? '<br><span class="admin-ans-date">'+formatTs(row.answeredAt)+'</span>' : ''}</span>`;
     el.addEventListener('click', () => openAdminDetail(row, type));
     body.appendChild(el);
@@ -734,6 +733,23 @@ function openAdminDetail(row, type) {
   const isReq   = type === 'requests';
   const isAns   = row.status === '답변완료';
 
+  const bodyHtml = isReq
+    ? [
+        row.reqName ? `담당자: ${esc(row.reqName)}`                               : '',
+        row.org     ? `기관/회사명: ${esc(row.org)}`                              : '',
+        row.place   ? `강의 장소: ${esc(row.place)}`                              : '',
+        row.date    ? `희망 일정: ${esc(row.date)}`                               : '',
+        row.people  ? `대상 인원: ${esc(row.people)}`                             : '',
+        row.message ? `요청사항:<br>${esc(row.message).replace(/\n/g,'<br>')}` : '',
+      ].filter(Boolean).join('<br>')
+    : esc(row.question||'').replace(/\n/g,'<br>');
+
+  const replyHtml = isAns && row.replyText
+    ? `<div class="admin-detail-divider"></div>
+       <div class="admin-detail-section-label">발송한 답변</div>
+       <div class="admin-detail-reply">${esc(row.replyText).replace(/\n/g,'<br>')}</div>`
+    : '';
+
   document.getElementById('adminDetailHeader').innerHTML = `
     <div class="admin-detail-info">
       <div class="admin-detail-badge-row">
@@ -742,6 +758,9 @@ function openAdminDetail(row, type) {
       </div>
       <div class="admin-detail-title">${esc(row.name||'-')}</div>
       <div class="admin-detail-meta">${esc(row.email||'')} · ${formatTs(row.timestamp)}</div>
+      <div class="admin-detail-divider"></div>
+      <div class="admin-detail-body">${bodyHtml}</div>
+      ${replyHtml}
     </div>`;
 
   const sf = document.getElementById('aeStudentFields');
@@ -937,11 +956,19 @@ function refreshList() {
 function formatTs(ts) {
   if (!ts) return '-';
   const s = String(ts);
-  const m = s.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2}).*?(\d{1,2}):(\d{2})/);
-  if (m) return `${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')} ${m[4].padStart(2,'0')}:${m[5]}`;
-  const d = s.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})/);
-  if (d) return `${d[1]}.${d[2].padStart(2,'0')}.${d[3].padStart(2,'0')}`;
-  return s;
+  const dm = s.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})/);
+  if (!dm) return s;
+  const date = `${dm[1]}.${dm[2].padStart(2,'0')}.${dm[3].padStart(2,'0')}`;
+  const tm = s.match(/(오전|오후)\s*(\d{1,2}):(\d{2})/);
+  if (tm) {
+    let h = parseInt(tm[2]);
+    if (tm[1] === '오후' && h < 12) h += 12;
+    if (tm[1] === '오전' && h === 12) h = 0;
+    return date + ' ' + String(h).padStart(2,'0') + ':' + tm[3];
+  }
+  const t2 = s.match(/(\d{1,2}):(\d{2})/);
+  if (t2) return date + ' ' + t2[1].padStart(2,'0') + ':' + t2[2];
+  return date;
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');

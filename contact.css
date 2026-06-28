@@ -426,14 +426,14 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 
 .admin-list-wrap { padding: 0; }
 .admin-list-head {
-  display: grid; grid-template-columns: 1.4fr 2.8fr 2fr 1.5fr;
+  display: grid; grid-template-columns: 1.4fr 4fr 1.8fr;
   padding: 0.55rem 1rem; background: rgba(255,255,255,0.03);
   border-bottom: 1px solid var(--border);
   font-size: 0.7rem; font-weight: 600; color: var(--text-dim);
   letter-spacing: 0.05em; text-transform: uppercase;
 }
 .admin-list-item {
-  display: grid; grid-template-columns: 1.4fr 2.8fr 2fr 1.5fr;
+  display: grid; grid-template-columns: 1.4fr 4fr 1.8fr;
   padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
   cursor: pointer; transition: background 0.15s; align-items: start;
 }
@@ -480,6 +480,10 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
   color: var(--text); font-family: inherit; line-height: 1.6; box-sizing: border-box;
 }
 .admin-reply-textarea:focus { outline: none; border-color: var(--accent); }
+.admin-detail-divider { height:1px; background:var(--border); margin:0.85rem 0; }
+.admin-detail-body { font-size:0.88rem; color:var(--text-muted); line-height:1.8; }
+.admin-detail-section-label { font-size:0.72rem; font-weight:700; color:#34d399; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.5rem; }
+.admin-detail-reply { font-size:0.88rem; color:var(--text-muted); line-height:1.8; padding:0.75rem 1rem; background:rgba(52,211,153,0.07); border:1px solid rgba(52,211,153,0.2); border-radius:8px; white-space:pre-wrap; }
 .admin-answered-time {
   font-size: 0.88rem; color: #34d399; font-weight: 600;
   padding: 0.6rem 0; letter-spacing: 0.01em;
