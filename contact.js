@@ -40,6 +40,9 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.contact-form').forEach(f => f.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('form-' + tab.dataset.tab).classList.add('active');
+    const isReq = tab.dataset.tab === 'request';
+    document.getElementById('myqLabel').textContent      = isReq ? '강의 요청 목록'  : '수강생 질문 목록';
+    document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 확인'    : '내 질문 확인';
   });
 });
 
@@ -95,6 +98,10 @@ document.querySelectorAll('.contact-form').forEach(form => {
 
       // 1단계: 폼 검증 후 OTP 발송
       if (!validate(form)) return;
+      const consentEl = document.getElementById('r-consent');
+      const consentErr = document.getElementById('reqConsentError');
+      if (!consentEl.checked) { consentErr.hidden = false; return; }
+      consentErr.hidden = true;
       btn.disabled = true; btnText.hidden = true; btnSpinner.hidden = false;
 
       const fd = new FormData(form);
@@ -231,6 +238,7 @@ function resetForm() {
   reqSubmitStep = 'idle'; reqPendingFd = null;
   document.getElementById('reqOtpSection').style.display = 'none';
   document.getElementById('reqOtpError').hidden = true;
+  document.getElementById('reqConsentError').hidden = true;
   document.getElementById('reqSubmitText').textContent = '강의 요청 제출하기';
 
   document.querySelector('.tabs').style.display = '';
@@ -489,19 +497,20 @@ function renderList(rows, title) {
 function openDetailModal(row) {
   currentRow = row;
 
+  const isReq = row.type === '기타요청';
+
   const canEdit = !isReq && authState && (
     authState.isAdmin ||
     (authState.otpVerified && (row.email || '').trim().toLowerCase() === authState.email)
   );
 
-  const isReq = row.type === '기타요청';
   const bodyHtml = isReq
     ? [
-        row.reqName ? `담당자: ${esc(row.reqName)}`       : '',
-        row.org     ? `기관/회사명: ${esc(row.org)}`       : '',
-        row.place   ? `강의 장소: ${esc(row.place)}`       : '',
-        row.date    ? `희망 일정: ${esc(row.date)}`        : '',
-        row.people  ? `대상 인원: ${esc(row.people)}`      : '',
+        row.reqName ? `담당자: ${esc(row.reqName)}`                               : '',
+        row.org     ? `기관/회사명: ${esc(row.org)}`                              : '',
+        row.place   ? `강의 장소: ${esc(row.place)}`                              : '',
+        row.date    ? `희망 일정: ${esc(row.date)}`                               : '',
+        row.people  ? `대상 인원: ${esc(row.people)}`                             : '',
         row.message ? `요청사항:<br>${esc(row.message).replace(/\n/g,'<br>')}` : ''
       ].filter(Boolean).join('<br>')
     : esc(row.question||'').replace(/\n/g,'<br>');
@@ -610,9 +619,12 @@ function refreshList() {
 // ── 유틸 ──
 function formatTs(ts) {
   if (!ts) return '-';
-  const m = String(ts).match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})/);
-  if (m) return `${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`;
-  return String(ts);
+  const s = String(ts);
+  const m = s.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2}).*?(\d{1,2}):(\d{2})/);
+  if (m) return `${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')} ${m[4].padStart(2,'0')}:${m[5]}`;
+  const d = s.match(/(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})/);
+  if (d) return `${d[1]}.${d[2].padStart(2,'0')}.${d[3].padStart(2,'0')}`;
+  return s;
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
