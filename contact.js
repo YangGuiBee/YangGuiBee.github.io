@@ -768,6 +768,29 @@ function openAdminDetail(row, type) {
   document.getElementById('adminReplyText').value =
     `안녕하세요, ${isReq ? (row.reqName||row.name) : row.name}님.\n\n아래 내용에 대해 답변 드립니다.\n\n${'─'.repeat(32)}\n${originalTxt}\n${'─'.repeat(32)}\n\n[이곳에 답변을 작성해 주세요]\n\n감사합니다.\nAI Study 강의 담당자 드림`;
 
+  // (1) 버튼 상태 초기화
+  const btn = document.getElementById('adminSendBtn');
+  const txt = document.getElementById('adminSendText');
+  const spn = document.getElementById('adminSendSpinner');
+  btn.disabled = false; txt.hidden = false; spn.hidden = true;
+
+  // (3) 답변완료 여부에 따라 섹션 전환
+  const replyTA   = document.getElementById('adminReplyText');
+  const ansTime   = document.getElementById('adminAnsweredTime');
+  const secLabel  = document.getElementById('adminReplySectionLabel');
+  if (isAns) {
+    replyTA.style.display  = 'none';
+    ansTime.style.display  = '';
+    ansTime.textContent    = '답변 이메일 발송 시각 : ' + formatTs(row.answeredAt);
+    secLabel.innerHTML     = '답변 완료';
+    btn.style.display      = 'none';
+  } else {
+    replyTA.style.display  = '';
+    ansTime.style.display  = 'none';
+    secLabel.innerHTML     = '답변 작성 <span class="admin-section-sub">(이메일로 발송됩니다)</span>';
+    btn.style.display      = '';
+  }
+
   document.getElementById('adminDetailOverlay').classList.add('open');
 }
 
