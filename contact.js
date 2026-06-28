@@ -669,6 +669,7 @@ function showAdminPanel() {
   });
   document.querySelector('.success-msg').hidden = true;
   document.getElementById('adminPanel').style.display = '';
+  document.querySelector('.contact-desc').style.display = 'none';
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
   document.querySelector('.admin-tab[data-type="contacts"]').classList.add('active');
   adminCurrentType = 'contacts';
