@@ -1,3 +1,32 @@
+/* ── AI소식 Hero ── */
+.news-hero {
+  position: relative;
+  background: var(--hero-bg, linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%));
+  padding: 5rem 2rem 3.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+.news-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.news-page-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0.5rem 0 0.8rem;
+  letter-spacing: -0.02em;
+}
+.news-page-desc {
+  font-size: clamp(0.82rem, 2.5vw, 1rem);
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ── AI소식 페이지 ── */
 .news-section {
   padding: 2rem 2rem 5rem;
@@ -110,15 +139,37 @@
   flex: 1;
 }
 
+/* 카드 하단 버튼 영역 */
+.news-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.3rem;
+  flex-wrap: wrap;
+}
+
 .news-read-link {
   font-size: 0.74rem;
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  align-self: flex-start;
-  margin-top: 0.2rem;
 }
 .news-read-link:hover { text-decoration: underline; }
+
+.news-translate-btn {
+  font-size: 0.72rem;
+  color: #10b981;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid rgba(16,185,129,0.35);
+  border-radius: 5px;
+  transition: background 0.15s;
+}
+.news-translate-btn:hover {
+  background: rgba(16,185,129,0.1);
+  text-decoration: none;
+}
 
 /* 로딩 / 빈 화면 */
 .news-loading, .news-empty {
