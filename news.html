@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI소식 — AI Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="news.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="courses.html">강의소개</a></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="resources.html">자료실</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="news.html" class="active">AI소식</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="hero-badge">
+        <img src="konkuk.jpg" alt="건국대학교" class="badge-logo" />
+        건국대학교 공학대학원 AI 전공 강의
+      </div>
+      <h1 class="page-title">AI소식</h1>
+      <p class="page-desc">머신러닝 · AI거버넌스 최신 연구를 매일 업데이트합니다.</p>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <section class="news-section">
+    <div class="news-filter-bar">
+      <div class="news-tabs">
+        <button class="news-tab active" data-cat="all">전체</button>
+        <button class="news-tab" data-cat="머신러닝">머신러닝</button>
+        <button class="news-tab" data-cat="AI거버넌스">AI거버넌스</button>
+      </div>
+      <span class="news-count" id="newsCount"></span>
+    </div>
+    <div id="newsGrid" class="news-grid">
+      <div class="news-loading">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+        <p>최신 연구를 불러오는 중…</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="news.js"></script>
+</body>
+</html>

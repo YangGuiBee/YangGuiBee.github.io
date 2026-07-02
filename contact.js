@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkVexzIpD-EGRQ4JOfIelQcRcm_diaD4M-rUmQyCu_ZdP3FeINyRF8Wm7963hucNyHSQ/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7KTtldrJozsMGsCE3imWxsftkLZ3id-N5_HoxFt7gUhNDTWfvuwsPUwssNjJbm9pUHg/exec';
 const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
 
 let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: true }
@@ -41,7 +41,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     tab.classList.add('active');
     document.getElementById('form-' + tab.dataset.tab).classList.add('active');
     const isReq = tab.dataset.tab === 'request';
-    document.getElementById('myqLabel').textContent       = isReq ? '강의 요청 목록'   : '수강생 질문 목록';
+    document.getElementById('myqLabel').textContent       = isReq ? '기타 요청 목록'   : '수강생 질문 목록';
     document.getElementById('myqAuthBtnText').textContent = isReq ? '내 요청 전체 목록' : '내 질문 전체 목록';
     // 목록 초기화 후 인증 상태면 해당 탭 목록 재로드
     const listBody = document.getElementById('contactListBody');
@@ -93,7 +93,7 @@ document.querySelectorAll('.contact-form').forEach(form => {
               reqName: fd.get('name') || '', org: fd.get('org') || '',
               place: fd.get('place') || '', date: fd.get('date') || '',
               people: fd.get('people') || '', message: fd.get('message') || '',
-              _listTitle: '제출한 강의요청<span class="list-title-sub">(등록시 작성한 이메일 인증으로 조회)</span>'
+              _listTitle: '제출한 기타요청<span class="list-title-sub">(등록시 작성한 이메일 인증으로 조회)</span>'
             });
           } catch {
             alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
@@ -224,7 +224,7 @@ function validate(form) {
 // ── 성공 화면 ──
 function showSuccess(submittedRow) {
   const isReqType = submittedRow && submittedRow.type === '기타요청';
-  document.getElementById('myqLabel').textContent       = isReqType ? '강의 요청 목록' : '수강생 질문 목록';
+  document.getElementById('myqLabel').textContent       = isReqType ? '기타 요청 목록' : '수강생 질문 목록';
   document.getElementById('myqAuthBtnText').textContent = isReqType ? '내 요청 전체 목록'   : '내 질문 전체 목록';
   document.getElementById('resetBtn').textContent       = isReqType ? '다시 요청하기'  : '다시 문의하기';
   document.querySelector('.contact-desc').style.display = 'none';
@@ -251,7 +251,7 @@ function resetForm() {
   document.getElementById('reqOtpSection').style.display = 'none';
   document.getElementById('reqOtpError').hidden = true;
   document.getElementById('reqConsentError').hidden = true;
-  document.getElementById('reqSubmitText').textContent = '강의 요청 제출하기';
+  document.getElementById('reqSubmitText').textContent = '기타 요청 제출하기';
 
   document.querySelector('.tabs').style.display = '';
   document.querySelectorAll('.contact-form').forEach(f => {
@@ -524,12 +524,9 @@ function openDetailModal(row) {
 
   const bodyHtml = isReq
     ? [
-        row.reqName ? `담당자: ${esc(row.reqName)}`                               : '',
-        row.org     ? `기관/회사명: ${esc(row.org)}`                              : '',
-        row.place   ? `강의 장소: ${esc(row.place)}`                              : '',
-        row.date    ? `희망 일정: ${esc(row.date)}`                               : '',
-        row.people  ? `대상 인원: ${esc(row.people)}`                             : '',
-        row.message ? `요청사항:<br>${esc(row.message).replace(/\n/g,'<br>')}` : ''
+        row.reqName ? `이름: ${esc(row.reqName)}`                                 : '',
+        row.org     ? `소속: ${esc(row.org)}`                                     : '',
+        row.message ? `내용:<br>${esc(row.message).replace(/\n/g,'<br>')}` : ''
       ].filter(Boolean).join('<br>')
     : esc(row.question||'').replace(/\n/g,'<br>');
 
@@ -557,16 +554,13 @@ function openEditFromDetail() {
     return;
   }
   const isReq = currentRow.type === '기타요청';
-  document.getElementById('editModalTitle').textContent = isReq ? '강의 요청 수정' : '질문 수정';
+  document.getElementById('editModalTitle').textContent = isReq ? '기타 요청 수정' : '질문 수정';
   document.getElementById('editStudentFields').style.display  = isReq ? 'none' : '';
   document.getElementById('editRequestFields').style.display  = isReq ? ''     : 'none';
   if (isReq) {
     document.getElementById('edit-req-name').value = currentRow.reqName || '';
-    document.getElementById('edit-topic').value    = currentRow.name    || '';
     document.getElementById('edit-org').value      = currentRow.org     || '';
-    document.getElementById('edit-place').value    = currentRow.place   || '';
-    document.getElementById('edit-date').value     = currentRow.date    || '';
-    document.getElementById('edit-people').value   = currentRow.people  || '';
+    document.getElementById('edit-topic').value    = currentRow.name    || '';
     document.getElementById('edit-message').value  = currentRow.message || '';
   } else {
     document.getElementById('edit-subject').value  = currentRow.subject  || '';
@@ -593,11 +587,8 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
   if (isReq) {
     fd.append('sheet',   '강의요청');
     fd.append('reqName', document.getElementById('edit-req-name').value);
-    fd.append('topic',   document.getElementById('edit-topic').value);
     fd.append('org',     document.getElementById('edit-org').value);
-    fd.append('place',   document.getElementById('edit-place').value);
-    fd.append('date',    document.getElementById('edit-date').value);
-    fd.append('people',  document.getElementById('edit-people').value);
+    fd.append('topic',   document.getElementById('edit-topic').value);
     fd.append('message', document.getElementById('edit-message').value);
   } else {
     fd.append('name',     document.getElementById('edit-title').value);
@@ -616,11 +607,8 @@ document.getElementById('editForm').addEventListener('submit', async function(e)
     if (currentRow) {
       if (isReq) {
         currentRow.reqName = document.getElementById('edit-req-name').value;
-        currentRow.name    = document.getElementById('edit-topic').value;
         currentRow.org     = document.getElementById('edit-org').value;
-        currentRow.place   = document.getElementById('edit-place').value;
-        currentRow.date    = document.getElementById('edit-date').value;
-        currentRow.people  = document.getElementById('edit-people').value;
+        currentRow.name    = document.getElementById('edit-topic').value;
         currentRow.message = document.getElementById('edit-message').value;
       } else {
         currentRow.name     = document.getElementById('edit-title').value;
@@ -724,7 +712,7 @@ function renderAdminList(rows, type) {
   const isReqType = type === 'requests';
   const head = document.createElement('div');
   head.className = 'admin-list-head';
-  head.innerHTML = `<span class="acol-subject">${isReqType ? '기관/회사명' : '구분'}</span><span class="acol-title">제목</span><span class="acol-date">등록일시(답변일시)</span>`;
+  head.innerHTML = `<span class="acol-subject">${isReqType ? '소속' : '구분'}</span><span class="acol-title">제목</span><span class="acol-date">등록일시(답변일시)</span>`;
   body.appendChild(head);
   if (!rows.length) {
     const empty = document.createElement('div');
@@ -761,12 +749,9 @@ function openAdminDetail(row, type) {
 
   const bodyHtml = isReq
     ? [
-        row.reqName ? `담당자: ${esc(row.reqName)}`                               : '',
-        row.org     ? `기관/회사명: ${esc(row.org)}`                              : '',
-        row.place   ? `강의 장소: ${esc(row.place)}`                              : '',
-        row.date    ? `희망 일정: ${esc(row.date)}`                               : '',
-        row.people  ? `대상 인원: ${esc(row.people)}`                             : '',
-        row.message ? `요청사항:<br>${esc(row.message).replace(/\n/g,'<br>')}` : '',
+        row.reqName ? `이름: ${esc(row.reqName)}`                                 : '',
+        row.org     ? `소속: ${esc(row.org)}`                                     : '',
+        row.message ? `내용:<br>${esc(row.message).replace(/\n/g,'<br>')}` : '',
       ].filter(Boolean).join('<br>')
     : esc(row.question||'').replace(/\n/g,'<br>');
 
@@ -794,11 +779,8 @@ function openAdminDetail(row, type) {
   if (isReq) {
     sf.style.display = 'none'; rf.style.display = '';
     document.getElementById('ae-reqname').value = row.reqName || '';
-    document.getElementById('ae-topic').value   = row.name    || '';
     document.getElementById('ae-org').value     = row.org     || '';
-    document.getElementById('ae-place').value   = row.place   || '';
-    document.getElementById('ae-date').value    = row.date    || '';
-    document.getElementById('ae-people').value  = row.people  || '';
+    document.getElementById('ae-topic').value   = row.name    || '';
     document.getElementById('ae-message').value = row.message || '';
   } else {
     sf.style.display = ''; rf.style.display = 'none';
@@ -808,7 +790,7 @@ function openAdminDetail(row, type) {
   }
 
   const originalTxt = isReq
-    ? `[강의요청 내용]\n담당자: ${row.reqName||''}\n기관/회사명: ${row.org||''}\n희망 강의 주제: ${row.name||''}\n강의 장소: ${row.place||''}\n희망 일정: ${row.date||''}\n대상 인원: ${row.people||''}\n기타 요청사항: ${row.message||''}`
+    ? `[기타요청 내용]\n이름: ${row.reqName||''}\n소속: ${row.org||''}\n제목: ${row.name||''}\n내용: ${row.message||''}`
     : `[질문 내용]\n과목: ${row.subject||''}\n제목: ${row.name||''}\n\n${row.question||''}`;
   document.getElementById('adminReplyText').value =
     `안녕하세요, ${isReq ? (row.reqName||row.name) : row.name}님.\n\n아래 내용에 대해 답변 드립니다.\n\n${'─'.repeat(32)}\n${originalTxt}\n${'─'.repeat(32)}\n\n[이곳에 답변을 작성해 주세요]\n\n감사합니다.\nAI Study 강의 담당자 드림`;
@@ -854,11 +836,8 @@ async function saveAdminEdit() {
   if (isReq) {
     fd.append('sheet',   '강의요청');
     fd.append('reqName', document.getElementById('ae-reqname').value);
-    fd.append('topic',   document.getElementById('ae-topic').value);
     fd.append('org',     document.getElementById('ae-org').value);
-    fd.append('place',   document.getElementById('ae-place').value);
-    fd.append('date',    document.getElementById('ae-date').value);
-    fd.append('people',  document.getElementById('ae-people').value);
+    fd.append('topic',   document.getElementById('ae-topic').value);
     fd.append('message', document.getElementById('ae-message').value);
   } else {
     fd.append('name',     document.getElementById('ae-title').value);
@@ -874,11 +853,8 @@ async function saveAdminEdit() {
     clearTimeout(tid);
     if (isReq) {
       adminCurrentRow.reqName = document.getElementById('ae-reqname').value;
-      adminCurrentRow.name    = document.getElementById('ae-topic').value;
       adminCurrentRow.org     = document.getElementById('ae-org').value;
-      adminCurrentRow.place   = document.getElementById('ae-place').value;
-      adminCurrentRow.date    = document.getElementById('ae-date').value;
-      adminCurrentRow.people  = document.getElementById('ae-people').value;
+      adminCurrentRow.name    = document.getElementById('ae-topic').value;
       adminCurrentRow.message = document.getElementById('ae-message').value;
     } else {
       adminCurrentRow.subject  = document.getElementById('ae-subject').value;
@@ -903,13 +879,10 @@ async function sendAdminReply() {
   const toName = isReq ? (adminCurrentRow.reqName || adminCurrentRow.name) : adminCurrentRow.name;
 
   const originalHtml = isReq
-    ? `<p><b>담당자:</b> ${esc(adminCurrentRow.reqName||'')}</p>
-       <p><b>기관/회사명:</b> ${esc(adminCurrentRow.org||'')}</p>
-       <p><b>희망 강의 주제:</b> ${esc(adminCurrentRow.name||'')}</p>
-       <p><b>강의 장소:</b> ${esc(adminCurrentRow.place||'')}</p>
-       <p><b>희망 일정:</b> ${esc(adminCurrentRow.date||'')}</p>
-       <p><b>대상 인원:</b> ${esc(adminCurrentRow.people||'')}</p>
-       <p><b>기타 요청사항:</b> ${esc(adminCurrentRow.message||'')}</p>`
+    ? `<p><b>이름:</b> ${esc(adminCurrentRow.reqName||'')}</p>
+       <p><b>소속:</b> ${esc(adminCurrentRow.org||'')}</p>
+       <p><b>제목:</b> ${esc(adminCurrentRow.name||'')}</p>
+       <p><b>내용:</b> ${esc(adminCurrentRow.message||'')}</p>`
     : `<p><b>과목:</b> ${esc(adminCurrentRow.subject||'')}</p>
        <p><b>제목:</b> ${esc(adminCurrentRow.name||'')}</p>
        <p style="margin-top:0.5rem;white-space:pre-wrap">${esc(adminCurrentRow.question||'')}</p>`;
