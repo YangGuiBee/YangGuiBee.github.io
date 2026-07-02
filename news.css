@@ -1,16 +1,22 @@
 /* ── AI소식 Hero ── */
+/* nav가 fixed이므로 상단 140px 여유로 콘텐츠 겹침 방지 */
 .news-hero {
   position: relative;
-  background: var(--hero-bg, linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%));
-  padding: 5rem 2rem 3.5rem;
+  background: linear-gradient(to bottom, #05080f 0%, #0d0d25 40%, #1a1a3e 70%, #0f0f23 100%);
+  padding: 140px 2rem 60px;
   text-align: center;
   overflow: hidden;
 }
 .news-hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 800px;
   margin: 0 auto;
+}
+
+/* news 페이지에서 nav가 hero 배경에 묻히지 않도록 불투명도 강화 */
+.nav {
+  background: rgba(5,8,15,0.96) !important;
 }
 .news-page-title {
   font-size: clamp(2rem, 6vw, 3.5rem);
@@ -136,7 +142,6 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  flex: 1;
 }
 
 /* 카드 하단 버튼 영역 */
@@ -146,6 +151,8 @@
   gap: 0.8rem;
   margin-top: 0.3rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .news-read-link {
