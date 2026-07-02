@@ -1,12 +1,11 @@
-// contact.js의 SCRIPT_URL과 동일하게 유지 (Apps Script 재배포 시 함께 업데이트)
 const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7KTtldrJozsMGsCE3imWxsftkLZ3id-N5_HoxFt7gUhNDTWfvuwsPUwssNjJbm9pUHg/exec';
 
-let allNews = [];
+let allNews   = [];
 let currentCat = 'all';
 
 function doJsonp(url, cb) {
-  const name = '_njp_' + Date.now();
-  const timer = setTimeout(() => { delete window[name]; cb(null); }, 10000);
+  const name  = '_njp_' + Date.now();
+  const timer = setTimeout(() => { delete window[name]; cb(null); }, 12000);
   window[name] = function(data) {
     clearTimeout(timer);
     delete window[name];
@@ -15,9 +14,9 @@ function doJsonp(url, cb) {
     cb(data);
   };
   const script = document.createElement('script');
-  script.id = 'njp-script';
+  script.id      = 'njp-script';
   script.onerror = () => { clearTimeout(timer); delete window[name]; cb(null); };
-  script.src = url + '&callback=' + name + '&t=' + Date.now();
+  script.src     = url + '&callback=' + name + '&t=' + Date.now();
   document.head.appendChild(script);
 }
 
@@ -55,9 +54,10 @@ function renderNews(items) {
 
   count.textContent = `총 ${items.length}건`;
   grid.innerHTML = items.map(item => {
-    const isGov     = item.category === 'AI거버넌스';
-    const badgeCls  = 'news-cat-badge' + (isGov ? ' gov' : '');
-    const authors   = trimAuthors(item.authors);
+    const isGov    = (item.category || '').trim() === 'AI거버넌스';
+    const badgeCls = 'news-cat-badge' + (isGov ? ' gov' : '');
+    const authors  = trimAuthors(item.authors);
+    const transUrl = 'https://translate.google.com/translate?sl=en&tl=ko&u=' + encodeURIComponent(item.link);
     return `
       <div class="news-card">
         <div class="news-card-meta">
@@ -68,28 +68,32 @@ function renderNews(items) {
         <div class="news-title">
           <a href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a>
         </div>
-        ${authors   ? `<p class="news-authors">${esc(authors)}</p>` : ''}
+        ${authors ? `<p class="news-authors">${esc(authors)}</p>` : ''}
         ${item.abstract ? `<p class="news-abstract">${esc(item.abstract)}</p>` : ''}
-        <a class="news-read-link" href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">논문 보기 →</a>
+        <div class="news-card-footer">
+          <a class="news-read-link" href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">논문 보기 →</a>
+          <a class="news-translate-btn" href="${esc(transUrl)}" target="_blank" rel="noopener noreferrer">🌐 번역 보기</a>
+        </div>
       </div>`;
   }).join('');
 }
 
 function filterAndRender() {
-  const filtered = currentCat === 'all'
+  const filtered = (currentCat === 'all'
     ? allNews
-    : allNews.filter(n => n.category === currentCat);
+    : allNews.filter(n => (n.category || '').trim() === currentCat)
+  ).slice(0, 20);  // 상위 20건만 표시
   renderNews(filtered);
 }
 
-// 탭 전환
-document.querySelectorAll('.news-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    currentCat = tab.dataset.cat;
-    filterAndRender();
-  });
+// 탭 전환 (이벤트 위임 방식으로 안정성 향상)
+document.getElementById('newsTabs').addEventListener('click', function(e) {
+  const tab = e.target.closest('.news-tab');
+  if (!tab) return;
+  document.querySelectorAll('.news-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  currentCat = tab.dataset.cat;
+  filterAndRender();
 });
 
 // 초기 데이터 로드
