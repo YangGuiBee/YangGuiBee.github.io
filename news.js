@@ -57,7 +57,9 @@ function renderNews(items) {
     const isGov    = (item.category || '').trim() === 'AI거버넌스';
     const badgeCls = 'news-cat-badge' + (isGov ? ' gov' : '');
     const authors  = trimAuthors(item.authors);
-    const transUrl = 'https://papago.naver.com/website?locale=ko&source=en&target=ko&url=' + encodeURIComponent(item.link);
+    const transUrl = item.link.includes('arxiv.org')
+      ? item.link.replace('arxiv.org', 'ar5iv.org')
+      : item.link;
     return `
       <div class="news-card">
         <div class="news-card-meta">
