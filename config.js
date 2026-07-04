@@ -1,2 +1,2 @@
 /* ── AI Study 공통 설정 ── */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvz4H6qBTHT1Q6utrmA1awJYeq9cV6TGKiVKNibuqpQxYTkZ5gXxkY6iH-UWmSxvgZXA/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwB8ewaHDDib_2OC6N3bHbDGTnViAzXogg6DNQOux6eSdSojYAPfYJaT-75sWIjkh_P6A/exec';
