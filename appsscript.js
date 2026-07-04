@@ -4,7 +4,8 @@
    ══════════════════════════════════════════════════════ */
 
 const ADMIN_EMAIL      = 'guibee1004@gmail.com';
-const BACKUP_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID';
+const BACKUP_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID'; // ← Google Drive 백업 폴더 ID로 교체
+// 배포 URL: https://script.google.com/macros/s/AKfycby2MlftdHUblF9QzifxIyMbwOe4W-7EqS8EQySNBDqTVzFH4I-fiajehiheWlrih4Wp/exec
 
 /* ── 공통: 로그 기록 ─────────────────────────────── */
 function writeLog(eventType, email, sheetName, detail, result) {
