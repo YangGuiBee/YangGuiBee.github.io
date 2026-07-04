@@ -384,7 +384,7 @@ function collectResearch() {
       const arxivId = (item.externalIds||{}).ArXiv;
       const link = arxivId ? 'https://arxiv.org/abs/'+arxivId : 'https://www.semanticscholar.org/paper/'+item.paperId;
       if (item.title && !existingLinks.has(link)) {
-        newRows.push([today, '최상위학회', item.title, String(item.year||''),
+        newRows.push([today, '머신러닝', item.title, String(item.year||''),
           (item.authors||[]).map(a=>a.name).join(', '), 'Semantic Scholar', link,
           item.citationCount||0, (item.abstract||'').substring(0,300)]);
         existingLinks.add(link); results.ss++;
