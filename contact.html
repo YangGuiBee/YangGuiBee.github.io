@@ -24,7 +24,9 @@
         <li><a href="news.html">AI논문</a></li>
       </ul>
       <a href="contact.html" class="nav-cta active">강의 문의</a>
-    </div>
+          <button class="nav-hamburger" id="navHamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button></div>
   </nav>
 
   <!-- CONTACT HERO -->
@@ -93,6 +95,7 @@
             <input type="text" id="submitOTP" placeholder="인증코드 6자리 입력" maxlength="6" inputmode="numeric" />
           </div>
           <p class="field-error" id="submitOtpError" hidden>인증코드가 일치하지 않거나 만료됐습니다.</p>
+          <button type="button" class="otp-back-btn" id="submitOtpResendBtn" onclick="resendStudentOTP()">인증코드 재발송</button>
         </div>
         <button type="submit" class="submit-btn" id="studentSubmitBtn">
           <span class="btn-text" id="studentSubmitText">질문 제출하기</span>
@@ -142,6 +145,7 @@
             <input type="text" id="reqOTP" placeholder="인증코드 6자리 입력" maxlength="6" inputmode="numeric" />
           </div>
           <p class="field-error" id="reqOtpError" hidden>인증코드가 일치하지 않거나 만료됐습니다.</p>
+          <button type="button" class="otp-back-btn" id="reqOtpResendBtn" onclick="resendReqOTP()">인증코드 재발송</button>
         </div>
         <button type="submit" class="submit-btn" id="reqSubmitBtn">
           <span class="btn-text" id="reqSubmitText">기타 요청 제출하기</span>
@@ -394,6 +398,10 @@
     </div>
   </div>
 
-  <script src="contact.js?v=7"></script>
+  <script src="config.js"></script>
+  <script src="contact.js?v=8"></script>
+  <script src="nav.js"></script>
 </body>
 </html>
+
+
