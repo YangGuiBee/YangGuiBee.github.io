@@ -1,5 +1,5 @@
-﻿/* ── AI논문 news.js v4 ── */
-const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvz4H6qBTHT1Q6utrmA1awJYeq9cV6TGKiVKNibuqpQxYTkZ5gXxkY6iH-UWmSxvgZXA/exec';
+﻿/* ── AI논문 news.js v5 ── */
+const NEWS_SCRIPT_URL = SCRIPT_URL; // config.js에서 로드
 
 let allNews    = [];
 let currentCat = 'all';

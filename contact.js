@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvz4H6qBTHT1Q6utrmA1awJYeq9cV6TGKiVKNibuqpQxYTkZ5gXxkY6iH-UWmSxvgZXA/exec';
+/* SCRIPT_URL은 config.js에서 로드 */
 const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
 
 let authState = null; // null | { email, otp, otpVerified: true } | { isAdmin: true }
@@ -979,6 +979,41 @@ function formatTs(ts) {
 }
 function esc(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── OTP 재발송 ──
+function resendStudentOTP() {
+  if (!pendingFd) return;
+  const email = (pendingFd.get('email') || '').trim().toLowerCase();
+  const btn = document.getElementById('submitOtpResendBtn');
+  btn.disabled = true; btn.textContent = '발송 중…';
+  doJsonp(`${SCRIPT_URL}?action=sendOTP&email=${encodeURIComponent(email)}`, result => {
+    btn.disabled = false;
+    if (!result || !result.ok) {
+      btn.textContent = '재발송 실패';
+      setTimeout(() => { btn.textContent = '인증코드 재발송'; }, 2500);
+    } else {
+      btn.textContent = '발송됨 ✓';
+      setTimeout(() => { btn.textContent = '인증코드 재발송'; }, 3000);
+    }
+  });
+}
+
+function resendReqOTP() {
+  if (!reqPendingFd) return;
+  const email = (reqPendingFd.get('email') || '').trim().toLowerCase();
+  const btn = document.getElementById('reqOtpResendBtn');
+  btn.disabled = true; btn.textContent = '발송 중…';
+  doJsonp(`${SCRIPT_URL}?action=sendOTP&email=${encodeURIComponent(email)}`, result => {
+    btn.disabled = false;
+    if (!result || !result.ok) {
+      btn.textContent = '재발송 실패';
+      setTimeout(() => { btn.textContent = '인증코드 재발송'; }, 2500);
+    } else {
+      btn.textContent = '발송됨 ✓';
+      setTimeout(() => { btn.textContent = '인증코드 재발송'; }, 3000);
+    }
+  });
 }
 
 // ── 실시간 에러 해제 ──
