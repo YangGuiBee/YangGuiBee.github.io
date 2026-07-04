@@ -1,5 +1,5 @@
 /* ── AI소식 news.js v3 ── */
-const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7KTtldrJozsMGsCE3imWxsftkLZ3id-N5_HoxFt7gUhNDTWfvuwsPUwssNjJbm9pUHg/exec';
+const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyICB25dauK1fqpgQM_x45HR7dHjJCtsu7v2wkOdKZrftqf7jGHDUReKCbopiq9w1y4/exec';
 
 let allNews    = [];   // 오늘의 10건
 let currentCat = 'all';
