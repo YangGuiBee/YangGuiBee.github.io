@@ -1,5 +1,5 @@
 /* ── AI소식 news.js v4 ── */
-const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyICB25dauK1fqpgQM_x45HR7dHjJCtsu7v2wkOdKZrftqf7jGHDUReKCbopiq9w1y4/exec';
+const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSyzgltLW1xx7QN5svlZVNQrzsWu_2z51i4NnfL8tID_EP42rDgwj3DC7UkjzxOPIpBA/exec';
 
 let allNews    = [];
 let currentCat = 'all';
