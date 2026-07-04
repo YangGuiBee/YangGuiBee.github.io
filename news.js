@@ -72,8 +72,7 @@ function starsLabel(source, stars) {
 /* 카테고리 배지 클래스 */
 function badgeClass(cat) {
   if (cat === 'AI거버넌스') return 'news-cat-badge gov';
-  if (cat === '최상위학회') return 'news-cat-badge top';
-  return 'news-cat-badge';
+return 'news-cat-badge';
 }
 
 /* ── 카드 렌더링 ── */
