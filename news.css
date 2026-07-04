@@ -6,104 +6,58 @@
   text-align: center;
   overflow: hidden;
 }
-.news-hero-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-}
+.news-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
 .news-page-title {
   font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 900;
-  color: #fff;
-  margin: 0.5rem 0 0.8rem;
-  letter-spacing: -0.02em;
+  font-weight: 900; color: #fff;
+  margin: 0.5rem 0 0.8rem; letter-spacing: -0.02em;
 }
 .news-page-desc {
-  font-size: clamp(0.82rem, 2.5vw, 1rem);
+  font-size: clamp(0.78rem, 2.2vw, 0.95rem);
   color: rgba(255,255,255,0.65);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-
-/* nav가 hero 배경에 묻히지 않도록 */
 .nav { background: rgba(5,8,15,0.96) !important; }
 
 /* ── 검색창 ── */
 .news-search-wrap {
-  position: relative;
-  max-width: 520px;
-  margin: 0 auto 1.4rem;
+  position: relative; max-width: 520px; margin: 0 auto 1.4rem;
 }
 .news-search-icon {
-  position: absolute;
-  left: 0.9rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-dim);
-  pointer-events: none;
+  position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%);
+  color: var(--text-dim); pointer-events: none;
 }
 .news-search-input {
-  width: 100%;
+  width: 100%; box-sizing: border-box;
   padding: 0.6rem 2.4rem 0.6rem 2.4rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); font-size: 0.88rem; font-family: 'Noto Sans KR', sans-serif;
   transition: border-color 0.15s;
-  box-sizing: border-box;
 }
-.news-search-input:focus {
-  outline: none;
-  border-color: var(--accent);
-}
+.news-search-input:focus { outline: none; border-color: var(--accent); }
 .news-search-input::placeholder { color: var(--text-dim); }
 .news-search-clear {
-  position: absolute;
-  right: 0.7rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--text-dim);
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0.2rem 0.3rem;
+  position: absolute; right: 0.7rem; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: var(--text-dim); cursor: pointer;
+  font-size: 0.8rem; padding: 0.2rem 0.3rem;
 }
 .news-search-clear:hover { color: var(--text); }
 
-/* ── 필터 바 ── */
-.news-section {
-  padding: 2rem 2rem 5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+/* ── 필터바 ── */
+.news-section { padding: 2rem 2rem 5rem; max-width: 1100px; margin: 0 auto; }
 .news-filter-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  gap: 1rem;
-  flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;
 }
-.news-tabs { display: flex; gap: 0.5rem; }
+.news-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .news-tab {
-  padding: 0.4rem 1.1rem;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-dim);
-  font-size: 0.85rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
-  transition: all 0.15s;
+  padding: 0.38rem 0.95rem; border-radius: 20px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-dim); font-size: 0.82rem;
+  font-family: 'Noto Sans KR', sans-serif; cursor: pointer; transition: all 0.15s;
 }
 .news-tab:hover  { border-color: var(--accent); color: var(--accent); }
 .news-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
-.news-count { font-size: 0.82rem; color: var(--text-dim); }
+.news-count { font-size: 0.82rem; color: var(--text-dim); white-space: nowrap; }
 
 /* ── 카드 그리드 ── */
 .news-grid {
@@ -112,13 +66,8 @@
   gap: 1.1rem;
 }
 .news-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.2rem 1.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.55rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .news-card:hover {
@@ -127,112 +76,70 @@
 }
 
 /* ── 카드 메타 ── */
-.news-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
+.news-card-meta { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+
 .news-cat-badge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.18rem 0.5rem;
-  border-radius: 5px;
-  background: rgba(99,102,241,0.15);
-  color: var(--accent);
+  font-size: 0.66rem; font-weight: 700; padding: 0.17rem 0.48rem;
+  border-radius: 5px; background: rgba(99,102,241,0.15); color: var(--accent);
   letter-spacing: 0.02em;
 }
-.news-cat-badge.gov {
-  background: rgba(16,185,129,0.15);
-  color: #10b981;
-}
+.news-cat-badge.gov { background: rgba(16,185,129,0.15); color: #10b981; }
+.news-cat-badge.top { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
 .news-stars {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #f59e0b;
-  background: rgba(245,158,11,0.12);
-  border-radius: 5px;
-  padding: 0.18rem 0.45rem;
+  font-size: 0.66rem; font-weight: 700; color: #94a3b8;
+  background: rgba(148,163,184,0.1); border-radius: 5px;
+  padding: 0.17rem 0.42rem; white-space: nowrap;
 }
-.news-source { font-size: 0.71rem; color: var(--text-dim); }
-.news-date   { font-size: 0.71rem; color: var(--text-dim); margin-left: auto; }
+.news-cat-badge       + .news-stars { }
+.news-cat-badge.gov   ~ .news-stars { color: #10b981; background: rgba(16,185,129,0.08); }
+.news-cat-badge.top   ~ .news-stars { color: #f59e0b; background: rgba(245,158,11,0.08); }
+
+.news-source { font-size: 0.69rem; color: var(--text-dim); }
+.news-date   { font-size: 0.69rem; color: var(--text-dim); margin-left: auto; }
 
 /* ── 카드 본문 ── */
 .news-title a {
-  font-size: 0.91rem;
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-  line-height: 1.45;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 0.91rem; font-weight: 600; color: var(--text);
+  text-decoration: none; line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden;
 }
 .news-title a:hover { color: var(--accent); }
 .news-authors {
-  font-size: 0.74rem;
-  color: var(--text-dim);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.73rem; color: var(--text-dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .news-abstract {
-  font-size: 0.77rem;
-  color: var(--text-dim);
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 0.76rem; color: var(--text-dim); line-height: 1.6;
+  display: -webkit-box; -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical; overflow: hidden;
 }
 
-/* ── 카드 하단 버튼 ── */
+/* ── 카드 푸터 ── */
 .news-card-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.3rem;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-top: 0.3rem; flex-wrap: wrap;
+  position: relative; z-index: 1;
 }
 .news-read-link {
-  font-size: 0.74rem;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
+  font-size: 0.73rem; color: var(--accent);
+  text-decoration: none; font-weight: 600;
 }
 .news-read-link:hover { text-decoration: underline; }
 .news-translate-btn {
-  font-size: 0.72rem;
-  color: #10b981;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.18rem 0.55rem;
-  border: 1px solid rgba(16,185,129,0.35);
-  border-radius: 5px;
-  transition: background 0.15s;
+  font-size: 0.71rem; color: #10b981; text-decoration: none; font-weight: 600;
+  padding: 0.17rem 0.52rem; border: 1px solid rgba(16,185,129,0.35);
+  border-radius: 5px; transition: background 0.15s;
 }
 .news-translate-btn:hover { background: rgba(16,185,129,0.1); }
-.news-collected {
-  font-size: 0.68rem;
-  color: var(--text-dim);
-  margin-left: auto;
-}
+.news-collected { font-size: 0.67rem; color: var(--text-dim); margin-left: auto; }
 
 /* ── 로딩 / 빈 화면 ── */
 .news-loading, .news-empty {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 4rem 1rem;
-  color: var(--text-dim);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.7;
+  grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;
+  color: var(--text-dim); display: flex; flex-direction: column;
+  align-items: center; gap: 1rem; font-size: 0.9rem; line-height: 1.7;
 }
 .news-loading svg { opacity: 0.4; animation: spin 1s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -240,9 +147,9 @@
 /* ── 반응형 ── */
 @media (max-width: 600px) {
   .news-section { padding: 1.5rem 1rem 4rem; }
-  .news-grid { grid-template-columns: 1fr; }
-  .news-page-desc { white-space: normal; font-size: 0.82rem; }
+  .news-grid    { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .news-hero { padding: 110px 1rem 40px; }
+  .news-hero    { padding: 110px 1rem 40px; }
+  .news-page-desc { font-size: 0.76rem; }
 }
