@@ -27,12 +27,31 @@ function doJsonp(url, cb) {
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-function formatDate(ts) {
+const DAYS_KO = ['일', '월', '화', '수', '목', '금', '토'];
+
+function formatDate(ts, showDay) {
   if (!ts) return '';
-  const m = String(ts).match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
-  if (m) return `${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`;
-  if (/^\d{4}$/.test(String(ts))) return String(ts); // 연도만 있는 경우
-  return String(ts).substring(0, 10);
+  const s = String(ts);
+
+  // yyyy-MM-dd 또는 yyyy.MM.dd 형식
+  const m = s.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
+  if (m) {
+    const d = new Date(+m[1], +m[2]-1, +m[3]);
+    const base = `${m[1]}.${+m[2]}.${+m[3]}`;
+    return showDay ? `${base} ${DAYS_KO[d.getDay()]}` : base;
+  }
+
+  // 연도만 있는 경우
+  if (/^\d{4}$/.test(s)) return s;
+
+  // JavaScript Date 문자열 (예: "Sat Jul 04 2026 00:00:00 GMT+0900...")
+  const d = new Date(s);
+  if (!isNaN(d.getTime())) {
+    const base = `${d.getFullYear()}.${d.getMonth()+1}.${d.getDate()}`;
+    return showDay ? `${base} ${DAYS_KO[d.getDay()]}` : base;
+  }
+
+  return s.substring(0, 10);
 }
 function trimAuthors(authors) {
   if (!authors) return '';
@@ -179,6 +198,6 @@ doJsonp(`${NEWS_SCRIPT_URL}?action=getNews`, result => {
   filterAndRender();
   if (result.latestDate) {
     document.getElementById('newsCount').textContent =
-      `오늘의 AI논문 ${allNews.length}건 (${result.latestDate})`;
+      `오늘의 AI논문 ${allNews.length}건 (${formatDate(result.latestDate, true)})`;
   }
 });
