@@ -1,4 +1,4 @@
-/* ── AI소식 news.js v4 ── */
+﻿/* ── AI논문 news.js v4 ── */
 const NEWS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvz4H6qBTHT1Q6utrmA1awJYeq9cV6TGKiVKNibuqpQxYTkZ5gXxkY6iH-UWmSxvgZXA/exec';
 
 let allNews    = [];
@@ -179,6 +179,6 @@ doJsonp(`${NEWS_SCRIPT_URL}?action=getNews`, result => {
   filterAndRender();
   if (result.latestDate) {
     document.getElementById('newsCount').textContent =
-      `오늘의 AI소식 ${allNews.length}건 (${result.latestDate})`;
+      `오늘의 AI논문 ${allNews.length}건 (${result.latestDate})`;
   }
 });
