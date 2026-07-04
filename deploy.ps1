@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   AI Study 배포 스크립트
 .DESCRIPTION

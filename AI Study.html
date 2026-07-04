@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://yangguibee.github.io/contact.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강의 문의 — AI Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./AI Study_files/css2" rel="stylesheet">
+  <link rel="stylesheet" href="./AI Study_files/style.css">
+  <link rel="stylesheet" href="./AI Study_files/contact.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://yangguibee.github.io/index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="https://yangguibee.github.io/courses.html">강의소개</a></li>
+        <li><a href="https://yangguibee.github.io/notice.html">공지사항</a></li>
+        <li><a href="https://yangguibee.github.io/resources.html">자료실</a></li>
+        <li><a href="https://yangguibee.github.io/faq.html">FAQ</a></li>
+      </ul>
+      <a href="https://yangguibee.github.io/contact.html" class="nav-cta active">강의 문의</a>
+    </div>
+  </nav>
+
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <div class="contact-hero-inner">
+      <p class="contact-desc" style="display: none;">아래 폼으로 남겨주시면
+확인 후 이메일로 회신드리겠습니다.</p>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="form-section">
+    <div class="form-wrap">
+
+      <!-- 탭 -->
+      <div class="tabs" style="display: none;">
+        <button class="tab active" data-tab="student">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          수강생 질문
+        </button>
+        <button class="tab" data-tab="request">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg>
+          강의 요청
+        </button>
+      </div>
+
+      <!-- 수강생 질문 폼 -->
+      <form id="form-student" class="contact-form hidden-form" novalidate="">
+        <div class="field">
+          <label for="s-subject">과목 선택 <span class="req">*</span></label>
+          <select id="s-subject" name="subject" required="">
+            <option value="" disabled="" selected="">과목을 선택해 주세요</option>
+            <option>기계학습</option>
+            <option>머신러닝 기반의 연구방법론</option>
+            <option>AI거버넌스 : 관련 법과 국제표준</option>
+            <option>AI거버넌스 기반의 연구방법론</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="s-title">제목 <span class="req">*</span></label>
+          <input type="text" id="s-title" name="name" placeholder="질문 제목을 입력하세요(100자까지)" maxlength="100" required="">
+        </div>
+        <div class="field">
+          <label for="s-message">질문 내용 <span class="req">*</span></label>
+          <textarea id="s-message" name="question" placeholder="강의 내용에 대해 궁금한 점을 자유롭게 작성해 주세요(2000자까지)" maxlength="2000" rows="5" required=""></textarea>
+        </div>
+        <div class="field">
+          <label for="s-email">이메일 <span class="req">*</span></label>
+          <input type="email" id="s-email" name="email" placeholder="example@email.com" required="">
+        </div>
+        <div class="field consent-field">
+          <label class="consent-label">
+            <input type="checkbox" id="s-consent" name="consent" required="">
+            <span><span class="req">*</span> 답변을 처리하기 위해 개인정보(이메일) 저장 동의에 체크해 주세요</span>
+          </label>
+          <p class="consent-retention">보유 기간은 '답변 완료 후 1년'까지 저장됩니다.</p>
+          <p class="field-error" id="consentError" hidden="">개인정보 수집·이용에 동의해 주세요.</p>
+        </div>
+        <!-- 이메일 OTP 인증 섹션 (제출 클릭 후 표시) -->
+        <div id="submitOtpSection" style="display:none">
+          <p class="submit-otp-info" id="submitOtpInfo"></p>
+          <div class="field">
+            <label for="submitOTP">이메일 인증코드 <span class="pw-opt">(6자리 · 10분 유효)</span></label>
+            <input type="text" id="submitOTP" placeholder="인증코드 6자리 입력" maxlength="6" inputmode="numeric">
+          </div>
+          <p class="field-error" id="submitOtpError" hidden="">인증코드가 일치하지 않거나 만료됐습니다.</p>
+        </div>
+        <button type="submit" class="submit-btn" id="studentSubmitBtn">
+          <span class="btn-text" id="studentSubmitText">질문 제출하기</span>
+          <span class="btn-spinner" hidden="">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          </span>
+        </button>
+      </form>
+
+      <!-- 강의 요청 폼 -->
+      <form id="form-request" class="contact-form hidden-form" novalidate="">
+        <div class="form-grid">
+          <div class="field">
+            <label for="r-name">담당자 이름 <span class="req">*</span></label>
+            <input type="text" id="r-name" name="name" placeholder="홍길동" required="">
+          </div>
+          <div class="field">
+            <label for="r-org">기관 / 회사명 <span class="req">*</span></label>
+            <input type="text" id="r-org" name="org" placeholder="○○대학교 / ○○기업" required="">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="r-email">이메일 <span class="req">*</span></label>
+            <input type="email" id="r-email" name="email" placeholder="example@email.com" required="">
+          </div>
+          <div class="field">
+            <label for="r-place">강의 장소</label>
+            <input type="text" id="r-place" name="place" placeholder="서울 / 온라인 / 미정 등">
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-topic">희망 강의 주제 <span class="req">*</span></label>
+          <input type="text" id="r-topic" name="topic" placeholder="예) 머신러닝 기초, AI 거버넌스 입문 등" required="">
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="r-date">희망 일정</label>
+            <input type="text" id="r-date" name="date" placeholder="예) 2026년 9월, 협의 가능">
+          </div>
+          <div class="field">
+            <label for="r-people">대상 인원</label>
+            <input type="text" id="r-people" name="people" placeholder="예) 30명">
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-message">기타 요청사항</label>
+          <textarea id="r-message" name="message" placeholder="강의 목적, 수준, 특이사항 등 자유롭게 작성해 주세요." rows="5"></textarea>
+        </div>
+        <div class="field consent-field">
+          <label class="consent-label">
+            <input type="checkbox" id="r-consent" name="r-consent" required="">
+            <span><span class="req">*</span> 답변을 처리하기 위해 개인정보(이름, 소속, 이메일) 저장 동의에 체크해 주세요</span>
+          </label>
+          <p class="consent-retention">보유 기간은 '답변 완료 후 1년'까지 저장됩니다.</p>
+          <p class="field-error" id="reqConsentError" hidden="">개인정보 수집·이용에 동의해 주세요.</p>
+        </div>
+        <!-- 이메일 OTP 인증 섹션 -->
+        <div id="reqOtpSection" style="display:none">
+          <p class="submit-otp-info" id="reqOtpInfo"></p>
+          <div class="field">
+            <label for="reqOTP">이메일 인증코드 <span class="pw-opt">(6자리 · 10분 유효)</span></label>
+            <input type="text" id="reqOTP" placeholder="인증코드 6자리 입력" maxlength="6" inputmode="numeric">
+          </div>
+          <p class="field-error" id="reqOtpError" hidden="">인증코드가 일치하지 않거나 만료됐습니다.</p>
+        </div>
+        <button type="submit" class="submit-btn" id="reqSubmitBtn">
+          <span class="btn-text" id="reqSubmitText">강의 요청 제출하기</span>
+          <span class="btn-spinner" hidden="">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          </span>
+        </button>
+      </form>
+
+      <!-- 완료 메시지 -->
+      <div class="success-msg" hidden="">
+        <div class="success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h3>제출이 완료됐습니다!</h3>
+        <p>내용을 확인 후 이메일로 회신드리겠습니다.</p>
+        <button class="reset-btn" id="resetBtn" onclick="resetForm()">다시 문의하기</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 관리자 패널 (관리자 로그인 후에만 표시) ── -->
+  <section class="myq-section" id="adminPanel" style="">
+    <div class="myq-wrap">
+      <div class="admin-panel-header">
+        <span class="admin-panel-title">관리자 모드</span>
+        <button class="admin-logout-btn" onclick="exitAdminMode()">로그아웃</button>
+      </div>
+      <div class="admin-tabs-wrap">
+        <button class="admin-tab active" data-type="contacts" onclick="switchAdminTab(this)">강의문의</button>
+        <button class="admin-tab" data-type="requests" onclick="switchAdminTab(this)">강의요청</button>
+      </div>
+      <div class="admin-list-wrap">
+        <div id="adminListBody"><div class="admin-list-head"><span class="acol-subject">구분</span><span class="acol-title">제목</span><span class="acol-date">등록일시(답변일시)</span></div><div class="admin-list-item answered">
+      <span class="acol-subject"><span class="clist-subject-badge">AI거버넌스 : 관련 법과 국제표준</span></span>
+      <span class="acol-title">일요일 01 <span class="admin-answered-badge">✓ 답변완료</span></span>
+      <span class="acol-date">2026.06.28 10:16 <span class="admin-ans-date">(2026.06.28 16:26)</span></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 내 질문 확인 섹션 -->
+  <section class="myq-section" id="userSection" style="display: none;">
+    <div class="myq-wrap">
+      <div class="myq-bar">
+        <span class="myq-label" id="myqLabel">수강생 질문 목록</span>
+        <div class="myq-actions">
+          <button class="myq-btn" id="myqAuthBtn" onclick="openAuthModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span id="myqAuthBtnText">내 질문 확인</span>
+          </button>
+          <button class="myq-btn myq-btn-admin" onclick="openAdminModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+            관리자
+          </button>
+        </div>
+      </div>
+
+      <!-- 목록 (인증 후 표시) -->
+      <div class="contact-list-section" style="display:none">
+        <div class="contact-list-header">
+          <span class="contact-list-title" id="listTitle">수강생 질문 목록</span>
+          <span class="contact-list-count" id="contactCount"></span>
+        </div>
+        <div class="contact-list-table">
+          <div class="clist-head">
+            <span class="clist-col-subject" id="listColSubject">구분</span>
+            <span class="clist-col-title">제목</span>
+            <span class="clist-col-date">등록일시</span>
+          </div>
+          <div id="contactListBody"></div>
+          <div class="clist-empty" id="contactListEmpty" hidden="">등록된 질문이 없습니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 본인 확인 모달 ── -->
+  <div class="cmodal-overlay" id="authOverlay">
+    <div class="cmodal" onclick="event.stopPropagation()">
+      <button class="cmodal-close" onclick="closeAuthModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="cmodal-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </div>
+      <h3 class="cmodal-title">내 질문 확인</h3>
+      <!-- Step 1: 이메일 입력 -->
+      <div id="authStep1">
+        <p class="cmodal-desc">등록 시 입력한 이메일을 입력하면<br>6자리 인증코드를 발송해 드립니다.</p>
+        <div class="field">
+          <label for="authEmail">이메일</label>
+          <input type="email" id="authEmail" placeholder="example@email.com">
+        </div>
+        <p class="cmodal-error" id="authError" hidden=""></p>
+        <button class="submit-btn" style="margin-top:1.25rem;width:100%" id="otpSendBtn" onclick="sendOTP()">
+          <span class="btn-text">인증코드 발송</span>
+          <span class="btn-spinner" hidden=""><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></span>
+        </button>
+      </div>
+      <!-- Step 2: OTP 입력 -->
+      <div id="authStep2" style="display:none">
+        <p class="cmodal-desc" id="otpSentMsg"></p>
+        <div class="field">
+          <label for="authOTP">인증코드 <span class="pw-opt">(6자리 · 10분 유효)</span></label>
+          <input type="text" id="authOTP" placeholder="인증코드 6자리 입력" maxlength="6" inputmode="numeric">
+        </div>
+        <p class="cmodal-error" id="otpError" hidden=""></p>
+        <button class="submit-btn" style="margin-top:1.25rem;width:100%" id="otpVerifyBtn" onclick="verifyOTP()">
+          <span class="btn-text">확인</span>
+          <span class="btn-spinner" hidden=""><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></span>
+        </button>
+        <button class="otp-back-btn" onclick="backToStep1()">← 이메일 다시 입력</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 관리자 모달 ── -->
+  <div class="cmodal-overlay" id="adminOverlay">
+    <div class="cmodal" onclick="event.stopPropagation()">
+      <button class="cmodal-close" onclick="closeAdminModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="cmodal-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+      </div>
+      <h3 class="cmodal-title">관리자 로그인</h3>
+      <p class="cmodal-desc">관리자 비밀번호를 입력하면 전체 목록을 확인할 수 있습니다.</p>
+      <div class="field">
+        <label for="adminPwInput">비밀번호</label>
+        <input type="password" id="adminPwInput" placeholder="관리자 비밀번호" autocomplete="current-password">
+      </div>
+      <p class="cmodal-error" id="adminError" hidden="">비밀번호가 올바르지 않습니다.</p>
+      <button class="submit-btn" style="margin-top:1.25rem;width:100%" onclick="submitAdminAuth()">확인</button>
+    </div>
+  </div>
+
+  <!-- ── 게시글 상세 모달 ── -->
+  <div class="cmodal-overlay" id="detailOverlay">
+    <div class="cmodal cmodal-wide" onclick="event.stopPropagation()">
+      <button class="cmodal-close" onclick="closeDetailModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="detailContent"></div>
+      <div class="detail-actions" id="detailActions" style="display:none">
+        <button class="detail-edit-btn" onclick="openEditFromDetail()">수정</button>
+        <button class="detail-delete-btn" onclick="deleteFromDetail()">삭제</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 관리자 상세/수정/답변 모달 ── -->
+  <div class="cmodal-overlay" id="adminDetailOverlay">
+    <div class="cmodal cmodal-admin" onclick="event.stopPropagation()">
+      <button class="cmodal-close" onclick="closeAdminDetail()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <!-- 기본 정보 -->
+      <div id="adminDetailHeader"></div>
+      <!-- 내용 수정 -->
+      <div class="admin-section">
+        <div class="admin-section-label">내용 수정</div>
+        <div id="aeStudentFields">
+          <div class="field" style="margin-top:0.75rem">
+            <label>과목</label>
+            <select id="ae-subject">
+              <option>기계학습</option>
+              <option>머신러닝 기반의 연구방법론</option>
+              <option>AI거버넌스 : 관련 법과 국제표준</option>
+              <option>AI거버넌스 기반의 연구방법론</option>
+            </select>
+          </div>
+          <div class="field" style="margin-top:0.6rem"><label>제목</label><input type="text" id="ae-title" maxlength="100"></div>
+          <div class="field" style="margin-top:0.6rem"><label>질문 내용</label><textarea id="ae-question" rows="5"></textarea></div>
+        </div>
+        <div id="aeRequestFields" style="display:none">
+          <div class="field" style="margin-top:0.75rem"><label>담당자</label><input type="text" id="ae-reqname" maxlength="50"></div>
+          <div class="field" style="margin-top:0.6rem"><label>희망 강의 주제</label><input type="text" id="ae-topic" maxlength="100"></div>
+          <div class="field" style="margin-top:0.6rem"><label>기관/회사명</label><input type="text" id="ae-org" maxlength="100"></div>
+          <div class="field" style="margin-top:0.6rem"><label>강의 장소</label><input type="text" id="ae-place" maxlength="100"></div>
+          <div class="field" style="margin-top:0.6rem"><label>희망 일정</label><input type="text" id="ae-date" maxlength="50"></div>
+          <div class="field" style="margin-top:0.6rem"><label>대상 인원</label><input type="text" id="ae-people" maxlength="30"></div>
+          <div class="field" style="margin-top:0.6rem"><label>기타 요청사항</label><textarea id="ae-message" rows="4"></textarea></div>
+        </div>
+        <button class="admin-save-btn" onclick="saveAdminEdit()">수정 저장</button>
+      </div>
+      <!-- 답변 작성 -->
+      <div class="admin-section" id="adminReplySection">
+        <div class="admin-section-label" id="adminReplySectionLabel">답변 작성 <span class="admin-section-sub">(이메일로 발송됩니다)</span></div>
+        <textarea id="adminReplyText" class="admin-reply-textarea" rows="9" placeholder="답변 내용을 입력하세요..."></textarea>
+        <div id="adminAnsweredTime" style="display:none" class="admin-answered-time"></div>
+      </div>
+      <div class="admin-modal-footer">
+        <button class="reset-btn" onclick="closeAdminDetail()">닫기</button>
+        <button class="submit-btn admin-send-btn" id="adminSendBtn" onclick="sendAdminReply()">
+          <span id="adminSendText">이메일 발송</span>
+          <span id="adminSendSpinner" hidden=""><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 수정 모달 ── -->
+  <div class="cmodal-overlay" id="editOverlay">
+    <div class="cmodal cmodal-wide" onclick="event.stopPropagation()">
+      <button class="cmodal-close" onclick="closeEditModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <h3 class="cmodal-title" id="editModalTitle">수정</h3>
+      <form id="editForm">
+        <!-- 수강생 질문 편집 -->
+        <div id="editStudentFields">
+          <div class="field" style="margin-top:1.25rem">
+            <label for="edit-subject">과목</label>
+            <select id="edit-subject">
+              <option>기계학습</option>
+              <option>머신러닝 기반의 연구방법론</option>
+              <option>AI거버넌스 : 관련 법과 국제표준</option>
+              <option>AI거버넌스 기반의 연구방법론</option>
+            </select>
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-title">제목</label>
+            <input type="text" id="edit-title" maxlength="100">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-question">질문 내용</label>
+            <textarea id="edit-question" maxlength="2000" rows="6"></textarea>
+          </div>
+        </div>
+        <!-- 강의 요청 편집 -->
+        <div id="editRequestFields" style="display:none">
+          <div class="field" style="margin-top:1.25rem">
+            <label for="edit-req-name">담당자</label>
+            <input type="text" id="edit-req-name" maxlength="50">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-topic">희망 강의 주제</label>
+            <input type="text" id="edit-topic" maxlength="100">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-org">기관/회사명</label>
+            <input type="text" id="edit-org" maxlength="100">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-place">강의 장소</label>
+            <input type="text" id="edit-place" maxlength="100">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-date">희망 일정</label>
+            <input type="text" id="edit-date" maxlength="50">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-people">대상 인원</label>
+            <input type="text" id="edit-people" maxlength="30">
+          </div>
+          <div class="field" style="margin-top:0.85rem">
+            <label for="edit-message">기타 요청사항</label>
+            <textarea id="edit-message" maxlength="2000" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="edit-actions">
+          <button type="button" class="reset-btn" onclick="closeEditModal()">취소</button>
+          <button type="submit" class="submit-btn edit-save-btn">저장하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./AI Study_files/contact.js.다운로드"></script>
+
+
+<deepl-input-controller translate="no"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div dir="ltr" style="visibility: initial !important;"><div class="dl-input-translation-container svelte-95aucy"><div></div></div></div></template></deepl-input-controller></body><deepl-inline-trigger translate="no" style="z-index: 2147483639;"><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div style="position: absolute; top: 0px; left: 0px; width: 100%; z-index: 2147483139; visibility: initial !important;"><div style="position: absolute; z-index: 2147483139; top: 328px; left: 962px;"><div dir="ltr"> <div class="layout-container svelte-2o25gt"> <div class="icon-container svelte-2o25gt" data-testid="deepl-inline-translate-icon-container" role="group"><div class="align-center svelte-vahs8d" data-tooltip="끄기" style="--tooltip-z-index: 2147483639; "><div data-testid="deepl-advanced-trigger-turnoff-icon" class="dl-turnoff-inline-icon svelte-2o25gt advanced hidden left"></div></div> <div class="align-center svelte-vahs8d" data-tooltip="DeepL로 텍스트 개선하기" style="--tooltip-z-index: 2147483639; "><div class="dl-inline-icon dl-write-icon svelte-15hlb3a" data-testid="deepl-advanced-trigger-write-icon" data-qa="deepl-inline-translate-menu-icon"></div></div> <div class="align-center svelte-vahs8d" data-tooltip="DeepL로 번역 (Ctrl+Shift+Y)" style="--tooltip-z-index: 2147483639; "><div class="dl-inline-icon dl-translate-icon svelte-2o25gt" data-testid="dl-advanced-trigger-translate-icon" data-qa="deepl-inline-translate-menu-icon"></div></div> </div></div></div></div></div></template></deepl-inline-trigger></html>
