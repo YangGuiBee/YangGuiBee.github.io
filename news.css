@@ -1,7 +1,7 @@
-﻿/* ── AI논문 Hero ── */
+/* ── AI논문 Hero ── */
 .news-hero {
   position: relative;
-  background: linear-gradient(to bottom, #05080f 0%, #0d0d25 40%, #1a1a3e 70%, #0f0f23 100%);
+  background: linear-gradient(to bottom, #f0f7f2 0%, #e4f1e8 40%, #d6eadc 70%, #e8f3eb 100%);
   padding: 140px 2rem 60px;
   text-align: center;
   overflow: hidden;
@@ -9,14 +9,14 @@
 .news-hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
 .news-page-title {
   font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: 900; color: #fff;
+  font-weight: 900; color: #0d1f0d;
   margin: 0.5rem 0 0.8rem; letter-spacing: -0.02em;
 }
 .news-page-desc {
   font-size: clamp(0.78rem, 2.2vw, 0.95rem);
-  color: rgba(255,255,255,0.65);
+  color: #3d6649;
 }
-.nav { background: rgba(5,8,15,0.96) !important; }
+.nav { background: rgba(255,255,255,0.96) !important; }
 
 /* ── 검색창 ── */
 .news-search-wrap {
@@ -29,7 +29,7 @@
 .news-search-input {
   width: 100%; box-sizing: border-box;
   padding: 0.6rem 2.4rem 0.6rem 2.4rem;
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
   color: var(--text); font-size: 0.88rem; font-family: 'Noto Sans KR', sans-serif;
   transition: border-color 0.15s;
 }
@@ -66,13 +66,13 @@
   gap: 1.1rem;
 }
 .news-card {
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
   padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.55rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .news-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(99,102,241,0.12);
+  box-shadow: 0 4px 20px rgba(0,102,51,0.1);
 }
 
 /* ── 카드 메타 ── */
@@ -80,20 +80,17 @@
 
 .news-cat-badge {
   font-size: 0.66rem; font-weight: 700; padding: 0.17rem 0.48rem;
-  border-radius: 5px; background: rgba(99,102,241,0.15); color: var(--accent);
+  border-radius: 5px; background: rgba(0,102,51,0.1); color: #006633;
   letter-spacing: 0.02em;
 }
-.news-cat-badge.gov { background: rgba(16,185,129,0.15); color: #10b981; }
-.news-cat-badge.top { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.news-cat-badge.gov { background: rgba(15,118,110,0.1); color: #0f766e; }
 
 .news-stars {
-  font-size: 0.66rem; font-weight: 700; color: #94a3b8;
-  background: rgba(148,163,184,0.1); border-radius: 5px;
+  font-size: 0.66rem; font-weight: 700; color: #5a7a60;
+  background: rgba(0,102,51,0.07); border-radius: 5px;
   padding: 0.17rem 0.42rem; white-space: nowrap;
 }
-.news-cat-badge       + .news-stars { }
-.news-cat-badge.gov   ~ .news-stars { color: #10b981; background: rgba(16,185,129,0.08); }
-.news-cat-badge.top   ~ .news-stars { color: #f59e0b; background: rgba(245,158,11,0.08); }
+.news-cat-badge.gov ~ .news-stars { color: #0f766e; background: rgba(15,118,110,0.07); }
 
 .news-source { font-size: 0.69rem; color: var(--text-dim); }
 .news-date   { font-size: 0.69rem; color: var(--text-dim); margin-left: auto; }
@@ -128,11 +125,11 @@
 }
 .news-read-link:hover { text-decoration: underline; }
 .news-translate-btn {
-  font-size: 0.71rem; color: #10b981; text-decoration: none; font-weight: 600;
-  padding: 0.17rem 0.52rem; border: 1px solid rgba(16,185,129,0.35);
+  font-size: 0.71rem; color: #0f766e; text-decoration: none; font-weight: 600;
+  padding: 0.17rem 0.52rem; border: 1px solid rgba(15,118,110,0.3);
   border-radius: 5px; transition: background 0.15s;
 }
-.news-translate-btn:hover { background: rgba(16,185,129,0.1); }
+.news-translate-btn:hover { background: rgba(15,118,110,0.08); }
 .news-collected { font-size: 0.67rem; color: var(--text-dim); margin-left: auto; }
 
 /* ── 로딩 / 빈 화면 ── */

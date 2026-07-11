@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 거버넌스 논문 관리</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#fff; --line:#e3e6ea; --ink:#1f2733; --sub:#5b6675;
+    --brand:#2b5cff; --brand-weak:#eaf0ff; --chip:#eef1f5; --shadow:0 1px 3px rgba(20,30,50,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 18px 60px}
+  header h1{font-size:22px;margin:0 0 4px}
+  .meta-line{color:var(--sub);font-size:13px;margin-bottom:2px}
+  .badge{display:inline-block;background:var(--brand-weak);color:var(--brand);
+    border-radius:20px;padding:2px 12px;font-weight:600;font-size:13px}
+  .note{background:#fff8e6;border:1px solid #f2e2b3;color:#7a5b00;
+    border-radius:10px;padding:10px 14px;font-size:12.5px;margin:14px 0}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}
+  .toolbar input[type=text],.toolbar select{padding:9px 12px;border:1px solid var(--line);
+    border-radius:9px;font-size:14px;background:#fff;color:var(--ink)}
+  .toolbar input[type=text]{flex:1;min-width:200px}
+  .btn.refresh{background:#0c9d61}
+  .btn.refresh:hover{background:#0a854f}
+  .count{color:var(--sub);font-size:13px;margin-left:auto}
+  .refresh-msg{margin:0 0 12px;font-size:13px;padding:9px 13px;border-radius:9px;
+    background:#eafaf1;border:1px solid #bfe8cf;color:#0a6b41}
+  .refresh-msg.warn{background:#fff8e6;border-color:#f2e2b3;color:#7a5b00}
+  .drop-info{margin:0 0 12px;font-size:12.5px;color:var(--sub);
+    background:#fafbfc;border:1px dashed var(--line);border-radius:9px;padding:10px 13px}
+  .drop-info b{color:var(--ink)}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  thead th{background:#fafbfc;text-align:left;font-size:12.5px;color:var(--sub);
+    padding:12px 14px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none}
+  thead th:hover{color:var(--brand)}
+  tbody td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#fafcff}
+  .t-title{font-weight:600;color:var(--ink);cursor:pointer}
+  .t-title:hover{color:var(--brand);text-decoration:underline}
+  .col-year{white-space:nowrap;color:var(--sub)}
+  .col-org{color:var(--sub)}
+  a.src{color:var(--brand);text-decoration:none;font-size:13px}
+  a.src:hover{text-decoration:underline}
+  .btn{background:var(--brand);color:#fff;border:none;border-radius:8px;
+    padding:7px 12px;font-size:13px;cursor:pointer;white-space:nowrap}
+  .btn:hover{background:#1f49d6}
+  .empty{text-align:center;color:var(--sub);padding:40px}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(15,20,35,.5);
+    display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow:auto}
+  .overlay.on{display:flex}
+  .modal{background:#fff;max-width:760px;width:100%;border-radius:16px;
+    box-shadow:0 12px 40px rgba(20,30,50,.25);overflow:hidden}
+  .modal-head{padding:22px 26px 16px;border-bottom:1px solid var(--line);position:relative}
+  .modal-head h2{margin:0 0 8px;font-size:19px;line-height:1.45;padding-right:30px}
+  .modal-sub{color:var(--sub);font-size:13.5px}
+  .modal-sub b{color:var(--ink);font-weight:600}
+  .close{position:absolute;top:18px;right:20px;border:none;background:none;
+    font-size:24px;color:var(--sub);cursor:pointer;line-height:1}
+  .close:hover{color:var(--ink)}
+  .chips{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+  .chip{background:var(--chip);color:var(--sub);border-radius:14px;padding:2px 10px;font-size:12px}
+  .modal-body{padding:20px 26px 26px}
+  .field{margin-bottom:16px}
+  .field h3{margin:0 0 4px;font-size:13px;color:var(--brand);font-weight:700;
+    letter-spacing:.02em;display:flex;align-items:center;gap:6px}
+  .field p{margin:0;font-size:14px;color:var(--ink)}
+  .brief{background:var(--brand-weak);border-radius:10px;padding:14px 16px}
+  .abs{background:#fafbfc;border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;font-size:13.5px;color:var(--sub)}
+  details.abs-wrap summary{cursor:pointer;font-size:13px;color:var(--brand);font-weight:600;margin-bottom:8px}
+  .modal-foot{padding:16px 26px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}
+  .ai-tag{font-size:11.5px;color:#9aa3b0}
+  @media(max-width:640px){
+    .col-org,.col-src{display:none}
+    thead th.col-org,thead th.col-src{display:none}
+    .wrap{padding:16px 12px 50px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AI 거버넌스 논문 관리</h1>
+    <div class="meta-line">검색 키워드 <span class="badge" id="kw">AI 거버넌스</span> · 출처 DBpia · 최종 업데이트 <span id="updated">-</span></div>
+  </header>
+
+  <div class="note" id="note"></div>
+
+  <div class="toolbar">
+    <input type="text" id="q" placeholder="제목·저자·발행기관·키워드 검색…">
+    <select id="sort">
+      <option value="year-desc">발행연도 ↓ (최신순)</option>
+      <option value="year-asc">발행연도 ↑ (오래된순)</option>
+      <option value="title-asc">제목 (가나다순)</option>
+    </select>
+    <button class="btn refresh" id="refresh" title="원본 데이터(papers.json)에서 신규 논문을 불러옵니다">⟳ 갱신</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div id="refreshMsg" class="refresh-msg" style="display:none"></div>
+  <input type="file" id="filePick" accept=".json,application/json" style="display:none">
+  <div id="dropInfo" class="drop-info" style="display:none"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="title">제목</th>
+        <th data-sort="authors">저자</th>
+        <th data-sort="year" class="col-year">발행연도</th>
+        <th class="col-org">발행기관</th>
+        <th class="col-src">원문</th>
+        <th>상세</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="empty" id="empty" style="display:none">검색 결과가 없습니다.</div>
+</div>
+
+<!-- 상세보기 모달 -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<!-- ====== 초기 표시 데이터 (수동 갱신 시 이 블록의 JSON만 교체) ====== -->
+<script id="paper-data" type="application/json">
+{
+  "meta": {
+    "keyword": "AI 거버넌스",
+    "lastUpdated": "2026-07-08",
+    "note": "제목·저자·발행연도·발행기관·URL·초록은 DBpia 상세페이지에서 수집한 실제 데이터입니다. 아래 7개 요약(연구목표/연구방법론/데이터/연구모델/연구결과/특징/500자요약)은 초록을 바탕으로 AI가 생성한 요약이며, 원문 확인 후 보정이 필요할 수 있습니다. [갱신] 버튼을 누르면 같은 폴더의 papers.json에서 화면에 없던 신규 논문을 더 불러옵니다."
+  },
+  "papers": [
+    {
+      "id":"NODE12592757",
+      "title":"의료 인공지능 규제 거버넌스 국제 비교 연구: 혁신과 안전의 균형을 중심으로",
+      "authors":"정지연","year":"2026.2","publisher":"한국기술혁신학회",
+      "journal":"기술혁신학회지 제29권 제1호",
+      "url":"https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12592757",
+      "keywords":["인공지능 의료기기","규제 거버넌스","혁신 생태계","비교제도 분석","기술혁신정책"],
+      "abstract":"인공지능(AI) 기술은 의료 분야에서 혁신적 변화를 촉발하고 있으며, 특히 영상의학 분야가 AI 적용의 선두에 서 있다. 본 연구는 미국, 유럽연합, 한국의 AI 의료기기 규제 프레임워크를 비교 분석하여, 각국이 혁신 촉진과 안전성 확보 사이에서 어떤 균형점을 선택하고 있는지를 규명한다. 분석 결과, 미국은 510(k) 경로를 통한 신속한 시장 진입을 강조하는 '혁신 우선' 모델을 취하고 있으나 임상적 유효성 격차와 알고리즘 편향 문제가 존재한다. 유럽연합은 GDPR과 AI법을 통해 엄격한 데이터 보호를 요구하는 '안전 우선' 모델을 보여주며, 한국은 2017년과 2025년 세계 최초의 가이드라인 발표로 규제 선점에 성공했으나 위험 관리를 사용자에게 전가하는 한계를 보인다. 본 연구는 한국이 글로벌 경쟁력 확보를 위해 직접적 위험 관리 체계 구축, 임상적 유효성 입증 강화, 데이터 거버넌스 개선, 국제 규제 조화 참여, 규제와 산업 육성 정책의 연계가 필요함을 제시한다.",
+      "summary":{
+        "goal":"미국·유럽연합·한국의 AI 의료기기 규제 프레임워크를 비교 분석해, 각국이 '혁신 촉진'과 '안전성 확보' 사이에서 취하는 균형점을 규명하고 한국의 규제 개선 방향을 제시한다.",
+        "method":"비교제도 분석(comparative institutional analysis). 3개국의 규제 제도·법령·가이드라인을 문헌 기반으로 비교·유형화하는 정성적 접근.",
+        "data":"미국 FDA 510(k) 승인 경로, EU의 GDPR 및 AI법(AI Act), 한국의 2017년·2025년 AI 의료기기 가이드라인 등 각국 규제 제도·정책 문헌.",
+        "model":"'혁신 우선(미국) — 안전 우선(EU) — 규제 선점(한국)'의 3유형 비교 프레임워크. 혁신 속도와 안전·데이터보호 강도를 두 축으로 배치.",
+        "result":"미국은 신속한 시장 진입이 강점이나 임상적 유효성 격차·알고리즘 편향, EU는 강력한 데이터보호가 강점이나 혁신 속도 저해, 한국은 세계 최초 가이드라인으로 규제를 선점했으나 위험관리를 사용자에게 전가하는 한계를 확인.",
+        "feature":"영상의학을 중심 사례로 삼고 한국의 '세계 최초 가이드라인'을 조명하며 규제와 산업 육성 정책의 연계를 강조. 2026년 발표된 최신 연구.",
+        "brief":"AI 의료기기를 대상으로 미국·EU·한국의 규제 거버넌스를 비교제도 분석으로 검토한 연구다. 미국은 510(k)를 통한 신속 진입 중심의 '혁신 우선', EU는 GDPR·AI법 기반의 '안전 우선', 한국은 2017·2025년 세계 최초 가이드라인을 통한 '규제 선점' 모델로 유형화된다. 각 모델은 각각 임상 유효성·편향(미국), 혁신 저해(EU), 위험관리의 사용자 전가(한국)라는 한계를 지닌다. 저자는 한국이 글로벌 경쟁력을 확보하려면 직접적 위험관리 체계 구축, 임상적 유효성 입증 강화, 데이터 거버넌스 개선, 국제 규제 조화 참여, 규제와 산업정책의 연계가 필요하다고 제언한다. 공공·규제 관점에서 실무적 시사점이 크다."
+      }
+    },
+    {
+      "id":"NODE12502899",
+      "title":"문재인 정부의 AI(인공지능) 거버넌스 정책 고찰",
+      "authors":"정시구 (선학유피대학원대학교)","year":"2025.8","publisher":"한국행정사학회",
+      "journal":"한국행정사학지 제64호",
+      "url":"https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12502899",
+      "keywords":["문재인 정부","AI","거버넌스 정책","기업","개인과 NGO 시민운동"],
+      "abstract":"본고의 목적은 김대중 정부의 IT선진화로 시작된 문재인 정부의 AI 거버넌스에 대한 정책을 고찰함으로써 향후 정부, 기업, 생성형 AI와 관련한 정책적 방향성을 제시하고자 한다. 정부는 AI 시대의 불확실성과 위험성에 대응하기 위해 '원스톱 디지털플랫폼' 체제 형성을 위한 개인정보·데이터 보호, 플랫폼 독점, 디지털 부정행위에 대한 법제적 대응이 필요하다. 기업은 AI 이사(AID)의 단독 경영판단 원칙, AI 이사 알고리즘에 대한 이해, 의사결정에서의 AI 이사 공정의무 문제 해결이 요구된다. 개인과 NGO 시민운동을 위해 시민사회적 참여와 개입, 'AI의 시민인권법' 마련, 노동자·시민으로서의 의식 변화, AI 플랫폼 기업에 맞서기 위한 시민사회의 생태주의적 관점 등이 필요하다.",
+      "summary":{
+        "goal":"김대중 정부의 IT선진화에서 이어진 문재인 정부의 AI 거버넌스 정책을 고찰하여, 향후 정부·기업·생성형 AI와 관련한 정책적 방향성을 제시한다.",
+        "method":"정책 고찰 중심의 정성적 문헌 분석. 정부·기업·개인(NGO 시민운동)의 3주체 관점에서 정책·법제 대응을 검토.",
+        "data":"역대 정부의 IT·AI 정책, 개인정보·데이터 보호 및 플랫폼 독점 관련 법제 대응 사례 등 정책 문헌.",
+        "model":"정부('원스톱 디지털플랫폼' 체제)·기업(AI 이사(AID) 경영판단·공정의무)·개인/NGO('AI 기술정치학'과 시민 개입)의 3주체 거버넌스 프레임.",
+        "result":"정부 차원의 개인정보·독점·부정행위 법제 대응, 기업 차원의 AI 이사 알고리즘 이해·공정의무 해결, 시민사회 차원의 'AI 시민인권법' 마련과 생태주의적 대응 등이 필요함을 제시.",
+        "feature":"정부-기업-시민사회를 아우르는 통합 관점과 생성형 AI 시대 대응을 강조. 행정사(行政史)적 맥락에서 정책 흐름을 짚음.",
+        "brief":"문재인 정부의 AI 거버넌스 정책을 김대중 정부 이래의 IT 정책 흐름 속에서 고찰한 연구다. 저자는 정부·기업·시민사회 3주체 관점을 제시한다. 정부는 '원스톱 디지털플랫폼' 체제 형성을 위해 개인정보·데이터 보호, 플랫폼 독점, 디지털 부정행위에 대한 법제적 대응이 필요하다. 기업은 AI 이사(AID)의 경영판단 원칙, 알고리즘에 대한 기초적 이해, 의사결정에서의 공정의무 문제 해결이 요구된다. 개인과 NGO 시민운동 차원에서는 시민 개입의 'AI 기술정치학', 'AI 시민인권법' 마련, 노동자·시민으로서의 의식 변화, 생태주의적 관점이 강조된다. 향후 정부·기업·생성형 AI 정책의 방향성을 통합적으로 제시한다는 점이 특징이다."
+      }
+    },
+    {
+      "id":"NODE11901081",
+      "title":"AI 거버넌스의 정의와 쟁점 및 발전 과제: 비판적 관점",
+      "authors":"박선형 (동국대학교)","year":"2024.3","publisher":"한국교육정치학회",
+      "journal":"교육정치학연구 제31권 제1호",
+      "url":"https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11901081",
+      "keywords":["유토피아 vs 디스토피아 관점","AI 거버넌스 정의·쟁점·발전 과제","비판적 관점"],
+      "abstract":"데이터 기반 경제시대에 있어서 AI 알고리즘은 결국 '누가, 무엇을, 언제, 어떻게 얻을 수 있는지'에 관한 권력 이해관계와 희소자원에 대한 가치배분을 주도한다. 그러나 현재까지 알고리즘 기반의 AI 의사결정 진행과정과 내부 작동기제는 여전히 미지의 'black box'로 남아 있다. 따라서 알고리즘 설계의 투명성 제고를 위한 법적·제도적 촉진·제어 방안 등에 대한 비판적인 체계적 분석이 그 어느 때보다 필요한 시점이다. 디지털 자본주의 시대에서 AI 권력에 의해 인간이 억압·통제·지배되는 구조적 상황은 정치학과 교육(정치)학 및 비판이론 시각이 활용되는 다학문적 기반의 거버넌스 융합연구를 필요로 한다. 본 논문은 새롭게 부각되고 있는 AI 거버넌스 정의와 쟁점 및 발전방안을 비판적 관점에서 포괄적으로 검토·분석하는 것을 목적으로 한다.",
+      "summary":{
+        "goal":"새롭게 부각되는 AI 거버넌스의 정의·쟁점·발전방안을 비판적 관점에서 포괄적으로 검토·분석한다.",
+        "method":"비판적·체계적 문헌 분석. 정치학·교육(정치)학·비판이론을 활용하는 다학문적(interdisciplinary) 접근.",
+        "data":"AI 거버넌스 관련 국내외 이론·문헌 및 알고리즘 투명성·규제 담론.",
+        "model":"'유토피아 vs 디스토피아' 관점 대비와 알고리즘 'black box' 비판이론을 축으로 한 다학문 거버넌스 융합 분석틀.",
+        "result":"AI 알고리즘이 권력·가치배분을 주도하지만 의사결정 기제는 블랙박스로 남아 있으며, 투명성 제고를 위한 법적·제도적 촉진·제어 방안과 다학문적 거버넌스 융합연구가 필요함을 제시.",
+        "feature":"기술 낙관론을 경계하는 비판이론 기반 접근과 교육정치학 시각이 특징. 규범적·이론적 논의에 강점.",
+        "brief":"데이터 기반 경제에서 AI 알고리즘이 '누가·무엇을·언제·어떻게 얻는가'라는 권력관계와 자원 배분을 주도한다는 문제의식에서 출발한 이론 연구다. 저자는 AI 의사결정이 여전히 'black box'로 남아 있음을 지적하고, 알고리즘 설계의 투명성을 높이기 위한 법적·제도적 촉진·제어 방안에 대한 비판적·체계적 분석이 필요하다고 본다. 디지털 자본주의에서 기술 기반 혁신이라는 명분 아래 인간이 AI 권력에 의해 억압·통제될 수 있는 구조적 상황을 경계하며, 정치학·교육정치학·비판이론을 아우르는 다학문적 거버넌스 융합연구를 제안한다. AI 거버넌스의 정의와 쟁점, 발전 과제를 비판적 관점에서 포괄적으로 정리한다는 데 의의가 있다."
+      }
+    },
+    {
+      "id":"NODE11849732",
+      "title":"국제 차원에서의 인공지능(AI) 거버넌스 논의 동향과 평가 및 시사점",
+      "authors":"고준성 (산업연구원)","year":"2024.7","publisher":"한국외교협회",
+      "journal":"계간 외교 제150호",
+      "url":"https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11849732",
+      "keywords":["AI 거버넌스","OECD","UN","G7 히로시마 프로세스","AI 안전정상회의"],
+      "abstract":"AI는 사회 및 경제에 새로운 기회와 더불어 도전을 제시하고, 특히 안전 및 보안에 대한 우려를 제기한다. 2022년 11월 ChatGPT 출시 이후로 AI가 수반할 수 있는 위험 및 우려 등 부정적 측면에 대응하기 위한 다양한 관점에서의 AI 거버넌스에 대한 논의가 국가적 차원은 물론 다자간·지역적 국제기구 및 다양한 국제 포럼과 프로세스에서 급부상하고 있다. 본 원고는 OECD의 AI 거버넌스 논의, UN 차원의 규율 논의(UN AI 자문기관 중간보고서, 2024년 결의, 글로벌 디지털 협약(GDC), UNESCO 권고), G7 히로시마 국제 지도원칙·행동강령 및 히로시마 AI 프로세스, AI에 관한 글로벌 파트너십(GPAI), AI 안전정상회의(Bletchley 선언, 서울 정상회의), 한중일 정상회의, 표준개발기구(SDO) 표준 논의 등 국제 차원의 최근 동향과 평가를 제시하고, 각 포럼별 대응 과제와 국내 입법 방향 등 정책적 시사점을 도출한다.",
+      "summary":{
+        "goal":"국제 차원에서 급부상한 AI 거버넌스 논의의 최근 동향을 정리·평가하고, 한국의 관련 부처·기관을 위한 대응 과제와 국내 입법 방향 등 정책적 시사점을 도출한다.",
+        "method":"국제기구·포럼별 정책·선언·보고서에 대한 정성적 문헌 검토 및 평가.",
+        "data":"OECD 논의, UN(AI 자문기관 중간보고서, 2024년 결의, GDC, 2021 UNESCO 권고), G7 히로시마 지도원칙·행동강령·정책 프레임워크, GPAI, AI 안전정상회의(2023 Bletchley 선언·2024 서울), 한중일 정상회의 공동선언, SDO 표준 논의.",
+        "model":"국제기구·다자 포럼별로 분류하여 동향과 성과를 평가하는 프레임(OECD → UN → 기타 국제포럼 → 표준기구).",
+        "result":"각 논의 포럼별로 한국 관련 부처·기관의 대응 과제를 제시하고, 우리 입장(특히 AI 업계 의견) 반영의 필요성과 국내 규제 도입 시 입법 방향을 제안.",
+        "feature":"ChatGPT 이후 급증한 국제 AI 거버넌스 지형을 폭넓게 총괄. 실무·정책 담당자에게 유용하며 DBpia 이용 상위(Top 5%) 논문.",
+        "brief":"ChatGPT 출시 이후 국가·다자·지역 차원에서 급부상한 AI 거버넌스 논의를 종합적으로 검토·평가한 정책 연구다. OECD의 초기 논의부터 UN 차원(AI 자문기관 '인류를 위한 AI 거버넌스' 중간보고서, 2024년 결의, 글로벌 디지털 협약, UNESCO 권고), G7 히로시마 AI 프로세스와 국제 지도원칙·행동강령, AI에 관한 글로벌 파트너십(GPAI), AI 안전정상회의(Bletchley 선언과 서울 정상회의), 한중일 정상회의, 표준개발기구(SDO)의 표준 논의까지 폭넓게 다룬다. 저자는 각 포럼별로 한국 정부·기관의 대응 과제를 도출하고, 국내 규제 도입 시 AI 업계 의견 수렴과 입법 방향의 필요성을 강조한다. 국제 규제 지형을 한눈에 조망하려는 실무자에게 유용하다."
+      }
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('paper-data').textContent);
+  var papers = DATA.papers.slice();
+  document.getElementById('kw').textContent = DATA.meta.keyword || '';
+  document.getElementById('updated').textContent = DATA.meta.lastUpdated || '';
+  document.getElementById('note').textContent = 'ℹ️ ' + (DATA.meta.note || '');
+
+  var rows = document.getElementById('rows');
+  var empty = document.getElementById('empty');
+  var qBox = document.getElementById('q');
+  var sortBox = document.getElementById('sort');
+  var countBox = document.getElementById('count');
+  var overlay = document.getElementById('overlay');
+  var modal = document.getElementById('modal');
+
+  function yearNum(y){ return parseFloat(String(y).replace(/[^0-9.]/g,'')) || 0; }
+
+  function esc(s){ return String(s==null?'':s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function apply(){
+    var q = qBox.value.trim().toLowerCase();
+    var list = papers.filter(function(p){
+      if(!q) return true;
+      var hay = [p.title,p.authors,p.publisher,p.journal,(p.keywords||[]).join(' ')].join(' ').toLowerCase();
+      return hay.indexOf(q) >= 0;
+    });
+    var s = sortBox.value;
+    list.sort(function(a,b){
+      if(s==='year-desc') return yearNum(b.year)-yearNum(a.year);
+      if(s==='year-asc') return yearNum(a.year)-yearNum(b.year);
+      if(s==='title-asc') return a.title.localeCompare(b.title,'ko');
+      return 0;
+    });
+    render(list);
+  }
+
+  function render(list){
+    countBox.textContent = '총 ' + list.length + '건';
+    if(!list.length){ rows.innerHTML=''; empty.style.display='block'; return; }
+    empty.style.display='none';
+    rows.innerHTML = list.map(function(p){
+      var idx = papers.indexOf(p);
+      return '<tr>'+
+        '<td><span class="t-title" data-i="'+idx+'">'+esc(p.title)+'</span></td>'+
+        '<td>'+esc(p.authors)+'</td>'+
+        '<td class="col-year">'+esc(p.year)+'</td>'+
+        '<td class="col-org">'+esc(p.publisher)+'</td>'+
+        '<td class="col-src"><a class="src" href="'+esc(p.url)+'" target="_blank" rel="noopener">DBpia ↗</a></td>'+
+        '<td><button class="btn" data-i="'+idx+'">상세보기</button></td>'+
+      '</tr>';
+    }).join('');
+  }
+
+  function field(label, val){
+    if(!val) return '';
+    return '<div class="field"><h3>'+label+'</h3><p>'+esc(val)+'</p></div>';
+  }
+
+  function openDetail(i){
+    var p = papers[i]; if(!p) return;
+    var sm = p.summary||{};
+    var chips = (p.keywords||[]).map(function(k){return '<span class="chip">#'+esc(k)+'</span>';}).join('');
+    modal.innerHTML =
+      '<div class="modal-head">'+
+        '<button class="close" id="x">&times;</button>'+
+        '<h2>'+esc(p.title)+'</h2>'+
+        '<div class="modal-sub"><b>'+esc(p.authors)+'</b> · '+esc(p.journal||p.publisher)+' · '+esc(p.year)+'</div>'+
+        (chips?'<div class="chips">'+chips+'</div>':'')+
+      '</div>'+
+      '<div class="modal-body">'+
+        (sm.brief?'<div class="field"><h3>📝 500자 요약</h3><div class="brief"><p>'+esc(sm.brief)+'</p></div></div>':'')+
+        field('🎯 연구목표', sm.goal)+
+        field('🔬 연구방법론', sm.method)+
+        field('🗂️ 데이터', sm.data)+
+        field('🧩 연구모델', sm.model)+
+        field('📊 연구결과', sm.result)+
+        field('✨ 특징', sm.feature)+
+        (p.abstract?'<div class="field"><details class="abs-wrap"><summary>원문 초록 보기</summary><div class="abs">'+esc(p.abstract)+'</div></details></div>':'')+
+      '</div>'+
+      '<div class="modal-foot">'+
+        '<a class="btn" href="'+esc(p.url)+'" target="_blank" rel="noopener">원문(DBpia) 열기 ↗</a>'+
+        '<span class="ai-tag">요약 7개 항목은 초록 기반 AI 생성 · 원문 확인 권장</span>'+
+      '</div>';
+    overlay.classList.add('on');
+    document.getElementById('x').onclick = close;
+  }
+  function close(){ overlay.classList.remove('on'); }
+
+  // events
+  rows.addEventListener('click', function(e){
+    var t = e.target.closest('[data-i]');
+    if(t){ openDetail(parseInt(t.getAttribute('data-i'),10)); }
+  });
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+  qBox.addEventListener('input', apply);
+  sortBox.addEventListener('change', apply);
+  document.querySelectorAll('thead th[data-sort]').forEach(function(th){
+    th.addEventListener('click', function(){
+      var key = th.getAttribute('data-sort');
+      if(key==='year'){ sortBox.value = (sortBox.value==='year-desc'?'year-asc':'year-desc'); }
+      else if(key==='title'){ sortBox.value='title-asc'; }
+      apply();
+    });
+  });
+
+  // ===== [갱신] : 원본 papers.json에서 신규 논문 병합 =====
+  var refreshBtn = document.getElementById('refresh');
+  var refreshMsg = document.getElementById('refreshMsg');
+  var filePick = document.getElementById('filePick');
+  var dropInfo = document.getElementById('dropInfo');
+
+  function showMsg(text, warn){
+    refreshMsg.textContent = text;
+    refreshMsg.className = 'refresh-msg' + (warn?' warn':'');
+    refreshMsg.style.display = 'block';
+  }
+
+  function mergeData(incoming){
+    var have = {};
+    papers.forEach(function(p){ have[p.id||p.url] = true; });
+    var added = 0;
+    (incoming.papers||[]).forEach(function(p){
+      var key = p.id||p.url;
+      if(!have[key]){ papers.push(p); have[key]=true; added++; }
+    });
+    if(incoming.meta && incoming.meta.lastUpdated){
+      document.getElementById('updated').textContent = incoming.meta.lastUpdated;
+    }
+    apply();
+    if(added>0){
+      showMsg('✅ 갱신 완료 · 신규 '+added+'건 추가 (전체 '+papers.length+'건)', false);
+      dropInfo.style.display='none';
+    } else {
+      showMsg('ℹ️ 신규 논문이 없습니다. 현재 최신 상태입니다. (전체 '+papers.length+'건)', false);
+    }
+  }
+
+  function tryFetch(){
+    showMsg('원본 데이터(papers.json)를 확인하는 중…', false);
+    fetch('papers.json?ts='+Date.now())
+      .then(function(r){ if(!r.ok) throw new Error('not ok'); return r.json(); })
+      .then(function(d){ mergeData(d); })
+      .catch(function(){
+        // file:// 환경에서는 브라우저 보안정책상 자동 읽기가 막힘 → 파일 선택으로 대체
+        showMsg('브라우저 보안정책으로 papers.json 자동 읽기가 제한되었습니다. 아래에서 papers.json 파일을 직접 선택해 주세요.', true);
+        dropInfo.innerHTML = '📂 같은 폴더의 <b>papers.json</b> 파일을 선택하면 화면에 없던 신규 논문이 목록에 합쳐집니다.';
+        dropInfo.style.display='block';
+        filePick.click();
+      });
+  }
+
+  refreshBtn.addEventListener('click', tryFetch);
+  filePick.addEventListener('change', function(e){
+    var f = e.target.files && e.target.files[0];
+    if(!f) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{ mergeData(JSON.parse(reader.result)); }
+      catch(err){ showMsg('파일을 읽지 못했습니다. 올바른 papers.json인지 확인해 주세요.', true); }
+    };
+    reader.readAsText(f, 'utf-8');
+    filePick.value='';
+  });
+
+  apply();
+})();
+</script>
+</body>
+</html>
