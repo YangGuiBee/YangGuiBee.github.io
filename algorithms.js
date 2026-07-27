@@ -10071,13 +10071,66 @@ function countBy(catKey, subKey) {
   return ALGORITHMS.filter(a => a.category === catKey && (subKey == null || a.subcategory === subKey)).length;
 }
 
+/* ── 개념도: AI ⊃ ML ⊃ (지도·비지도·강화학습 3개 원) + 딥러닝·앙상블 크로스밴드 ── */
+/* 원·밴드 개수는 실제 ALGORITHMS 데이터에서 계산 (지도·비지도·강화학습 = 대분류 전체, 딥러닝 = 비지도학습>신경망 기반, 앙상블 = 앙상블 대분류 전체) */
+const DIAGRAM_W = 880, DIAGRAM_H = 560;
+const OUTER_RINGS = [
+  { key: 'ml', label: 'ML', cx: 440, cy: 270, rx: 252, ry: 223 },
+  { key: 'ai', label: 'AI', cx: 440, cy: 270, rx: 307, ry: 258 }
+];
+const DIAGRAM_CIRCLES = [
+  { key: 'sup',   label: '지도학습',   cx: 440, cy: 210, r: 130, color: '#006633', labelPos: { x: 380, y: 155 } },
+  { key: 'unsup', label: '비지도학습', cx: 345, cy: 330, r: 112, color: '#0f766e', labelPos: { x: 345, y: 400 } },
+  { key: 'rl',    label: '강화학습',   cx: 535, cy: 330, r: 112, color: '#7c3aed', labelPos: { x: 535, y: 400 } }
+];
+const DIAGRAM_BANDS = [
+  { key: 'deep',     label: '딥러닝', cx: 440, cy: 261, rx: 207, ry: 36,  color: '#2563eb', labelPos: { x: 500, y: 261 },
+    count: () => countBy('unsup', 'neural') },
+  { key: 'ensemble', label: '앙상블', cx: 440, cy: 261, rx: 36,  ry: 181, color: '#b45309', labelPos: { x: 440, y: 330 },
+    count: () => countBy('ensemble') }
+];
+
+function renderDiagram() {
+  const wrap = document.getElementById('algoDiagramWrap');
+  if (!wrap) return;
+  const ringShapes = OUTER_RINGS.map(o => `
+    <ellipse cx="${o.cx}" cy="${o.cy}" rx="${o.rx}" ry="${o.ry}" fill="none" stroke="#aab5ac" stroke-width="1.5" />
+    <text x="${o.cx}" y="${o.cy - o.ry + 22}" text-anchor="middle" font-size="13" font-weight="800" fill="#8a978c">${o.label}</text>
+  `).join('');
+  const shapes = [
+    ringShapes,
+    ...DIAGRAM_CIRCLES.map(c => `<circle cx="${c.cx}" cy="${c.cy}" r="${c.r}" fill="${c.color}" fill-opacity="0.13" stroke="${c.color}" stroke-opacity="0.5" stroke-width="2"/>`),
+    ...DIAGRAM_BANDS.map(b => `<ellipse cx="${b.cx}" cy="${b.cy}" rx="${b.rx}" ry="${b.ry}" fill="${b.color}" fill-opacity="0.1" stroke="${b.color}" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="7 5"/>`)
+  ].join('');
+
+  const circleLabels = DIAGRAM_CIRCLES.map(c => `
+    <button class="algo-diagram-label" style="left:${(c.labelPos.x / DIAGRAM_W * 100).toFixed(1)}%; top:${(c.labelPos.y / DIAGRAM_H * 100).toFixed(1)}%; --clr:${c.color};"
+      data-cat="${c.key}">${c.label} <span class="algo-diagram-count">${countBy(c.key)}</span></button>
+  `).join('');
+
+  const bandLabels = DIAGRAM_BANDS.map(b => `
+    <button class="algo-diagram-label algo-diagram-label-band" style="left:${(b.labelPos.x / DIAGRAM_W * 100).toFixed(1)}%; top:${(b.labelPos.y / DIAGRAM_H * 100).toFixed(1)}%; --clr:${b.color};"
+      data-band="${b.key}">${b.label} <span class="algo-diagram-count">${b.count()}</span></button>
+  `).join('');
+
+  wrap.innerHTML = `
+    <svg viewBox="0 0 ${DIAGRAM_W} ${DIAGRAM_H}" class="algo-diagram-svg" preserveAspectRatio="xMidYMid meet">${shapes}</svg>
+    <div class="algo-diagram-labels">${circleLabels}${bandLabels}</div>
+  `;
+
+  wrap.querySelectorAll('.algo-diagram-label[data-cat]').forEach(btn => {
+    btn.addEventListener('click', () => { navCat = btn.dataset.cat; navSub = null; render(); });
+  });
+  wrap.querySelector('[data-band="ensemble"]')?.addEventListener('click', () => { navCat = 'ensemble'; navSub = null; render(); });
+  wrap.querySelector('[data-band="deep"]')?.addEventListener('click', () => { navCat = 'unsup'; navSub = 'neural'; render(); });
+}
+
 function renderBreadcrumb() {
   const wrap = document.getElementById('algoBreadcrumb');
   const cat = CATS.find(c => c.key === navCat);
   const sub = cat?.subs.find(s => s.key === navSub);
-  let html = navCat == null
-    ? `<span class="crumb current">전체</span>`
-    : `<button class="crumb" data-goto="top">전체</button>`;
+  if (navCat == null) { wrap.innerHTML = ''; return; }
+  let html = `<button class="crumb" data-goto="top">전체</button>`;
   if (cat) {
     html += `<span class="sep">/</span>`;
     html += navSub == null
@@ -10094,6 +10147,7 @@ function renderNavGrid() {
   const grid = document.getElementById('algoNavGrid');
   if (navCat == null) {
     grid.hidden = false;
+    grid.classList.add('algo-nav-grid--top');
     grid.innerHTML = CATS.map(c => `
       <div class="algo-nav-card cat-${c.key}" data-cat="${c.key}">
         <div class="algo-nav-icon">
@@ -10109,6 +10163,7 @@ function renderNavGrid() {
   const cat = CATS.find(c => c.key === navCat);
   if (navSub == null) {
     grid.hidden = false;
+    grid.classList.remove('algo-nav-grid--top');
     grid.innerHTML = cat.subs.map(s => `
       <div class="algo-nav-card cat-${cat.key}" data-sub="${s.key}">
         <div class="algo-nav-icon">
@@ -10214,11 +10269,17 @@ function renderAlgorithms() {
 function render() {
   const searching = (document.getElementById('algoSearch')?.value || '').trim().length > 0;
   document.getElementById('algoBreadcrumb').hidden = searching;
+  const diagramWrap = document.getElementById('algoDiagramWrap');
   if (searching) {
     document.getElementById('algoNavGrid').hidden = true;
+    if (diagramWrap) diagramWrap.hidden = true;
   } else {
     renderBreadcrumb();
     renderNavGrid();
+    if (diagramWrap) {
+      diagramWrap.hidden = navCat != null;
+      if (navCat == null) renderDiagram();
+    }
   }
   renderAlgorithms();
 }
@@ -10241,7 +10302,7 @@ document.getElementById('algoBreadcrumb').addEventListener('click', e => {
 
 document.getElementById('algoSearch').addEventListener('input', render);
 
-/* ── 딥링크: library.html?id=... 에서 넘어온 경우 해당 알고리즘 카드로 바로 진입 ── */
+/* ── 딥링크: ?id=... 쿼리스트링으로 들어온 경우 해당 알고리즘 카드로 바로 진입 ── */
 const deepLinkId = new URLSearchParams(location.search).get('id');
 const deepLinkAlgo = deepLinkId ? ALGORITHMS.find(a => a.id === deepLinkId) : null;
 if (deepLinkAlgo) { navCat = deepLinkAlgo.category; navSub = deepLinkAlgo.subcategory; }
