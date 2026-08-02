@@ -114,6 +114,18 @@
 
 .nav-links a.active { color: var(--accent); background: rgba(0,102,51,0.1); }
 
+/* 모바일: 폭에 맞춰 축소하면 글자가 안 보이므로, 원래 크기로 렌더링하고
+   좌우·상하로 스크롤(팬)해서 보게 한다 — 확대는 포기하고 탐색 가능하게 */
+.map-overview-hint { display: none; }
+@media (max-width: 640px) {
+  #mapOverview { max-height: 280px; overflow: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+  #mapOverview svg { width: 1920px; max-width: none; height: 530px; }
+  .map-overview-hint {
+    display: block; text-align: center; font-size: 0.7rem; color: var(--text-dim);
+    margin: 0.5rem 0 0;
+  }
+}
+
 @media (max-width: 480px) {
   .page-hero { padding: 82px 1rem 12px; }
   .map-section { padding: 1.5rem 1rem 70px; }
