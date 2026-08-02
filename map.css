@@ -118,8 +118,15 @@
    좌우·상하로 스크롤(팬)해서 보게 한다 — 확대는 포기하고 탐색 가능하게 */
 .map-overview-hint { display: none; }
 @media (max-width: 640px) {
-  #mapOverview { max-height: 280px; overflow: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+  #mapOverview {
+    max-height: 280px; overflow: auto; -webkit-overflow-scrolling: touch; border-radius: 8px;
+    scrollbar-width: thin; scrollbar-color: rgba(0,102,51,0.3) transparent;
+  }
   #mapOverview svg { width: 1920px; max-width: none; height: 530px; }
+  #mapOverview::-webkit-scrollbar { width: 6px; height: 6px; }
+  #mapOverview::-webkit-scrollbar-track { background: transparent; }
+  #mapOverview::-webkit-scrollbar-thumb { background: rgba(0,102,51,0.3); border-radius: 99px; }
+  #mapOverview::-webkit-scrollbar-thumb:hover { background: rgba(0,102,51,0.5); }
   .map-overview-hint {
     display: block; text-align: center; font-size: 0.7rem; color: var(--text-dim);
     margin: 0.5rem 0 0;
