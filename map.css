@@ -16,12 +16,12 @@
 .page-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
 
 /* ── MAP SECTION ── */
-.map-section { padding: 2rem 2rem 100px; }
+.map-section { padding: 2rem 2rem 50px; }
 .map-wrap { max-width: 620px; margin: 0 auto; }
 
 /* 전체 지도(개요) — nav 바로 아래 고정되어 스크롤해도 계속 보임 */
 .map-overview-wrap {
-  max-width: 960px; margin: 0 auto 1.25rem;
+  max-width: 1800px; margin: 0 auto 1.25rem;
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 14px; padding: 0.6rem 1.25rem;
   position: sticky; top: 64px; z-index: 10;
@@ -56,14 +56,14 @@
 /* 현재 질문 카드 */
 .map-question {
   background: var(--surface); border: 1.5px solid rgba(0,102,51,0.3);
-  border-radius: 18px; padding: 2rem 1.75rem; text-align: center;
+  border-radius: 18px; padding: 1.25rem 1.75rem; text-align: center;
   box-shadow: 0 8px 28px rgba(0,0,0,0.06);
 }
 .map-question-label {
   font-size: 0.7rem; font-weight: 700; color: #006633;
-  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem;
 }
-.map-question-text { font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.5; margin-bottom: 1.5rem; }
+.map-question-text { font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.25; margin-bottom: 0.85rem; }
 .map-btn-row { display: flex; gap: 0.75rem; justify-content: center; }
 .map-btn {
   flex: 1; max-width: 160px; padding: 0.75rem 1rem; border-radius: 10px;

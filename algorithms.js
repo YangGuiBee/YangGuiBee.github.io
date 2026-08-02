@@ -10302,10 +10302,19 @@ document.getElementById('algoBreadcrumb').addEventListener('click', e => {
 
 document.getElementById('algoSearch').addEventListener('input', render);
 
-/* ── 딥링크: ?id=... 쿼리스트링으로 들어온 경우 해당 알고리즘 카드로 바로 진입 ── */
-const deepLinkId = new URLSearchParams(location.search).get('id');
+/* ── 딥링크: ?id=... 는 해당 알고리즘 카드로, ?cat=..&sub=.. 는 그 세부분류 목록으로 바로 진입 (map.html에서 연결) ── */
+const deepLinkParams = new URLSearchParams(location.search);
+const deepLinkId = deepLinkParams.get('id');
 const deepLinkAlgo = deepLinkId ? ALGORITHMS.find(a => a.id === deepLinkId) : null;
-if (deepLinkAlgo) { navCat = deepLinkAlgo.category; navSub = deepLinkAlgo.subcategory; }
+if (deepLinkAlgo) {
+  navCat = deepLinkAlgo.category; navSub = deepLinkAlgo.subcategory;
+} else {
+  const deepLinkCat = deepLinkParams.get('cat'), deepLinkSub = deepLinkParams.get('sub');
+  if (deepLinkCat && CATS.some(c => c.key === deepLinkCat)) {
+    navCat = deepLinkCat;
+    if (deepLinkSub && CATS.find(c => c.key === deepLinkCat).subs.some(s => s.key === deepLinkSub)) navSub = deepLinkSub;
+  }
+}
 
 render();
 
