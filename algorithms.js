@@ -10066,6 +10066,8 @@ const ALGORITHMS = [
 /* ── 내비게이션 상태: 검색 중이 아니면 대분류 → 세부분류 → 알고리즘 순으로 드릴다운 ── */
 let navCat = null;
 let navSub = null;
+/* ?ids=a,b,c 딥링크로 들어온 경우 지정된 알고리즘들만 보여준다 (mapall.html의 family 리프에서 사용) */
+let idsFilter = null;
 
 function countBy(catKey, subKey) {
   return ALGORITHMS.filter(a => a.category === catKey && (subKey == null || a.subcategory === subKey)).length;
@@ -10207,7 +10209,7 @@ function renderAlgorithms() {
   const keyword = (document.getElementById('algoSearch')?.value || '').trim().toLowerCase();
 
   const searching = keyword.length > 0;
-  const showList = searching || (navCat != null && navSub != null);
+  const showList = searching || idsFilter != null || (navCat != null && navSub != null);
 
   list.hidden = !showList;
   if (!showList) { empty.hidden = true; return; }
@@ -10215,6 +10217,9 @@ function renderAlgorithms() {
   let filtered = ALGORITHMS;
   if (searching) {
     filtered = filtered.filter(a => a.title.toLowerCase().includes(keyword) || a.subtitle.toLowerCase().includes(keyword));
+  } else if (idsFilter) {
+    const byId = new Map(ALGORITHMS.map(a => [a.id, a]));
+    filtered = idsFilter.map(id => byId.get(id)).filter(Boolean);
   } else {
     filtered = filtered.filter(a => a.category === navCat && a.subcategory === navSub);
   }
@@ -10267,7 +10272,7 @@ function renderAlgorithms() {
 }
 
 function render() {
-  const searching = (document.getElementById('algoSearch')?.value || '').trim().length > 0;
+  const searching = (document.getElementById('algoSearch')?.value || '').trim().length > 0 || idsFilter != null;
   document.getElementById('algoBreadcrumb').hidden = searching;
   const diagramWrap = document.getElementById('algoDiagramWrap');
   if (searching) {
@@ -10309,10 +10314,15 @@ const deepLinkAlgo = deepLinkId ? ALGORITHMS.find(a => a.id === deepLinkId) : nu
 if (deepLinkAlgo) {
   navCat = deepLinkAlgo.category; navSub = deepLinkAlgo.subcategory;
 } else {
-  const deepLinkCat = deepLinkParams.get('cat'), deepLinkSub = deepLinkParams.get('sub');
-  if (deepLinkCat && CATS.some(c => c.key === deepLinkCat)) {
-    navCat = deepLinkCat;
-    if (deepLinkSub && CATS.find(c => c.key === deepLinkCat).subs.some(s => s.key === deepLinkSub)) navSub = deepLinkSub;
+  const deepLinkIds = deepLinkParams.get('ids');
+  if (deepLinkIds) {
+    idsFilter = deepLinkIds.split(',').map(s => s.trim()).filter(Boolean);
+  } else {
+    const deepLinkCat = deepLinkParams.get('cat'), deepLinkSub = deepLinkParams.get('sub');
+    if (deepLinkCat && CATS.some(c => c.key === deepLinkCat)) {
+      navCat = deepLinkCat;
+      if (deepLinkSub && CATS.find(c => c.key === deepLinkCat).subs.some(s => s.key === deepLinkSub)) navSub = deepLinkSub;
+    }
   }
 }
 

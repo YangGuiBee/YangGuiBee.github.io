@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI알고리즘 — AI Study</title>
+  <title>전체 모델 맵 — AI Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="algorithms.css?v=202608040632" />
+  <link rel="stylesheet" href="map.css?v=202608040632" />
+  <link rel="stylesheet" href="mapall.css?v=202608040632" />
   <!-- Google Analytics 4 — G-36JYMFZV2W를 실제 측정 ID로 교체하세요 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-36JYMFZV2W"></script>
   <script>
@@ -29,7 +30,7 @@
         <li><a href="resources.html">자료실</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="news.html">AI논문</a></li>
-        <li><a href="algorithms.html" class="active">AI알고리즘</a></li>
+        <li><a href="algorithms.html">AI알고리즘</a></li>
         <li><a href="map.html">모델 맵</a></li>
       </ul>
       <a href="contact.html" class="nav-cta">강의 문의</a>
@@ -40,43 +41,27 @@
 
   <section class="page-hero">
     <div class="page-hero-inner">
-      <h1 class="page-title">AI알고리즘 교과서</h1>
+      <h1 class="page-title">전체 모델 맵</h1>
+      <p class="page-desc">557개 알고리즘 전체를 대상으로 한 확장판 — 유사 알고리즘군(family) 단위로 안내합니다.</p>
     </div>
     <div class="bg-grid"></div>
     <div class="bg-blob blob-1"></div>
   </section>
 
-  <section class="algo-section">
-    <div class="algo-wrap">
+  <section class="map-section">
+    <div class="map-overview-wrap">
+      <div id="mapOverview"></div>
+      <p class="map-overview-hint">← 좌우·상하로 밀어서 전체 지도를 확인하세요 →</p>
+    </div>
 
-      <!-- 검색 -->
-      <div class="algo-search-wrap">
-        <svg class="algo-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="algoSearch" class="algo-search-input" placeholder="알고리즘 이름으로 검색..." />
-      </div>
-
-      <!-- 브레드크럼 -->
-      <div class="algo-breadcrumb" id="algoBreadcrumb"></div>
-
-      <!-- 분류 카드 (대분류 → 세부분류 단계별로 JS가 렌더링) -->
-      <div class="algo-nav-grid" id="algoNavGrid"></div>
-
-      <!-- 개념도: AI ⊃ ML ⊃ (지도/비지도/강화학습) + 딥러닝·앙상블 크로스밴드 (최상위 화면에서만 표시) -->
-      <div class="algo-diagram-wrap" id="algoDiagramWrap"></div>
-
-      <!-- 알고리즘 카드 목록 (세부분류 진입 시 또는 검색 시) -->
-      <div class="algo-list" id="algoList"></div>
-
-      <!-- 빈 상태 -->
-      <div class="algo-empty" id="algoEmpty" hidden>
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <p>검색 결과가 없습니다.</p>
-      </div>
-
+    <div class="map-wrap">
+      <div class="map-trail" id="mapTrail"></div>
+      <div class="map-stage" id="mapStage"></div>
+      <div class="map-actions" id="mapActions"></div>
     </div>
   </section>
 
-  <script src="algorithms.js?v=202608040632"></script>
+  <script src="mapall.js?v=202608040632"></script>
   <script src="nav.js"></script>
 </body>
 </html>
