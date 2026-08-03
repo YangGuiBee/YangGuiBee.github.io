@@ -1,0 +1,43 @@
+/* ── 전체 모델 맵(557개) 전용 스타일 — map.css를 베이스로 쓰고 크기·확대축소 관련 규칙만 오버라이드 ── */
+/* 트리가 map.html보다 훨씬 커질 수 있어, 컨테이너 폭에 맞춰 자동 축소하는 대신
+   JS가 계산한 줌 배율(zoom)로 SVG의 실제 픽셀 크기를 직접 제어한다.
+   +/− 버튼으로 확대·축소하고, 확대된 영역은 .map-ov-scroll에서 스크롤로 탐색한다. */
+
+/* 트리가 커질수록 map.css의 position:sticky가 화면 전체를 뒤덮어 질문 상자를 밀어내므로
+   고정을 풀고, 대신 다이어그램 상자 자체의 높이를 고정해 내부에서만 스크롤·줌 하게 한다 */
+.map-overview-wrap { position: static; top: auto; }
+#mapOverview { position: relative; width: 100%; overflow: visible; }
+.map-ov-scroll {
+  width: 100%; max-height: min(58vh, 560px); overflow: auto; border-radius: 8px;
+  scrollbar-width: thin; scrollbar-color: rgba(0,102,51,0.3) transparent;
+}
+.map-ov-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.map-ov-scroll::-webkit-scrollbar-track { background: transparent; }
+.map-ov-scroll::-webkit-scrollbar-thumb { background: rgba(0,102,51,0.3); border-radius: 99px; }
+.map-ov-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0,102,51,0.5); }
+
+#mapOverview svg { display: block; width: auto; height: auto; max-width: none; }
+
+/* 확대/축소 컨트롤 — 다이어그램 우하단에 떠 있는 작은 툴바 */
+.map-ov-zoom {
+  position: absolute; right: 0.5rem; bottom: 0.5rem; z-index: 5;
+  display: flex; align-items: center; gap: 0.3rem;
+  background: var(--surface); border: 1px solid var(--border-hi);
+  border-radius: 99px; padding: 0.25rem 0.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.map-ov-zoom-btn {
+  width: 26px; height: 26px; border-radius: 50%; border: none;
+  background: var(--surface2); color: var(--text); font-size: 1rem; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.map-ov-zoom-btn:hover { background: rgba(0,102,51,0.15); color: #006633; }
+.map-ov-zoom-fit { width: auto; padding: 0 0.6rem; border-radius: 99px; font-size: 0.7rem; font-weight: 600; }
+.map-ov-zoom-label {
+  font-size: 0.68rem; font-weight: 700; color: var(--text-dim);
+  min-width: 34px; text-align: center; user-select: none;
+}
+
+.page-desc { margin-top: 0.3rem; }
