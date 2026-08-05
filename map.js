@@ -1040,10 +1040,10 @@ function computeLayout() {
 
 /* ── 짧은 라벨 (개요도 노드 텍스트) ── */
 const NODE_SHORT = {
-  q1: '보상학습?', rl1: '모델 알고?', rl2: '모델 제공?', rl_vp: '정책 출력?',
+  q1: '보상학습?', rl1: '모델 인지?', rl2: '모델 제공?', rl_vp: '정책 출력?',
   rl_mbg: 'MCTS?', rl_mbl1: '규칙 필요?', rl_mbl2: '보조입력?', rl_mbl3: '2단계?',
   rl_mbl4: '가치확장?', rl_mbl5: '앙상블모델?', rl_mbl6: '정책학습?', rl_mbl7: '단계분리?',
-  rl_pol1: '모방학습?', rl_pol2: '크리틱없음?', rl_pol3: '결정적?', rl_pol4: '시연활용?',
+  rl_pol1: '모방학습?', rl_pol2: 'Critic없음?', rl_pol3: '결정적?', rl_pol4: '시연활용?',
   rl_pol5: '트윈크리틱?', rl_pol6: '엔트로피?', rl_pol7: '신뢰영역?', rl_pol8: '2차최적화?',
   rl_pol9: '자연경사?', rl_pol10: '오프폴리시?', rl_pol11: '대규모분산?', rl_pol12: '경험재현?',
   rl_pol13: '병렬환경?',
