@@ -140,3 +140,77 @@
   .map-btn-row { flex-direction: column; }
   .map-btn { max-width: none; }
 }
+
+/* ══════ 557개 전체 트리 확장 규칙 ══════
+   트리가 훨씬 커져 컨테이너 폭에 맞춰 자동 축소하는 대신, JS가 계산한 줌 배율(zoom)로
+   SVG의 실제 픽셀 크기를 직접 제어한다. +/− 버튼으로 확대·축소하고,
+   확대된 영역은 .map-ov-scroll에서 스크롤로 탐색한다.
+   트리가 커질수록 기존 position:sticky가 화면 전체를 뒤덮어 질문 상자를 밀어내므로
+   고정을 풀고, 다이어그램 상자 자체의 높이를 고정해 내부에서만 스크롤·줌 하게 한다. */
+.map-overview-wrap { position: static; top: auto; padding: 0.5rem 1rem; margin: 0 auto 0.5rem; }
+#mapOverview { position: relative; width: 100%; overflow: visible; }
+.map-ov-scroll {
+  width: 100%; max-height: min(58vh, 560px); overflow: auto; border-radius: 8px;
+  scrollbar-width: thin; scrollbar-color: rgba(0,102,51,0.3) transparent;
+  transition: max-height 0.2s;
+}
+/* 결과(리프) 카드는 질문 카드보다 키가 커서, 그만큼 다이어그램 쪽 높이를 줄여 균형을 맞춘다 */
+#mapOverview.is-leaf .map-ov-scroll { max-height: min(38vh, 380px); }
+.map-ov-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.map-ov-scroll::-webkit-scrollbar-track { background: transparent; }
+.map-ov-scroll::-webkit-scrollbar-thumb { background: rgba(0,102,51,0.3); border-radius: 99px; }
+.map-ov-scroll::-webkit-scrollbar-thumb:hover { background: rgba(0,102,51,0.5); }
+#mapOverview svg { display: block; width: auto; height: auto; max-width: none; }
+
+/* 확대/축소 컨트롤 — 다이어그램 우하단에 떠 있는 작은 툴바 */
+.map-ov-zoom {
+  position: absolute; right: 0.5rem; bottom: 0.5rem; z-index: 5;
+  display: flex; align-items: center; gap: 0.3rem;
+  background: var(--surface); border: 1px solid var(--border-hi);
+  border-radius: 99px; padding: 0.25rem 0.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.map-ov-zoom-btn {
+  width: 26px; height: 26px; border-radius: 50%; border: none;
+  background: var(--surface2); color: var(--text); font-size: 1rem; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.map-ov-zoom-btn:hover { background: rgba(0,102,51,0.15); color: #006633; }
+.map-ov-zoom-fit { width: auto; padding: 0 0.6rem; border-radius: 99px; font-size: 0.7rem; font-weight: 600; }
+.map-ov-zoom-label {
+  font-size: 0.68rem; font-weight: 700; color: var(--text-dim);
+  min-width: 34px; text-align: center; user-select: none;
+}
+
+/* 트리가 커서 화면 대부분을 차지하다 보니 질문 상자가 화면 밖으로 밀려나므로,
+   다이어그램 자체 크기는 유지한 채 그 위쪽 여백만 좁혀 질문 상자가 한 화면에 들어오게 한다.
+   nav가 position:fixed(약 65px)라 그 아래로는 절대 줄이면 안 되어 74px→70px로만 소폭 축소 */
+.page-hero { padding: 70px 2rem 4px; }
+.page-desc { margin-top: 0.3rem; }
+.map-section { padding: 0.5rem 2rem 50px; }
+
+/* 지나온 경로(trail)가 길어질수록 줄바꿈되어 아래 질문/결과 상자를 밀어내므로,
+   태그 자체와 상자 내부 여백을 좁혀 트리가 깊어져도 화면 밖으로 밀리는 폭을 줄인다 */
+.map-trail { margin-bottom: 0.4rem; gap: 0.3rem; }
+.map-trail-step { padding: 0.22rem 0.55rem; font-size: 0.7rem; }
+.map-trail-a { padding: 0.02rem 0.4rem; font-size: 0.62rem; }
+
+.map-question { padding: 0.75rem 1.25rem; }
+.map-question-label { margin-bottom: 0.2rem; }
+.map-question-text { margin-bottom: 0.5rem; line-height: 1.2; }
+.map-btn-row { gap: 0.5rem; }
+.map-btn { padding: 0.55rem 0.9rem; }
+
+.map-result { padding: 1rem 1.25rem; }
+.map-result-label { margin-bottom: 0.5rem; }
+.map-result-title { margin-bottom: 0.35rem; }
+.map-result-reason { margin-bottom: 0.75rem; line-height: 1.5; }
+
+.map-actions { margin-top: 0.75rem; }
+
+@media (max-width: 640px) {
+  .page-hero { padding: 78px 1rem 6px; }
+  .map-section { padding: 0.5rem 1rem 70px; }
+}
