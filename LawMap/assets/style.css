@@ -164,6 +164,18 @@ p.sec-desc{color:var(--sub);font-size:14px;margin:4px 0 12px}
 .art .head a.num{cursor:pointer}
 .art .head a.num:hover{filter:brightness(1.15)}
 
+/* article card full-text toggle (reuses .wf-detail-law-* classes for the expanded body) */
+.art-toggle{
+  display:inline-flex;align-items:center;gap:4px;margin-top:8px;
+  background:none;border:none;padding:0;cursor:pointer;font:inherit;
+  font-size:12.5px;font-weight:600;color:var(--blue);
+}
+.art-toggle:hover{text-decoration:underline}
+.art-full{
+  margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);
+  font-size:12.8px;color:var(--ink);line-height:1.65;
+}
+
 /* workflow swimlane grid (grid + SVG overlay so arrows can connect nodes) */
 .wf-scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:8px;margin:0 24px;box-sizing:border-box}
 .wf-grid-wrap{position:relative}
@@ -254,6 +266,8 @@ p.sec-desc{color:var(--sub);font-size:14px;margin:4px 0 12px}
 .wf-detail-law-para{margin:6px 0}
 .wf-detail-law-items{margin:2px 0 6px;padding-left:18px}
 .wf-detail-law-items li{margin:2px 0}
+.wf-detail-law-subitems{margin:2px 0 4px;padding-left:16px;color:var(--sub)}
+.wf-detail-law-subitems li{margin:2px 0;font-size:12.3px}
 .wf-detail-law-missing{color:var(--sub);font-size:12.5px;margin:0}
 .wf-detail-law-ext{display:inline-block;margin-top:8px;font-size:11.5px;color:var(--sub)}
 .wf-detail-law-ext:hover{color:var(--blue);text-decoration:underline}
