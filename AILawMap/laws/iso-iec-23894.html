@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO/IEC 23894 · LawMap</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">AI 관련 법 지도</a>
+    <nav class="site-nav">
+      <a href="ai-basic-act.html">인공지능기본법</a>
+    <a href="https://www.law.go.kr/LSW/main.html" target="_blank" rel="noopener" class="lawgokr-link">국가법령정보시스템</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>ISO/IEC 23894:2023 (AI 위험관리 지침)</h1>
+    <p class="lead">
+      AI 시스템 개발ㆍ제공ㆍ이용 조직이 위험관리를 수행하기 위한 지침(Guidance) 표준입니다. 인증 요구사항이
+      아니라 ISO 31000(위험관리 일반원칙)을 AI에 특화해 확장한 안내문서로, 원칙(절4)ㆍ프레임워크(절5)ㆍ
+      프로세스(절6) 3단 구조를 따릅니다. <strong>유료 표준문서이므로 이 페이지는 원문을 인용하지 않고 공개된
+      요약정보로만 구성했습니다.</strong>
+    </p>
+    <div class="tags">
+      <span class="tag">ISO/IEC 23894:2023</span>
+      <span class="tag">발행 2023-02-08</span>
+      <span class="tag">유료 표준문서(원문 비공개)</span>
+      <span class="tag">소관 ISO/IEC JTC 1/SC 42</span>
+      <span class="tag">지침(Guidance)ㆍ인증대상 아님</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">1</span>구성</h2>
+    <p class="sec-desc">
+      이 표준은 절 4(원칙)ㆍ절 5(프레임워크)ㆍ절 6(프로세스) 3단 구조로 구성됩니다. 배지를 클릭하면 ISO 공식
+      표준 소개 페이지로 이동합니다.
+    </p>
+  </div>
+
+  <div class="chapter-flow">
+    <a class="ch" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener"><div class="no">절 4 · 원칙(Principles)</div><h4>AI 특화 위험관리 원칙</h4><p>ISO 31000 8원칙 + AI특화 5원칙(포용성ㆍ동적대응ㆍ최선의가용정보ㆍ인간및문화적요인ㆍ지속적개선)</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener"><div class="no">절 5 · 프레임워크(Framework)</div><h4>리더십ㆍ설계ㆍ이행ㆍ평가ㆍ개선</h4><p></p></a>
+    <div class="arrow">→</div>
+    <a class="ch ai-note" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener"><div class="no">절 6 · 프로세스(Processes)</div><h4>위험관리 프로세스</h4><p>소통협의, 범위맥락기준설정, 위험평가(식별ㆍ분석ㆍ평가), 위험처리, 모니터링검토, 기록보고</p></a>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">2</span>위험관리 절차 구조도</h2>
+    <p class="sec-desc">
+      이 표준은 인허가 절차가 아니라 조직이 반복 운영하는 위험관리 프로세스 지침입니다. 그래서 아래 그리드는
+      원칙과 프레임워크가 감싸는 가운데, ISO 31000의 소통협의→범위맥락기준설정→위험평가(식별ㆍ분석ㆍ평가)→
+      위험처리→모니터링검토→기록보고로 이어지는 프로세스를 3개 주체 × 7단계로 정리한 것입니다.
+    </p>
+  </div>
+
+  <div class="wf-scroll">
+    <div class="wf-grid-wrap" id="wfGridWrap">
+      <svg class="wf-arrows" id="wfArrows">
+        <defs>
+          <marker id="wf-arrow" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+          <marker id="wf-arrow-loop" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+        </defs>
+      </svg>
+      <div class="wf-grid">
+        <div class="wf-corner-head">주체 / 단계</div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G0</span><span class="wf-lane-sub">원칙(Principles)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G1</span><span class="wf-lane-sub">프레임워크(리더십ㆍ의지)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G2</span><span class="wf-lane-sub">소통ㆍ협의</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G3</span><span class="wf-lane-sub">범위ㆍ맥락ㆍ기준 설정</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G4</span><span class="wf-lane-sub">위험평가(식별ㆍ분석ㆍ평가)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G5</span><span class="wf-lane-sub">위험처리</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G6</span><span class="wf-lane-sub">모니터링ㆍ검토ㆍ기록ㆍ보고</span></div>
+        <div class="wf-gate-cell">조직ㆍ리더십(Leadership)</div>
+        <div class="wf-cell"><div class="wf-node" id="P01"><div class="wf-node-top"><span class="pcode">P01</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 4</a></div><span class="t">AI특화 위험관리 원칙(포용성ㆍ동적대응ㆍ최선의가용정보ㆍ인간및문화적요인ㆍ지속적개선)</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P02"><div class="wf-node-top"><span class="pcode">P02</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 5</a></div><span class="t">리더십과 의지 표명, 위험관리체계의 설계ㆍ이행ㆍ평가ㆍ개선</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">위험관리 실무팀(Risk Management Team)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P04"><div class="wf-node-top"><span class="pcode">P04</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.3</a></div><span class="t">범위ㆍ맥락ㆍ기준 설정</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P05"><div class="wf-node-top"><span class="pcode">P05</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.4-1</a></div><span class="t">위험식별 — AI 생애주기 전반의 위험원 파악</span></div><div class="wf-node ai-note" id="P06"><div class="wf-node-top"><span class="pcode">P06</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.4-2</a></div><span class="t">위험분석 및 평가</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P07"><div class="wf-node-top"><span class="pcode">P07</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.5</a></div><span class="t">위험처리 — 회피ㆍ완화ㆍ전가ㆍ수용</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P08"><div class="wf-node-top"><span class="pcode">P08</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.6</a></div><span class="t">모니터링 및 검토</span></div><div class="wf-node" id="P09"><div class="wf-node-top"><span class="pcode">P09</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.7</a></div><span class="t">기록 및 보고</span></div></div>
+        <div class="wf-gate-cell">이해관계자(Stakeholders)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P03"><div class="wf-node-top"><span class="pcode">P03</span><a class="a" href="https://www.iso.org/standard/77304.html" target="_blank" rel="noopener">절 6.2</a></div><span class="t">소통 및 협의</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-detail" id="wfDetail">
+    <p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">3</span>관련 법령</h2>
+    <p class="sec-desc">ISO/IEC 23894와 함께 검토할 국내ㆍ국제 규범입니다. 전체 연결 구조는 <a href="../index.html" style="color:var(--blue)">개요·관계도</a> 페이지를 참고하세요.</p>
+    <div class="related-grid">
+    <div class="related-chip ai-note">
+      <div class="rel">고영향 AI 위험관리방안과 영향평가 항목 설계에 연결. 인공지능기본법상 위험관리체계 구축ㆍ영향평가 실무의 국제 방법론 참고자료</div>
+      <div class="name"><a href="ai-basic-act.html" style="color:var(--blue)">인공지능기본법</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">AI 관리체계 인증표준 측면에서 상호보완적인 표준(같은 ISO/IEC JTC 1/SC 42 산하)</div>
+      <div class="name"><a href="iso-iec-42001.html" style="color:var(--blue)">ISO/IEC 42001</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">이 표준의 위험관리 실무 절차와 대응되는 미국측 프레임워크</div>
+      <div class="name"><a href="nist-ai-rmf.html" style="color:var(--blue)">NIST AI RMF</a></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-disclaimer">이 페이지는 법령 이해를 돕기 위한 학습·연구 참고 자료이며, 법률 자문이나 정부기관의 공식 해석을 대신하지 않습니다. <strong>ISO/IEC 23894는 유료 표준문서이므로 이 페이지는 원문을 인용하지 않고, 공개된 요약정보(절 구조 등)만으로 구성했습니다.</strong> 정확한 내용은 ISO 공식 채널에서 표준문서를 구매해 확인해야 합니다.</p>
+    ISO/IEC 23894:2023 &middot; 발행 2023-02-08 &middot; 기준일 2026-08-19
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EDGES = [{"from": "P02", "to": "P04", "kind": "solid"}, {"from": "P04", "to": "P05", "kind": "solid"}, {"from": "P05", "to": "P06", "kind": "solid"}, {"from": "P06", "to": "P07", "kind": "solid"}, {"from": "P07", "to": "P08", "kind": "solid"}, {"from": "P08", "to": "P09", "kind": "solid"}, {"from": "P01", "to": "P02", "kind": "dashed"}, {"from": "P03", "to": "P04", "kind": "dashed"}, {"from": "P03", "to": "P08", "kind": "dashed"}];
+
+  function rel(rect, wr){
+    return {
+      left: rect.left - wr.left, right: rect.right - wr.left,
+      top: rect.top - wr.top, bottom: rect.bottom - wr.top,
+      cx: (rect.left + rect.right)/2 - wr.left, cy: (rect.top + rect.bottom)/2 - wr.top
+    };
+  }
+  function roundedPath(pts, r){
+    var clean = [pts[0]];
+    for (var i=1;i<pts.length;i++){
+      var p=pts[i], last=clean[clean.length-1];
+      if (Math.abs(p[0]-last[0])>0.5 || Math.abs(p[1]-last[1])>0.5) clean.push(p);
+    }
+    if (clean.length < 2) return '';
+    if (clean.length === 2) return 'M '+clean[0][0]+' '+clean[0][1]+' L '+clean[1][0]+' '+clean[1][1];
+    var d = 'M '+clean[0][0]+' '+clean[0][1];
+    for (var j=1;j<clean.length-1;j++){
+      var p0=clean[j-1], p1=clean[j], p2=clean[j+1];
+      var d1x=p1[0]-p0[0], d1y=p1[1]-p0[1], len1=Math.hypot(d1x,d1y);
+      var d2x=p2[0]-p1[0], d2y=p2[1]-p1[1], len2=Math.hypot(d2x,d2y);
+      var rr = Math.min(r, len1/2, len2/2);
+      var ax = p1[0]-(d1x/len1)*rr, ay = p1[1]-(d1y/len1)*rr;
+      var bx = p1[0]+(d2x/len2)*rr, by = p1[1]+(d2y/len2)*rr;
+      d += ' L '+ax+' '+ay+' Q '+p1[0]+' '+p1[1]+' '+bx+' '+by;
+    }
+    var lastPt = clean[clean.length-1];
+    d += ' L '+lastPt[0]+' '+lastPt[1];
+    return d;
+  }
+
+  var NO_DETOUR = {};
+  var GUTTER_X = 0;
+  var GRID_BOTTOM = 0;
+
+  function edgePath(kind, s, t, e){
+    var r = 10;
+    if (kind === 'loop') {
+      var rx = Math.max(s.right, t.right) + 11;
+      return roundedPath([[s.right,s.cy],[rx,s.cy],[rx,t.cy],[t.right,t.cy]], r);
+    }
+    var forwardDx = t.left - s.right;
+    var backwardDx = s.left - t.right;
+    var overlapX = forwardDx < 8 && backwardDx < 8;
+    if (overlapX) {
+      var gutterX = Math.min(s.left, t.left) - 11;
+      return roundedPath([[s.left,s.cy],[gutterX,s.cy],[gutterX,t.cy],[t.left,t.cy]], r);
+    }
+    var sameRow = Math.abs(s.cy - t.cy) < 2;
+    if (!sameRow) {
+      if (forwardDx >= 8) {
+        var gx = s.right + 11;
+        return roundedPath([[s.right,s.cy],[gx,s.cy],[gx,t.cy],[t.left,t.cy]], r);
+      }
+      var gx2 = s.left - 11;
+      return roundedPath([[s.left,s.cy],[gx2,s.cy],[gx2,t.cy],[t.right,t.cy]], r);
+    }
+    var edgeKey = e ? (e.from + '>' + e.to) : '';
+    var toggleDetour = TOGGLE_FLAG && !NO_DETOUR[edgeKey];
+    var skipsColumn = forwardDx > 40 || backwardDx > 40;
+    if (skipsColumn || toggleDetour) {
+      var goAbove = s.top < (GRID_BOTTOM - s.bottom);
+      var edgeY = goAbove ? -8 : GRID_BOTTOM + 8;
+      if (forwardDx >= 8) {
+        var outX = s.right + 10;
+        return roundedPath([[s.right,s.cy],[outX,s.cy],[outX,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+      }
+      var outX2 = s.left - 10;
+      return roundedPath([[s.left,s.cy],[outX2,s.cy],[outX2,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+    }
+    if (forwardDx >= 8) {
+      var midX = s.right + forwardDx/2;
+      return roundedPath([[s.right,s.cy],[midX,s.cy],[midX,t.cy],[t.left,t.cy]], r);
+    }
+    var midX2 = s.left - backwardDx/2;
+    return roundedPath([[s.left,s.cy],[midX2,s.cy],[midX2,t.cy],[t.right,t.cy]], r);
+  }
+
+  var pathEls = [];
+
+  function draw(){
+    var wrap = document.getElementById('wfGridWrap');
+    var svg = document.getElementById('wfArrows');
+    if (!wrap || !svg) return;
+    svg.querySelectorAll('path.wf-arrow-path').forEach(function(p){ svg.removeChild(p); });
+    pathEls = [];
+    var wr = wrap.getBoundingClientRect();
+    var corner = document.querySelector('.wf-corner-head');
+    GUTTER_X = corner ? (corner.getBoundingClientRect().right - wr.left) + 11 : 0;
+    GRID_BOTTOM = wr.height;
+
+    activeEdges().forEach(function(e){
+      var a = document.getElementById(e.from);
+      var b = document.getElementById(e.to);
+      if (!a || !b) { pathEls.push(null); return; }
+      var s = rel(a.getBoundingClientRect(), wr);
+      var t = rel(b.getBoundingClientRect(), wr);
+      var d = edgePath(e.kind, s, t, e);
+      var marker = e.kind === 'loop' ? 'wf-arrow-loop' : 'wf-arrow';
+      var cls = 'wf-arrow-path' + (e.kind === 'dashed' ? ' dashed' : e.kind === 'loop' ? ' loopback' : '');
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', cls);
+      path.setAttribute('marker-end', 'url(#'+marker+')');
+      svg.appendChild(path);
+      pathEls.push(path);
+    });
+  }
+
+  function setHover(nodeId){
+    var nodeSet = null, edgeSet = null;
+    if (nodeId) {
+      nodeSet = new Set([nodeId]);
+      edgeSet = new Set();
+      activeEdges().forEach(function(e, i){
+        if (e.from === nodeId || e.to === nodeId) {
+          edgeSet.add(i);
+          nodeSet.add(e.from);
+          nodeSet.add(e.to);
+        }
+      });
+    }
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (!nodeSet) { n.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = nodeSet.has(n.id);
+      n.classList.toggle('wf-dim', !isConn);
+      n.classList.toggle('wf-hl', isConn);
+    });
+    pathEls.forEach(function(p, i){
+      if (!p) return;
+      if (!edgeSet) { p.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = edgeSet.has(i);
+      p.classList.toggle('wf-dim', !isConn);
+      p.classList.toggle('wf-hl', isConn);
+    });
+  }
+
+  function bindHover(){
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (n.dataset.hoverBound) return;
+      n.dataset.hoverBound = '1';
+      n.setAttribute('tabindex', '0');
+      n.addEventListener('mouseenter', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('mouseleave', restoreDetail);
+      n.addEventListener('focus', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('blur', restoreDetail);
+    });
+  }
+
+  function restoreDetail(){
+    setHover(null);
+    var sel = document.querySelector('.wf-node.wf-selected');
+    if (sel) showDetail(sel); else clearDetail();
+  }
+
+  function nodeContext(nodeEl){
+    var cell = nodeEl.closest('.wf-cell');
+    var el = cell ? cell.previousElementSibling : null;
+    var actor = '', gate = '';
+    var steps = 0;
+    while (el) {
+      steps++;
+      if (el.classList.contains('wf-gate-cell')) {
+        actor = el.childNodes[0].textContent.trim();
+        gate = GATE_NAMES[steps - 1] || '';
+        break;
+      }
+      el = el.previousElementSibling;
+    }
+    return { actor: actor, gate: gate };
+  }
+
+  var EDGE_KIND_LABEL = { solid: '같은 주체 · 다음 단계', dashed: '다른 주체로 연계', loop: '조건부 회귀' };
+
+  function relatedChip(id, dir, kind){
+    var el = document.getElementById(id);
+    if (!el) return '';
+    var t = (el.querySelector('.t') || {}).textContent || '';
+    return '<button type="button" class="wf-detail-chip" data-target="' + id + '" title="' + EDGE_KIND_LABEL[kind] + '">'
+      + (dir === 'prev' ? '← ' : '→ ') + id + ' ' + t + '</button>';
+  }
+
+  function renderItems(items){
+    return '<ul class="wf-detail-law-items">' + items.map(function(i){
+      if (typeof i === 'string') return '<li>' + i + '</li>';
+      var subHtml = i.sub && i.sub.length
+        ? '<ul class="wf-detail-law-subitems">' + i.sub.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ul>'
+        : '';
+      return '<li>' + i.text + subHtml + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderArticleFull(num){
+    var art = ARTICLES[num];
+    if (!art) return '<p class="wf-detail-law-missing">원문 데이터가 아직 없습니다. law.go.kr에서 확인해 주세요.</p>';
+    return art.paras.map(function(p){
+      var itemsHtml = p.items.length ? renderItems(p.items) : '';
+      return '<p class="wf-detail-law-para">' + p.text + '</p>' + itemsHtml;
+    }).join('');
+  }
+
+  function articleNum(article){
+    var m = article.match(/^제(\d+)조(?:의(\d+))?/);
+    if (!m) return '';
+    return m[2] ? m[1] + '-' + m[2] : m[1];
+  }
+
+  var TOGGLE_FLAG = false;
+
+  function activeEdges(){
+    return EDGES;
+  }
+
+  var GATE_NAMES = ["G0 원칙(Principles)", "G1 프레임워크(리더십ㆍ의지)", "G2 소통ㆍ협의", "G3 범위ㆍ맥락ㆍ기준 설정", "G4 위험평가(식별ㆍ분석ㆍ평가)", "G5 위험처리", "G6 모니터링ㆍ검토ㆍ기록ㆍ보고"];
+
+  function articleNum(article){
+    var m = article.match(/^절 ([\d.-]+)/);
+    return m ? m[1] : '';
+  }
+
+  // 절 원문은 유료 표준이라 인용하지 않으며, 공개된 요약정보(절 구조)만 담았다.
+  var ARTICLES = {"4": {"title": "원칙", "paras": [{"num": "요약", "text": "ISO 31000의 위험관리 8개 원칙에 더해, AI 특화 원칙으로 포용성(inclusive), 동적대응(dynamic), 최선의 가용정보 활용, 인간 및 문화적 요인 고려, 지속적 개선을 강조한다. (공개된 요약 정보이며, ISO/IEC 23894 표준 원문은 유료 문서로 인용하지 않음)", "items": []}]}, "5": {"title": "프레임워크", "paras": [{"num": "요약", "text": "조직은 AI 위험관리에 대한 리더십과 의지를 표명하고, 조직 상황에 맞는 위험관리체계를 설계ㆍ이행하며, 그 효과성을 평가하고 지속적으로 개선해야 한다(ISO 31000 프레임워크 구조를 따름). (공개된 요약 정보)", "items": []}]}, "6.2": {"title": "소통 및 협의", "paras": [{"num": "요약", "text": "AI 위험관리 전 과정에서 이해관계자와의 소통 및 협의를 통해 다양한 관점을 반영해야 한다. (공개된 요약 정보)", "items": []}]}, "6.3": {"title": "범위ㆍ맥락ㆍ기준 설정", "paras": [{"num": "요약", "text": "AI 시스템의 목적ㆍ적용범위, 조직의 내ㆍ외부 맥락, 위험평가기준을 설정한다. (공개된 요약 정보)", "items": []}]}, "6.4-1": {"title": "위험식별", "paras": [{"num": "요약", "text": "AI 시스템의 생애주기(데이터ㆍ모델ㆍ배포ㆍ운영) 전반에서 발생할 수 있는 위험원을 파악한다. (공개된 요약 정보)", "items": []}]}, "6.4-2": {"title": "위험분석 및 평가", "paras": [{"num": "요약", "text": "식별된 위험의 발생가능성과 영향을 분석하고, 설정된 기준에 따라 위험 수준을 평가하여 우선순위를 정한다. (공개된 요약 정보)", "items": []}]}, "6.5": {"title": "위험처리", "paras": [{"num": "요약", "text": "평가된 위험에 대해 회피ㆍ완화ㆍ전가ㆍ수용 등의 처리방안을 선택하고 이행한다. (공개된 요약 정보)", "items": []}]}, "6.6": {"title": "모니터링 및 검토", "paras": [{"num": "요약", "text": "위험관리 프로세스와 결과를 지속적으로 모니터링하고 주기적으로 검토하여 변화하는 상황을 반영한다. (공개된 요약 정보)", "items": []}]}, "6.7": {"title": "기록 및 보고", "paras": [{"num": "요약", "text": "위험관리 활동과 그 결과를 문서화하고, 이해관계자에게 적절히 보고한다. (공개된 요약 정보)", "items": []}]}};
+
+  var LEGAL_BASIS = {"P01": [{"article": "절 4", "text": "AI특화 위험관리 원칙(포용성ㆍ동적대응ㆍ최선의가용정보ㆍ인간및문화적요인ㆍ지속적개선)"}], "P02": [{"article": "절 5", "text": "리더십과 의지 표명, 위험관리체계의 설계ㆍ이행ㆍ평가ㆍ개선"}], "P03": [{"article": "절 6.2", "text": "소통 및 협의"}], "P04": [{"article": "절 6.3", "text": "범위ㆍ맥락ㆍ기준 설정"}], "P05": [{"article": "절 6.4-1", "text": "위험식별 — AI 생애주기 전반의 위험원 파악"}], "P06": [{"article": "절 6.4-2", "text": "위험분석 및 평가"}], "P07": [{"article": "절 6.5", "text": "위험처리 — 회피ㆍ완화ㆍ전가ㆍ수용"}], "P08": [{"article": "절 6.6", "text": "모니터링 및 검토"}], "P09": [{"article": "절 6.7", "text": "기록 및 보고"}]};
+
+
+  function showDetail(nodeEl){
+    var panel = document.getElementById('wfDetail');
+    if (!panel) return;
+    var pcode = nodeEl.id;
+    var title = (nodeEl.querySelector('.t') || {}).textContent || '';
+    var link = nodeEl.querySelector('a.a');
+    var ctx = nodeContext(nodeEl);
+
+    var sideHtml = '<h3 class="wf-detail-title"><span class="wf-detail-pcode">' + pcode + '</span>' + title + '</h3>'
+      + '<p class="wf-detail-meta">' + ctx.gate + (ctx.actor ? ' · ' + ctx.actor : '') + '</p>';
+
+    var mainHtml = '';
+    var basis = LEGAL_BASIS[pcode];
+    if (basis && basis.length) {
+      mainHtml += '<div class="wf-detail-law-grid">' + basis.map(function(b){
+        var num = articleNum(b.article);
+        var art = ARTICLES[num];
+        var titleTxt = art ? '(' + art.title + ')' : '';
+        return '<div class="wf-detail-law">'
+          + '<span class="wf-detail-law-art">' + "ISO/IEC 23894" + ' ' + b.article + titleTxt + '</span>'
+          + '<div class="wf-detail-law-full">' + renderArticleFull(num) + '</div>'
+          + '</div>';
+      }).join('') + '</div>';
+    } else if (link) {
+      mainHtml += '<a class="wf-detail-link" href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">법적 근거: ' + link.textContent + ' →</a>';
+    }
+
+    var prevChips = activeEdges().filter(function(e){ return e.to === pcode; }).map(function(e){ return relatedChip(e.from, 'prev', e.kind); }).join('');
+    var nextChips = activeEdges().filter(function(e){ return e.from === pcode; }).map(function(e){ return relatedChip(e.to, 'next', e.kind); }).join('');
+    if (prevChips || nextChips) {
+      mainHtml += '<div class="wf-detail-related"><div class="wf-detail-related-row">';
+      if (prevChips) mainHtml += '<span class="wf-detail-related-label">이전</span>' + prevChips;
+      if (nextChips) mainHtml += '<span class="wf-detail-related-label" style="margin-left:12px">다음</span>' + nextChips;
+      mainHtml += '</div></div>';
+    }
+
+    var html = '<div class="wf-detail-body">'
+      + '<div class="wf-detail-side">' + sideHtml + '</div>'
+      + '<div class="wf-detail-main">' + mainHtml + '</div>'
+      + '</div>';
+
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('.wf-detail-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var target = document.getElementById(chip.getAttribute('data-target'));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        target.classList.add('wf-selected');
+        showDetail(target);
+      });
+    });
+  }
+
+  function clearDetail(){
+    var panel = document.getElementById('wfDetail');
+    if (panel) panel.innerHTML = '<p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>';
+    document.querySelectorAll('.wf-node.wf-selected').forEach(function(n){ n.classList.remove('wf-selected'); });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    bindHover();
+    draw();
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      n.addEventListener('click', function(){
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        n.classList.add('wf-selected');
+        showDetail(n);
+      });
+    });
+    window.addEventListener('resize', draw);
+  });
+})();
+</script>
+
+</body>
+</html>

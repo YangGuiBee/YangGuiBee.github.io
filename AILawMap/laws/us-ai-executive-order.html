@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미국 AI행정명령 · LawMap</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">AI 관련 법 지도</a>
+    <nav class="site-nav">
+      <a href="ai-basic-act.html">인공지능기본법</a>
+    <a href="https://www.law.go.kr/LSW/main.html" target="_blank" rel="noopener" class="lawgokr-link">국가법령정보시스템</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>미국 AI행정명령 (Executive Order — Promoting Advanced AI Innovation and Security)</h1>
+    <p class="lead">
+      2026년 6월 2일 서명된 현행 미국 연방 AI 행정명령입니다. 트럼프 2기 행정부의 세 번째 주요 AI 행정명령으로,
+      이전 행정명령들의 "규제완화ㆍ주법 선점" 기조에서 프런티어 AI 모델의 국가안보 위험 대응으로 방향을
+      전환했습니다. 미국 행정명령은 법률(statute)이 아니라 대통령의 행정지시로, 정권 교체 시 신속히 철회ㆍ
+      대체될 수 있는 특성이 있습니다(2023년 바이든 EO 14110이 2025년 철회된 것이 대표적 사례).
+    </p>
+    <div class="tags">
+      <span class="tag">Executive Order (미지정 번호)</span>
+      <span class="tag">서명 2026-06-02</span>
+      <span class="tag">법률 아님(대통령 행정지시)ㆍ정권교체시 변경가능</span>
+      <span class="tag">소관 백악관ㆍNSAㆍCISAㆍ재무부ㆍ법무부 등</span>
+      <span class="tag">비강제(자율참여) 원칙 명시</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">1</span>구성</h2>
+    <p class="sec-desc">
+      미국 연방 AI 행정명령은 정권에 따라 계속 교체되어 왔습니다. 아래는 2019년 이후 주요 AI 행정명령의 계보이며,
+      이 페이지가 다루는 것은 가장 최근(2026-06, 초록색 표시)의 현행 행정명령입니다. 배지를 클릭하면 백악관
+      공식 사이트로 이동합니다.
+    </p>
+  </div>
+
+  <div class="chapter-flow">
+    <a class="ch" href="https://www.whitehouse.gov" target="_blank" rel="noopener"><div class="no">2019-02</div><h4>AI 이니셔티브(EO 13859)</h4><p>연방 R&D 투자ㆍ표준화 우선순위(트럼프 1기)</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.whitehouse.gov" target="_blank" rel="noopener"><div class="no">2023-10</div><h4>AI 안전ㆍ보안ㆍ신뢰 행정명령(EO 14110, 철회됨)</h4><p>바이든 행정부, 2025-01 트럼프 행정부에 의해 철회</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.whitehouse.gov" target="_blank" rel="noopener"><div class="no">2025-01</div><h4>미국 AI리더십 장벽 제거(EO 14179)</h4><p>트럼프 2기 취임 직후, 규제완화 기조</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.whitehouse.gov" target="_blank" rel="noopener"><div class="no">2025-12</div><h4>AI에 관한 국가정책 프레임워크 확립(EO 14365)</h4><p>주(州)법 선점ㆍ연방 통일기준 추진</p></a>
+    <div class="arrow">→</div>
+    <a class="ch ai-note" href="https://www.whitehouse.gov" target="_blank" rel="noopener"><div class="no">2026-06</div><h4>첨단 AI 혁신ㆍ안보 증진(현행)</h4><p>프런티어모델 안보위험 대응으로 전환 — 이 페이지의 대상</p></a>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">2</span>절차 구조도</h2>
+    <p class="sec-desc">
+      목적ㆍ정책원칙부터 연방 사이버방어, AI 사이버보안 정보공유, 프런티어모델 지정ㆍ벤치마킹, 자율적 사전공개,
+      인력양성, 범죄적 AI악용 형사집행까지 5개 기관 × 7단계(G0~G6)로 정리했습니다. 국가안보기관이 주도하되,
+      AI개발기업의 참여는 강제가 아닌 자율적 방식인 것이 특징입니다.
+    </p>
+  </div>
+
+  <div class="wf-scroll">
+    <div class="wf-grid-wrap" id="wfGridWrap">
+      <svg class="wf-arrows" id="wfArrows">
+        <defs>
+          <marker id="wf-arrow" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+          <marker id="wf-arrow-loop" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+        </defs>
+      </svg>
+      <div class="wf-grid">
+        <div class="wf-corner-head">주체 / 조치</div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G0</span><span class="wf-lane-sub">목적ㆍ정책원칙</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G1</span><span class="wf-lane-sub">연방 사이버방어</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G2</span><span class="wf-lane-sub">AI 사이버보안 정보공유</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G3</span><span class="wf-lane-sub">프런티어모델 지정ㆍ벤치마킹</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G4</span><span class="wf-lane-sub">자율적 사전공개</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G5</span><span class="wf-lane-sub">인력양성</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G6</span><span class="wf-lane-sub">범죄적 AI악용 형사집행</span></div>
+        <div class="wf-gate-cell">국가안보기관(NSAㆍCISAㆍ국방부)</div>
+        <div class="wf-cell"><div class="wf-node" id="P01"><div class="wf-node-top"><span class="pcode">P01</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">정책목적</a></div><span class="t">첨단 AI 혁신과 국가안보를 함께 증진하는 연방정책 수립(2026-06-02 서명)</span></div><div class="wf-node" id="P08"><div class="wf-node-top"><span class="pcode">P08</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">비강제 원칙</a></div><span class="t">AI 개발에 대한 의무적 인허가ㆍ허가ㆍ사전승인 요건을 부과하지 않는다는 원칙 명시</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P02"><div class="wf-node-top"><span class="pcode">P02</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">연방 사이버방어</a></div><span class="t">국가안보시스템ㆍ국방시스템ㆍ민간연방네트워크의 사이버방어 우선화(30일 이내 조치)</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">재무부</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P03"><div class="wf-node-top"><span class="pcode">P03</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">AI 사이버보안 정보공유센터</a></div><span class="t">재무부ㆍNSAㆍCISA간 취약점 발견ㆍ소프트웨어시험ㆍ시정ㆍ공개 협력체계 구축</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">인사관리처(OPM)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P06"><div class="wf-node-top"><span class="pcode">P06</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">인력양성</a></div><span class="t">연방 기술직 사이버보안 전문인력 채용경로 확대(60일 이내)</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">법무부(검찰총장)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P07"><div class="wf-node-top"><span class="pcode">P07</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">형사집행 우선화</a></div><span class="t">AI를 이용한 불법 컴퓨터시스템 접근 등 범죄행위에 대한 검찰총장의 기소 우선화</span></div></div>
+        <div class="wf-gate-cell">AI개발기업(자율참여)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node ai-note" id="P04"><div class="wf-node-top"><span class="pcode">P04</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">프런티어모델 벤치마킹</a></div><span class="t">'적용대상 프런티어모델' 판별을 위한 (비공개) 벤치마킹체계 개발(60일 이내)</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P05"><div class="wf-node-top"><span class="pcode">P05</span><a class="a" href="https://www.whitehouse.gov" target="_blank" rel="noopener">자율적 사전공개</a></div><span class="t">AI개발기업이 공개 30일 전 정부에 모델 접근을 자율 제공하는 사이버보안 시험 프레임워크(강제 아님)</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-detail" id="wfDetail">
+    <p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">3</span>관련 법령</h2>
+    <p class="sec-desc">미국 AI행정명령과 함께 검토할 국내ㆍ국제 규범입니다. 전체 연결 구조는 <a href="../index.html" style="color:var(--blue)">개요·관계도</a> 페이지를 참고하세요.</p>
+    <div class="related-grid">
+    <div class="related-chip ai-note">
+      <div class="rel">미국 연방 차원의 AI 안전ㆍ보안 정책 비교축. 프런티어모델 안보위험 대응 체계가 인공지능기본법상 고영향 AI 안전성 확보조치와 비교됨</div>
+      <div class="name"><a href="ai-basic-act.html" style="color:var(--blue)">인공지능기본법</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">이 행정명령의 자율적 사전공개 프레임워크와 대비되는, 법적 구속력 있는 위험기반 규제 입법례</div>
+      <div class="name"><a href="eu-ai-act.html" style="color:var(--blue)">EU AI Act</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">이 행정명령이 지시하는 벤치마킹ㆍ위험평가 실무의 참고 프레임워크(같은 미국 연방정부 산하)</div>
+      <div class="name"><a href="nist-ai-rmf.html" style="color:var(--blue)">NIST AI RMF</a></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-disclaimer">이 페이지는 법령 이해를 돕기 위한 학습·연구 참고 자료이며, 법률 자문이나 정부기관의 공식 해석을 대신하지 않습니다. <strong>미국 대통령 행정명령은 정권 교체ㆍ정책 변화에 따라 신속히 개정ㆍ철회될 수 있으며, 이 페이지는 법률자문사 브리핑 등 2차자료를 근거로 한 발췌ㆍ요약입니다.</strong> 정확한 원문과 최신 시행상황은 whitehouse.gov 및 Federal Register에서 확인해야 합니다.</p>
+    미국 AI행정명령(Promoting Advanced AI Innovation and Security) &middot; 서명 2026-06-02 &middot; 기준일 2026-08-19
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EDGES = [{"from": "P01", "to": "P02", "kind": "solid"}, {"from": "P02", "to": "P03", "kind": "solid"}, {"from": "P04", "to": "P05", "kind": "solid"}, {"from": "P08", "to": "P01", "kind": "dashed"}, {"from": "P03", "to": "P04", "kind": "dashed"}, {"from": "P05", "to": "P07", "kind": "dashed"}, {"from": "P03", "to": "P06", "kind": "dashed"}];
+
+  function rel(rect, wr){
+    return {
+      left: rect.left - wr.left, right: rect.right - wr.left,
+      top: rect.top - wr.top, bottom: rect.bottom - wr.top,
+      cx: (rect.left + rect.right)/2 - wr.left, cy: (rect.top + rect.bottom)/2 - wr.top
+    };
+  }
+  function roundedPath(pts, r){
+    var clean = [pts[0]];
+    for (var i=1;i<pts.length;i++){
+      var p=pts[i], last=clean[clean.length-1];
+      if (Math.abs(p[0]-last[0])>0.5 || Math.abs(p[1]-last[1])>0.5) clean.push(p);
+    }
+    if (clean.length < 2) return '';
+    if (clean.length === 2) return 'M '+clean[0][0]+' '+clean[0][1]+' L '+clean[1][0]+' '+clean[1][1];
+    var d = 'M '+clean[0][0]+' '+clean[0][1];
+    for (var j=1;j<clean.length-1;j++){
+      var p0=clean[j-1], p1=clean[j], p2=clean[j+1];
+      var d1x=p1[0]-p0[0], d1y=p1[1]-p0[1], len1=Math.hypot(d1x,d1y);
+      var d2x=p2[0]-p1[0], d2y=p2[1]-p1[1], len2=Math.hypot(d2x,d2y);
+      var rr = Math.min(r, len1/2, len2/2);
+      var ax = p1[0]-(d1x/len1)*rr, ay = p1[1]-(d1y/len1)*rr;
+      var bx = p1[0]+(d2x/len2)*rr, by = p1[1]+(d2y/len2)*rr;
+      d += ' L '+ax+' '+ay+' Q '+p1[0]+' '+p1[1]+' '+bx+' '+by;
+    }
+    var lastPt = clean[clean.length-1];
+    d += ' L '+lastPt[0]+' '+lastPt[1];
+    return d;
+  }
+
+  var NO_DETOUR = {};
+  var GUTTER_X = 0;
+  var GRID_BOTTOM = 0;
+
+  function edgePath(kind, s, t, e){
+    var r = 10;
+    if (kind === 'loop') {
+      var rx = Math.max(s.right, t.right) + 11;
+      return roundedPath([[s.right,s.cy],[rx,s.cy],[rx,t.cy],[t.right,t.cy]], r);
+    }
+    var forwardDx = t.left - s.right;
+    var backwardDx = s.left - t.right;
+    var overlapX = forwardDx < 8 && backwardDx < 8;
+    if (overlapX) {
+      var gutterX = Math.min(s.left, t.left) - 11;
+      return roundedPath([[s.left,s.cy],[gutterX,s.cy],[gutterX,t.cy],[t.left,t.cy]], r);
+    }
+    var sameRow = Math.abs(s.cy - t.cy) < 2;
+    if (!sameRow) {
+      if (forwardDx >= 8) {
+        var gx = s.right + 11;
+        return roundedPath([[s.right,s.cy],[gx,s.cy],[gx,t.cy],[t.left,t.cy]], r);
+      }
+      var gx2 = s.left - 11;
+      return roundedPath([[s.left,s.cy],[gx2,s.cy],[gx2,t.cy],[t.right,t.cy]], r);
+    }
+    var edgeKey = e ? (e.from + '>' + e.to) : '';
+    var toggleDetour = TOGGLE_FLAG && !NO_DETOUR[edgeKey];
+    var skipsColumn = forwardDx > 40 || backwardDx > 40;
+    if (skipsColumn || toggleDetour) {
+      var goAbove = s.top < (GRID_BOTTOM - s.bottom);
+      var edgeY = goAbove ? -8 : GRID_BOTTOM + 8;
+      if (forwardDx >= 8) {
+        var outX = s.right + 10;
+        return roundedPath([[s.right,s.cy],[outX,s.cy],[outX,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+      }
+      var outX2 = s.left - 10;
+      return roundedPath([[s.left,s.cy],[outX2,s.cy],[outX2,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+    }
+    if (forwardDx >= 8) {
+      var midX = s.right + forwardDx/2;
+      return roundedPath([[s.right,s.cy],[midX,s.cy],[midX,t.cy],[t.left,t.cy]], r);
+    }
+    var midX2 = s.left - backwardDx/2;
+    return roundedPath([[s.left,s.cy],[midX2,s.cy],[midX2,t.cy],[t.right,t.cy]], r);
+  }
+
+  var pathEls = [];
+
+  function draw(){
+    var wrap = document.getElementById('wfGridWrap');
+    var svg = document.getElementById('wfArrows');
+    if (!wrap || !svg) return;
+    svg.querySelectorAll('path.wf-arrow-path').forEach(function(p){ svg.removeChild(p); });
+    pathEls = [];
+    var wr = wrap.getBoundingClientRect();
+    var corner = document.querySelector('.wf-corner-head');
+    GUTTER_X = corner ? (corner.getBoundingClientRect().right - wr.left) + 11 : 0;
+    GRID_BOTTOM = wr.height;
+
+    activeEdges().forEach(function(e){
+      var a = document.getElementById(e.from);
+      var b = document.getElementById(e.to);
+      if (!a || !b) { pathEls.push(null); return; }
+      var s = rel(a.getBoundingClientRect(), wr);
+      var t = rel(b.getBoundingClientRect(), wr);
+      var d = edgePath(e.kind, s, t, e);
+      var marker = e.kind === 'loop' ? 'wf-arrow-loop' : 'wf-arrow';
+      var cls = 'wf-arrow-path' + (e.kind === 'dashed' ? ' dashed' : e.kind === 'loop' ? ' loopback' : '');
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', cls);
+      path.setAttribute('marker-end', 'url(#'+marker+')');
+      svg.appendChild(path);
+      pathEls.push(path);
+    });
+  }
+
+  function setHover(nodeId){
+    var nodeSet = null, edgeSet = null;
+    if (nodeId) {
+      nodeSet = new Set([nodeId]);
+      edgeSet = new Set();
+      activeEdges().forEach(function(e, i){
+        if (e.from === nodeId || e.to === nodeId) {
+          edgeSet.add(i);
+          nodeSet.add(e.from);
+          nodeSet.add(e.to);
+        }
+      });
+    }
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (!nodeSet) { n.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = nodeSet.has(n.id);
+      n.classList.toggle('wf-dim', !isConn);
+      n.classList.toggle('wf-hl', isConn);
+    });
+    pathEls.forEach(function(p, i){
+      if (!p) return;
+      if (!edgeSet) { p.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = edgeSet.has(i);
+      p.classList.toggle('wf-dim', !isConn);
+      p.classList.toggle('wf-hl', isConn);
+    });
+  }
+
+  function bindHover(){
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (n.dataset.hoverBound) return;
+      n.dataset.hoverBound = '1';
+      n.setAttribute('tabindex', '0');
+      n.addEventListener('mouseenter', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('mouseleave', restoreDetail);
+      n.addEventListener('focus', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('blur', restoreDetail);
+    });
+  }
+
+  function restoreDetail(){
+    setHover(null);
+    var sel = document.querySelector('.wf-node.wf-selected');
+    if (sel) showDetail(sel); else clearDetail();
+  }
+
+  function nodeContext(nodeEl){
+    var cell = nodeEl.closest('.wf-cell');
+    var el = cell ? cell.previousElementSibling : null;
+    var actor = '', gate = '';
+    var steps = 0;
+    while (el) {
+      steps++;
+      if (el.classList.contains('wf-gate-cell')) {
+        actor = el.childNodes[0].textContent.trim();
+        gate = GATE_NAMES[steps - 1] || '';
+        break;
+      }
+      el = el.previousElementSibling;
+    }
+    return { actor: actor, gate: gate };
+  }
+
+  var EDGE_KIND_LABEL = { solid: '같은 주체 · 다음 단계', dashed: '다른 주체로 연계', loop: '조건부 회귀' };
+
+  function relatedChip(id, dir, kind){
+    var el = document.getElementById(id);
+    if (!el) return '';
+    var t = (el.querySelector('.t') || {}).textContent || '';
+    return '<button type="button" class="wf-detail-chip" data-target="' + id + '" title="' + EDGE_KIND_LABEL[kind] + '">'
+      + (dir === 'prev' ? '← ' : '→ ') + id + ' ' + t + '</button>';
+  }
+
+  function renderItems(items){
+    return '<ul class="wf-detail-law-items">' + items.map(function(i){
+      if (typeof i === 'string') return '<li>' + i + '</li>';
+      var subHtml = i.sub && i.sub.length
+        ? '<ul class="wf-detail-law-subitems">' + i.sub.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ul>'
+        : '';
+      return '<li>' + i.text + subHtml + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderArticleFull(num){
+    var art = ARTICLES[num];
+    if (!art) return '<p class="wf-detail-law-missing">원문 데이터가 아직 없습니다. law.go.kr에서 확인해 주세요.</p>';
+    return art.paras.map(function(p){
+      var itemsHtml = p.items.length ? renderItems(p.items) : '';
+      return '<p class="wf-detail-law-para">' + p.text + '</p>' + itemsHtml;
+    }).join('');
+  }
+
+  function articleNum(article){
+    var m = article.match(/^제(\d+)조(?:의(\d+))?/);
+    if (!m) return '';
+    return m[2] ? m[1] + '-' + m[2] : m[1];
+  }
+
+  var TOGGLE_FLAG = false;
+
+  function activeEdges(){
+    return EDGES;
+  }
+
+  var GATE_NAMES = ["G0 목적ㆍ정책원칙", "G1 연방 사이버방어", "G2 AI 사이버보안 정보공유", "G3 프런티어모델 지정ㆍ벤치마킹", "G4 자율적 사전공개", "G5 인력양성", "G6 범죄적 AI악용 형사집행"];
+
+  function articleNum(article){
+    return article;
+  }
+
+  // 조치 내용은 법률자문사 브리핑 등 2차자료를 근거로 한 발췌ㆍ요약이다.
+  // 정확한 원문은 whitehouse.gov 및 Federal Register를 참고할 것.
+  var ARTICLES = {
+    "정책목적": {"title": "정책목적", "paras": [{"num": "요약", "text": "이 행정명령은 미국의 첨단 AI 혁신 주도권을 확고히 하는 동시에, 프런티어 AI 모델과 관련된 국가안보 위험(사이버보안ㆍ범죄적 악용 등)에 대응하기 위한 연방정책을 수립한다. 트럼프 2기 행정부의 세 번째 주요 AI 행정명령으로, 이전 행정명령들의 '규제완화ㆍ주법(州法) 선점' 기조에서 '국가안보 대응'으로 방향을 전환한 것이 특징이다. (법률자문사 브리핑 등 2차자료 기반 발췌ㆍ요약)", "items": []}]},
+    "연방 사이버방어": {"title": "연방 사이버방어", "paras": [{"num": "요약", "text": "국가안보시스템, 국방시스템, 민간 연방네트워크의 사이버방어를 우선화하도록 관계기관에 지시한다. (2차자료 기반 요약)", "items": []}]},
+    "AI 사이버보안 정보공유센터": {"title": "AI 사이버보안 정보공유센터", "paras": [{"num": "요약", "text": "재무부ㆍNSAㆍCISA가 취약점 발견, 소프트웨어 시험, 시정조치, 취약점 공개에 관한 협력체계(clearinghouse)를 구축하도록 한다. (2차자료 기반 요약)", "items": []}]},
+    "프런티어모델 벤치마킹": {"title": "프런티어모델 벤치마킹", "paras": [{"num": "요약", "text": "관계기관은 평가가 필요한 '적용대상 프런티어모델(covered frontier models)'을 판별하기 위한 비공개 벤치마킹체계를 60일 이내에 개발해야 하며, 구체적 기준은 재량사항으로 남겨져 있다. (2차자료 기반 요약)", "items": []}]},
+    "자율적 사전공개": {"title": "자율적 사전공개", "paras": [{"num": "요약", "text": "AI 개발기업은 신모델을 일반에 공개하기 30일 전까지 정부에 접근권을 자율적으로 제공하여 사이버보안 시험을 받을 수 있다. 이는 의무가 아닌 자율참여 방식이다. (2차자료 기반 요약)", "items": []}]},
+    "인력양성": {"title": "인력양성", "paras": [{"num": "요약", "text": "인사관리처(OPM)는 연방 기술직 사이버보안 전문인력의 채용경로를 60일 이내에 확대해야 한다. (2차자료 기반 요약)", "items": []}]},
+    "형사집행 우선화": {"title": "형사집행 우선화", "paras": [{"num": "요약", "text": "법무부 검찰총장은 AI 시스템을 이용해 컴퓨터시스템에 불법 접근하는 등 AI를 범죄적으로 악용하는 행위자에 대한 기소를 우선순위로 삼는다. (2차자료 기반 요약)", "items": []}]},
+    "비강제 원칙": {"title": "비강제 원칙", "paras": [{"num": "요약", "text": "이 행정명령은 AI 개발에 대한 의무적인 정부 인허가ㆍ허가ㆍ사전승인 제도를 창설하지 않는다는 점을 명시한다. (2차자료 기반 요약)", "items": []}]},
+  };
+
+  var LEGAL_BASIS = {"P01": [{"article": "정책목적", "text": "첨단 AI 혁신과 국가안보를 함께 증진하는 연방정책 수립(2026-06-02 서명)"}], "P02": [{"article": "연방 사이버방어", "text": "국가안보시스템ㆍ국방시스템ㆍ민간연방네트워크의 사이버방어 우선화(30일 이내 조치)"}], "P03": [{"article": "AI 사이버보안 정보공유센터", "text": "재무부ㆍNSAㆍCISA간 취약점 발견ㆍ소프트웨어시험ㆍ시정ㆍ공개 협력체계 구축"}], "P04": [{"article": "프런티어모델 벤치마킹", "text": "'적용대상 프런티어모델' 판별을 위한 (비공개) 벤치마킹체계 개발(60일 이내)"}], "P05": [{"article": "자율적 사전공개", "text": "AI개발기업이 공개 30일 전 정부에 모델 접근을 자율 제공하는 사이버보안 시험 프레임워크(강제 아님)"}], "P06": [{"article": "인력양성", "text": "연방 기술직 사이버보안 전문인력 채용경로 확대(60일 이내)"}], "P07": [{"article": "형사집행 우선화", "text": "AI를 이용한 불법 컴퓨터시스템 접근 등 범죄행위에 대한 검찰총장의 기소 우선화"}], "P08": [{"article": "비강제 원칙", "text": "AI 개발에 대한 의무적 인허가ㆍ허가ㆍ사전승인 요건을 부과하지 않는다는 원칙 명시"}]};
+
+
+  function showDetail(nodeEl){
+    var panel = document.getElementById('wfDetail');
+    if (!panel) return;
+    var pcode = nodeEl.id;
+    var title = (nodeEl.querySelector('.t') || {}).textContent || '';
+    var link = nodeEl.querySelector('a.a');
+    var ctx = nodeContext(nodeEl);
+
+    var sideHtml = '<h3 class="wf-detail-title"><span class="wf-detail-pcode">' + pcode + '</span>' + title + '</h3>'
+      + '<p class="wf-detail-meta">' + ctx.gate + (ctx.actor ? ' · ' + ctx.actor : '') + '</p>';
+
+    var mainHtml = '';
+    var basis = LEGAL_BASIS[pcode];
+    if (basis && basis.length) {
+      mainHtml += '<div class="wf-detail-law-grid">' + basis.map(function(b){
+        var num = articleNum(b.article);
+        var art = ARTICLES[num];
+        var titleTxt = art ? '(' + art.title + ')' : '';
+        return '<div class="wf-detail-law">'
+          + '<span class="wf-detail-law-art">' + "미국 AI행정명령" + ' ' + b.article + titleTxt + '</span>'
+          + '<div class="wf-detail-law-full">' + renderArticleFull(num) + '</div>'
+          + '</div>';
+      }).join('') + '</div>';
+    } else if (link) {
+      mainHtml += '<a class="wf-detail-link" href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">법적 근거: ' + link.textContent + ' →</a>';
+    }
+
+    var prevChips = activeEdges().filter(function(e){ return e.to === pcode; }).map(function(e){ return relatedChip(e.from, 'prev', e.kind); }).join('');
+    var nextChips = activeEdges().filter(function(e){ return e.from === pcode; }).map(function(e){ return relatedChip(e.to, 'next', e.kind); }).join('');
+    if (prevChips || nextChips) {
+      mainHtml += '<div class="wf-detail-related"><div class="wf-detail-related-row">';
+      if (prevChips) mainHtml += '<span class="wf-detail-related-label">이전</span>' + prevChips;
+      if (nextChips) mainHtml += '<span class="wf-detail-related-label" style="margin-left:12px">다음</span>' + nextChips;
+      mainHtml += '</div></div>';
+    }
+
+    var html = '<div class="wf-detail-body">'
+      + '<div class="wf-detail-side">' + sideHtml + '</div>'
+      + '<div class="wf-detail-main">' + mainHtml + '</div>'
+      + '</div>';
+
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('.wf-detail-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var target = document.getElementById(chip.getAttribute('data-target'));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        target.classList.add('wf-selected');
+        showDetail(target);
+      });
+    });
+  }
+
+  function clearDetail(){
+    var panel = document.getElementById('wfDetail');
+    if (panel) panel.innerHTML = '<p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>';
+    document.querySelectorAll('.wf-node.wf-selected').forEach(function(n){ n.classList.remove('wf-selected'); });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    bindHover();
+    draw();
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      n.addEventListener('click', function(){
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        n.classList.add('wf-selected');
+        showDetail(n);
+      });
+    });
+    window.addEventListener('resize', draw);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반도체집적회로의 배치설계에 관한 법률 시행령 · LawMap</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">AI 관련 법 지도</a>
+    <nav class="site-nav">
+      <a href="ai-basic-act.html">인공지능기본법</a>
+    <a href="https://www.law.go.kr/LSW/main.html" target="_blank" rel="noopener" class="lawgokr-link">국가법령정보시스템</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1><a class="law-sibling" href="semiconductor-layout-design-act.html">반도체집적회로의 배치설계에 관한 법률</a><span class="law-sep">&gt;</span><span class="law-current">반도체집적회로의 배치설계에 관한 법률 시행령</span></h1>
+    <p class="lead">
+      반도체설계법이 "대통령령으로 정한다"고 위임한 사항(설정등록 신청서 기재사항㆔첨부서류, 재정 신청㆔심의
+      절차, 설정등록취소 절차 등)을 구체화하는 하위법령입니다. (제1조 목적)
+    </p>
+    <div class="tags">
+      <span class="tag">대통령령 제35809호(현행)</span>
+      <span class="tag">공포㆔시행 2025-10-01</span>
+      <span class="tag">타법개정</span>
+      <span class="tag">소관 지식재산처</span>
+      <span class="tag">전문 4개장(제3장 삭제) 20여 조</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">1</span>구성</h2>
+    <p class="sec-desc">
+      총칙에서 보칙까지 4개 장으로 구성되어 있으나, 제3장(옛 분쟁조정 관련 규정)이 2024년 개정으로 전부
+      삭제되어 현재는 3개 장이 실질적으로 운용됩니다. 각 장 배지를 클릭하면 법령 원문 전체 페이지가 해당
+      장의 첫 조문 위치로 스크롤되어 열립니다.
+    </p>
+  </div>
+
+  <div class="chapter-flow">
+    <a class="ch" href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=277531&joNo=0001&joBrNo=00&chrClsCd=010202&urlMode=lsInfoP&efYd=20251001&ancYnChk=0" target="_blank" rel="noopener"><div class="no">제1장 · 제1~10조</div><h4>총칙(재정 절차)</h4><p>배치설계불이용 정당사유, 재정신청, 부본송달공고, 권리남용, 재정서, 대가공탁, 재정취소절차</p></a>
+    <div class="arrow">→</div>
+    <a class="ch ai-note" href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=277531&joNo=0011&joBrNo=00&chrClsCd=010202&urlMode=lsInfoP&efYd=20251001&ancYnChk=0" target="_blank" rel="noopener"><div class="no">제2장 · 제11~28조</div><h4>배치설계(등록 절차)</h4><p>설정등록 신청, 거절, 고시, 등록원부, 첨부서류, 경정, 설정등록취소</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=277531&joNo=0029&joBrNo=00&chrClsCd=010202&urlMode=lsInfoP&efYd=20251001&ancYnChk=0" target="_blank" rel="noopener"><div class="no">제3장 · 제(삭제)조</div><h4>삭제</h4><p>2024.7.23 개정으로 전부 삭제</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=277531&joNo=0035&joBrNo=00&chrClsCd=010202&urlMode=lsInfoP&efYd=20251001&ancYnChk=0" target="_blank" rel="noopener"><div class="no">제4장 · 제35~40조</div><h4>보칙</h4><p>배치설계등록증, 등록원부 열람, 배치설계파일 관리, 고유식별정보 처리</p></a>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">2</span>절차 구조도<button type="button" id="basicToggle" class="decree-toggle">+&nbsp;&nbsp;본법</button></h2>
+    <p class="sec-desc">
+      시행령이 구체화한 절차를 중심으로 그린 흐름도입니다. <a href="semiconductor-layout-design-act.html" style="color:var(--blue)">반도체설계법</a>
+      페이지의 절차 구조도와 같은 5개 주체 × 7단계(G0~G6) 축을 사용하며, 이 시행령이 정한 세부 기준㆔절차㆔서식 등
+      더 구체적인 실무 단계를 보여줍니다. 설정등록 관련 조문은 옅은 노란색으로 표시했습니다.
+    </p>
+  </div>
+
+  <div class="wf-scroll">
+    <div class="wf-grid-wrap" id="wfGridWrap">
+      <svg class="wf-arrows" id="wfArrows">
+        <defs>
+          <marker id="wf-arrow" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+          <marker id="wf-arrow-loop" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+        </defs>
+      </svg>
+      <div class="wf-grid">
+        <div class="wf-corner-head">주체 / 단계</div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G0</span><span class="wf-lane-sub">창작ㆍ귀속</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G1</span><span class="wf-lane-sub">배치설계권 발생ㆍ효력</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G2</span><span class="wf-lane-sub">이용권ㆍ재정</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G3</span><span class="wf-lane-sub">설정등록</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G4</span><span class="wf-lane-sub">등록의 효력ㆍ취소</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G5</span><span class="wf-lane-sub">침해구제ㆍ보상금</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G6</span><span class="wf-lane-sub">벌칙ㆍ비밀유지</span></div>
+        <div class="wf-gate-cell">창작자ㆍ배치설계권자</div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P01" hidden><div class="wf-node-top"><span class="pcode">P01</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C3%EC%A1%B0" target="_blank" rel="noopener">제3조①ㆍ제5조</a></div><span class="t">외국인 보호, 재외자 관리인, 직무창작 귀속</span></div></div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P02" hidden><div class="wf-node-top"><span class="pcode">P02</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C6%EC%A1%B0" target="_blank" rel="noopener">제6조ㆍ제7조①ㆍ제8조</a></div><span class="t">배치설계권 발생, 존속기간(10년), 효력</span></div></div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P03" hidden><div class="wf-node-top"><span class="pcode">P03</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C11%EC%A1%B0" target="_blank" rel="noopener">제11조①②</a></div><span class="t">전용이용권 설정</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="D11"><div class="wf-node-top"><span class="pcode">D11</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C11%EC%A1%B0" target="_blank" rel="noopener">제11조</a></div><span class="t">배치설계권 설정등록 신청서의 기재사항과 제출방법을 정한다.</span></div><div class="wf-node" id="D18"><div class="wf-node-top"><span class="pcode">D18</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C18%EC%A1%B0" target="_blank" rel="noopener">제18조</a></div><span class="t">설정등록 신청 시 첨부해야 할 서류(배치설계 도면 등)를 정한다.</span></div><div class="wf-node dec-node" id="P04" hidden><div class="wf-node-top"><span class="pcode">P04</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C19%EC%A1%B0" target="_blank" rel="noopener">제19조①</a></div><span class="t">설정등록 신청(최초이용일부터 2년 이내)</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P05" hidden><div class="wf-node-top"><span class="pcode">P05</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C35%EC%A1%B0" target="_blank" rel="noopener">제35조①ㆍ제36조①②</a></div><span class="t">침해정지 등 청구, 손해배상청구</span></div><div class="wf-node dec-node" id="P06" hidden><div class="wf-node-top"><span class="pcode">P06</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C37%EC%A1%B0" target="_blank" rel="noopener">제37조①</a></div><span class="t">설정등록 전 이용에 대한 보상금청구</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">이용자ㆍAI반도체기업</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="D4"><div class="wf-node-top"><span class="pcode">D4</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C4%EC%A1%B0" target="_blank" rel="noopener">제4조</a></div><span class="t">재정 신청서의 기재사항과 첨부서류를 정한다.</span></div><div class="wf-node" id="D5"><div class="wf-node-top"><span class="pcode">D5</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C5%EC%A1%B0" target="_blank" rel="noopener">제5조</a></div><span class="t">재정신청서 부본을 상대방에게 송달하고 의견제출 기회를 주기 위해 공고하는 절차를 정한다.</span></div><div class="wf-node dec-node" id="P07" hidden><div class="wf-node-top"><span class="pcode">P07</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C12%EC%A1%B0" target="_blank" rel="noopener">제12조①ㆍ제13조①②</a></div><span class="t">통상이용권 설정, 재정 신청</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">지식재산처(장)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="D12"><div class="wf-node-top"><span class="pcode">D12</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C12%EC%A1%B0" target="_blank" rel="noopener">제12조</a></div><span class="t">설정등록 신청을 거절하는 경우의 세부 절차와 통지방법을 정한다.</span></div><div class="wf-node" id="D13"><div class="wf-node-top"><span class="pcode">D13</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C13%EC%A1%B0" target="_blank" rel="noopener">제13조</a></div><span class="t">설정등록 사실을 관보 등에 고시하는 방법과 절차를 정한다.</span></div><div class="wf-node dec-node" id="P08" hidden><div class="wf-node-top"><span class="pcode">P08</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C20%EC%A1%B0" target="_blank" rel="noopener">제20조①ㆍ제21조①③</a></div><span class="t">설정등록 거절㆔등록 및 공시</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="D27"><div class="wf-node-top"><span class="pcode">D27</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C27%EC%A1%B0" target="_blank" rel="noopener">제27조</a></div><span class="t">배치설계권 설정등록취소의 절차와 등록원부 기재방법을 정한다.</span></div><div class="wf-node dec-node" id="P09" hidden><div class="wf-node-top"><span class="pcode">P09</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C23%EC%A1%B0" target="_blank" rel="noopener">제23조①ㆍ제24조</a></div><span class="t">등록의 효력(대항요건), 설정등록 취소</span></div><div class="wf-node" id="D10"><div class="wf-node-top"><span class="pcode">D10</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C10%EC%A1%B0" target="_blank" rel="noopener">제10조</a></div><span class="t">재정 취소 신청 및 청문 등 재정 취소의 세부절차를 정한다.</span></div><div class="wf-node dec-node" id="P10" hidden><div class="wf-node-top"><span class="pcode">P10</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C39%EC%A1%B0" target="_blank" rel="noopener">제39조</a></div><span class="t">청문</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P11" hidden><div class="wf-node-top"><span class="pcode">P11</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C43%EC%A1%B0" target="_blank" rel="noopener">제43조①②ㆍ제44조</a></div><span class="t">배치설계 기술진흥, 비밀유지의무</span></div></div>
+        <div class="wf-gate-cell">산업재산권분쟁조정위원회</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="D6"><div class="wf-node-top"><span class="pcode">D6</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C6%EC%A1%B0" target="_blank" rel="noopener">제6조</a></div><span class="t">재정 심의 시 배치설계권자 등의 권리남용 여부를 판단하는 기준을 정한다.</span></div><div class="wf-node" id="D7"><div class="wf-node-top"><span class="pcode">D7</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C7%EC%A1%B0" target="_blank" rel="noopener">제7조</a></div><span class="t">재정서에 적어야 할 사항(통상이용권 범위, 대가 등)과 작성방법을 정한다.</span></div><div class="wf-node" id="D8"><div class="wf-node-top"><span class="pcode">D8</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0%20%EC%8B%9C%ED%96%89%EB%A0%B9/%EC%A0%9C8%EC%A1%B0" target="_blank" rel="noopener">제8조</a></div><span class="t">재정서 등본을 당사자에게 송달하는 절차를 정한다.</span></div><div class="wf-node dec-node" id="P12" hidden><div class="wf-node-top"><span class="pcode">P12</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C13%EC%A1%B0" target="_blank" rel="noopener">제13조④</a></div><span class="t">재정 신청 심의</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">선의자ㆍ침해자</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P13" hidden><div class="wf-node-top"><span class="pcode">P13</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C9%EC%A1%B0" target="_blank" rel="noopener">제9조③ㆍ제38조①</a></div><span class="t">선의자 면책, 선의자에 대한 이용료청구 대상</span></div></div>
+        <div class="wf-cell"><div class="wf-node dec-node" id="P14" hidden><div class="wf-node-top"><span class="pcode">P14</span><a class="a" href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%B0%98%EB%8F%84%EC%B2%B4%EC%A7%91%EC%A0%81%ED%9A%8C%EB%A1%9C%EC%9D%98%20%EB%B0%B0%EC%B9%98%EC%84%A4%EA%B3%84%EC%97%90%20%EA%B4%80%ED%95%9C%20%EB%B2%95%EB%A5%A0/%EC%A0%9C45%EC%A1%B0" target="_blank" rel="noopener">제45조①ㆍ제46조ㆍ제48조</a></div><span class="t">침해죄, 거짓표시죄, 속임수죄, 비밀누설죄, 양벌규정</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-detail" id="wfDetail">
+    <p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">3</span>본법 위임조문 대응표</h2>
+    <p class="sec-desc">반도체설계법이 "대통령령으로 정한다"고 위임한 주요 조문과, 이를 구체화하는 이 시행령 조문의 대응 관계입니다.</p>
+    <div class="related-grid">
+      <div class="related-chip"><div class="rel">본법 제19조①</div><div class="name">시행령 제11조ㆍ제18조 — 설정등록 신청(최초이용일부터 2년 이내)</div></div>
+      <div class="related-chip"><div class="rel">본법 제12조①ㆍ제13조①②</div><div class="name">시행령 제4조ㆍ제5조 — 통상이용권 설정, 재정 신청</div></div>
+      <div class="related-chip"><div class="rel">본법 제20조①ㆍ제21조①③</div><div class="name">시행령 제12조ㆍ제13조 — 설정등록 거절㆔등록 및 공시</div></div>
+      <div class="related-chip"><div class="rel">본법 제23조①ㆍ제24조</div><div class="name">시행령 제27조 — 등록의 효력(대항요건), 설정등록 취소</div></div>
+      <div class="related-chip"><div class="rel">본법 제39조</div><div class="name">시행령 제10조 — 청문</div></div>
+      <div class="related-chip"><div class="rel">본법 제13조④</div><div class="name">시행령 제6조ㆍ제7조ㆍ제8조 — 재정 신청 심의</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">4</span>관련 법령</h2>
+    <div class="related-grid">
+      <div class="related-chip"><div class="rel">모법(위임근거)</div><div class="name"><a href="semiconductor-layout-design-act.html" style="color:var(--blue)">반도체집적회로의 배치설계에 관한 법률</a></div></div>
+      <div class="related-chip"><div class="rel">제28조 등록원부㆔등록절차에 특허권 등의 등록령 준용</div><div class="name">특허권 등의 등록령</div></div>
+      <div class="related-chip ai-note"><div class="rel">배치설계 설정등록㆔재정 절차의 AI 반도체 설계 보호 관련성</div><div class="name"><a href="ai-basic-act.html" style="color:var(--blue)">인공지능기본법</a></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-disclaimer">이 페이지는 법령 이해를 돕기 위한 학습·연구 참고 자료이며, 법률 자문이나 정부기관의 공식 해석을 대신하지 않습니다. 절차구조도의 행위자 주체 구분은 조문 해석에 따른 편집 관점이며 법령상 공식 분류가 아닙니다.</p>
+    반도체집적회로의 배치설계에 관한 법률 시행령 &middot; 대통령령 제35809호 (2025-10-01 공포㆔시행) &middot; 기준일 2026-08-18
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EDGES = [{"from": "D4", "to": "D5", "kind": "solid"}, {"from": "D5", "to": "D6", "kind": "solid"}, {"from": "D6", "to": "D7", "kind": "solid"}, {"from": "D7", "to": "D8", "kind": "solid"}, {"from": "D11", "to": "D18", "kind": "solid"}, {"from": "D12", "to": "D13", "kind": "solid"}];
+
+  function rel(rect, wr){
+    return {
+      left: rect.left - wr.left, right: rect.right - wr.left,
+      top: rect.top - wr.top, bottom: rect.bottom - wr.top,
+      cx: (rect.left + rect.right)/2 - wr.left, cy: (rect.top + rect.bottom)/2 - wr.top
+    };
+  }
+  function roundedPath(pts, r){
+    var clean = [pts[0]];
+    for (var i=1;i<pts.length;i++){
+      var p=pts[i], last=clean[clean.length-1];
+      if (Math.abs(p[0]-last[0])>0.5 || Math.abs(p[1]-last[1])>0.5) clean.push(p);
+    }
+    if (clean.length < 2) return '';
+    if (clean.length === 2) return 'M '+clean[0][0]+' '+clean[0][1]+' L '+clean[1][0]+' '+clean[1][1];
+    var d = 'M '+clean[0][0]+' '+clean[0][1];
+    for (var j=1;j<clean.length-1;j++){
+      var p0=clean[j-1], p1=clean[j], p2=clean[j+1];
+      var d1x=p1[0]-p0[0], d1y=p1[1]-p0[1], len1=Math.hypot(d1x,d1y);
+      var d2x=p2[0]-p1[0], d2y=p2[1]-p1[1], len2=Math.hypot(d2x,d2y);
+      var rr = Math.min(r, len1/2, len2/2);
+      var ax = p1[0]-(d1x/len1)*rr, ay = p1[1]-(d1y/len1)*rr;
+      var bx = p1[0]+(d2x/len2)*rr, by = p1[1]+(d2y/len2)*rr;
+      d += ' L '+ax+' '+ay+' Q '+p1[0]+' '+p1[1]+' '+bx+' '+by;
+    }
+    var lastPt = clean[clean.length-1];
+    d += ' L '+lastPt[0]+' '+lastPt[1];
+    return d;
+  }
+
+  var NO_DETOUR = {};
+  var GUTTER_X = 0;
+  var GRID_BOTTOM = 0;
+  var BOTTOM_ROUTE = { 'P04>P02': true };
+
+  function edgePath(kind, s, t, e){
+    var r = 10;
+    var edgeKey0 = e ? (e.from + '>' + e.to) : '';
+    if (BOTTOM_ROUTE[edgeKey0]) {
+      var by = Math.max(s.bottom, t.bottom) + 10;
+      return roundedPath([[s.cx,s.bottom],[s.cx,by],[t.cx,by],[t.cx,t.bottom]], r);
+    }
+    if (kind === 'loop') {
+      var rx = Math.max(s.right, t.right) + 11;
+      return roundedPath([[s.right,s.cy],[rx,s.cy],[rx,t.cy],[t.right,t.cy]], r);
+    }
+    var forwardDx = t.left - s.right;
+    var backwardDx = s.left - t.right;
+    var overlapX = forwardDx < 8 && backwardDx < 8;
+    if (overlapX) {
+      var gutterX = Math.min(s.left, t.left) - 11;
+      return roundedPath([[s.left,s.cy],[gutterX,s.cy],[gutterX,t.cy],[t.left,t.cy]], r);
+    }
+    var sameRow = Math.abs(s.cy - t.cy) < 2;
+    if (!sameRow) {
+      // multi-row edge: always travel through the gutter immediately next to the
+      // source's own column. Column gutters are empty in every row (grid columns
+      // align across rows), so this can never cross another row's node box no
+      // matter how many rows/columns the edge skips.
+      if (forwardDx >= 8) {
+        var gx = s.right + 11;
+        return roundedPath([[s.right,s.cy],[gx,s.cy],[gx,t.cy],[t.left,t.cy]], r);
+      }
+      var gx2 = s.left - 11;
+      return roundedPath([[s.left,s.cy],[gx2,s.cy],[gx2,t.cy],[t.right,t.cy]], r);
+    }
+    var edgeKey = e ? (e.from + '>' + e.to) : '';
+    var toggleDetour = basicVisible && !NO_DETOUR[edgeKey];
+    var skipsColumn = forwardDx > 40 || backwardDx > 40;
+    if (skipsColumn || toggleDetour) {
+      // same-row edge that skips at least one column (or needs to clear a
+      // decree/basic node stacked in-cell): the row-gap is only a few px, far
+      // too thin to jog through safely, so exit the WHOLE grid above or below
+      // (whichever is closer to this row) instead of dipping into the
+      // neighbouring row's territory.
+      var goAbove = s.top < (GRID_BOTTOM - s.bottom);
+      var edgeY = goAbove ? -8 : GRID_BOTTOM + 8;
+      if (forwardDx >= 8) {
+        var outX = s.right + 10;
+        return roundedPath([[s.right,s.cy],[outX,s.cy],[outX,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+      }
+      var outX2 = s.left - 10;
+      return roundedPath([[s.left,s.cy],[outX2,s.cy],[outX2,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+    }
+    if (forwardDx >= 8) {
+      var midX = s.right + forwardDx/2;
+      return roundedPath([[s.right,s.cy],[midX,s.cy],[midX,t.cy],[t.left,t.cy]], r);
+    }
+    var midX2 = s.left - backwardDx/2;
+    return roundedPath([[s.left,s.cy],[midX2,s.cy],[midX2,t.cy],[t.right,t.cy]], r);
+  }
+
+  var pathEls = [];
+  var basicVisible = false;
+
+  function activeEdges(){
+    return basicVisible ? EDGES.concat(BASIC_EDGES) : EDGES;
+  }
+
+  function draw(){
+    var wrap = document.getElementById('wfGridWrap');
+    var svg = document.getElementById('wfArrows');
+    if (!wrap || !svg) return;
+    svg.querySelectorAll('path.wf-arrow-path').forEach(function(p){ svg.removeChild(p); });
+    pathEls = [];
+    var wr = wrap.getBoundingClientRect();
+    var corner = document.querySelector('.wf-corner-head');
+    GUTTER_X = corner ? (corner.getBoundingClientRect().right - wr.left) + 11 : 0;
+    GRID_BOTTOM = wr.height;
+
+    activeEdges().forEach(function(e){
+      var a = document.getElementById(e.from);
+      var b = document.getElementById(e.to);
+      if (!a || !b) { pathEls.push(null); return; }
+      var s = rel(a.getBoundingClientRect(), wr);
+      var t = rel(b.getBoundingClientRect(), wr);
+      var d = edgePath(e.kind, s, t, e);
+      var marker = e.kind === 'loop' ? 'wf-arrow-loop' : 'wf-arrow';
+      var cls = 'wf-arrow-path' + (e.kind === 'dashed' ? ' dashed' : e.kind === 'loop' ? ' loopback' : '');
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', cls);
+      path.setAttribute('marker-end', 'url(#'+marker+')');
+      svg.appendChild(path);
+      pathEls.push(path);
+    });
+  }
+
+  function setHover(nodeId){
+    var nodeSet = null, edgeSet = null;
+    if (nodeId) {
+      nodeSet = new Set([nodeId]);
+      edgeSet = new Set();
+      activeEdges().forEach(function(e, i){
+        if (e.from === nodeId || e.to === nodeId) {
+          edgeSet.add(i);
+          nodeSet.add(e.from);
+          nodeSet.add(e.to);
+        }
+      });
+    }
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (!nodeSet) { n.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = nodeSet.has(n.id);
+      n.classList.toggle('wf-dim', !isConn);
+      n.classList.toggle('wf-hl', isConn);
+    });
+    pathEls.forEach(function(p, i){
+      if (!p) return;
+      if (!edgeSet) { p.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = edgeSet.has(i);
+      p.classList.toggle('wf-dim', !isConn);
+      p.classList.toggle('wf-hl', isConn);
+    });
+  }
+
+  function bindHover(){
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (n.dataset.hoverBound) return;
+      n.dataset.hoverBound = '1';
+      n.setAttribute('tabindex', '0');
+      n.addEventListener('mouseenter', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('mouseleave', restoreDetail);
+      n.addEventListener('focus', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('blur', restoreDetail);
+    });
+  }
+
+  function toggleBasic(){
+    basicVisible = !basicVisible;
+    document.querySelectorAll('#wfGridWrap .dec-node[id^="P"]').forEach(function(n){
+      if (basicVisible) n.removeAttribute('hidden'); else n.setAttribute('hidden', '');
+    });
+    var btn = document.getElementById('basicToggle');
+    if (btn) {
+      btn.innerHTML = basicVisible ? '-&nbsp;&nbsp;본법' : '+&nbsp;&nbsp;본법';
+      btn.classList.toggle('on', basicVisible);
+    }
+    bindHover();
+    draw();
+    clearDetail();
+  }
+
+  function restoreDetail(){
+    setHover(null);
+    var sel = document.querySelector('.wf-node.wf-selected');
+    if (sel) showDetail(sel); else clearDetail();
+  }
+
+  var GATE_NAMES = ["G0 창작ㆍ귀속", "G1 배치설계권 발생ㆍ효력", "G2 이용권ㆍ재정", "G3 설정등록", "G4 등록의 효력ㆍ취소", "G5 침해구제ㆍ보상금", "G6 벌칙ㆍ비밀유지"];
+
+  function nodeContext(nodeEl){
+    var cell = nodeEl.closest('.wf-cell');
+    var el = cell ? cell.previousElementSibling : null;
+    var actor = '', gate = '';
+    var steps = 0;
+    while (el) {
+      steps++;
+      if (el.classList.contains('wf-gate-cell')) {
+        actor = el.childNodes[0].textContent.trim();
+        gate = GATE_NAMES[steps - 1] || '';
+        break;
+      }
+      el = el.previousElementSibling;
+    }
+    return { actor: actor, gate: gate };
+  }
+
+  var EDGE_KIND_LABEL = { solid: '같은 주체 · 다음 단계', dashed: '다른 주체로 연계', loop: '조건부 회귀' };
+
+  function relatedChip(id, dir, kind){
+    var el = document.getElementById(id);
+    if (!el) return '';
+    var t = (el.querySelector('.t') || {}).textContent || '';
+    return '<button type="button" class="wf-detail-chip" data-target="' + id + '" title="' + EDGE_KIND_LABEL[kind] + '">'
+      + (dir === 'prev' ? '← ' : '→ ') + id + ' ' + t + '</button>';
+  }
+
+  // 조문 원문(항ㆍ호 단위). 국가법령정보 공동활용 API(law.go.kr DRF, OC=test,
+  // MST=277531, 반도체집적회로의 배치설계에 관한 법률 시행령, 시행일 2025-10-01판)에서
+  // 그대로 가져온 것으로, 법령은 저작권법 제7조에 따라 보호 대상이 아니다.
+  var ARTICLES = {
+  "4": {
+    "title": "재정신청",
+    "paras": [
+      {
+        "num": "①",
+        "text": "①법 제13조제2항 또는 제3항에 따라 법 제12조에 따른 통상이용권(이하 \"통상이용권\"이라 한다)의 설정에 관한 재정을 신청하려는 자(이하 \"재정신청인\"이라 한다)는 다음 각 호의 사항을 적은 신청서 (이하 \"재정신청서\"라 한다)를 지식재산처장에게 제출하여야 한다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2025.10.1>",
+        "items": [
+          "1. 배치설계권의 등록번호",
+          "2. 재정신청인의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "3. 배치설계권자 또는 전용이용권, 통상이용권 및 법 제16조에 따른 질권(이하 \"배치설계에 관한 권리\"라 한다)을 등록한 자의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "4. 신청의 취지 및 이유",
+          "5. 통상이용권의 범위",
+          "6. 대가(代價)와 그 대가의 지급방법 및 시기"
+        ]
+      },
+      {
+        "num": "②",
+        "text": "②제1항에 따른 재정신청서에는 다음 각 호의 서류를 첨부하여야 한다. <개정 1995ㆍ7ㆍ1, 2007.10.26>",
+        "items": [
+          "1. 배치설계권 또는 전용이용권의 경제적 가치가 고려된 대가의 산출근거를 적은 서류",
+          "2. 신청의 이유를 입증하는 서류"
+        ]
+      }
+    ]
+  },
+  "5": {
+    "title": "재정신청서의 부본 송달 및 공고",
+    "paras": [
+      {
+        "num": "①",
+        "text": "①지식재산처장은 제4조에 따른 재정신청이 있으면 배치설계권자 및 배치설계에 관한 권리를 등록한 자에게 그 재정신청서의 부본을 송달하고, 1개월 이상 3개월 이내의 기간을 정하여 의견서제출의 기회를 주어야 한다. 다만, 법 제13조제3항에 따른 재정신청인 경우에는 의견서 제출절차를 생략할 수 있다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2025.10.1>",
+        "items": []
+      },
+      {
+        "num": "②",
+        "text": "②지식재산처장은 제1항에 따른 의견서의 제출이 있으면 그 의견서의 부본을 재정신청인에게 송달하여야 한다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2025.10.1>",
+        "items": []
+      },
+      {
+        "num": "③",
+        "text": "③지식재산처장은 제4조에 따른 재정신청이 있으면 그 취지를 관보 또는 「특허법」 제221조에 따른 특허공보(이하 \"관보등\"이라 한다)에 공고하여야 한다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2025.10.1>",
+        "items": []
+      }
+    ]
+  },
+  "6": {
+    "title": "권리남용",
+    "paras": [
+      {
+        "num": "",
+        "text": "",
+        "items": [
+          "1. 배치설계권자 또는 전용이용권자가 배치설계를 이용하지 아니한 행위가 「독점규제 및 공정거래에 관한 법률」 제5조에 따른 남용행위나 같은 법 제45조에 따른 불공정거래행위에 해당하여 같은 법 제49조에 따라 공정거래위원회로부터 시정조치를 받은 경우",
+          "2. 배치설계가 계속하여 2년 이상 국내에서 상당한 영업적 규모로 이용되지 아니하거나, 적당한 정도와 조건으로 국내수요를 충족하지 못하는 경우"
+        ]
+      }
+    ]
+  },
+  "7": {
+    "title": "재정서",
+    "paras": [
+      {
+        "num": "",
+        "text": "",
+        "items": [
+          "1. 재정의 번호",
+          "2. 배치설계권의 등록번호",
+          "3. 재정신청인의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "4. 배치설계권자 및 배치설계에 관한 권리를 등록한 자의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "5. 재정의 주문(법 제13조제5항 각 호의 사항을 포함한다)",
+          "6. 재정의 이유(신청의 취지 및 이유를 포함한다)",
+          "7. 재정연월일"
+        ]
+      }
+    ]
+  },
+  "8": {
+    "title": "재정서 등본의 송달",
+    "paras": [
+      {
+        "num": "",
+        "text": "제8조(재정서 등본의 송달) 지식재산처장은 재정을 하면 재정서의 등본을 재정신청인, 배치설계권자 및 배치설계에 관한 권리를 등록한 자에게 각각 송달하여야 한다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2025.10.1>",
+        "items": []
+      }
+    ]
+  },
+  "10": {
+    "title": "재정의 취소절차",
+    "paras": [
+      {
+        "num": "①",
+        "text": "① 법 제15조제1항에 따른 재정의 취소는 그 이유를 밝힌 서면으로 하여야 한다. <개정 2007.10.26>",
+        "items": []
+      },
+      {
+        "num": "②",
+        "text": "②제1항에 따른 재정의 취소에 관하여는 제4조ㆍ제5조 및 제8조를 준용한다. 이 경우 \"재정\"은 \"재정취소\"로, \"재정신청서\"는 \"재정취소신청서\"로, \"재정신청인\"은 \"재정취소신청인\"으로, \"재정서\"는 \"재정취소서\"로 본다. <개정 2007.10.26>",
+        "items": []
+      }
+    ]
+  },
+  "11": {
+    "title": "배치설계권 설정등록의 신청",
+    "paras": [
+      {
+        "num": "①",
+        "text": "①법 제19조제1항에 따라 배치설계권의 설정등록을 신청하려는 자는 다음 각 호의 사항을 적은 설정등록신청서(이하 \"설정등록신청서\"라 한다)를 지식재산처장에게 제출하여야 한다. <개정 1995.7.1, 1998.12.31, 2007.10.26, 2025.10.1>",
+        "items": [
+          "1. 신청인의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "2. 신청연월일",
+          "3. 배치설계의 창작연월일",
+          "4. 배치설계에 대하여 영리를 목적으로 법 제2조제4호다목의 행위를 하고 있으면 그 행위를 최초로 한 연월일",
+          "5. 배치설계창작자의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "6. 신청인의 대리인이 있으면 그 대리인의 성명, 주소 및 주민등록번호(법인이면 그 명칭, 영업소의 소재지, 법인등록번호 및 대표자의 성명)",
+          "7. 배치설계의 명칭"
+        ]
+      },
+      {
+        "num": "②",
+        "text": "②설정등록신청서에는 다음 각 호의 자료를 첨부하여야 한다. <개정 1995.7.1, 1998.12.31, 2007.10.26, 2008.2.29, 2009.3.25, 2013.3.23, 2025.10.1>",
+        "items": [
+          "1. 배치설계의 평면적 또는 입체적 구조에 대하여 컴퓨터로 판독이 가능한 형태의 전자파일(이하 \"배치설계파일\"이라 한다)",
+          "2. 총리령으로 정하는 사항을 적은 배치설계설명서",
+          "3. 등록 신청을 법 제4조제1항에 따른 배치설계관리인(이하 \"배치설계관리인\"이라 한다)이 아닌 대리인이 하는 경우에는 대리권을 증명하는 서류",
+          "4. 신청인이 외국인이면 국적증명서(외국법인이면 외국법인임을 증명하는 서류)",
+          "5. 신청인이 법 제19조제1항에 따른 배치설계창작자의 승계인인 경우에는 그 승계사실을 증명하는 서류"
+        ]
+      },
+      {
+        "num": "③",
+        "text": "③ 삭제 <2007.10.26>",
+        "items": []
+      }
+    ]
+  },
+  "12": {
+    "title": "설정등록신청의 거절",
+    "paras": [
+      {
+        "num": "①",
+        "text": "① 법 제20조제1항제4호에서 \"배치설계권 설정등록 신청에 필요한 첨부자료를 제출하지 아니하는 등 대통령령으로 정하는 사유\"란 다음 각 호의 어느 하나에 해당하는 경우를 말한다. <개정 2009.3.25>",
+        "items": [
+          "1. 설정등록신청서에 제11조제1항에 따른 기재사항을 적지 아니하거나 제11조제2항에 따른 자료를 첨부하지 아니한 경우",
+          "2. 설정등록신청서의 기재사항과 첨부자료 간 또는 첨부자료 상호 간에 서로 부합(符合)하지 아니한 경우",
+          "3. 제11조제2항제2호에 따른 기재사항을 적지 아니한 배치설계설명서를 첨부한 경우",
+          "4. 법 제40조에 따른 수수료를 납부하지 아니한 경우"
+        ]
+      },
+      {
+        "num": "②",
+        "text": "② 지식재산처장은 신청인의 신청이 제1항 각 호의 어느 하나에 해당하여 그 신청을 거절하려면 일정한 기간을 정하여 보정을 명하여야 한다. <개정 2009.3.25, 2025.10.1>",
+        "items": []
+      },
+      {
+        "num": "③",
+        "text": "③ 신청인은 설정등록이 있기 전까지 설정등록신청서 또는 첨부자료(배치설계파일은 제외한다)를 보정할 수 있다. 다만, 제2항에 따른 보정명령이 있으면 정하여진 기간 내에만 보정할 수 있다.",
+        "items": []
+      },
+      {
+        "num": "④",
+        "text": "④ 지식재산처장은 직권 또는 보정명령을 받은 자의 신청에 따라 제2항의 기간을 연장할 수 있다. <개정 2025.10.1>",
+        "items": []
+      }
+    ]
+  },
+  "13": {
+    "title": "설정등록의 고시",
+    "paras": [
+      {
+        "num": "①",
+        "text": "①지식재산처장은 법 제21조제1항에 따라 배치설계권의 설정등록을 하면 이를 관보등에 고시하여야 한다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2025.10.1>",
+        "items": []
+      },
+      {
+        "num": "②",
+        "text": "②제1항에 따라 관보등에 고시하여야 하는 사항은 총리령으로 정한다. <개정 1995ㆍ7ㆍ1, 1998ㆍ12ㆍ31, 2007.10.26, 2008.2.29, 2013.3.23, 2025.10.1>",
+        "items": []
+      }
+    ]
+  },
+  "18": {
+    "title": "첨부서류",
+    "paras": [
+      {
+        "num": "①",
+        "text": "①제17조에 따른 등록신청서에는 다음 각 호의 서류를 첨부하여야 한다. <개정 2007.10.26>",
+        "items": [
+          "1. 등록의 원인을 증명하는 서류",
+          "2. 등록의 원인에 대하여 제3자의 동의 또는 승낙을 필요로 하면 이를 증명하는 서류. 다만, 그 제3자로 하여금 신청서에 기명날인하게 하여 그 서류에 갈음할 수 있다.",
+          "3. 등록 신청을 배치설계관리인이 아닌 대리인이 하는 경우에는 대리권을 증명하는 서류",
+          "4. 신청인이 외국인이면 국적증명서(외국법인이면 외국법인임을 증명하는 서류)",
+          "5. 삭제<2009.12.22>"
+        ]
+      },
+      {
+        "num": "②",
+        "text": "②등록의 원인을 증명하는 서류가 집행력있는 판결문이면 제1항제2호의 서류는 첨부하지 아니할 수 있다. <개정 2007.10.26>",
+        "items": []
+      },
+      {
+        "num": "③",
+        "text": "③제17조제3항의 경우에 배치설계의 이용사업과 함께 전용이용권 또는 통상이용권을 이전하려면 제1항의 서류 외에 그 사실을 증명하는 서류를 첨부하여야 한다. <개정 2007.10.26>",
+        "items": []
+      }
+    ]
+  },
+  "27": {
+    "title": "배치설계권의 설정등록취소",
+    "paras": [
+      {
+        "num": "①",
+        "text": "① 법 제24조에 따른 배치설계권의 설정등록취소는 그 이유를 밝힌 서면으로 하여야 한다. <개정 2007.10.26>",
+        "items": []
+      },
+      {
+        "num": "②",
+        "text": "②제1항에 따른 설정등록취소의 내용은 이를 관보등에 고시하여야 한다. <개정 2007.10.26>",
+        "items": []
+      }
+    ]
+  }
+};
+
+  function renderItems(items){
+    return '<ul class="wf-detail-law-items">' + items.map(function(i){
+      if (typeof i === 'string') return '<li>' + i + '</li>';
+      var subHtml = i.sub && i.sub.length
+        ? '<ul class="wf-detail-law-subitems">' + i.sub.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ul>'
+        : '';
+      return '<li>' + i.text + subHtml + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderArticleFull(num){
+    var art = ARTICLES[num];
+    if (!art) return '<p class="wf-detail-law-missing">원문 데이터가 아직 없습니다. law.go.kr에서 확인해 주세요.</p>';
+    return art.paras.map(function(p){
+      var itemsHtml = p.items.length ? renderItems(p.items) : '';
+      return '<p class="wf-detail-law-para">' + p.text + '</p>' + itemsHtml;
+    }).join('');
+  }
+
+  function articleNum(article){
+    var m = article.match(/^제(\d+)조(?:의(\d+))?/);
+    if (!m) return '';
+    return m[2] ? m[1] + '-' + m[2] : m[1];
+  }
+
+  var LEGAL_BASIS = {
+  "D4": [
+    {
+      "article": "제4조",
+      "text": "재정 신청서의 기재사항과 첨부서류를 정한다."
+    }
+  ],
+  "D5": [
+    {
+      "article": "제5조",
+      "text": "재정신청서 부본을 상대방에게 송달하고 의견제출 기회를 주기 위해 공고하는 절차를 정한다."
+    }
+  ],
+  "D6": [
+    {
+      "article": "제6조",
+      "text": "재정 심의 시 배치설계권자 등의 권리남용 여부를 판단하는 기준을 정한다."
+    }
+  ],
+  "D7": [
+    {
+      "article": "제7조",
+      "text": "재정서에 적어야 할 사항(통상이용권 범위, 대가 등)과 작성방법을 정한다."
+    }
+  ],
+  "D8": [
+    {
+      "article": "제8조",
+      "text": "재정서 등본을 당사자에게 송달하는 절차를 정한다."
+    }
+  ],
+  "D10": [
+    {
+      "article": "제10조",
+      "text": "재정 취소 신청 및 청문 등 재정 취소의 세부절차를 정한다."
+    }
+  ],
+  "D11": [
+    {
+      "article": "제11조",
+      "text": "배치설계권 설정등록 신청서의 기재사항과 제출방법을 정한다."
+    }
+  ],
+  "D18": [
+    {
+      "article": "제18조",
+      "text": "설정등록 신청 시 첨부해야 할 서류(배치설계 도면 등)를 정한다."
+    }
+  ],
+  "D12": [
+    {
+      "article": "제12조",
+      "text": "설정등록 신청을 거절하는 경우의 세부 절차와 통지방법을 정한다."
+    }
+  ],
+  "D13": [
+    {
+      "article": "제13조",
+      "text": "설정등록 사실을 관보 등에 고시하는 방법과 절차를 정한다."
+    }
+  ],
+  "D27": [
+    {
+      "article": "제27조",
+      "text": "배치설계권 설정등록취소의 절차와 등록원부 기재방법을 정한다."
+    }
+  ]
+};
+
+  var BASIC_EDGES = [{"from": "P01", "to": "P04", "kind": "solid"}, {"from": "P04", "to": "P02", "kind": "solid"}, {"from": "P02", "to": "P03", "kind": "solid"}, {"from": "P03", "to": "P05", "kind": "solid"}, {"from": "P05", "to": "P06", "kind": "solid"}, {"from": "P08", "to": "P09", "kind": "solid"}, {"from": "P09", "to": "P10", "kind": "solid"}, {"from": "P04", "to": "P08", "kind": "dashed"}, {"from": "P08", "to": "P02", "kind": "dashed"}, {"from": "P07", "to": "P12", "kind": "dashed"}, {"from": "P02", "to": "P13", "kind": "dashed"}, {"from": "P13", "to": "P06", "kind": "dashed"}, {"from": "P09", "to": "P06", "kind": "dashed"}, {"from": "P05", "to": "P14", "kind": "dashed"}];
+
+  var BASIC_LEGAL_BASIS_SHORT = {
+  "P01": {
+    "article": "제3조①ㆍ제5조",
+    "text": "외국인 보호, 재외자 관리인, 직무창작 귀속"
+  },
+  "P02": {
+    "article": "제6조ㆍ제7조①ㆍ제8조",
+    "text": "배치설계권 발생, 존속기간(10년), 효력"
+  },
+  "P03": {
+    "article": "제11조①②",
+    "text": "전용이용권 설정"
+  },
+  "P04": {
+    "article": "제19조①",
+    "text": "설정등록 신청(최초이용일부터 2년 이내)"
+  },
+  "P05": {
+    "article": "제35조①ㆍ제36조①②",
+    "text": "침해정지 등 청구, 손해배상청구"
+  },
+  "P06": {
+    "article": "제37조①",
+    "text": "설정등록 전 이용에 대한 보상금청구"
+  },
+  "P07": {
+    "article": "제12조①ㆍ제13조①②",
+    "text": "통상이용권 설정, 재정 신청"
+  },
+  "P08": {
+    "article": "제20조①ㆍ제21조①③",
+    "text": "설정등록 거절㆔등록 및 공시"
+  },
+  "P09": {
+    "article": "제23조①ㆍ제24조",
+    "text": "등록의 효력(대항요건), 설정등록 취소"
+  },
+  "P10": {
+    "article": "제39조",
+    "text": "청문"
+  },
+  "P11": {
+    "article": "제43조①②ㆍ제44조",
+    "text": "배치설계 기술진흥, 비밀유지의무"
+  },
+  "P12": {
+    "article": "제13조④",
+    "text": "재정 신청 심의"
+  },
+  "P13": {
+    "article": "제9조③ㆍ제38조①",
+    "text": "선의자 면책, 선의자에 대한 이용료청구 대상"
+  },
+  "P14": {
+    "article": "제45조①ㆍ제46조ㆍ제48조",
+    "text": "침해죄, 거짓표시죄, 속임수죄, 비밀누설죄, 양벌규정"
+  }
+};
+
+  function showDetail(nodeEl){
+    var panel = document.getElementById('wfDetail');
+    if (!panel) return;
+    var pcode = nodeEl.id;
+    var title = (nodeEl.querySelector('.t') || {}).textContent || '';
+    var link = nodeEl.querySelector('a.a');
+    var noteEl = nodeEl.querySelector('p');
+    var ctx = nodeContext(nodeEl);
+
+    var sideHtml = '<h3 class="wf-detail-title"><span class="wf-detail-pcode">' + pcode + '</span>' + title + '</h3>'
+      + '<p class="wf-detail-meta">' + ctx.gate + (ctx.actor ? ' · ' + ctx.actor : '') + '</p>';
+    if (noteEl) sideHtml += '<p class="wf-detail-note">' + noteEl.textContent + '</p>';
+
+    var mainHtml = '';
+    var isBasic = pcode.charAt(0) === 'P';
+    if (isBasic) {
+      var bb = BASIC_LEGAL_BASIS_SHORT[pcode];
+      if (bb) {
+        mainHtml += '<div class="wf-detail-law-grid"><div class="wf-detail-law">'
+          + '<span class="wf-detail-law-art">반도체설계법 ' + bb.article + '</span>'
+          + '<div class="wf-detail-law-full"><p class="wf-detail-law-para">' + bb.text + '</p>'
+          + '<p class="wf-detail-law-missing" style="margin-top:4px">전문 원문은 <a href="semiconductor-layout-design-act.html">반도체설계법</a> 페이지에서 확인해 주세요.</p></div>'
+          + '</div></div>';
+      } else if (link) {
+        mainHtml += '<a class="wf-detail-link" href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">법적 근거: ' + link.textContent + ' →</a>';
+      }
+    } else {
+      var basis = LEGAL_BASIS[pcode];
+      if (basis && basis.length) {
+        mainHtml += '<div class="wf-detail-law-grid">' + basis.map(function(b){
+          var num = articleNum(b.article);
+          var art = ARTICLES[num];
+          var titleTxt = art ? '(' + art.title + ')' : '';
+          return '<div class="wf-detail-law">'
+            + '<span class="wf-detail-law-art">반도체설계법 시행령 ' + b.article + titleTxt + '</span>'
+            + '<div class="wf-detail-law-full">' + renderArticleFull(num) + '</div>'
+            + '</div>';
+        }).join('') + '</div>';
+      } else if (link) {
+        mainHtml += '<a class="wf-detail-link" href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">법적 근거: ' + link.textContent + ' →</a>';
+      }
+    }
+
+    var edgeSource = isBasic ? BASIC_EDGES : EDGES;
+    var prevChips = edgeSource.filter(function(e){ return e.to === pcode; }).map(function(e){ return relatedChip(e.from, 'prev', e.kind); }).join('');
+    var nextChips = edgeSource.filter(function(e){ return e.from === pcode; }).map(function(e){ return relatedChip(e.to, 'next', e.kind); }).join('');
+    if (prevChips || nextChips) {
+      mainHtml += '<div class="wf-detail-related"><div class="wf-detail-related-row">';
+      if (prevChips) mainHtml += '<span class="wf-detail-related-label">이전</span>' + prevChips;
+      if (nextChips) mainHtml += '<span class="wf-detail-related-label" style="margin-left:12px">다음</span>' + nextChips;
+      mainHtml += '</div></div>';
+    }
+
+    var html = '<div class="wf-detail-body">'
+      + '<div class="wf-detail-side">' + sideHtml + '</div>'
+      + '<div class="wf-detail-main">' + mainHtml + '</div>'
+      + '</div>';
+
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('.wf-detail-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var target = document.getElementById(chip.getAttribute('data-target'));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        target.classList.add('wf-selected');
+        showDetail(target);
+      });
+    });
+  }
+
+  function clearDetail(){
+    var panel = document.getElementById('wfDetail');
+    if (panel) panel.innerHTML = '<p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>';
+    document.querySelectorAll('.wf-node.wf-selected').forEach(function(n){ n.classList.remove('wf-selected'); });
+  }
+
+  function bindClick(){
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      n.addEventListener('click', function(){
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        n.classList.add('wf-selected');
+        showDetail(n);
+      });
+    });
+  }
+
+  window.addEventListener('load', function(){
+    draw(); bindHover(); bindClick();
+    var toggleBtn = document.getElementById('basicToggle');
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleBasic);
+  });
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(draw, 120);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>중국 생성형AI관리방안 · LawMap</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">AI 관련 법 지도</a>
+    <nav class="site-nav">
+      <a href="ai-basic-act.html">인공지능기본법</a>
+    <a href="https://www.law.go.kr/LSW/main.html" target="_blank" rel="noopener" class="lawgokr-link">국가법령정보시스템</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>중국 생성형AI서비스 관리 잠행방안 (Interim Measures for the Management of Generative AI Services)</h1>
+    <p class="lead">
+      2023년 7월 국가사이버공간관리국(CAC) 등 7개 부처가 공동 제정한, 중국 최초의 생성형 AI 전용 구속력 있는
+      규정입니다. EU AI Act식 위험등급 분류나 미국식 자율규제와 달리, "사회주의 핵심가치관 견지"를 명시적으로
+      요구하는 콘텐츠 가치관 통제가 특징인 전혀 다른 규제모델입니다. AI생성 콘텐츠 라벨링, 알고리즘 신고(备案)
+      등 실무적으로는 다른 법제와 유사한 요소도 포함합니다.
+    </p>
+    <div class="tags">
+      <span class="tag">국가사이버공간관리국 등 7개 부처 공동공고</span>
+      <span class="tag">공포 2023-07-10</span>
+      <span class="tag">시행 2023-08-15</span>
+      <span class="tag">법적 구속력 있음(잠행방안ㆍ부처규장)</span>
+      <span class="tag">전문 3장 24개조</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">1</span>구성</h2>
+    <p class="sec-desc">
+      이 방안은 3개 장으로 구성되어 있습니다. 배지를 클릭하면 국가사이버공간관리국 공식 공고 페이지로 이동합니다.
+    </p>
+  </div>
+
+  <div class="chapter-flow">
+    <a class="ch ai-note" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener"><div class="no">제1장 · 제1~4조</div><h4>총칙</h4><p>목적, 적용범위, 정의, 콘텐츠 요건(사회주의 핵심가치관ㆍ금지사항)</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener"><div class="no">제2장 · 제5~19조</div><h4>기술발전과 거버넌스</h4><p>알고리즘ㆍ데이터ㆍ모델 관리, 학습데이터 적법성, 라벨링, 이용자보호, 위법콘텐츠 대응, 민원처리, 안전성평가ㆍ알고리즘신고</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener"><div class="no">제3장 · 제20~24조</div><h4>법률책임 및 부칙</h4><p>위반시 제재, 형사책임 이전, 시행일</p></a>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">2</span>절차 구조도</h2>
+    <p class="sec-desc">
+      목적ㆍ적용범위부터 콘텐츠 요건, 데이터ㆍ학습, 라벨링(AI생성물 표시), 이용자 보호, 신고ㆍ대응, 감독ㆍ제재까지
+      3개 주체(제공자ㆍ이용자ㆍ감독기관) × 7단계(G0~G6)로 정리했습니다. 제공자가 대부분의 의무를 지고, 7개
+      부처가 공동으로 감독ㆍ집행하는 구조입니다.
+    </p>
+  </div>
+
+  <div class="wf-scroll">
+    <div class="wf-grid-wrap" id="wfGridWrap">
+      <svg class="wf-arrows" id="wfArrows">
+        <defs>
+          <marker id="wf-arrow" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+          <marker id="wf-arrow-loop" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+        </defs>
+      </svg>
+      <div class="wf-grid">
+        <div class="wf-corner-head">주체 / 단계</div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G0</span><span class="wf-lane-sub">목적ㆍ적용범위</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G1</span><span class="wf-lane-sub">콘텐츠 요건</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G2</span><span class="wf-lane-sub">데이터ㆍ학습</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G3</span><span class="wf-lane-sub">라벨링(AI생성물 표시)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G4</span><span class="wf-lane-sub">이용자 보호</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G5</span><span class="wf-lane-sub">신고ㆍ대응</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G6</span><span class="wf-lane-sub">감독ㆍ제재</span></div>
+        <div class="wf-gate-cell">생성형AI서비스 제공자(Provider)</div>
+        <div class="wf-cell"><div class="wf-node" id="P01"><div class="wf-node-top"><span class="pcode">P01</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제1ㆍ2조</a></div><span class="t">목적(건전한 발전ㆍ규범적 이용 촉진, 국가안보 보호), 적용범위(공중대상 서비스, 내부업무용 제외)</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P02"><div class="wf-node-top"><span class="pcode">P02</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제4조</a></div><span class="t">콘텐츠 요건 — 국가전복ㆍ안보위해ㆍ차별ㆍ테러ㆍ폭력ㆍ허위정보 조장 금지, 알고리즘 편향 최소화</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P03"><div class="wf-node-top"><span class="pcode">P03</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제7조</a></div><span class="t">학습데이터의 적법성ㆍ진실성ㆍ정확성ㆍ객관성ㆍ다양성 확보, 지식재산권 침해 금지</span></div></div>
+        <div class="wf-cell"><div class="wf-node ai-note" id="P04"><div class="wf-node-top"><span class="pcode">P04</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제12조</a></div><span class="t">AI생성 콘텐츠(합성미디어)에 대한 라벨링(표시) 의무</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P05"><div class="wf-node-top"><span class="pcode">P05</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제10ㆍ11조</a></div><span class="t">미성년자의 과도한 이용 방지, 개인정보 최소수집ㆍ이용자의 열람ㆍ삭제권 보장</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P06"><div class="wf-node-top"><span class="pcode">P06</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제14조</a></div><span class="t">위법콘텐츠 생성시 신속한 조치(생성중단ㆍ학습데이터 최적화 등)</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P08"><div class="wf-node-top"><span class="pcode">P08</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제17조</a></div><span class="t">사회적 영향력 있는 서비스의 안전성평가 및 알고리즘 신고(备案) 의무</span></div></div>
+        <div class="wf-gate-cell">이용자(User)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P07"><div class="wf-node-top"><span class="pcode">P07</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제15조</a></div><span class="t">이용자의 민원제기권, 제공자의 신속한 처리ㆍ피드백 의무</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">감독기관(국가사이버공간관리국 등 7개 부처)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P09"><div class="wf-node-top"><span class="pcode">P09</span><a class="a" href="https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm" target="_blank" rel="noopener">제21조</a></div><span class="t">위반시 관계부처의 시정명령ㆍ경고ㆍ벌금ㆍ서비스중단, 범죄혐의시 형사책임 이전</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-detail" id="wfDetail">
+    <p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">3</span>관련 법령</h2>
+    <p class="sec-desc">중국 생성형AI관리방안과 함께 검토할 국내ㆍ국제 규범입니다. 전체 연결 구조는 <a href="../index.html" style="color:var(--blue)">개요·관계도</a> 페이지를 참고하세요.</p>
+    <div class="related-grid">
+    <div class="related-chip ai-note">
+      <div class="rel">제12조(AI생성 콘텐츠 라벨링)가 인공지능기본법상 생성형 AI 표시의무의 국제 비교기준. 콘텐츠 가치관 통제라는 EU·미국과 전혀 다른 규제모델 비교 사례</div>
+      <div class="name"><a href="ai-basic-act.html" style="color:var(--blue)">인공지능기본법</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">위험기반 규제로 콘텐츠 표시의무(제50조)를 규정한 서구권 대표 입법례와의 대비</div>
+      <div class="name"><a href="eu-ai-act.html" style="color:var(--blue)">EU AI Act</a></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-disclaimer">이 페이지는 법령 이해를 돕기 위한 학습·연구 참고 자료이며, 법률 자문이나 정부기관의 공식 해석을 대신하지 않습니다. 조문 내용은 영문 2차 번역자료를 근거로 한 발췌ㆍ요약이며, 정확한 원문(중국어)은 중국 국가사이버공간관리국(cac.gov.cn) 공식 공고를 참고해야 합니다. EU·미국식 위험기반 규제와 달리 콘텐츠 가치관 통제(사회주의 핵심가치관 견지)를 명시한 것이 특징인, 전혀 다른 규제모델의 비교 사례입니다.</p>
+    중국 생성형AI서비스 관리 잠행방안 &middot; 공포 2023-07-10, 시행 2023-08-15 &middot; 기준일 2026-08-19
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EDGES = [{"from": "P01", "to": "P02", "kind": "solid"}, {"from": "P02", "to": "P03", "kind": "solid"}, {"from": "P03", "to": "P04", "kind": "solid"}, {"from": "P04", "to": "P05", "kind": "solid"}, {"from": "P05", "to": "P06", "kind": "solid"}, {"from": "P06", "to": "P08", "kind": "solid"}, {"from": "P07", "to": "P06", "kind": "dashed"}, {"from": "P08", "to": "P09", "kind": "dashed"}];
+
+  function rel(rect, wr){
+    return {
+      left: rect.left - wr.left, right: rect.right - wr.left,
+      top: rect.top - wr.top, bottom: rect.bottom - wr.top,
+      cx: (rect.left + rect.right)/2 - wr.left, cy: (rect.top + rect.bottom)/2 - wr.top
+    };
+  }
+  function roundedPath(pts, r){
+    var clean = [pts[0]];
+    for (var i=1;i<pts.length;i++){
+      var p=pts[i], last=clean[clean.length-1];
+      if (Math.abs(p[0]-last[0])>0.5 || Math.abs(p[1]-last[1])>0.5) clean.push(p);
+    }
+    if (clean.length < 2) return '';
+    if (clean.length === 2) return 'M '+clean[0][0]+' '+clean[0][1]+' L '+clean[1][0]+' '+clean[1][1];
+    var d = 'M '+clean[0][0]+' '+clean[0][1];
+    for (var j=1;j<clean.length-1;j++){
+      var p0=clean[j-1], p1=clean[j], p2=clean[j+1];
+      var d1x=p1[0]-p0[0], d1y=p1[1]-p0[1], len1=Math.hypot(d1x,d1y);
+      var d2x=p2[0]-p1[0], d2y=p2[1]-p1[1], len2=Math.hypot(d2x,d2y);
+      var rr = Math.min(r, len1/2, len2/2);
+      var ax = p1[0]-(d1x/len1)*rr, ay = p1[1]-(d1y/len1)*rr;
+      var bx = p1[0]+(d2x/len2)*rr, by = p1[1]+(d2y/len2)*rr;
+      d += ' L '+ax+' '+ay+' Q '+p1[0]+' '+p1[1]+' '+bx+' '+by;
+    }
+    var lastPt = clean[clean.length-1];
+    d += ' L '+lastPt[0]+' '+lastPt[1];
+    return d;
+  }
+
+  var NO_DETOUR = {};
+  var GUTTER_X = 0;
+  var GRID_BOTTOM = 0;
+
+  function edgePath(kind, s, t, e){
+    var r = 10;
+    if (kind === 'loop') {
+      var rx = Math.max(s.right, t.right) + 11;
+      return roundedPath([[s.right,s.cy],[rx,s.cy],[rx,t.cy],[t.right,t.cy]], r);
+    }
+    var forwardDx = t.left - s.right;
+    var backwardDx = s.left - t.right;
+    var overlapX = forwardDx < 8 && backwardDx < 8;
+    if (overlapX) {
+      var gutterX = Math.min(s.left, t.left) - 11;
+      return roundedPath([[s.left,s.cy],[gutterX,s.cy],[gutterX,t.cy],[t.left,t.cy]], r);
+    }
+    var sameRow = Math.abs(s.cy - t.cy) < 2;
+    if (!sameRow) {
+      if (forwardDx >= 8) {
+        var gx = s.right + 11;
+        return roundedPath([[s.right,s.cy],[gx,s.cy],[gx,t.cy],[t.left,t.cy]], r);
+      }
+      var gx2 = s.left - 11;
+      return roundedPath([[s.left,s.cy],[gx2,s.cy],[gx2,t.cy],[t.right,t.cy]], r);
+    }
+    var edgeKey = e ? (e.from + '>' + e.to) : '';
+    var toggleDetour = TOGGLE_FLAG && !NO_DETOUR[edgeKey];
+    var skipsColumn = forwardDx > 40 || backwardDx > 40;
+    if (skipsColumn || toggleDetour) {
+      var goAbove = s.top < (GRID_BOTTOM - s.bottom);
+      var edgeY = goAbove ? -8 : GRID_BOTTOM + 8;
+      if (forwardDx >= 8) {
+        var outX = s.right + 10;
+        return roundedPath([[s.right,s.cy],[outX,s.cy],[outX,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+      }
+      var outX2 = s.left - 10;
+      return roundedPath([[s.left,s.cy],[outX2,s.cy],[outX2,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+    }
+    if (forwardDx >= 8) {
+      var midX = s.right + forwardDx/2;
+      return roundedPath([[s.right,s.cy],[midX,s.cy],[midX,t.cy],[t.left,t.cy]], r);
+    }
+    var midX2 = s.left - backwardDx/2;
+    return roundedPath([[s.left,s.cy],[midX2,s.cy],[midX2,t.cy],[t.right,t.cy]], r);
+  }
+
+  var pathEls = [];
+
+  function draw(){
+    var wrap = document.getElementById('wfGridWrap');
+    var svg = document.getElementById('wfArrows');
+    if (!wrap || !svg) return;
+    svg.querySelectorAll('path.wf-arrow-path').forEach(function(p){ svg.removeChild(p); });
+    pathEls = [];
+    var wr = wrap.getBoundingClientRect();
+    var corner = document.querySelector('.wf-corner-head');
+    GUTTER_X = corner ? (corner.getBoundingClientRect().right - wr.left) + 11 : 0;
+    GRID_BOTTOM = wr.height;
+
+    activeEdges().forEach(function(e){
+      var a = document.getElementById(e.from);
+      var b = document.getElementById(e.to);
+      if (!a || !b) { pathEls.push(null); return; }
+      var s = rel(a.getBoundingClientRect(), wr);
+      var t = rel(b.getBoundingClientRect(), wr);
+      var d = edgePath(e.kind, s, t, e);
+      var marker = e.kind === 'loop' ? 'wf-arrow-loop' : 'wf-arrow';
+      var cls = 'wf-arrow-path' + (e.kind === 'dashed' ? ' dashed' : e.kind === 'loop' ? ' loopback' : '');
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', cls);
+      path.setAttribute('marker-end', 'url(#'+marker+')');
+      svg.appendChild(path);
+      pathEls.push(path);
+    });
+  }
+
+  function setHover(nodeId){
+    var nodeSet = null, edgeSet = null;
+    if (nodeId) {
+      nodeSet = new Set([nodeId]);
+      edgeSet = new Set();
+      activeEdges().forEach(function(e, i){
+        if (e.from === nodeId || e.to === nodeId) {
+          edgeSet.add(i);
+          nodeSet.add(e.from);
+          nodeSet.add(e.to);
+        }
+      });
+    }
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (!nodeSet) { n.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = nodeSet.has(n.id);
+      n.classList.toggle('wf-dim', !isConn);
+      n.classList.toggle('wf-hl', isConn);
+    });
+    pathEls.forEach(function(p, i){
+      if (!p) return;
+      if (!edgeSet) { p.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = edgeSet.has(i);
+      p.classList.toggle('wf-dim', !isConn);
+      p.classList.toggle('wf-hl', isConn);
+    });
+  }
+
+  function bindHover(){
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (n.dataset.hoverBound) return;
+      n.dataset.hoverBound = '1';
+      n.setAttribute('tabindex', '0');
+      n.addEventListener('mouseenter', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('mouseleave', restoreDetail);
+      n.addEventListener('focus', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('blur', restoreDetail);
+    });
+  }
+
+  function restoreDetail(){
+    setHover(null);
+    var sel = document.querySelector('.wf-node.wf-selected');
+    if (sel) showDetail(sel); else clearDetail();
+  }
+
+  function nodeContext(nodeEl){
+    var cell = nodeEl.closest('.wf-cell');
+    var el = cell ? cell.previousElementSibling : null;
+    var actor = '', gate = '';
+    var steps = 0;
+    while (el) {
+      steps++;
+      if (el.classList.contains('wf-gate-cell')) {
+        actor = el.childNodes[0].textContent.trim();
+        gate = GATE_NAMES[steps - 1] || '';
+        break;
+      }
+      el = el.previousElementSibling;
+    }
+    return { actor: actor, gate: gate };
+  }
+
+  var EDGE_KIND_LABEL = { solid: '같은 주체 · 다음 단계', dashed: '다른 주체로 연계', loop: '조건부 회귀' };
+
+  function relatedChip(id, dir, kind){
+    var el = document.getElementById(id);
+    if (!el) return '';
+    var t = (el.querySelector('.t') || {}).textContent || '';
+    return '<button type="button" class="wf-detail-chip" data-target="' + id + '" title="' + EDGE_KIND_LABEL[kind] + '">'
+      + (dir === 'prev' ? '← ' : '→ ') + id + ' ' + t + '</button>';
+  }
+
+  function renderItems(items){
+    return '<ul class="wf-detail-law-items">' + items.map(function(i){
+      if (typeof i === 'string') return '<li>' + i + '</li>';
+      var subHtml = i.sub && i.sub.length
+        ? '<ul class="wf-detail-law-subitems">' + i.sub.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ul>'
+        : '';
+      return '<li>' + i.text + subHtml + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderArticleFull(num){
+    var art = ARTICLES[num];
+    if (!art) return '<p class="wf-detail-law-missing">원문 데이터가 아직 없습니다. law.go.kr에서 확인해 주세요.</p>';
+    return art.paras.map(function(p){
+      var itemsHtml = p.items.length ? renderItems(p.items) : '';
+      return '<p class="wf-detail-law-para">' + p.text + '</p>' + itemsHtml;
+    }).join('');
+  }
+
+  function articleNum(article){
+    var m = article.match(/^제(\d+)조(?:의(\d+))?/);
+    if (!m) return '';
+    return m[2] ? m[1] + '-' + m[2] : m[1];
+  }
+
+  var TOGGLE_FLAG = false;
+
+  function activeEdges(){
+    return EDGES;
+  }
+
+  var GATE_NAMES = ["G0 목적ㆍ적용범위", "G1 콘텐츠 요건", "G2 데이터ㆍ학습", "G3 라벨링(AI생성물 표시)", "G4 이용자 보호", "G5 신고ㆍ대응", "G6 감독ㆍ제재"];
+
+  function articleNum(article){
+    var m = article.match(/^제(\d+)/);
+    return m ? m[1] : '';
+  }
+
+  var ARTICLES = {"1": {"title": "목적ㆍ적용범위", "paras": [{"num": "요약", "text": "생성형 인공지능 기술의 건전한 발전과 규범적 이용을 촉진하고, 국가안보와 사회공공이익을 보호하며 공민ㆍ법인ㆍ기타조직의 합법적 권익을 보호하는 것을 목적으로 한다. 중국 영역 내에서 공중을 대상으로 텍스트ㆍ이미지ㆍ음성ㆍ영상 등을 생성하는 서비스에 적용되며, 기업 내부 업무용 개발ㆍ이용에는 적용되지 않는다. 뉴스출판ㆍ영화영상제작ㆍ문예창작 등에 별도 규정이 있으면 그에 따른다. (공개된 요약 정보ㆍ영문 2차 번역 기반)", "items": []}]}, "4": {"title": "콘텐츠 요건", "paras": [{"num": "요약", "text": "생성형 AI서비스 제공은 사회주의 핵심가치관을 견지해야 하며, 국가정권 전복ㆍ사회주의제도 전복 선동, 국가안보ㆍ이익 위해, 국가통일ㆍ사회안정 파괴, 테러ㆍ극단주의 선전, 민족ㆍ지역ㆍ종교 차별, 폭력ㆍ음란 정보, 허위정보 등을 생성하는 콘텐츠를 금지한다. 알고리즘 설계ㆍ학습데이터 선택ㆍ모델생성 과정에서 편향을 방지하는 조치를 취해야 한다. (공개된 요약 정보)", "items": []}]}, "7": {"title": "데이터ㆍ학습", "paras": [{"num": "요약", "text": "생성형 AI 서비스 제공자는 학습데이터의 처리 과정에서 적법성ㆍ진실성ㆍ정확성ㆍ객관성ㆍ다양성을 확보해야 하며, 지식재산권을 침해하는 데이터를 이용해서는 안 된다. 개인정보가 포함된 데이터는 관련 법률에 따라 동의를 얻는 등 절차를 거쳐야 한다. (공개된 요약 정보)", "items": []}]}, "12": {"title": "라벨링(AI생성물 표시)", "paras": [{"num": "요약", "text": "관련 법률ㆍ행정법규 및 국가 관련 규정에 따라 생성된 이미지ㆍ영상 등 콘텐츠에 표식(라벨)을 부착해야 한다. (공개된 요약 정보)", "items": []}]}, "10": {"title": "이용자 보호", "paras": [{"num": "요약", "text": "미성년자가 생성형 AI서비스에 과도하게 의존하지 않도록 하는 조치를 취해야 하며, 개인정보는 필요최소한으로 수집하고 이용자의 개인정보 열람ㆍ복제ㆍ정정ㆍ보완ㆍ삭제 등의 권리를 법에 따라 보장해야 한다. (공개된 요약 정보)", "items": []}]}, "14": {"title": "위법콘텐츠 대응", "paras": [{"num": "요약", "text": "이용과정에서 법령이 금지하는 콘텐츠가 생성된 것을 발견한 경우, 신속히 콘텐츠 생성을 중단하고 관련 학습데이터를 최적화하는 등 시정조치를 취한 후 주관기관에 신고해야 한다. (공개된 요약 정보)", "items": []}]}, "15": {"title": "민원처리", "paras": [{"num": "요약", "text": "이용자의 신고ㆍ민원을 접수ㆍ처리하는 편리한 방법을 마련하고, 접수 후 신속히 처리하며 그 결과를 알려야 한다. (공개된 요약 정보)", "items": []}]}, "17": {"title": "안전성평가ㆍ알고리즘신고", "paras": [{"num": "요약", "text": "여론을 형성하거나 사회적 동원능력을 갖춘 생성형 AI 서비스를 제공하는 자는 관련 규정에 따라 안전성평가를 실시하고, 국가 인터넷정보 관련 부문에 알고리즘을 신고(备案)해야 한다. (공개된 요약 정보)", "items": []}]}, "21": {"title": "감독ㆍ제재", "paras": [{"num": "요약", "text": "이 방안을 위반한 경우 관계부처가 각자의 직책에 따라 관련 법률ㆍ행정법규에 의해 처리한다. 시정을 거부하거나 사안이 중대한 경우 관련 주관부문은 서비스를 중단하도록 명할 수 있으며, 범죄 혐의가 있는 경우 법에 따라 공안기관에 이송해 형사책임을 추궁한다. (공개된 요약 정보)", "items": []}]}};
+
+  var LEGAL_BASIS = {"P01": [{"article": "제1ㆍ2조", "text": "목적(건전한 발전ㆍ규범적 이용 촉진, 국가안보 보호), 적용범위(공중대상 서비스, 내부업무용 제외)"}], "P02": [{"article": "제4조", "text": "콘텐츠 요건 — 국가전복ㆍ안보위해ㆍ차별ㆍ테러ㆍ폭력ㆍ허위정보 조장 금지, 알고리즘 편향 최소화"}], "P03": [{"article": "제7조", "text": "학습데이터의 적법성ㆍ진실성ㆍ정확성ㆍ객관성ㆍ다양성 확보, 지식재산권 침해 금지"}], "P04": [{"article": "제12조", "text": "AI생성 콘텐츠(합성미디어)에 대한 라벨링(표시) 의무"}], "P05": [{"article": "제10ㆍ11조", "text": "미성년자의 과도한 이용 방지, 개인정보 최소수집ㆍ이용자의 열람ㆍ삭제권 보장"}], "P06": [{"article": "제14조", "text": "위법콘텐츠 생성시 신속한 조치(생성중단ㆍ학습데이터 최적화 등)"}], "P07": [{"article": "제15조", "text": "이용자의 민원제기권, 제공자의 신속한 처리ㆍ피드백 의무"}], "P08": [{"article": "제17조", "text": "사회적 영향력 있는 서비스의 안전성평가 및 알고리즘 신고(备案) 의무"}], "P09": [{"article": "제21조", "text": "위반시 관계부처의 시정명령ㆍ경고ㆍ벌금ㆍ서비스중단, 범죄혐의시 형사책임 이전"}]};
+
+
+  function showDetail(nodeEl){
+    var panel = document.getElementById('wfDetail');
+    if (!panel) return;
+    var pcode = nodeEl.id;
+    var title = (nodeEl.querySelector('.t') || {}).textContent || '';
+    var link = nodeEl.querySelector('a.a');
+    var ctx = nodeContext(nodeEl);
+
+    var sideHtml = '<h3 class="wf-detail-title"><span class="wf-detail-pcode">' + pcode + '</span>' + title + '</h3>'
+      + '<p class="wf-detail-meta">' + ctx.gate + (ctx.actor ? ' · ' + ctx.actor : '') + '</p>';
+
+    var mainHtml = '';
+    var basis = LEGAL_BASIS[pcode];
+    if (basis && basis.length) {
+      mainHtml += '<div class="wf-detail-law-grid">' + basis.map(function(b){
+        var num = articleNum(b.article);
+        var art = ARTICLES[num];
+        var titleTxt = art ? '(' + art.title + ')' : '';
+        return '<div class="wf-detail-law">'
+          + '<span class="wf-detail-law-art">' + "중국 생성형AI관리방안" + ' ' + b.article + titleTxt + '</span>'
+          + '<div class="wf-detail-law-full">' + renderArticleFull(num) + '</div>'
+          + '</div>';
+      }).join('') + '</div>';
+    } else if (link) {
+      mainHtml += '<a class="wf-detail-link" href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">법적 근거: ' + link.textContent + ' →</a>';
+    }
+
+    var prevChips = activeEdges().filter(function(e){ return e.to === pcode; }).map(function(e){ return relatedChip(e.from, 'prev', e.kind); }).join('');
+    var nextChips = activeEdges().filter(function(e){ return e.from === pcode; }).map(function(e){ return relatedChip(e.to, 'next', e.kind); }).join('');
+    if (prevChips || nextChips) {
+      mainHtml += '<div class="wf-detail-related"><div class="wf-detail-related-row">';
+      if (prevChips) mainHtml += '<span class="wf-detail-related-label">이전</span>' + prevChips;
+      if (nextChips) mainHtml += '<span class="wf-detail-related-label" style="margin-left:12px">다음</span>' + nextChips;
+      mainHtml += '</div></div>';
+    }
+
+    var html = '<div class="wf-detail-body">'
+      + '<div class="wf-detail-side">' + sideHtml + '</div>'
+      + '<div class="wf-detail-main">' + mainHtml + '</div>'
+      + '</div>';
+
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('.wf-detail-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var target = document.getElementById(chip.getAttribute('data-target'));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        target.classList.add('wf-selected');
+        showDetail(target);
+      });
+    });
+  }
+
+  function clearDetail(){
+    var panel = document.getElementById('wfDetail');
+    if (panel) panel.innerHTML = '<p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>';
+    document.querySelectorAll('.wf-node.wf-selected').forEach(function(n){ n.classList.remove('wf-selected'); });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    bindHover();
+    draw();
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      n.addEventListener('click', function(){
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        n.classList.add('wf-selected');
+        showDetail(n);
+      });
+    });
+    window.addEventListener('resize', draw);
+  });
+})();
+</script>
+
+</body>
+</html>

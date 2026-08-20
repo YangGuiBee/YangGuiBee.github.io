@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO/IEC 42001 · LawMap</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">AI 관련 법 지도</a>
+    <nav class="site-nav">
+      <a href="ai-basic-act.html">인공지능기본법</a>
+    <a href="https://www.law.go.kr/LSW/main.html" target="_blank" rel="noopener" class="lawgokr-link">국가법령정보시스템</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>ISO/IEC 42001:2023 (AI 경영시스템, AIMS)</h1>
+    <p class="lead">
+      조직이 AI를 책임감 있게 개발ㆍ제공ㆍ사용하기 위한 관리체계(AI Management System, AIMS) 요구사항을 정한
+      국제표준입니다. ISO 경영시스템 표준 공통 상위구조(High Level Structure)를 따르며, ISO 27001(정보보안)과
+      유사한 인증가능 프레임워크입니다. <strong>유료 표준문서이므로 이 페이지는 원문을 인용하지 않고 공개된
+      요약정보로만 구성했습니다.</strong>
+    </p>
+    <div class="tags">
+      <span class="tag">ISO/IEC 42001:2023</span>
+      <span class="tag">발행 2023-12-18</span>
+      <span class="tag">유료 표준문서(원문 비공개)</span>
+      <span class="tag">소관 ISO/IEC JTC 1/SC 42</span>
+      <span class="tag">관리시스템 요구사항 절4~10 + Annex A 9개영역 38개통제</span>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">1</span>구성</h2>
+    <p class="sec-desc">
+      이 표준은 인증 요구사항인 절 4~10(PDCA 관리시스템 구조)과, 조직이 위험평가에 따라 선택ㆍ적용하는
+      Annex A(9개 통제영역, 38개 통제)로 구성됩니다. 배지를 클릭하면 ISO 공식 표준 소개 페이지로 이동합니다.
+    </p>
+  </div>
+
+  <div class="chapter-flow">
+    <a class="ch ai-note" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener"><div class="no">절 4~10 · 관리시스템 요구사항</div><h4>AI관리시스템(AIMS) 핵심 요구사항</h4><p>ISO 경영시스템 공통 상위구조(HLS)를 따르는 PDCA 순환구조(조직상황ㆍ리더십ㆍ기획ㆍ지원ㆍ운용ㆍ성과평가ㆍ개선)</p></a>
+    <div class="arrow">→</div>
+    <a class="ch" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener"><div class="no">Annex A · 9개 통제영역(38개 통제)</div><h4>부속서 A 통제목록</h4><p>A.2 AI정책, A.3 내부조직, A.4 AI자원, A.5 영향평가, A.6 AI시스템생애주기, A.7 데이터, A.8 이해관계자정보제공, A.9 책임있는사용, A.10 제3자관계</p></a>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">2</span>관리체계 구조도</h2>
+    <p class="sec-desc">
+      이 표준은 인허가 절차가 아니라 조직이 반복 운영하는 인증가능 관리시스템입니다. 그래서 아래 그리드는
+      "절차 흐름"이 아니라 PDCA 순환구조(조직상황→리더십→기획→지원→운용→성과평가→개선)를 3개 주체 × 7단계로
+      정리한 "관리체계 구조도"입니다.
+    </p>
+  </div>
+
+  <div class="wf-scroll">
+    <div class="wf-grid-wrap" id="wfGridWrap">
+      <svg class="wf-arrows" id="wfArrows">
+        <defs>
+          <marker id="wf-arrow" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+          <marker id="wf-arrow-loop" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#8592a6"></path></marker>
+        </defs>
+      </svg>
+      <div class="wf-grid">
+        <div class="wf-corner-head">주체 / 단계</div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G0</span><span class="wf-lane-sub">조직상황(Context)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G1</span><span class="wf-lane-sub">리더십(Leadership)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G2</span><span class="wf-lane-sub">기획(Planning)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G3</span><span class="wf-lane-sub">지원(Support)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G4</span><span class="wf-lane-sub">운용(Operation)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G5</span><span class="wf-lane-sub">성과평가(Performance Evaluation)</span></div>
+        <div class="wf-gate-head"><span class="wf-lane-title">G6</span><span class="wf-lane-sub">개선(Improvement)</span></div>
+        <div class="wf-gate-cell">최고경영진(Top Management)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P02"><div class="wf-node-top"><span class="pcode">P02</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 5</a></div><span class="t">리더십 — 최고경영진의 의지 표명, AI정책 수립, 역할ㆍ책임ㆍ권한 부여</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P06"><div class="wf-node-top"><span class="pcode">P06</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 9</a></div><span class="t">성과평가 — 모니터링ㆍ측정ㆍ분석, 내부심사, 경영검토</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P08"><div class="wf-node-top"><span class="pcode">P08</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 10</a></div><span class="t">개선 — 부적합 사항 시정조치, 지속적 개선</span></div></div>
+        <div class="wf-gate-cell">AI관리시스템 실무팀(AIMS Team)</div>
+        <div class="wf-cell"><div class="wf-node" id="P01"><div class="wf-node-top"><span class="pcode">P01</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 4</a></div><span class="t">조직상황 — 조직 및 이해관계자의 요구ㆍ기대 파악, AIMS 적용범위 결정</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node ai-note" id="P03"><div class="wf-node-top"><span class="pcode">P03</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 6</a></div><span class="t">기획 — AI위험ㆍ기회 대응조치, AI시스템 영향평가(Annex A.5 연계)</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P04"><div class="wf-node-top"><span class="pcode">P04</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 7</a></div><span class="t">지원 — 자원ㆍ역량ㆍ인식ㆍ의사소통ㆍ문서화된 정보 관리</span></div></div>
+        <div class="wf-cell"><div class="wf-node" id="P05"><div class="wf-node-top"><span class="pcode">P05</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 8</a></div><span class="t">운용 — AI시스템 생애주기 전반의 운용기획 및 통제(Annex A.6 연계)</span></div></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-gate-cell">인증심사기관(Certification Body)</div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"></div>
+        <div class="wf-cell"><div class="wf-node" id="P07"><div class="wf-node-top"><span class="pcode">P07</span><a class="a" href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">절 9(외부심사)</a></div><span class="t">인증심사기관에 의한 외부 적합성 심사</span></div></div>
+        <div class="wf-cell"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wf-detail" id="wfDetail">
+    <p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <h2 class="sec-title"><span class="no">3</span>관련 법령</h2>
+    <p class="sec-desc">ISO/IEC 42001과 함께 검토할 국내ㆍ국제 규범입니다. 전체 연결 구조는 <a href="../index.html" style="color:var(--blue)">개요·관계도</a> 페이지를 참고하세요.</p>
+    <div class="related-grid">
+    <div class="related-chip ai-note">
+      <div class="rel">AI 관리체계, 역할ㆍ책임, 정책ㆍ절차 문서화의 비교 기준. 인공지능기본법상 사업자의 안전성ㆍ신뢰성 확보조치 이행 시 인증 실무 참고자료로 활용됨</div>
+      <div class="name"><a href="ai-basic-act.html" style="color:var(--blue)">인공지능기본법</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">위험평가 방법론 측면에서 상호보완적인 표준(같은 ISO/IEC JTC 1/SC 42 산하)</div>
+      <div class="name"><a href="iso-iec-23894.html" style="color:var(--blue)">ISO/IEC 23894</a></div>
+    </div>
+    <div class="related-chip">
+      <div class="rel">이 표준이 근거로 삼는 가치기반 원칙의 국제 정책 기준</div>
+      <div class="name"><a href="oecd-ai-principles.html" style="color:var(--blue)">OECD AI 원칙</a></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-disclaimer">이 페이지는 법령 이해를 돕기 위한 학습·연구 참고 자료이며, 법률 자문이나 정부기관의 공식 해석을 대신하지 않습니다. <strong>ISO/IEC 42001은 유료 표준문서이므로 이 페이지는 원문을 인용하지 않고, 공개된 요약정보(절 구조ㆍAnnex A 통제영역 목록 등)만으로 구성했습니다.</strong> 정확한 요구사항은 ISO 공식 채널에서 표준문서를 구매해 확인해야 합니다.</p>
+    ISO/IEC 42001:2023 &middot; 발행 2023-12-18 &middot; 기준일 2026-08-19
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EDGES = [{"from": "P01", "to": "P02", "kind": "solid"}, {"from": "P02", "to": "P03", "kind": "solid"}, {"from": "P03", "to": "P04", "kind": "solid"}, {"from": "P04", "to": "P05", "kind": "solid"}, {"from": "P05", "to": "P06", "kind": "solid"}, {"from": "P06", "to": "P08", "kind": "solid"}, {"from": "P06", "to": "P07", "kind": "dashed"}, {"from": "P08", "to": "P01", "kind": "dashed"}];
+
+  function rel(rect, wr){
+    return {
+      left: rect.left - wr.left, right: rect.right - wr.left,
+      top: rect.top - wr.top, bottom: rect.bottom - wr.top,
+      cx: (rect.left + rect.right)/2 - wr.left, cy: (rect.top + rect.bottom)/2 - wr.top
+    };
+  }
+  function roundedPath(pts, r){
+    var clean = [pts[0]];
+    for (var i=1;i<pts.length;i++){
+      var p=pts[i], last=clean[clean.length-1];
+      if (Math.abs(p[0]-last[0])>0.5 || Math.abs(p[1]-last[1])>0.5) clean.push(p);
+    }
+    if (clean.length < 2) return '';
+    if (clean.length === 2) return 'M '+clean[0][0]+' '+clean[0][1]+' L '+clean[1][0]+' '+clean[1][1];
+    var d = 'M '+clean[0][0]+' '+clean[0][1];
+    for (var j=1;j<clean.length-1;j++){
+      var p0=clean[j-1], p1=clean[j], p2=clean[j+1];
+      var d1x=p1[0]-p0[0], d1y=p1[1]-p0[1], len1=Math.hypot(d1x,d1y);
+      var d2x=p2[0]-p1[0], d2y=p2[1]-p1[1], len2=Math.hypot(d2x,d2y);
+      var rr = Math.min(r, len1/2, len2/2);
+      var ax = p1[0]-(d1x/len1)*rr, ay = p1[1]-(d1y/len1)*rr;
+      var bx = p1[0]+(d2x/len2)*rr, by = p1[1]+(d2y/len2)*rr;
+      d += ' L '+ax+' '+ay+' Q '+p1[0]+' '+p1[1]+' '+bx+' '+by;
+    }
+    var lastPt = clean[clean.length-1];
+    d += ' L '+lastPt[0]+' '+lastPt[1];
+    return d;
+  }
+
+  var NO_DETOUR = {};
+  var GUTTER_X = 0;
+  var GRID_BOTTOM = 0;
+
+  function edgePath(kind, s, t, e){
+    var r = 10;
+    if (kind === 'loop') {
+      var rx = Math.max(s.right, t.right) + 11;
+      return roundedPath([[s.right,s.cy],[rx,s.cy],[rx,t.cy],[t.right,t.cy]], r);
+    }
+    var forwardDx = t.left - s.right;
+    var backwardDx = s.left - t.right;
+    var overlapX = forwardDx < 8 && backwardDx < 8;
+    if (overlapX) {
+      var gutterX = Math.min(s.left, t.left) - 11;
+      return roundedPath([[s.left,s.cy],[gutterX,s.cy],[gutterX,t.cy],[t.left,t.cy]], r);
+    }
+    var sameRow = Math.abs(s.cy - t.cy) < 2;
+    if (!sameRow) {
+      if (forwardDx >= 8) {
+        var gx = s.right + 11;
+        return roundedPath([[s.right,s.cy],[gx,s.cy],[gx,t.cy],[t.left,t.cy]], r);
+      }
+      var gx2 = s.left - 11;
+      return roundedPath([[s.left,s.cy],[gx2,s.cy],[gx2,t.cy],[t.right,t.cy]], r);
+    }
+    var edgeKey = e ? (e.from + '>' + e.to) : '';
+    var toggleDetour = TOGGLE_FLAG && !NO_DETOUR[edgeKey];
+    var skipsColumn = forwardDx > 40 || backwardDx > 40;
+    if (skipsColumn || toggleDetour) {
+      var goAbove = s.top < (GRID_BOTTOM - s.bottom);
+      var edgeY = goAbove ? -8 : GRID_BOTTOM + 8;
+      if (forwardDx >= 8) {
+        var outX = s.right + 10;
+        return roundedPath([[s.right,s.cy],[outX,s.cy],[outX,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+      }
+      var outX2 = s.left - 10;
+      return roundedPath([[s.left,s.cy],[outX2,s.cy],[outX2,edgeY],[t.cx,edgeY],[t.cx, goAbove ? t.top : t.bottom]], r);
+    }
+    if (forwardDx >= 8) {
+      var midX = s.right + forwardDx/2;
+      return roundedPath([[s.right,s.cy],[midX,s.cy],[midX,t.cy],[t.left,t.cy]], r);
+    }
+    var midX2 = s.left - backwardDx/2;
+    return roundedPath([[s.left,s.cy],[midX2,s.cy],[midX2,t.cy],[t.right,t.cy]], r);
+  }
+
+  var pathEls = [];
+
+  function draw(){
+    var wrap = document.getElementById('wfGridWrap');
+    var svg = document.getElementById('wfArrows');
+    if (!wrap || !svg) return;
+    svg.querySelectorAll('path.wf-arrow-path').forEach(function(p){ svg.removeChild(p); });
+    pathEls = [];
+    var wr = wrap.getBoundingClientRect();
+    var corner = document.querySelector('.wf-corner-head');
+    GUTTER_X = corner ? (corner.getBoundingClientRect().right - wr.left) + 11 : 0;
+    GRID_BOTTOM = wr.height;
+
+    activeEdges().forEach(function(e){
+      var a = document.getElementById(e.from);
+      var b = document.getElementById(e.to);
+      if (!a || !b) { pathEls.push(null); return; }
+      var s = rel(a.getBoundingClientRect(), wr);
+      var t = rel(b.getBoundingClientRect(), wr);
+      var d = edgePath(e.kind, s, t, e);
+      var marker = e.kind === 'loop' ? 'wf-arrow-loop' : 'wf-arrow';
+      var cls = 'wf-arrow-path' + (e.kind === 'dashed' ? ' dashed' : e.kind === 'loop' ? ' loopback' : '');
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', cls);
+      path.setAttribute('marker-end', 'url(#'+marker+')');
+      svg.appendChild(path);
+      pathEls.push(path);
+    });
+  }
+
+  function setHover(nodeId){
+    var nodeSet = null, edgeSet = null;
+    if (nodeId) {
+      nodeSet = new Set([nodeId]);
+      edgeSet = new Set();
+      activeEdges().forEach(function(e, i){
+        if (e.from === nodeId || e.to === nodeId) {
+          edgeSet.add(i);
+          nodeSet.add(e.from);
+          nodeSet.add(e.to);
+        }
+      });
+    }
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (!nodeSet) { n.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = nodeSet.has(n.id);
+      n.classList.toggle('wf-dim', !isConn);
+      n.classList.toggle('wf-hl', isConn);
+    });
+    pathEls.forEach(function(p, i){
+      if (!p) return;
+      if (!edgeSet) { p.classList.remove('wf-dim','wf-hl'); return; }
+      var isConn = edgeSet.has(i);
+      p.classList.toggle('wf-dim', !isConn);
+      p.classList.toggle('wf-hl', isConn);
+    });
+  }
+
+  function bindHover(){
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      if (n.dataset.hoverBound) return;
+      n.dataset.hoverBound = '1';
+      n.setAttribute('tabindex', '0');
+      n.addEventListener('mouseenter', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('mouseleave', restoreDetail);
+      n.addEventListener('focus', function(){ setHover(n.id); showDetail(n); });
+      n.addEventListener('blur', restoreDetail);
+    });
+  }
+
+  function restoreDetail(){
+    setHover(null);
+    var sel = document.querySelector('.wf-node.wf-selected');
+    if (sel) showDetail(sel); else clearDetail();
+  }
+
+  function nodeContext(nodeEl){
+    var cell = nodeEl.closest('.wf-cell');
+    var el = cell ? cell.previousElementSibling : null;
+    var actor = '', gate = '';
+    var steps = 0;
+    while (el) {
+      steps++;
+      if (el.classList.contains('wf-gate-cell')) {
+        actor = el.childNodes[0].textContent.trim();
+        gate = GATE_NAMES[steps - 1] || '';
+        break;
+      }
+      el = el.previousElementSibling;
+    }
+    return { actor: actor, gate: gate };
+  }
+
+  var EDGE_KIND_LABEL = { solid: '같은 주체 · 다음 단계', dashed: '다른 주체로 연계', loop: '조건부 회귀' };
+
+  function relatedChip(id, dir, kind){
+    var el = document.getElementById(id);
+    if (!el) return '';
+    var t = (el.querySelector('.t') || {}).textContent || '';
+    return '<button type="button" class="wf-detail-chip" data-target="' + id + '" title="' + EDGE_KIND_LABEL[kind] + '">'
+      + (dir === 'prev' ? '← ' : '→ ') + id + ' ' + t + '</button>';
+  }
+
+  function renderItems(items){
+    return '<ul class="wf-detail-law-items">' + items.map(function(i){
+      if (typeof i === 'string') return '<li>' + i + '</li>';
+      var subHtml = i.sub && i.sub.length
+        ? '<ul class="wf-detail-law-subitems">' + i.sub.map(function(s){ return '<li>' + s + '</li>'; }).join('') + '</ul>'
+        : '';
+      return '<li>' + i.text + subHtml + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderArticleFull(num){
+    var art = ARTICLES[num];
+    if (!art) return '<p class="wf-detail-law-missing">원문 데이터가 아직 없습니다. law.go.kr에서 확인해 주세요.</p>';
+    return art.paras.map(function(p){
+      var itemsHtml = p.items.length ? renderItems(p.items) : '';
+      return '<p class="wf-detail-law-para">' + p.text + '</p>' + itemsHtml;
+    }).join('');
+  }
+
+  function articleNum(article){
+    var m = article.match(/^제(\d+)조(?:의(\d+))?/);
+    if (!m) return '';
+    return m[2] ? m[1] + '-' + m[2] : m[1];
+  }
+
+  var TOGGLE_FLAG = false;
+
+  function activeEdges(){
+    return EDGES;
+  }
+
+  var GATE_NAMES = ["G0 조직상황(Context)", "G1 리더십(Leadership)", "G2 기획(Planning)", "G3 지원(Support)", "G4 운용(Operation)", "G5 성과평가(Performance Evaluation)", "G6 개선(Improvement)"];
+
+  function articleNum(article){
+    var m = article.match(/^절 (\d+)/);
+    return m ? m[1] : '';
+  }
+
+  // 절 원문은 유료 표준이라 인용하지 않으며, 공개된 요약정보(절 구조ㆍAnnex A 통제영역)만 담았다.
+  var ARTICLES = {"4": {"title": "조직상황", "paras": [{"num": "요약", "text": "조직은 AI관리시스템(AIMS)의 목적 달성에 영향을 미치는 내ㆍ외부 이슈, 이해관계자의 요구와 기대를 파악하고, AIMS의 적용범위를 결정ㆍ문서화해야 한다. (공개된 요약 정보이며, ISO/IEC 42001 표준 원문은 유료 문서로 인용하지 않음)", "items": []}]}, "5": {"title": "리더십", "paras": [{"num": "요약", "text": "최고경영진은 AIMS에 대한 리더십과 의지를 실증하고, 조직의 방향에 부합하는 AI정책을 수립하며, AIMS 관련 역할ㆍ책임ㆍ권한을 부여해야 한다. (공개된 요약 정보)", "items": []}]}, "6": {"title": "기획", "paras": [{"num": "요약", "text": "조직은 AIMS의 위험과 기회를 다루는 조치를 기획하고, AI목표와 이를 달성하기 위한 계획을 수립해야 한다. AI시스템이 개인ㆍ집단ㆍ사회에 미치는 영향을 평가하는 절차(Annex A.5 AI시스템 영향평가)가 이 단계와 연계된다. (공개된 요약 정보)", "items": []}]}, "7": {"title": "지원", "paras": [{"num": "요약", "text": "조직은 AIMS 운영에 필요한 자원, 인력의 역량과 인식, 내ㆍ외부 의사소통, 문서화된 정보를 결정하고 제공해야 한다. (공개된 요약 정보)", "items": []}]}, "8": {"title": "운용", "paras": [{"num": "요약", "text": "조직은 AI시스템의 생애주기(설계ㆍ개발ㆍ배포ㆍ운영ㆍ폐기) 전반에 걸쳐 요구사항을 충족하기 위한 프로세스를 기획ㆍ이행ㆍ통제해야 한다(Annex A.6 AI시스템 생애주기 연계). (공개된 요약 정보)", "items": []}]}, "9": {"title": "성과평가", "paras": [{"num": "요약", "text": "조직은 AIMS의 성과와 효과성을 모니터링ㆍ측정ㆍ분석ㆍ평가해야 하며, 계획된 주기로 내부심사를 실시하고 최고경영진이 AIMS를 검토해야 한다. (공개된 요약 정보)", "items": []}]}, "10": {"title": "개선", "paras": [{"num": "요약", "text": "조직은 부적합이 발생한 경우 시정조치를 취하고, AIMS의 지속적인 적절성ㆍ충족성ㆍ효과성을 개선해야 한다. (공개된 요약 정보)", "items": []}]}};
+
+  var LEGAL_BASIS = {"P01": [{"article": "절 4", "text": "조직상황 — 조직 및 이해관계자의 요구ㆍ기대 파악, AIMS 적용범위 결정"}], "P02": [{"article": "절 5", "text": "리더십 — 최고경영진의 의지 표명, AI정책 수립, 역할ㆍ책임ㆍ권한 부여"}], "P03": [{"article": "절 6", "text": "기획 — AI위험ㆍ기회 대응조치, AI시스템 영향평가(Annex A.5 연계)"}], "P04": [{"article": "절 7", "text": "지원 — 자원ㆍ역량ㆍ인식ㆍ의사소통ㆍ문서화된 정보 관리"}], "P05": [{"article": "절 8", "text": "운용 — AI시스템 생애주기 전반의 운용기획 및 통제(Annex A.6 연계)"}], "P06": [{"article": "절 9", "text": "성과평가 — 모니터링ㆍ측정ㆍ분석, 내부심사, 경영검토"}], "P07": [{"article": "절 9(외부심사)", "text": "인증심사기관에 의한 외부 적합성 심사"}], "P08": [{"article": "절 10", "text": "개선 — 부적합 사항 시정조치, 지속적 개선"}]};
+
+
+  function showDetail(nodeEl){
+    var panel = document.getElementById('wfDetail');
+    if (!panel) return;
+    var pcode = nodeEl.id;
+    var title = (nodeEl.querySelector('.t') || {}).textContent || '';
+    var link = nodeEl.querySelector('a.a');
+    var ctx = nodeContext(nodeEl);
+
+    var sideHtml = '<h3 class="wf-detail-title"><span class="wf-detail-pcode">' + pcode + '</span>' + title + '</h3>'
+      + '<p class="wf-detail-meta">' + ctx.gate + (ctx.actor ? ' · ' + ctx.actor : '') + '</p>';
+
+    var mainHtml = '';
+    var basis = LEGAL_BASIS[pcode];
+    if (basis && basis.length) {
+      mainHtml += '<div class="wf-detail-law-grid">' + basis.map(function(b){
+        var num = articleNum(b.article);
+        var art = ARTICLES[num];
+        var titleTxt = art ? '(' + art.title + ')' : '';
+        return '<div class="wf-detail-law">'
+          + '<span class="wf-detail-law-art">' + "ISO/IEC 42001" + ' ' + b.article + titleTxt + '</span>'
+          + '<div class="wf-detail-law-full">' + renderArticleFull(num) + '</div>'
+          + '</div>';
+      }).join('') + '</div>';
+    } else if (link) {
+      mainHtml += '<a class="wf-detail-link" href="' + link.getAttribute('href') + '" target="_blank" rel="noopener">법적 근거: ' + link.textContent + ' →</a>';
+    }
+
+    var prevChips = activeEdges().filter(function(e){ return e.to === pcode; }).map(function(e){ return relatedChip(e.from, 'prev', e.kind); }).join('');
+    var nextChips = activeEdges().filter(function(e){ return e.from === pcode; }).map(function(e){ return relatedChip(e.to, 'next', e.kind); }).join('');
+    if (prevChips || nextChips) {
+      mainHtml += '<div class="wf-detail-related"><div class="wf-detail-related-row">';
+      if (prevChips) mainHtml += '<span class="wf-detail-related-label">이전</span>' + prevChips;
+      if (nextChips) mainHtml += '<span class="wf-detail-related-label" style="margin-left:12px">다음</span>' + nextChips;
+      mainHtml += '</div></div>';
+    }
+
+    var html = '<div class="wf-detail-body">'
+      + '<div class="wf-detail-side">' + sideHtml + '</div>'
+      + '<div class="wf-detail-main">' + mainHtml + '</div>'
+      + '</div>';
+
+    panel.innerHTML = html;
+
+    panel.querySelectorAll('.wf-detail-chip').forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var target = document.getElementById(chip.getAttribute('data-target'));
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        target.classList.add('wf-selected');
+        showDetail(target);
+      });
+    });
+  }
+
+  function clearDetail(){
+    var panel = document.getElementById('wfDetail');
+    if (panel) panel.innerHTML = '<p class="wf-detail-hint">노드를 클릭하거나 포커스를 이동하면 상세 정보가 여기에 표시됩니다.</p>';
+    document.querySelectorAll('.wf-node.wf-selected').forEach(function(n){ n.classList.remove('wf-selected'); });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    bindHover();
+    draw();
+    document.querySelectorAll('.wf-node').forEach(function(n){
+      n.addEventListener('click', function(){
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+        n.classList.add('wf-selected');
+        showDetail(n);
+      });
+    });
+    window.addEventListener('resize', draw);
+  });
+})();
+</script>
+
+</body>
+</html>

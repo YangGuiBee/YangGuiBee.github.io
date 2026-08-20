@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LawMap · AI 관련 법 지도</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">AI 관련 법 지도</a>
+    <nav class="site-nav">
+      <a href="laws/ai-basic-act.html">인공지능기본법</a>
+    <a href="https://www.law.go.kr/LSW/main.html" target="_blank" rel="noopener" class="lawgokr-link">국가법령정보시스템</a>
+    </nav>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="diagram-toolbar">
+      <p class="sec-desc">
+        인공지능기본법과 연결된 국내 법령 38개, 국제 규범 14개를 데이터베이스 ERD처럼 동일한 크기의 상자와 화살표로 표현했습니다.
+        국내 법령 상자를 클릭하면 해당 법령 페이지로, 국제 규범 상자를 클릭하면 해외 공식 원문으로 이동합니다. 색상은 소속 범주(지식재산·데이터/개인정보·고영향AI 판단기준·
+        추진체계/산업진흥·행정/책임/벌칙·국제규범)를 나타내며, 각 상자에 마우스를 올리면 연결 근거를 볼 수 있습니다.
+      </p>
+
+      <div class="law-search">
+        <input type="text" id="lawSearchInput" placeholder="관련법 키워드 검색">
+        <button type="button" id="lawSearchBtn" aria-label="검색">🔍</button>
+        <p class="law-search-status" id="lawSearchStatus"></p>
+      </div>
+    </div>
+
+    <div class="diagram-card">
+<svg viewBox="0 0 1480 550" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI-기본법 전체 법령 관계도(트리형)">
+        <defs>
+<marker id="arrow-root" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#0f2942"></path></marker>
+<marker id="arrow-ip" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#b5730a"></path></marker>
+<marker id="arrow-data" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#1a7d4f"></path></marker>
+<marker id="arrow-highimpact" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#b0263b"></path></marker>
+<marker id="arrow-promotion" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#2f6fed"></path></marker>
+<marker id="arrow-admin" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#5b6b7f"></path></marker>
+<marker id="arrow-global" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#0369a1"></path></marker>
+</defs>
+        <path d="M740,44 L740,55 L130,55 L130,82" stroke="#b5730a" stroke-width="1.8" fill="none" marker-end="url(#arrow-ip)" opacity="0.85"></path>
+        <path d="M740,44 L740,55 L374,55 L374,82" stroke="#1a7d4f" stroke-width="1.8" fill="none" marker-end="url(#arrow-data)" opacity="0.85"></path>
+        <path d="M740,44 L740,55 L618,55 L618,82" stroke="#b0263b" stroke-width="1.8" fill="none" marker-end="url(#arrow-highimpact)" opacity="0.85"></path>
+        <path d="M740,44 L740,55 L862,55 L862,82" stroke="#2f6fed" stroke-width="1.8" fill="none" marker-end="url(#arrow-promotion)" opacity="0.85"></path>
+        <path d="M740,44 L740,55 L1106,55 L1106,82" stroke="#5b6b7f" stroke-width="1.8" fill="none" marker-end="url(#arrow-admin)" opacity="0.85"></path>
+        <path d="M740,44 L740,55 L1350,55 L1350,82" stroke="#0369a1" stroke-width="1.8" fill="none" marker-end="url(#arrow-global)" opacity="0.85"></path>
+        <rect x="600" y="4" width="280" height="40" rx="10" fill="#ffffff" stroke="#0f2942" stroke-width="2.2"></rect>
+        <text x="740" y="30" text-anchor="middle" font-size="16" font-weight="700">
+          <a href="laws/ai-basic-act.html" class="node-link"><title>인공지능기본법 — 인공지능 발전과 신뢰 기반 조성 등에 관한 기본법. 이 법의 개별 조문이 아래 모든 법령과 직접 연결됩니다.</title><tspan fill="#0f2942">인공지능기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/ai-basic-act-decree.html" class="node-link"><title>인공지능기본법 시행령 — 인공지능 발전과 신뢰 기반 조성 등에 관한 기본법 시행령. 모법인 인공지능기본법의 위임에 따라 고영향 인공지능 판단기준, 검·인증, 국내대리인 지정 등의 구체적 절차·기준을 정합니다. 대통령령 제36053호, 2026-01-22 시행.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="82" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="82" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="102" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/ip-framework-act.html" class="node-link"><title>지식재산 기본법 — 지식재산 관련법 전체의 상위 원칙법으로, 산업재산권 4법과 저작권법·부정경쟁방지법·신지식재산 관련법을 포괄합니다. 아래 9개 법은 이 법의 하위 개별법입니다.</title><tspan fill="#0f2942">지식재산 기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/ip-framework-act-decree.html" class="node-link"><title>지식재산 기본법 시행령 — 대통령령 제36446호, 2026-06-23 공포ㆍ시행. 국가지식재산위원회 운영, 신지식재산 창출 지원 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="122" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="122" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="142" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/patent-act.html" class="node-link"><title>특허법 — AI 발명의 특허 보호 여부, 발명자 적격성(DABUS 사례) 등이 지식재산 기본법 하위에서 다루어지는 산업재산권법입니다.</title><tspan fill="#0f2942">특허법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/patent-act-decree.html" class="node-link"><title>특허법 시행령 — 대통령령 제35819호, 2025-10-01 시행. 청구범위 기재방법, 심사관 자격, 우선심사 대상 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="162" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="162" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="182" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/utility-model-act.html" class="node-link"><title>실용신안법 — AI 기반 장치·구조 개량의 신속 보호를 다루는 산업재산권법입니다.</title><tspan fill="#0f2942">실용신안법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/utility-model-act-decree.html" class="node-link"><title>실용신안법 시행령 — 대통령령 제35819호, 2025-10-01 시행. 청구범위 기재방법, 우선심사 대상, 특허법 시행령 준용 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="202" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="202" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="222" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/trademark-act.html" class="node-link"><title>상표법 — AI가 생성한 상표·로고, AI 상표검색 활용 등이 쟁점이 되는 법입니다.</title><tspan fill="#0f2942">상표법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/trademark-act-decree.html" class="node-link"><title>상표법 시행령 — 대통령령 제35819호, 2025-10-01 시행. 표장의 구분, 심사관 자격, 우선심사 대상 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="242" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="242" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="262" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/design-protection-act.html" class="node-link"><title>디자인보호법 — AI가 자율 생성한 디자인(GUI·제품 외관 등)의 보호 여부가 쟁점인 법입니다.</title><tspan fill="#0f2942">디자인보호법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/design-protection-act-decree.html" class="node-link"><title>디자인보호법 시행령 — 대통령령 제36187호, 2025-11-28 시행. 심사관 자격, 우선심사 대상, 디자인공보 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="282" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="282" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="302" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/copyright-act.html" class="node-link"><title>저작권법 — AI 학습데이터 이용의 적법성, 생성형 AI 산출물의 저작물성 판단의 핵심 근거법입니다.</title><tspan fill="#0f2942">저작권법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/copyright-act-decree.html" class="node-link"><title>저작권법 시행령 — 대통령령 제36569호, 2026-08-11 공포ㆍ시행. 저작권 등록ㆍ인증, 온라인서비스제공자 책임제한 절차, 저작권위탁관리업 감독, 불법복제물 수거ㆍ삭제명령 등의 구체적 절차ㆍ기준을 정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="322" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="322" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="334" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/unfair-competition-prevention-act.html" class="node-link"><title>부정경쟁방지 및 영업비밀보호에 관한 법률 — AI 모델 가중치·학습 데이터셋 등 특허·저작권으로 등록되지 않은 자산을 영업비밀로 보호하는 법입니다.</title><tspan fill="#0f2942">부정경쟁방지 및</tspan></a>
+        </text>
+        <text x="34" y="348" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/unfair-competition-prevention-act.html" class="node-link"><title>부정경쟁방지 및 영업비밀보호에 관한 법률</title><tspan fill="#0f2942">영업비밀보호에 관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/unfair-competition-prevention-act-decree.html" class="node-link"><title>부정경쟁방지 및 영업비밀보호에 관한 법률 시행령 — 대통령령 제36341호, 2026-05-28 공포ㆍ시행. 영업비밀 원본증명기관 지정, 부정경쟁행위 조사방법, 포상금 지급기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="362" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="362" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="382" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/customs-act.html" class="node-link"><title>관세법 — AI로 생성되었거나 AI 기술이 침해된 위조품이 국경을 넘는 경우, 지식재산권 침해물품 통관 단속과 연결됩니다.</title><tspan fill="#0f2942">관세법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/customs-act-decree.html" class="node-link"><title>관세법 시행령 — 대통령령 제36140호, 2026-07-01 시행. 지식재산권 등의 신고, 통관보류등의 요청㆔결정, 보세구역 반입명령 등의 절차를 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="402" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="402" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="414" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/semiconductor-layout-design-act.html" class="node-link"><title>반도체집적회로의 배치설계에 관한 법률 — 지식재산 기본법이 정의하는 신지식재산 중 하나로, AI 반도체 설계 보호와 관련되는 법입니다.</title><tspan fill="#0f2942">반도체집적회로의</tspan></a>
+        </text>
+        <text x="34" y="428" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/semiconductor-layout-design-act.html" class="node-link"><title>반도체집적회로의 배치설계에 관한 법률</title><tspan fill="#0f2942">배치설계에 관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/semiconductor-layout-design-act-decree.html" class="node-link"><title>반도체집적회로의 배치설계에 관한 법률 시행령 — 대통령령 제35809호, 2025-10-01 시행. 설정등록 신청, 재정 절차, 등록취소 등의 세부기준을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="20" y="442" width="220" height="32" rx="9" fill="#ffffff" stroke="#b5730a" stroke-width="1.6"></rect>
+        <rect x="20" y="442" width="6" height="32" rx="3" fill="#b5730a"></rect>
+        <text x="34" y="462" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/content-industry-promotion-act.html" class="node-link"><title>콘텐츠산업 진흥법 — 데이터베이스 제작자 보호 등 신지식재산 표시제도를 다루는 법입니다.</title><tspan fill="#0f2942">콘텐츠산업 진흥법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/content-industry-promotion-act-decree.html" class="node-link"><title>콘텐츠산업 진흥법 시행령 — 대통령령 제36060호, 2026-02-01 시행. 기본계획㆔시행계획 수립절차, 인증기관 지정기준, 분쟁조정위원회 운영 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="264" y="82" width="220" height="32" rx="9" fill="#ffffff" stroke="#1a7d4f" stroke-width="1.6"></rect>
+        <rect x="264" y="82" width="6" height="32" rx="3" fill="#1a7d4f"></rect>
+        <text x="278" y="102" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/personal-information-protection-act.html" class="node-link"><title>개인정보보호법 — AI기본법 제2조4호바목(생체정보 분석)과 제35조 영향평가가 개인정보 영향평가와 함께 검토되는 법입니다.</title><tspan fill="#0f2942">개인정보보호법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/personal-information-protection-act-decree.html" class="node-link"><title>개인정보보호법 시행령 — 개인정보보호법의 위임에 따른 대통령령. 대통령령 제36340호, 2026-05-19 공포ㆍ시행. 소관: 개인정보보호위원회.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="264" y="122" width="220" height="32" rx="9" fill="#ffffff" stroke="#1a7d4f" stroke-width="1.6"></rect>
+        <rect x="264" y="122" width="6" height="32" rx="3" fill="#1a7d4f"></rect>
+        <text x="278" y="134" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/data-industry-act.html" class="node-link"><title>데이터 산업진흥 및 이용촉진에 관한 기본법 — AI기본법 제2조5호(생성형 AI 정의)가 이 법 제2조1호의 데이터 정의를 그대로 인용하는 법입니다.</title><tspan fill="#0f2942">데이터 산업진흥 및</tspan></a>
+        </text>
+        <text x="278" y="148" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/data-industry-act.html" class="node-link"><title>데이터 산업진흥 및 이용촉진에 관한 기본법</title><tspan fill="#0f2942">이용촉진에 관한 기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/data-industry-act-decree.html" class="node-link"><title>데이터 산업진흥 및 이용촉진에 관한 기본법 시행령 — 대통령령 제35939호, 2025-12-23 공포ㆍ시행. 데이터안심구역 지정, 데이터플랫폼 지원, 데이터분쟁조정위원회 운영 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="264" y="162" width="220" height="32" rx="9" fill="#ffffff" stroke="#1a7d4f" stroke-width="1.6"></rect>
+        <rect x="264" y="162" width="6" height="32" rx="3" fill="#1a7d4f"></rect>
+        <text x="278" y="174" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/public-data-act.html" class="node-link"><title>공공데이터의 제공 및 이용 활성화에 관한 법률 — AI기본법 제6조(기본계획), 공공데이터를 이용한 학습용데이터 생성·제공 근거법입니다.</title><tspan fill="#0f2942">공공데이터의 제공 및</tspan></a>
+        </text>
+        <text x="278" y="188" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/public-data-act.html" class="node-link"><title>공공데이터의 제공 및 이용 활성화에 관한 법률</title><tspan fill="#0f2942">이용 활성화에 관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/public-data-act-decree.html" class="node-link"><title>공공데이터의 제공 및 이용 활성화에 관한 법률 시행령 — 대통령령 제35947호, 2026-01-02 시행. 목록 등록, 포털 운영, 품질관리, 분쟁조정위원회 운영 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="82" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="82" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="102" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/energy-act.html" class="node-link"><title>에너지법 — AI기본법 제2조4호가목, 에너지 공급 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">에너지법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/energy-act-decree.html" class="node-link"><title>에너지법 시행령 — 대통령령 제35947호, 2026-01-02 시행. 에너지위원회 구성, 에너지이용권 신청㆔발급, 전담기관 지정기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="122" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="122" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="142" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/drinking-water-management-act.html" class="node-link"><title>먹는물관리법 — AI기본법 제2조4호나목, 먹는물 생산공정 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">먹는물관리법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/drinking-water-management-act-decree.html" class="node-link"><title>먹는물관리법 시행령 — 대통령령 제35865호, 2025-11-25 시행. 샘물보전구역 지정, 샘물등 개발허가 대상, 환경영향조사대상ㆍ심사위원회, 품질관리인 자격기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="162" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="162" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="182" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/health-medical-services-act.html" class="node-link"><title>보건의료기본법 — AI기본법 제2조4호다목, 보건의료서비스 체계 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">보건의료기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/health-medical-services-act-decree.html" class="node-link"><title>보건의료기본법 시행령 — 대통령령 제36117호, 2026-02-27 시행. 보건의료정책심의위원회ㆍ업무조정위원회 구성ㆍ운영, 위기상황 대응 전담기관 지정 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="202" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="202" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="222" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/medical-devices-act.html" class="node-link"><title>의료기기법 — AI기본법 제2조4호라목, 의료기기 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">의료기기법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/medical-devices-act-decree.html" class="node-link"><title>의료기기법 시행령 — 대통령령 제36445호, 2026-07-01 시행. 의료기기위원회 구성, 판매업자 준수사항, 광고 자율심의, 통합정보센터 지정, 과징금 산정기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="242" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="242" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="262" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/digital-medical-products-act.html" class="node-link"><title>디지털의료제품법 — AI기본법 제2조4호라목, 디지털의료기기 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">디지털의료제품법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/digital-medical-products-act-decree.html" class="node-link"><title>디지털의료제품법 시행령 — 대통령령 제35230호, 2026-01-24 시행. 안전관리종합계획, 디지털융합의약품 시설기준, 전문인력양성기관ㆍ규제지원센터ㆍ인증대행기관 지정 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="282" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="282" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="294" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/nuclear-facility-protection-act.html" class="node-link"><title>원자력시설 등의 방호 및 방사능 방재 대책법 — AI기본법 제2조4호마목, 원자력시설 방호 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">원자력시설 등의 방호 및</tspan></a>
+        </text>
+        <text x="522" y="308" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/nuclear-facility-protection-act.html" class="node-link"><title>원자력시설 등의 방호 및 방사능 방재 대책법</title><tspan fill="#0f2942">방사능 방재 대책법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/nuclear-facility-protection-act-decree.html" class="node-link"><title>원자력시설 등의 방호 및 방사능 방재 대책법 시행령 — 대통령령 제36447호, 2026-07-01 시행. 방호협의회 구성, 핵물질 등급분류, 방사능방재계획 수립, 대책본부 구성 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="322" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="322" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="334" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/financial-consumer-protection-act.html" class="node-link"><title>금융소비자 보호에 관한 법률 — AI기본법 제2조4호사목, 대출 심사 등 고영향 AI 판단기준의 근거법. 이 법 제17조ㆍ제19조의 적합성원칙ㆍ설명의무 이행이 안전확보의무 이행으로 간주됩니다.</title><tspan fill="#0f2942">금융소비자</tspan></a>
+        </text>
+        <text x="522" y="348" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/financial-consumer-protection-act.html" class="node-link"><title>금융소비자 보호에 관한 법률</title><tspan fill="#0f2942">보호에 관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/financial-consumer-protection-act-decree.html" class="node-link"><title>금융소비자 보호에 관한 법률 시행령 — 대통령령 제36287호, 2026-04-28 시행. 등록요건, 적합성ㆍ적정성원칙 세부기준, 분쟁조정위원회 구성, 과징금 부과기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="362" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="362" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="374" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/credit-information-act.html" class="node-link"><title>신용정보의 이용 및 보호에 관한 법률 — AI기본법 제2조4호사목, 대출 심사 등 고영향 AI 판단기준의 근거법. 이 법 제36조의2(자동화평가 결과에 대한 설명 및 이의제기 등)가 알고리즘 신용평가 규율의 핵심 근거입니다.</title><tspan fill="#0f2942">신용정보의 이용 및</tspan></a>
+        </text>
+        <text x="522" y="388" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/credit-information-act.html" class="node-link"><title>신용정보의 이용 및 보호에 관한 법률</title><tspan fill="#0f2942">보호에 관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/credit-information-act-decree.html" class="node-link"><title>신용정보의 이용 및 보호에 관한 법률 시행령 — 대통령령 제36574호, 2026-08-13 시행. 허가요건, 개인신용평가회사 행위규칙, 자동화평가 설명ㆍ이의제기 절차, 과징금 산정기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="402" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="402" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="422" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/traffic-safety-act.html" class="node-link"><title>교통안전법 — AI기본법 제2조4호아목, 교통수단·시설·체계 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">교통안전법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/traffic-safety-act-decree.html" class="node-link"><title>교통안전법 시행령 — 대통령령 제35947호, 2026-01-02 시행. 교통안전계획 수립, 교통시설안전진단, 진단기관 등록, 교통안전관리자 자격ㆍ시험 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="442" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="442" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="454" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/public-institutions-act.html" class="node-link"><title>공공기관의 운영에 관한 법률 — AI기본법 제2조4호자목, 국가기관등의 결정 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">공공기관의 운영에</tspan></a>
+        </text>
+        <text x="522" y="468" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/public-institutions-act.html" class="node-link"><title>공공기관의 운영에 관한 법률</title><tspan fill="#0f2942">관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/public-institutions-act-decree.html" class="node-link"><title>공공기관의 운영에 관한 법률 시행령 — 대통령령 제35947호, 2026-01-02 시행. 공공기관 지정기준, 운영위원회 구성, 임원추천위원회, 경영실적평가 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="508" y="482" width="220" height="32" rx="9" fill="#ffffff" stroke="#b0263b" stroke-width="1.6"></rect>
+        <rect x="508" y="482" width="6" height="32" rx="3" fill="#b0263b"></rect>
+        <text x="522" y="502" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/basic-education-act.html" class="node-link"><title>교육기본법 — AI기본법 제2조4호차목, 학생평가 분야 고영향 AI 판단기준의 근거법입니다.</title><tspan fill="#0f2942">교육기본법</tspan></a>
+        </text>
+        <rect x="752" y="82" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="82" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="102" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/intelligent-informatization-act.html" class="node-link"><title>지능정보화 기본법 — AI기본법 제6·13·15조 등에서 다수 인용되는 상위 정보화 기본법입니다.</title><tspan fill="#0f2942">지능정보화 기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/intelligent-informatization-act-decree.html" class="node-link"><title>지능정보화 기본법 시행령 — 지능정보화 기본법의 위임에 따른 대통령령. 대통령령 제36005호, 2026-01-22 시행. 소관: 과학기술정보통신부.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="122" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="122" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="142" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/sme-basic-act.html" class="node-link"><title>중소기업기본법 — AI기본법 제16조, 중소기업 지원 대상을 정의하는 근거법입니다.</title><tspan fill="#0f2942">중소기업기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/sme-basic-act-decree.html" class="node-link"><title>중소기업기본법 시행령 — 대통령령 제35947호, 2026-01-02 시행. 중소기업 범위 산정기준, 육성계획 수립, 정책심의회 구성, 옴부즈만 직무 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="162" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="162" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="182" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/sosang-basic-act.html" class="node-link"><title>소상공인기본법 — AI기본법 제16조, "중소기업등" 지원 대상에 포함되는 소상공인을 정의하는 근거법입니다.</title><tspan fill="#0f2942">소상공인기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/sosang-basic-act-decree.html" class="node-link"><title>소상공인기본법 시행령 — 대통령령 제36055호, 2026-02-01 시행. 소상공인 범위 산정기준, 실태조사ㆍ통계작성 방법, 정책심의회 구성 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="202" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="202" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="214" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/venture-business-act.html" class="node-link"><title>벤처기업육성에 관한 특별법 — AI기본법 제16조, 벤처기업 지원 대상을 정의하는 근거법입니다.</title><tspan fill="#0f2942">벤처기업육성에</tspan></a>
+        </text>
+        <text x="766" y="228" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/venture-business-act.html" class="node-link"><title>벤처기업육성에 관한 특별법</title><tspan fill="#0f2942">관한 특별법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/venture-business-act-decree.html" class="node-link"><title>벤처기업육성에 관한 특별법 시행령 — 대통령령 제36480호, 2026-07-01 시행. 벤처기업 요건 세부기준, 확인서 유효기간, 확인기관 지정요건 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="242" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="242" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="254" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/venture-investment-act.html" class="node-link"><title>벤처투자 촉진에 관한 법률 — AI기본법 제18조(창업의 활성화), 벤처투자모태조합을 활용한 창업 지원의 근거법입니다.</title><tspan fill="#0f2942">벤처투자 촉진에</tspan></a>
+        </text>
+        <text x="766" y="268" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/venture-investment-act.html" class="node-link"><title>벤처투자 촉진에 관한 법률</title><tspan fill="#0f2942">관한 법률</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/venture-investment-act-decree.html" class="node-link"><title>벤처투자 촉진에 관한 법률 시행령 — 대통령령 제36481호, 2026-07-01 시행. 전문개인투자자ㆍ창업기획자ㆍ벤처투자회사ㆍ벤처투자조합 등록요건, 한국벤처투자 사업 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="282" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="282" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="294" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/ict-convergence-act.html" class="node-link"><title>정보통신 진흥 및 융합 활성화 등에 관한 특별법 — AI기본법 제19조, 인공지능 융합 제품·서비스의 임시허가(규제샌드박스)와 연계되는 법입니다.</title><tspan fill="#0f2942">정보통신 진흥 및 융합</tspan></a>
+        </text>
+        <text x="766" y="308" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/ict-convergence-act.html" class="node-link"><title>정보통신 진흥 및 융합 활성화 등에 관한 특별법</title><tspan fill="#0f2942">활성화 등에 관한 특별법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/ict-convergence-act-decree.html" class="node-link"><title>정보통신 진흥 및 융합 활성화 등에 관한 특별법 시행령 — 대통령령 제36220호, 2026-03-24 시행. 전략위원회ㆍ심의위원회 구성, 신속처리ㆍ임시허가ㆍ실증특례 절차 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="322" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="322" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="342" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/national-rnd-innovation-act.html" class="node-link"><title>국가연구개발혁신법 — AI기본법 제19조, 국가 연구개발(R&amp;D) 프로젝트와 연계되는 법입니다.</title><tspan fill="#0f2942">국가연구개발혁신법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/national-rnd-innovation-act-decree.html" class="node-link"><title>국가연구개발혁신법 시행령 — 대통령령 제36525호, 2026-07-28 시행. 연구개발과제 공모ㆍ선정절차, 연구개발비 관리, 전문기관 지정, 부정행위 제재처분 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="752" y="362" width="220" height="32" rx="9" fill="#ffffff" stroke="#2f6fed" stroke-width="1.6"></rect>
+        <rect x="752" y="362" width="6" height="32" rx="3" fill="#2f6fed"></rect>
+        <text x="766" y="382" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/science-technology-basic-act.html" class="node-link"><title>과학기술기본법 — AI기본법 제38조, AI 통계·지표 작성과 연계되는 법입니다.</title><tspan fill="#0f2942">과학기술기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/science-technology-basic-act-decree.html" class="node-link"><title>과학기술기본법 시행령 — 대통령령 제36317호, 2026-05-11 시행. 시행계획 수립절차, 자문기구 구성ㆍ운영, 국가연구개발사업 조사ㆍ분석 절차, 출연연구기관 평가 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="996" y="82" width="220" height="32" rx="9" fill="#ffffff" stroke="#5b6b7f" stroke-width="1.6"></rect>
+        <rect x="996" y="82" width="6" height="32" rx="3" fill="#5b6b7f"></rect>
+        <text x="1010" y="102" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/administrative-investigation-act.html" class="node-link"><title>행정조사기본법 — AI기본법 제40조, 실태조사 절차의 근거법입니다.</title><tspan fill="#0f2942">행정조사기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/administrative-investigation-act-decree.html" class="node-link"><title>행정조사기본법 시행령 — 대통령령 제35038호, 2024-12-27 시행. 행정조사운영계획 제출대상, 조사방법별 서식, 손실보상 절차, 자율관리체제 기준 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <a href="laws/criminal-act.html" class="node-link"><title>형법 — AI기본법 제41조, 위원회 위원 등의 공무원 의제(벌칙 적용) 근거법입니다.</title><rect x="996" y="122" width="220" height="32" rx="9" fill="#ffffff" stroke="#5b6b7f" stroke-width="1.6"></rect><rect x="996" y="122" width="6" height="32" rx="3" fill="#5b6b7f"></rect><text x="1010" y="142" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">형법</text></a>
+        <a href="laws/civil-act.html" class="node-link"><title>민법 — AI기본법 제26조, 협회의 사단법인 규정 준용 근거이자 AI 법인격·성년후견 논의의 대상인 법입니다.</title><rect x="996" y="162" width="220" height="32" rx="9" fill="#ffffff" stroke="#5b6b7f" stroke-width="1.6"></rect><rect x="996" y="162" width="6" height="32" rx="3" fill="#5b6b7f"></rect><text x="1010" y="182" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">민법</text></a>
+        <rect x="996" y="202" width="220" height="32" rx="9" fill="#ffffff" stroke="#5b6b7f" stroke-width="1.6"></rect>
+        <rect x="996" y="202" width="6" height="32" rx="3" fill="#5b6b7f"></rect>
+        <text x="1010" y="222" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/administrative-basic-act.html" class="node-link"><title>행정기본법 — 제20조(자동적 처분)에서 완전히 자동화된 시스템(인공지능 기술 포함)에 의한 행정처분의 일반법적 근거를 규정합니다.</title><tspan fill="#0f2942">행정기본법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/administrative-basic-act-decree.html" class="node-link"><title>행정기본법 시행령 — 행정기본법의 위임에 따른 대통령령. 대통령령 제36187호, 2026-03-19 시행. 소관: 법제처.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <rect x="996" y="242" width="220" height="32" rx="9" fill="#ffffff" stroke="#5b6b7f" stroke-width="1.6"></rect>
+        <rect x="996" y="242" width="6" height="32" rx="3" fill="#5b6b7f"></rect>
+        <text x="1010" y="262" text-anchor="start" font-size="13" font-weight="400">
+          <a href="laws/administrative-procedure-act.html" class="node-link"><title>행정절차법 — AI 행정처분에 대한 이의신청·권리구제 절차 정비가 논의되는 법입니다(「인공지능 법제도 정비 과제」).</title><tspan fill="#0f2942">행정절차법</tspan></a><tspan fill="#8a96a5">,&#160;</tspan><a href="laws/administrative-procedure-act-decree.html" class="node-link"><title>행정절차법 시행령 — 대통령령 제33649호, 2023-08-01 시행. 처리기간ㆍ처분기준 공표, 사전통지 생략사유, 청문주재자 구성, 공청회 진행, 입법예고ㆍ행정예고 방법 등을 규정합니다.</title><tspan fill="#0f2942">시행령</tspan></a>
+        </text>
+        <a href="laws/eu-ai-act.html" class="node-link"><title>EU Artificial Intelligence Act — 위험기반 AI 규제의 국제 비교 기준. 금지 AI·고위험 AI·범용 AI 모델(GPAI)·투명성·거버넌스·시장감시 체계를 둔다.</title><rect x="1240" y="82" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="82" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="98" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">EU AI Act</text></a>
+        <a href="laws/gdpr.html" class="node-link"><title>EU General Data Protection Regulation(GDPR) — AI 개인정보 처리와 자동화된 의사결정의 비교법 기준. 개인정보보호법·신용정보법·AI 설명·권리구제와 비교된다.</title><rect x="1240" y="114" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="114" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="130" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">GDPR</text></a>
+        <a href="laws/eu-dsa.html" class="node-link"><title>EU Digital Services Act(DSA) — 플랫폼 알고리즘·추천시스템·온라인 위해 대응 규범. 생성형 AI와 플랫폼 책임, 추천 알고리즘 투명성 논의에 연결된다.</title><rect x="1240" y="146" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="146" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="162" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">EU DSA</text></a>
+        <a href="laws/oecd-ai-principles.html" class="node-link"><title>OECD AI Principles — 신뢰할 수 있는 AI를 위한 국제 원칙. 2019년 채택, 2024년 업데이트된 가치 기반 원칙과 정책 권고를 제공한다.</title><rect x="1240" y="178" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="178" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="194" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">OECD AI 원칙</text></a>
+        <a href="laws/nist-ai-rmf.html" class="node-link"><title>NIST AI Risk Management Framework — AI 위험관리 실무 프레임(Govern·Map·Measure·Manage). 조직 단위 위험관리 체계와 AI기본법상 안전성 확보 방안 설계에 활용된다.</title><rect x="1240" y="210" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="210" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="226" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">NIST AI RMF</text></a>
+        <a href="laws/iso-iec-42001.html" class="node-link"><title>ISO/IEC 42001 — AI 경영시스템(AIMS) 표준. AI 관리체계, 역할·책임, 정책·절차 문서화의 비교 기준으로 활용된다.</title><rect x="1240" y="242" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="242" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="258" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">ISO/IEC 42001</text></a>
+        <a href="laws/iso-iec-23894.html" class="node-link"><title>ISO/IEC 23894 — AI 위험관리 지침. 고영향 AI 위험관리방안과 영향평가 항목 설계에 연결된다.</title><rect x="1240" y="274" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="274" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="290" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">ISO/IEC 23894</text></a>
+        <a href="laws/unesco-ai-ethics.html" class="node-link"><title>UNESCO Recommendation on the Ethics of AI — AI 윤리와 인권 기반 접근의 국제 기준. AI 윤리원칙, 교육, 공공정책 파트와 연결된다.</title><rect x="1240" y="306" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="306" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="322" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">UNESCO 윤리권고</text></a>
+        <a href="laws/coe-ai-convention.html" class="node-link"><title>Council of Europe AI Convention — AI와 인권·민주주의·법치주의 국제협약. 국가 책임, 공공부문 AI, 인권영향평가 논의와 연결된다.</title><rect x="1240" y="338" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="338" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="354" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">COE AI 협약</text></a>
+        <a href="laws/us-ai-executive-order.html" class="node-link"><title>U.S. AI Executive Order and Federal Guidance — 미국 연방 차원의 AI 안전·보안 정책 비교축. 안전성 평가, 연방기관 AI 활용, 보안 요구사항 비교에 활용된다.</title><rect x="1240" y="370" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="370" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="386" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">미국 AI행정명령</text></a>
+        <a href="laws/seoul-declaration.html" class="node-link"><title>서울선언ㆍ프런티어AI안전서약 — 2024년 한국ㆍ영국 공동개최 AI서울정상회의 성과물. 정부 서울선언과 16개 AI기업의 자율 안전서약으로 구성된다.</title><rect x="1240" y="402" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="402" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="418" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">서울선언</text></a>
+        <a href="laws/g7-hiroshima-process.html" class="node-link"><title>G7 히로시마 AI프로세스 — 2023년 일본 주도 G7 성과물. 첨단 AI시스템 개발조직을 위한 11개 국제지침원칙과 국제행동강령으로 구성된다.</title><rect x="1240" y="434" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="434" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="450" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">G7 히로시마프로세스</text></a>
+        <a href="laws/un-ai-resolution.html" class="node-link"><title>UN AI결의안 — 2024년 유엔총회가 193개 회원국 컨센서스로 채택한 UN 최초의 AI 결의. 인권존중ㆍ디지털격차 해소ㆍ국제협력을 촉구한다.</title><rect x="1240" y="466" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="466" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="482" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">UN AI결의안</text></a>
+        <a href="laws/china-generative-ai-measures.html" class="node-link"><title>중국 생성형AI관리방안 — 2023년 시행된 중국 최초의 생성형 AI 구속력 있는 규정. 콘텐츠 가치관 통제를 명시한 EU·미국과 전혀 다른 규제모델 비교 사례.</title><rect x="1240" y="498" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="498" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="514" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">중국 생성형AI관리방안</text></a>
+        <rect x="745" y="414" width="470" height="120" rx="9" fill="#f8fafc" stroke="#d7dee6" stroke-width="1.3" stroke-dasharray="5 4"></rect>
+        <rect x="752" y="425" width="8" height="8" rx="2" fill="#0f2942"></rect>
+        <text x="768" y="432" font-size="9" fill="#1a2230">인공지능기본법 (중심)</text>
+        <rect x="752" y="440" width="8" height="8" rx="2" fill="#b5730a"></rect>
+        <text x="768" y="447" font-size="9" fill="#1a2230">지식재산 체계 (10개: 산업재산권·저작권·영업비밀·관세 등)</text>
+        <rect x="752" y="455" width="8" height="8" rx="2" fill="#1a7d4f"></rect>
+        <text x="768" y="462" font-size="9" fill="#1a2230">데이터·개인정보 (3개)</text>
+        <rect x="752" y="470" width="8" height="8" rx="2" fill="#b0263b"></rect>
+        <text x="768" y="477" font-size="9" fill="#1a2230">고영향 AI 판단기준 (11개)</text>
+        <rect x="752" y="485" width="8" height="8" rx="2" fill="#2f6fed"></rect>
+        <text x="768" y="492" font-size="9" fill="#1a2230">추진체계·산업진흥 (8개)</text>
+        <rect x="752" y="500" width="8" height="8" rx="2" fill="#5b6b7f"></rect>
+        <text x="768" y="507" font-size="9" fill="#1a2230">행정·책임·벌칙 (5개)</text>
+        <rect x="752" y="515" width="8" height="8" rx="2" fill="#0369a1"></rect>
+        <text x="768" y="522" font-size="9" fill="#1a2230">국제규범 (14개: EU·OECD·NIST·ISO·UNESCO·COE·미국·서울선언·G7·UN·중국 등)</text>
+        </svg>
+    </div>
+
+    <div class="cols" style="margin-top:22px">
+      <div class="info-card">
+        <h4>인공지능기본법 → 저작권법 · 개인정보보호법</h4>
+        <p>
+          생성형 AI 정의(제2조5호)는 학습데이터를 다루므로 <b>저작권법</b>상 학습데이터 이용의 적법성·
+          생성물의 저작물성 문제와 맞닿아 있습니다. 고영향 AI의 생체정보 분석(제2조4호바목)과
+          영향평가(제35조)는 <b>개인정보보호법</b>의 개인정보 영향평가와 함께 검토됩니다.
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>지식재산 기본법 → 특허·실용신안·상표·디자인·저작권</h4>
+        <p>
+          지식재산 기본법은 산업재산권 4법(특허·실용신안·상표·디자인)과 저작권법의 상위 원칙법입니다.
+          AI가 만든 발명·창작물을 어느 법으로, 누구의 권리로 보호할지가 이 관계의 핵심 쟁점입니다.
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>지식재산 기본법 → 부정경쟁방지법 · 산업기술보호법</h4>
+        <p>
+          AI 모델 가중치·학습 데이터셋·프롬프트 자산 등은 특허·저작권으로 등록되지 않은 경우가 많아,
+          <b>영업비밀</b>·<b>산업기술 유출방지</b> 법제를 통해 별도로 보호됩니다.
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>저작권법 · 부정경쟁방지법 → 관세법</h4>
+        <p>
+          AI로 생성되었거나 AI 기술이 침해된 위조·모조품이 국경을 넘는 경우, <b>관세법</b>의
+          지식재산권 침해물품 통관 단속 절차와 연결됩니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-disclaimer">이 페이지는 법령 이해를 돕기 위한 학습·연구 참고 자료이며, 법률 자문이나 정부기관의 공식 해석을 대신하지 않습니다.</p>
+    데이터 최종 수정일시: 2026-08-17 &middot; 국가법령정보 공동활용 API(law.go.kr) 기준
+  </div>
+</footer>
+
+<script>
+(function(){
+  function clearHighlight(){
+    document.querySelectorAll('.law-highlight').forEach(function(el){ el.classList.remove('law-highlight'); });
+  }
+
+  function boxTargets(anchor){
+    var textEl = anchor.closest('text');
+    if (textEl) {
+      // merged-pair box: the decorative rects sit before the <text> line(s) — skip past
+      // any earlier sibling <text> first, since a long name may wrap onto two lines.
+      var prev = textEl.previousElementSibling;
+      while (prev && prev.tagName === 'text') prev = prev.previousElementSibling;
+      var rects = [];
+      while (prev && prev.tagName === 'rect') { rects.unshift(prev); prev = prev.previousElementSibling; }
+      return rects.length ? rects : [textEl];
+    }
+    // single-link box: <a> wraps its own rect(s) directly.
+    var innerRects = anchor.querySelectorAll('rect');
+    return innerRects.length ? Array.prototype.slice.call(innerRects) : [anchor];
+  }
+
+  function addHighlight(anchor){
+    boxTargets(anchor).forEach(function(t){ t.classList.add('law-highlight'); });
+  }
+
+  function runSearch(){
+    var status = document.getElementById('lawSearchStatus');
+    var q = document.getElementById('lawSearchInput').value.trim();
+    status.textContent = '';
+    clearHighlight();
+    if (!q) return;
+    if (q.length < 2) { status.textContent = '2글자 이상 키워드를 입력해 주세요.'; return; }
+
+    var links = document.querySelectorAll('svg a.node-link');
+    var seen = {};
+    var matches = [];
+    for (var i = 0; i < links.length; i++) {
+      var titleEl = links[i].querySelector('title');
+      var label = titleEl ? titleEl.textContent : links[i].textContent;
+      var href = links[i].getAttribute('href');
+      if (label && label.toLowerCase().indexOf(q.toLowerCase()) !== -1 && !seen[href]) {
+        seen[href] = true;
+        matches.push(links[i]);
+      }
+    }
+    if (!matches.length) { status.textContent = '"' + q + '"과 일치하는 법령을 찾지 못했습니다.'; return; }
+
+    // Box every matching card at once, directly in the diagram — click it to open that page.
+    matches.forEach(addHighlight);
+    status.textContent = matches.length + '개 법령이 아래 다이어그램에 표시되었습니다. 박스를 클릭하면 해당 페이지로 이동합니다.';
+  }
+
+  document.getElementById('lawSearchBtn').addEventListener('click', runSearch);
+  document.getElementById('lawSearchInput').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') { e.preventDefault(); runSearch(); }
+  });
+})();
+</script>
+
+</body>
+</html>
