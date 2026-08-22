@@ -2,3 +2,10 @@ serve.ps1
 .claude/
 ITCAS/
 Lecture/
+RestroomMap/
+
+# 강의 준비중 자료 — push 금지(2026-08-22). AI Governance/의 기존 3개 파일은
+# 과거에 이미 커밋·push된 상태라 .gitignore로는 소급 제외되지 않고 그대로 유지됨.
+AI Governance/
+AIG/
+research/
