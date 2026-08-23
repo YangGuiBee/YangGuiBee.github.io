@@ -91,6 +91,30 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
   background:#eef1f5;padding:3px 8px;border-radius:6px;
 }
 
+/* guide relationship map (ai-guidelines.html) */
+.guide-map{width:100%;overflow-x:auto;margin:4px 0 6px}
+.guide-map svg{width:100%;height:auto;display:block;min-width:760px}
+.guide-map a{cursor:pointer}
+.guide-map a:hover rect:first-child{stroke-width:2.6}
+.guide-map-legend{font-size:10.5px;color:var(--sub);margin:2px 0 0}
+
+/* guide × 법 절차구조도 접목 그리드 (ai-guidelines.html 전용, wf-node/wf-gate-head 등은 style.css 공용 클래스 재사용) */
+.gm-wf-grid{display:grid;grid-template-columns:130px repeat(4,minmax(0,1fr));row-gap:5px;column-gap:14px;overflow-x:auto}
+.gm-badge{
+  display:inline-block;margin-top:4px;font-size:8.5px;font-weight:700;color:#fff;
+  background:var(--blue);padding:2px 7px;border-radius:999px;
+}
+.gm-badge:hover{background:var(--navy-2)}
+.gm-guide-preview{
+  margin-top:8px;padding:8px 10px;background:#f1eaf9;border-left:3px solid #8a4fd6;
+  border-radius:0 8px 8px 0;
+}
+.gm-guide-preview .src{font-size:9.5px;font-weight:700;color:#6b3fb0;margin-bottom:3px}
+.gm-guide-preview p{margin:0;font-size:11.5px;color:var(--ink);line-height:1.5}
+/* 가이드 페이지는 법령 페이지와 달리 가이드 쪽 비중이 커서 상세 패널을 50:50으로 맞춘다 */
+#gmDetail .wf-detail-side,
+#gmDetail .wf-detail-main{flex:1 1 0;min-width:240px}
+
 /* diagram toolbar (description + search) — pinned below the header so scrolling to a
    highlighted box never pushes it out of view */
 .diagram-toolbar{
@@ -162,6 +186,10 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .chapter-flow .ch .no{font-size:8.5px;color:var(--blue);font-weight:700}
 .chapter-flow .ch h4{margin:2px 0 2px;font-size:10.8px}
 .chapter-flow .ch p{margin:0;font-size:9.5px;color:var(--sub)}
+.chapter-flow .ch img.cover{
+  width:100%;aspect-ratio:210/297;object-fit:contain;background:#eef1f5;
+  border-radius:6px;display:block;margin-bottom:5px;
+}
 .chapter-flow .arrow{align-self:center;color:var(--sub);font-size:18px;flex:0 0 auto}
 .chapter-flow .ch.ai-note{background:#e2f5e9}
 
@@ -202,6 +230,27 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 
 /* chapter-flow as links */
 .chapter-flow .ch:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(15,41,66,.12)}
+
+/* ai-guidelines.html: 구성을 소형 표지 스트립 + 관계선 다이어그램으로 표시 */
+.guide-rel-wrap{width:974px;max-width:100%;margin:0 auto 4px;position:relative}
+.chapter-flow.guide-covers{gap:56px;position:relative;z-index:1}
+.chapter-flow.guide-covers .ch{
+  flex:0 0 150px;padding:8px 7px;display:flex;align-items:flex-start;gap:7px;
+}
+.chapter-flow.guide-covers .ch img.cover{flex:0 0 60px;width:60px;margin-bottom:0;border-radius:5px}
+.chapter-flow.guide-covers .ch .ch-text{flex:1 1 auto;min-width:0}
+.chapter-flow.guide-covers .ch .no{font-size:8px}
+.chapter-flow.guide-covers .ch h4{font-size:9.5px;line-height:1.28;margin:2px 0 2px}
+.chapter-flow.guide-covers .ch p{font-size:8px}
+
+/* 관계선은 카드 행 위/아래가 아니라 카드와 카드 사이(gap) 높이 중간에 표시.
+   카드보다 뒤(z-index:0)에 깔아, 건너뛰는 관계(⑤→③)는 사이 카드 뒤로 지나가도록 함 */
+.guide-rel-band{position:absolute;top:0;left:0;width:974px;height:101px;z-index:0;pointer-events:none}
+.guide-rel-band line{stroke:var(--blue);stroke-width:1.6;opacity:.8}
+.guide-rel-band line.mutual{stroke:#8a4fd6}
+.guide-rel-band line.skip{stroke-dasharray:4,3;opacity:.65}
+
+.guide-map-legend-full{margin-top:6px}
 
 /* article number as link */
 .art .head a.num{cursor:pointer}
