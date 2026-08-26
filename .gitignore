@@ -1,5 +1,6 @@
 serve.ps1
 .claude/
+AILawMap/scripts/_last_run.log
 ITCAS/
 Lecture/
 RestroomMap/
@@ -15,6 +16,7 @@ dev-standards-kit/
 its/
 team/
 BOKDR/
+BOKQM/
 
 # 도구 내부 상태·개인 자료·제3자 자료 — deploy.ps1의 git add -A로부터 보호(2026-08-22 사고 재발 방지)
 .bkit/

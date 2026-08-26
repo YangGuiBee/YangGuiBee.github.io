@@ -28,10 +28,11 @@
       </p>
 
       <div class="law-search">
-        <input type="text" id="lawSearchInput" placeholder="관련법 키워드 검색">
+        <input type="text" id="lawSearchInput" placeholder="관련법 키워드 검색 (조문 설명까지 검색됩니다)">
         <button type="button" id="lawSearchBtn" aria-label="검색">🔍</button>
         <p class="law-search-status" id="lawSearchStatus"></p>
       </div>
+      <ul class="law-search-results" id="lawSearchResults" hidden></ul>
     </div>
 
     <div class="diagram-card">
@@ -349,8 +350,16 @@
 
 <script>
 (function(){
+  var searchIndex = [];
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
   function clearHighlight(){
     document.querySelectorAll('.law-highlight').forEach(function(el){ el.classList.remove('law-highlight'); });
+    document.querySelectorAll('.law-highlight-link').forEach(function(el){ el.classList.remove('law-highlight-link'); });
   }
 
   function boxTargets(anchor){
@@ -371,39 +380,117 @@
 
   function addHighlight(anchor){
     boxTargets(anchor).forEach(function(t){ t.classList.add('law-highlight'); });
+    // 박스 전체 강조와 별개로, 본법+시행령이 한 박스에 묶여 있는데 그중 하나만 실제로
+    // 매칭된 경우를 구분할 수 있도록 그 링크의 글자에만 밑줄을 준다.
+    anchor.classList.add('law-highlight-link');
   }
 
-  function runSearch(){
+  function searchArticles(q){
+    var lower = q.toLowerCase();
+    var out = [];
+    for (var i = 0; i < searchIndex.length; i++) {
+      var law = searchIndex[i];
+      var nameHit = law.name.toLowerCase().indexOf(lower) !== -1;
+      for (var j = 0; j < law.entries.length; j++) {
+        var e = law.entries[j];
+        if (nameHit || e.pcode.toLowerCase().indexOf(lower) !== -1 || e.text.toLowerCase().indexOf(lower) !== -1) {
+          out.push({ law: law.name, path: law.path, entry: e });
+          if (out.length >= 50) return out;
+        }
+      }
+    }
+    return out;
+  }
+
+  function renderResults(articleMatches, q){
+    var list = document.getElementById('lawSearchResults');
+    list.innerHTML = '';
+    if (!articleMatches.length) { list.hidden = true; return; }
+    articleMatches.forEach(function(m){
+      var li = document.createElement('li');
+      li.className = 'search-result-item';
+      li.innerHTML = '<a href="' + m.path + '#' + encodeURIComponent(m.entry.id) + '">' +
+        '<span class="sri-law">' + esc(m.law) + '</span>' +
+        '<span class="sri-pcode">' + esc(m.entry.pcode) + '</span>' +
+        '<span class="sri-text">' + esc(m.entry.text) + '</span></a>';
+      list.appendChild(li);
+    });
+    list.hidden = false;
+  }
+
+  function runSearch(updateUrl){
     var status = document.getElementById('lawSearchStatus');
     var q = document.getElementById('lawSearchInput').value.trim();
     status.textContent = '';
     clearHighlight();
-    if (!q) return;
-    if (q.length < 2) { status.textContent = '2글자 이상 키워드를 입력해 주세요.'; return; }
+
+    if (updateUrl !== false) {
+      var newUrl = location.pathname + (q ? '?q=' + encodeURIComponent(q) : '');
+      history.replaceState(null, '', newUrl);
+    }
+
+    if (!q) { renderResults([], q); return; }
+    if (q.length < 2) { status.textContent = '2글자 이상 키워드를 입력해 주세요.'; renderResults([], q); return; }
 
     var links = document.querySelectorAll('svg a.node-link');
     var seen = {};
     var matches = [];
+    var boxKeys = new Set();
+
+    function addMatch(anchor){
+      var href = anchor.getAttribute('href');
+      if (seen[href]) return;
+      seen[href] = true;
+      matches.push(anchor);
+      // 본법+시행령이 한 박스에 묶여 있으면 그 박스 전체가 강조되므로,
+      // "몇 개 법령이 표시됐는지"는 href 개수가 아니라 실제 강조되는 박스 개수로 세야
+      // 화면에 보이는 것과 숫자가 맞는다.
+      boxKeys.add(anchor.closest('text') || anchor);
+    }
+
     for (var i = 0; i < links.length; i++) {
       var titleEl = links[i].querySelector('title');
       var label = titleEl ? titleEl.textContent : links[i].textContent;
-      var href = links[i].getAttribute('href');
-      if (label && label.toLowerCase().indexOf(q.toLowerCase()) !== -1 && !seen[href]) {
-        seen[href] = true;
-        matches.push(links[i]);
+      if (label && label.toLowerCase().indexOf(q.toLowerCase()) !== -1) {
+        addMatch(links[i]);
       }
     }
-    if (!matches.length) { status.textContent = '"' + q + '"과 일치하는 법령을 찾지 못했습니다.'; return; }
 
-    // Box every matching card at once, directly in the diagram — click it to open that page.
+    var articleMatches = searchArticles(q);
+    // 조문 검색에서만 매칭된 법(다이어그램 상자 제목에는 없던 키워드)도
+    // 해당 법의 다이어그램 상자를 같이 강조해서, 조문 목록과 다이어그램이 서로 어긋나지 않게 한다.
+    var articlePaths = {};
+    articleMatches.forEach(function(m){ articlePaths[m.path] = true; });
+    Object.keys(articlePaths).forEach(function(path){
+      document.querySelectorAll('svg a.node-link[href="' + path + '"]').forEach(addMatch);
+    });
+
     matches.forEach(addHighlight);
-    status.textContent = matches.length + '개 법령이 아래 다이어그램에 표시되었습니다. 박스를 클릭하면 해당 페이지로 이동합니다.';
+    renderResults(articleMatches, q);
+
+    if (!matches.length && !articleMatches.length) {
+      status.textContent = '"' + q + '"과 일치하는 법령을 찾지 못했습니다.';
+    } else {
+      status.textContent = '검색결과: ' + articleMatches.length + '개 조문, ' + boxKeys.size +
+        '개 법령 (검색된 조문 목록과 법령을 클릭하면 해당 내용으로 이동)';
+    }
   }
 
-  document.getElementById('lawSearchBtn').addEventListener('click', runSearch);
+  document.getElementById('lawSearchBtn').addEventListener('click', function(){ runSearch(true); });
   document.getElementById('lawSearchInput').addEventListener('keydown', function(e){
-    if (e.key === 'Enter') { e.preventDefault(); runSearch(); }
+    if (e.key === 'Enter') { e.preventDefault(); runSearch(true); }
   });
+
+  function initFromUrl(){
+    var q = new URLSearchParams(location.search).get('q');
+    if (!q) return;
+    document.getElementById('lawSearchInput').value = q;
+    runSearch(false);
+  }
+
+  fetch('assets/search-index.json').then(function(r){ return r.json(); }).then(function(data){
+    searchIndex = data;
+  }).catch(function(){ /* 인덱스 로드 실패 시 다이어그램 검색만 동작 */ }).then(initFromUrl);
 })();
 </script>
 

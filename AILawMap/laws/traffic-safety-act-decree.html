@@ -501,17 +501,28 @@
     draw();
     var btn = document.getElementById('basicToggle');
     if (btn) btn.addEventListener('click', toggleBasic);
-    document.querySelectorAll('.wf-node').forEach(function(n){
-      n.addEventListener('click', function(){
-        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
-        n.classList.add('wf-selected');
-        showDetail(n);
-      });
-    });
+    document.querySelectorAll('.wf-node').forEach(function(n){
+
+      n.addEventListener('click', function(){
+
+        document.querySelectorAll('.wf-node.wf-selected').forEach(function(m){ m.classList.remove('wf-selected'); });
+
+        n.classList.add('wf-selected');
+
+        showDetail(n);
+
+      });
+
+    });
+
     window.addEventListener('resize', draw);
   });
 })();
 </script>
 
+<!-- deeplink.js -->
+<script src="../assets/deeplink.js"></script>
+<!-- revision.js -->
+<script src="../assets/revision.js"></script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+name: AILawMap weekly law refresh
+
+# 매주 일요일, 87개 법령의 최신 공포일자/시행일자를 law.go.kr DRF API로 재확인해
+# AILawMap/assets/law-snapshot.json만 갱신한다. 법령 페이지 HTML은 건드리지 않는다
+# (개정 이력 표시는 assets/revision.js가 이 JSON을 런타임에 fetch해서 렌더링한다).
+# 변경사항이 있을 때만 Pull Request를 만들고, main 반영(merge)은 사람이 확인 후 직접 한다.
+
+on:
+  schedule:
+    - cron: '0 22 * * 0' # 매주 일요일 07:00 KST (UTC 전날 22:00)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4
+
+      - name: Refresh law-snapshot.json
+        run: python AILawMap/scripts/build_law_snapshot.py
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- AILawMap/assets/law-snapshot.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open Pull Request
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="ailawmap-law-refresh-$(date +%Y%m%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add AILawMap/assets/law-snapshot.json
+          git commit -m "AILawMap: 주간 법령 개정 확인 갱신 $(date +%Y-%m-%d)"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "AILawMap: 주간 법령 개정 확인 $(date +%Y-%m-%d)" \
+            --body-file AILawMap/scripts/_last_run.log \
+            --base main \
+            --head "$BRANCH"

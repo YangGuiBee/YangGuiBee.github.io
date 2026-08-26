@@ -134,6 +134,21 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .law-search button:hover{background:#f0f9ff}
 .law-search-status{flex:1 1 auto;font-size:11.5px;color:var(--sub);margin:0;min-height:14px}
 
+.law-search-results{
+  list-style:none;margin:0 0 10px;padding:0;max-height:96px;overflow-y:auto;
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+  box-shadow:var(--shadow);
+}
+.law-search-results[hidden]{display:none}
+.search-result-item + .search-result-item{border-top:1px solid var(--line)}
+.search-result-item a{
+  display:flex;gap:8px;align-items:baseline;padding:8px 12px;text-decoration:none;color:var(--ink);
+}
+.search-result-item a:hover{background:var(--blue-light)}
+.sri-law{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--navy)}
+.sri-pcode{flex:0 0 auto;font-size:11px;color:var(--blue);font-weight:600}
+.sri-text{flex:1 1 auto;font-size:12px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
 /* diagram */
 .diagram-card{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
@@ -144,13 +159,17 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .diagram-card svg a.node-link rect:first-of-type{transition:filter .12s ease}
 .diagram-card svg a.node-link:hover rect:first-of-type{filter:brightness(0.96) saturate(1.3)}
 .diagram-card svg a.node-link:hover text{fill:var(--blue) !important}
+.diagram-card svg a.node-link.law-highlight-link tspan{
+  text-decoration:underline;text-decoration-color:#0ea5e9;text-decoration-thickness:2px;
+  text-underline-offset:2px;
+}
 .law-highlight{
-  stroke:#0ea5e9 !important;stroke-width:3.5px !important;
-  animation:lawBoxPulse 1.6s ease-in-out infinite;
+  stroke:#0ea5e9 !important;
+  animation:lawBoxPulse 1.1s ease-in-out infinite;
 }
 @keyframes lawBoxPulse{
-  0%,100%{stroke-opacity:.55}
-  50%{stroke-opacity:1}
+  0%,100%{stroke-width:2.2px;stroke-opacity:.4}
+  50%{stroke-width:4.5px;stroke-opacity:1}
 }
 .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--sub)}
 .legend .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
@@ -203,6 +222,11 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .related-chip .name{font-size:10.8px}
 .related-chip.ai-note{background:#e2f5e9}
 .related-chip .name{font-weight:700}
+.related-chip .cmp-link{
+  display:block;text-align:right;margin-top:6px;font-size:9px;font-weight:700;
+  color:var(--blue);text-decoration:none;
+}
+.related-chip .cmp-link:hover{text-decoration:underline}
 
 /* two-col */
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -220,6 +244,8 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .site-footer{border-top:1px solid var(--line);padding:12px 0 18px;margin-top:12px}
 .site-footer .wrap{color:var(--sub);font-size:11px;line-height:1.2}
 .footer-disclaimer{margin:0 0 2px}
+.law-revision{margin:4px 0 0;color:var(--sub)}
+.law-revision a{color:var(--blue)}
 .disclaimer{
   background:var(--amber-bg);border:1px solid #f0dcb0;color:#7a4e08;
   border-radius:10px;padding:10px 14px;font-size:12.8px;margin-bottom:10px;
@@ -307,6 +333,7 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .wf-node.wf-dim{opacity:.28}
 .wf-node.wf-hl{box-shadow:0 4px 16px rgba(15,41,66,.18)}
 .wf-node{cursor:pointer}
+.wf-node:target{box-shadow:0 0 0 2.5px var(--blue),0 4px 16px rgba(15,41,66,.18)}
 .wf-node.wf-selected{border-color:var(--green);box-shadow:0 0 0 2px rgba(26,125,79,.22),0 4px 16px rgba(15,41,66,.18)}
 
 /* node detail panel */
@@ -345,6 +372,31 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .wf-detail-law-subitems li{margin:1px 0;font-size:12.3px}
 .wf-detail-law-missing{color:var(--sub);font-size:12.5px;margin:0}
 .wf-detail-related{display:flex;flex-direction:column;gap:6px;margin-top:2px}
+
+/* ai-basic-act-compare.html: 법률·시행령 조문 나란히 비교 */
+.cmp-wrap{display:flex;flex-direction:column;gap:4px}
+.cmp-subject{
+  margin:22px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--navy);
+  font-size:15px;color:var(--navy);
+}
+.cmp-subject:first-child{margin-top:0}
+.cmp-row{display:flex;gap:12px;align-items:stretch;margin-bottom:14px}
+.cmp-gate-tag{
+  flex:0 0 96px;font-size:11px;font-weight:700;color:#fff;background:var(--navy-2);
+  border-radius:8px;padding:6px 8px;align-self:flex-start;
+}
+.cmp-col{flex:1 1 0;min-width:0;border-radius:var(--radius);padding:10px 12px;box-shadow:var(--shadow)}
+.cmp-col-law{background:var(--blue-light)}
+.cmp-col-decree{background:#f4f6fb;border-left:3px solid var(--navy-2)}
+.cmp-article + .cmp-article{margin-top:10px;padding-top:8px;border-top:1px dashed #c9d6ea}
+.cmp-article-head{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:3px}
+.cmp-col-decree .cmp-article-head{color:var(--navy-2)}
+.cmp-para{margin:0 0 3px;font-size:12.5px;line-height:1.5;color:var(--ink)}
+.cmp-items{margin:0 0 3px;padding-left:18px;font-size:12.3px;line-height:1.5}
+.cmp-items li{margin:2px 0}
+.cmp-subitems{margin:2px 0;padding-left:16px;color:var(--sub)}
+.cmp-subitems li{margin:1px 0;font-size:11.8px}
+.cmp-missing,.cmp-empty{color:var(--sub);font-size:12px;margin:0;font-style:italic}
 .wf-detail-related-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
 .wf-detail-related-label{font-size:11px;font-weight:700;color:var(--sub);min-width:28px}
 .wf-detail-chip{
