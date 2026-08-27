@@ -34,3 +34,8 @@ scripts/
 guibee/
 VHLookup-main/
 *.7z
+
+# Apps Script 조사·백업용 스크래치 파일 — 사이트 코드 아님(2026-08-27)
+*.gs
+appsscript_v*.js
+appsscript_backup.js
