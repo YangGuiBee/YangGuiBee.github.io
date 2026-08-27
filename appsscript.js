@@ -1,6 +1,7 @@
 /* ══════════════════════════════════════════════════════
-   AI Study  Apps Script  v7
-   변경: getStats() + recordHit() 추가
+   AI Study  Apps Script  v8
+   변경: getAllNews() 추가 — KIS(별도 지식정보사이트)가 뉴스시트를
+   1000행 회전 캡 전에 전량 아카이브(paper.html은 여전히 getNews()로 최신 20건만 사용)
    ══════════════════════════════════════════════════════ */
 
 const ADMIN_EMAIL      = 'guibee1004@gmail.com';
@@ -38,6 +39,7 @@ function doGet(e) {
     else if (action === 'adminRequests') data = adminList('강의요청');
     else if (action === 'getNews')       data = getNews();
     else if (action === 'searchNews')    data = searchNews(p.keyword || '');
+    else if (action === 'getAllNews')    data = getAllNews();
     else if (action === 'getStats')      data = getStats();
     else                                 data = { ok: false, msg: 'unknown action' };
   } catch (err) {
@@ -283,6 +285,25 @@ function getNews() {
     }));
 
   return { ok: true, data: rows, latestDate: rows.length ? rows[0].collectedAt : '' };
+}
+
+// KIS(별도 지식정보사이트)가 1000행 회전 캡으로 지워지기 전에 전량 아카이브할 수 있도록
+// 최신 20건 제한 없이 현재 시트의 모든 행을 반환한다(2026-08-27 추가).
+function getAllNews() {
+  const ss    = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('뉴스');
+  if (!sheet) return { ok: true, data: [] };
+
+  const rows = sheet.getDataRange().getValues().slice(1)
+    .filter(r => r[2])
+    .map(r => ({
+      collectedAt: String(r[0]||''), category: String(r[1]||''),
+      title: String(r[2]||''), publishedAt: String(r[3]||''),
+      authors: String(r[4]||''), source: String(r[5]||''),
+      link: String(r[6]||''), stars: String(r[7]||''), abstract: String(r[8]||''),
+    }));
+
+  return { ok: true, data: rows };
 }
 
 function searchNews(keyword) {
