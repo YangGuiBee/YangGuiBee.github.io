@@ -1,4 +1,4 @@
-﻿/* ── AI논문 news.js v5 ── */
+﻿/* ── AI논문 paper.js v5 ── */
 const NEWS_SCRIPT_URL = SCRIPT_URL; // config.js에서 로드
 
 let allNews    = [];
