@@ -10,7 +10,10 @@
                     .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  var lawName = document.title.split(' · LawMap')[0].trim();
+  // 비교/연결설명 페이지(제목이 "{법령명} 비교 · LawMap" 또는 "{법령명} 연결설명 · LawMap")는
+  // 그 법령명 자체가 조회 키이므로 끝의 접미사만 떼어내면 일반 법령 페이지와 같은 로직을
+  // 그대로 쓸 수 있다.
+  var lawName = document.title.split(' · LawMap')[0].trim().replace(/ (비교|연결설명)$/, '');
   var footerWrap = document.querySelector('footer.site-footer .wrap');
   var lawgokrLink = document.querySelector('.lawgokr-link');
 

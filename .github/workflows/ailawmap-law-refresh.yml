@@ -1,9 +1,16 @@
 name: AILawMap weekly law refresh
 
-# 매주 일요일, 87개 법령의 최신 공포일자/시행일자를 law.go.kr DRF API로 재확인해
-# AILawMap/assets/law-snapshot.json만 갱신한다. 법령 페이지 HTML은 건드리지 않는다
-# (개정 이력 표시는 assets/revision.js가 이 JSON을 런타임에 fetch해서 렌더링한다).
+# 매주 일요일, 87개 법령의 최신 공포일자/시행일자, AI 관련 행정규칙(훈령·고시·규정) 목록,
+# 그리고 87개 법령 목록 밖의 "AI 관련 신규 법령 후보"를 law.go.kr DRF API로 재확인해
+# AILawMap/assets/law-snapshot.json, admrul-snapshot.json, law-candidates.json만 갱신한다.
+# 법령/행정규칙 페이지 HTML은 건드리지 않는다(개정 이력 표시는 assets/revision.js,
+# assets/admrul-revision.js가 이 JSON들을 런타임에 fetch해서 렌더링한다).
 # 변경사항이 있을 때만 Pull Request를 만들고, main 반영(merge)은 사람이 확인 후 직접 한다.
+# 행정규칙은 신규 항목이 감지되면(added) 사람이 laws/ai-administrative-rules.html의 카테고리
+# 분류(scripts/build_admin_rules_page.py의 ITEMS)에 직접 추가해야 카드로 노출된다 — snapshot
+# 갱신만으로 카드가 자동 생기지 않는다. 신규 법령 후보(law-candidates.json)는 페이지를 아예
+# 자동 생성하지 않는다 — PR 본문으로만 알리고, 실제로 새 법령 페이지(절차구조도 등)를 만들지는
+# 사람이 원문을 읽고 판단해야 한다.
 
 on:
   schedule:
@@ -32,14 +39,34 @@ jobs:
       - name: Refresh law-snapshot.json
         run: python AILawMap/scripts/build_law_snapshot.py
 
+      - name: Refresh admrul-snapshot.json
+        run: python AILawMap/scripts/build_admrul_snapshot.py
+
+      - name: Refresh law-candidates.json
+        run: python AILawMap/scripts/build_law_candidates_snapshot.py
+
       - name: Check for changes
         id: diff
         run: |
-          if git diff --quiet -- AILawMap/assets/law-snapshot.json; then
+          if git diff --quiet -- AILawMap/assets/law-snapshot.json AILawMap/assets/admrul-snapshot.json AILawMap/assets/law-candidates.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Build PR body
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          {
+            echo "## 법령(87개) 확인 결과"
+            cat AILawMap/scripts/_last_run.log
+            echo ""
+            echo "## 행정규칙(24개) 확인 결과"
+            cat AILawMap/scripts/_last_admrul_run.log
+            echo ""
+            echo "## 신규 법령 후보(87개 목록 밖) 확인 결과"
+            cat AILawMap/scripts/_last_law_candidates_run.log
+          } > AILawMap/scripts/_pr_body.log
 
       - name: Open Pull Request
         if: steps.diff.outputs.changed == 'true'
@@ -50,11 +77,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add AILawMap/assets/law-snapshot.json
-          git commit -m "AILawMap: 주간 법령 개정 확인 갱신 $(date +%Y-%m-%d)"
+          git add AILawMap/assets/law-snapshot.json AILawMap/assets/admrul-snapshot.json AILawMap/assets/law-candidates.json
+          git commit -m "AILawMap: 주간 법령ㆍ행정규칙ㆍ신규후보 확인 갱신 $(date +%Y-%m-%d)"
           git push origin "$BRANCH"
           gh pr create \
-            --title "AILawMap: 주간 법령 개정 확인 $(date +%Y-%m-%d)" \
-            --body-file AILawMap/scripts/_last_run.log \
+            --title "AILawMap: 주간 법령ㆍ행정규칙ㆍ신규후보 확인 $(date +%Y-%m-%d)" \
+            --body-file AILawMap/scripts/_pr_body.log \
             --base main \
             --head "$BRANCH"

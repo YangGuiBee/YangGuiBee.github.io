@@ -69,7 +69,7 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>인공지능기본법 · {TARGET_NAME} 비교 · LawMap</title>
+<title>{TARGET_NAME} 비교 · LawMap</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -104,6 +104,9 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
     <a href="{TARGET_HREF}" style="color:var(--blue)">{TARGET_NAME}</a> 각 페이지 데이터 사용
   </div>
 </footer>
+
+<!-- revision.js -->
+<script src="../assets/revision.js"></script>
 
 </body>
 </html>

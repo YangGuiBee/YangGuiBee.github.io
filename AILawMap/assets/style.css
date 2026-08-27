@@ -227,14 +227,17 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
   color:var(--blue);text-decoration:none;
 }
 .related-chip .cmp-link:hover{text-decoration:underline}
+.related-chip .desc{font-size:10.5px;color:var(--ink);margin-top:7px;line-height:1.45}
 
 /* two-col */
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:760px){.cols{grid-template-columns:1fr}}
 .info-card{
-  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;
   padding:12px;box-shadow:var(--shadow);font-size:12.3px;
+  transition:transform .12s ease,box-shadow .12s ease;
 }
+a.info-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,41,66,.12)}
 .info-card h4{margin:0 0 6px;font-size:12.5px}
 .info-card dl{margin:0}
 .info-card dt{color:var(--sub);font-size:12px;margin-top:6px}
@@ -246,6 +249,17 @@ p.sec-desc{color:var(--sub);font-size:12.5px;margin:4px 0 8px}
 .footer-disclaimer{margin:0 0 2px}
 .law-revision{margin:4px 0 0;color:var(--sub)}
 .law-revision a{color:var(--blue)}
+
+/* admin rules revision history (ai-administrative-rules.html) */
+.admrul-history-checked{font-size:11.5px;color:var(--sub);margin:0 0 8px}
+.admrul-history-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.admrul-history-row{font-size:12px;border-left:3px solid var(--line);padding-left:10px}
+.admrul-history-row .d{font-weight:700;color:var(--navy);margin-right:6px}
+.admrul-history-items{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:3px}
+.admrul-history-items li{font-size:11.5px;color:var(--ink)}
+.admrul-history-items .add{color:var(--green);font-weight:700}
+.admrul-history-items .rm{color:#b0263b;font-weight:700}
+.admrul-history-items .chg{color:var(--amber);font-weight:700}
 .disclaimer{
   background:var(--amber-bg);border:1px solid #f0dcb0;color:#7a4e08;
   border-radius:10px;padding:10px 14px;font-size:12.8px;margin-bottom:10px;

@@ -1,6 +1,11 @@
 serve.ps1
 .claude/
 AILawMap/scripts/_last_run.log
+AILawMap/scripts/_last_admrul_run.log
+AILawMap/scripts/_last_law_candidates_run.log
+AILawMap/scripts/_pr_body.log
+AILawMap/scripts/__pycache__/
+AILawMap/html_check_result.txt
 ITCAS/
 Lecture/
 RestroomMap/

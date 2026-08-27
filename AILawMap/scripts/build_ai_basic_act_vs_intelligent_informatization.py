@@ -149,7 +149,7 @@ def main():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>인공지능기본법 · 지능정보화 기본법 비교 · LawMap</title>
+<title>지능정보화 기본법 비교 · LawMap</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
@@ -187,6 +187,9 @@ def main():
     <a href="intelligent-informatization-act.html" style="color:var(--blue)">지능정보화 기본법</a> 각 페이지 데이터 및 law.go.kr 원문(2026-08-26 확인) 사용
   </div>
 </footer>
+
+<!-- revision.js -->
+<script src="../assets/revision.js"></script>
 
 </body>
 </html>

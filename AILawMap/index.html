@@ -22,9 +22,9 @@
   <div class="wrap">
     <div class="diagram-toolbar">
       <p class="sec-desc">
-        인공지능기본법과 연결된 국내 법령 38개, 국제 규범 14개, 관련 가이드라인 5종을 데이터베이스 ERD처럼 동일한 크기의 상자와 화살표로 표현했습니다.
-        국내 법령 상자를 클릭하면 해당 법령 페이지로, 국제 규범 상자를 클릭하면 해외 공식 원문으로 이동합니다. 색상은 소속 범주(지식재산·데이터/개인정보·고영향AI 판단기준·
-        추진체계/산업진흥·행정/책임/벌칙·국제규범·가이드)를 나타내며, 각 상자에 마우스를 올리면 연결 근거를 볼 수 있습니다.
+        인공지능기본법과 연결된 국내 법령 38개, 국제 규범 14개, 관련 가이드라인 5종, 관련 행정규칙 24종을 데이터베이스 ERD처럼 동일한 크기의 상자와 화살표로 표현했습니다.
+        국내 법령 상자 내부의 법령명과 시행령 명칭을 각각 클릭하면 해당 법령 페이지로, 국제 규범 상자를 클릭하면 해외 공식 원문으로 이동합니다. 색상은 소속 범주(지식재산·데이터/개인정보·고영향AI 판단기준·
+        추진체계/산업진흥·행정/책임/벌칙·국제규범·가이드·행정규칙)를 나타내며, 각 상자에 마우스를 올리면 연결 근거를 볼 수 있습니다.
       </p>
 
       <div class="law-search">
@@ -46,8 +46,15 @@
 <marker id="arrow-admin" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#5b6b7f"></path></marker>
 <marker id="arrow-global" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#0369a1"></path></marker>
 <marker id="arrow-guide" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#6b4fa0"></path></marker>
+<marker id="arrow-admrule" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#0f7a72"></path></marker>
 </defs>
         <path d="M880,24 L1240,22" stroke="#6b4fa0" stroke-width="1.8" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow-guide)" opacity="0.85"></path>
+        <path d="M600,24 L240,22" stroke="#0f7a72" stroke-width="1.8" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow-admrule)" opacity="0.85"></path>
+        <rect x="20" y="4" width="220" height="36" rx="10" fill="#ffffff" stroke="#0f7a72" stroke-width="2"></rect>
+        <rect x="20" y="4" width="6" height="36" rx="3" fill="#0f7a72"></rect>
+        <text x="130" y="27" text-anchor="middle" font-size="14" font-weight="700">
+          <a href="laws/ai-administrative-rules.html" class="node-link"><title>AI 관련 행정규칙(24종) — 훈령·고시·규정 등 법률·시행령보다 하위 단계에서 부처가 정한 규칙. 대부분 부처별 AI 전담조직 설치 훈령이며, 일부는 인공지능기본법 조문의 위임에 따른 고시입니다.</title><tspan fill="#1a2230">행정규칙</tspan></a>
+        </text>
         <rect x="1240" y="4" width="220" height="36" rx="10" fill="#ffffff" stroke="#6b4fa0" stroke-width="2"></rect>
         <rect x="1240" y="4" width="6" height="36" rx="3" fill="#6b4fa0"></rect>
         <text x="1350" y="27" text-anchor="middle" font-size="14" font-weight="700">
@@ -287,7 +294,7 @@
         <a href="laws/g7-hiroshima-process.html" class="node-link"><title>G7 히로시마 AI프로세스 — 2023년 일본 주도 G7 성과물. 첨단 AI시스템 개발조직을 위한 11개 국제지침원칙과 국제행동강령으로 구성된다.</title><rect x="1240" y="434" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="434" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="450" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">G7 히로시마프로세스</text></a>
         <a href="laws/un-ai-resolution.html" class="node-link"><title>UN AI결의안 — 2024년 유엔총회가 193개 회원국 컨센서스로 채택한 UN 최초의 AI 결의. 인권존중ㆍ디지털격차 해소ㆍ국제협력을 촉구한다.</title><rect x="1240" y="466" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="466" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="482" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">UN AI결의안</text></a>
         <a href="laws/china-generative-ai-measures.html" class="node-link"><title>중국 생성형AI관리방안 — 2023년 시행된 중국 최초의 생성형 AI 구속력 있는 규정. 콘텐츠 가치관 통제를 명시한 EU·미국과 전혀 다른 규제모델 비교 사례.</title><rect x="1240" y="498" width="220" height="24" rx="9" fill="#ffffff" stroke="#0369a1" stroke-width="1.6"></rect><rect x="1240" y="498" width="6" height="24" rx="3" fill="#0369a1"></rect><text x="1254" y="514" text-anchor="start" font-size="13" font-weight="400" fill="#1a2230">중국 생성형AI관리방안</text></a>
-        <rect x="745" y="414" width="470" height="135" rx="9" fill="#f8fafc" stroke="#d7dee6" stroke-width="1.3" stroke-dasharray="5 4"></rect>
+        <rect x="745" y="414" width="470" height="150" rx="9" fill="#f8fafc" stroke="#d7dee6" stroke-width="1.3" stroke-dasharray="5 4"></rect>
         <rect x="752" y="425" width="8" height="8" rx="2" fill="#0f2942"></rect>
         <text x="768" y="432" font-size="9" fill="#1a2230">인공지능기본법 (중심)</text>
         <rect x="752" y="440" width="8" height="8" rx="2" fill="#b5730a"></rect>
@@ -304,39 +311,69 @@
         <text x="768" y="522" font-size="9" fill="#1a2230">국제규범 (14개: EU·OECD·NIST·ISO·UNESCO·COE·미국·서울선언·G7·UN·중국 등)</text>
         <rect x="752" y="530" width="8" height="8" rx="2" fill="#6b4fa0"></rect>
         <text x="768" y="537" font-size="9" fill="#1a2230">가이드 (5개: 투명성·안전성·고영향판단·사업자책무·영향평가, 과기정통부)</text>
+        <rect x="752" y="545" width="8" height="8" rx="2" fill="#0f7a72"></rect>
+        <text x="768" y="552" font-size="9" fill="#1a2230">행정규칙 (24개: 부처별 AI전담조직 설치훈령·고시·위원회운영규정 등)</text>
         </svg>
     </div>
 
-    <div class="cols" style="margin-top:22px">
-      <div class="info-card">
-        <h4>인공지능기본법 → 저작권법 · 개인정보보호법</h4>
-        <p>
-          생성형 AI 정의(제2조5호)는 학습데이터를 다루므로 <b>저작권법</b>상 학습데이터 이용의 적법성·
-          생성물의 저작물성 문제와 맞닿아 있습니다. 고영향 AI의 생체정보 분석(제2조4호바목)과
-          영향평가(제35조)는 <b>개인정보보호법</b>의 개인정보 영향평가와 함께 검토됩니다.
-        </p>
-      </div>
-      <div class="info-card">
-        <h4>지식재산 기본법 → 특허·실용신안·상표·디자인·저작권</h4>
-        <p>
-          지식재산 기본법은 산업재산권 4법(특허·실용신안·상표·디자인)과 저작권법의 상위 원칙법입니다.
-          AI가 만든 발명·창작물을 어느 법으로, 누구의 권리로 보호할지가 이 관계의 핵심 쟁점입니다.
-        </p>
-      </div>
-      <div class="info-card">
-        <h4>지식재산 기본법 → 부정경쟁방지법 · 산업기술보호법</h4>
-        <p>
-          AI 모델 가중치·학습 데이터셋·프롬프트 자산 등은 특허·저작권으로 등록되지 않은 경우가 많아,
-          <b>영업비밀</b>·<b>산업기술 유출방지</b> 법제를 통해 별도로 보호됩니다.
-        </p>
-      </div>
-      <div class="info-card">
-        <h4>저작권법 · 부정경쟁방지법 → 관세법</h4>
-        <p>
-          AI로 생성되었거나 AI 기술이 침해된 위조·모조품이 국경을 넘는 경우, <b>관세법</b>의
-          지식재산권 침해물품 통관 단속 절차와 연결됩니다.
-        </p>
-      </div>
+    <p class="sec-desc" style="margin-top:22px">
+      인공지능기본법 페이지의 "관련 법령" 섹션에 있는 13개 카드입니다. 12개는 조문이 실제로 인용ㆍ위임되거나
+      대상 법 자신의 ai-note가 인공지능기본법을 명시한 "조문 비교", 1개(지식재산 기본법)는 그런 근거 없이
+      주제만 연결되는 "연결설명"입니다. 카드를 클릭하면 각 비교ㆍ연결설명 페이지로 이동합니다.
+    </p>
+    <div class="cols" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+      <a class="info-card" href="laws/ai-basic-act-compare.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 인공지능기본법 시행령 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>모법의 위임에 따라 제정된 하위법령입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-intelligent-informatization.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 지능정보화 기본법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>제6·13·15조 등에서 인용됩니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-data-industry-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 데이터 산업진흥 및 이용촉진에 관한 기본법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>제2조5호 생성형AI 정의 근거입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-personal-information-protection-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 개인정보보호법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>고영향AI 생체정보ㆍ영향평가와 연계됩니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-ip-framework-note.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 지식재산 기본법 <span style="color:var(--amber);font-weight:400">연결설명</span></h4>
+        <p>지식재산 전체 체계와의 연결이지만, 조문 인용 근거는 없는 주제 연결입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-energy-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 에너지법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>고영향AI 정의 제2조4호가목(에너지 공급) 근거입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-medical-devices-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 의료기기법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>고영향AI 정의 제2조4호라목(의료기기) 근거입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-traffic-safety-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 교통안전법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>고영향AI 정의 제2조4호아목(교통수단ㆍ시설ㆍ체계) 근거입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-public-data-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 공공데이터의 제공 및 이용 활성화에 관한 법률 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>제6조 학습용데이터 생성 근거입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-sosang-basic-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 소상공인기본법 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>제16조 중소기업등 지원대상 정의입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-venture-investment-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 벤처투자 촉진에 관한 법률 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>제18조 창업 활성화 지원입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-financial-consumer-protection-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 금융소비자 보호에 관한 법률 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>고영향AI 정의 제2조4호사목(채용ㆍ대출심사) 근거입니다.</p>
+      </a>
+      <a class="info-card" href="laws/ai-basic-act-vs-credit-information-act.html" style="text-decoration:none;color:inherit">
+        <h4>인공지능기본법 → 신용정보의 이용 및 보호에 관한 법률 <span style="color:var(--blue);font-weight:400">⇄ 조문 비교</span></h4>
+        <p>고영향AI 정의 제2조4호사목(채용ㆍ대출심사) 근거입니다.</p>
+      </a>
     </div>
   </div>
 </section>
