@@ -1,5 +1,3 @@
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyPPAOwi8rOnrG7x4MKUAXE-8AGkToLW0HrIK6WBii_00YDgQJrMy3mbJybklHnuHxx6A/exec';
-
 const ADMIN_HASH = '0c8be907519b16e99fe9c8f9449df05530908fe6612bde43426da7295819a6fd';
 
 async function hashPassword(pw) {

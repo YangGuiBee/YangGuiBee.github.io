@@ -1,12 +1,12 @@
 /* ══════════════════════════════════════════════════════
-   AI Study  Apps Script  v9
-   변경: listResources()/saveResource() 추가 — FAQ·공지사항·자료실이 쓰던
-   별도 배포(버전7에 고정된 옛 배포)를 이 프로젝트로 흡수 통합
+   AI Study  Apps Script  v8
+   변경: getAllNews() 추가 — KIS(별도 지식정보사이트)가 뉴스시트를
+   1000행 회전 캡 전에 전량 아카이브(paper.html은 여전히 getNews()로 최신 20건만 사용)
    ══════════════════════════════════════════════════════ */
 
 const ADMIN_EMAIL      = 'guibee1004@gmail.com';
 const BACKUP_FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID'; // ← Google Drive 백업 폴더 ID로 교체
-// 배포 URL: https://script.google.com/macros/s/AKfycbx57cFxRcwJx6TgPPUehksg3Kc3MYhB9JP0Sr0I8EWXeCG81IhExwSGsB_qdK5vhHJAvQ/exec
+// 배포 URL: https://script.google.com/macros/s/AKfycby2MlftdHUblF9QzifxIyMbwOe4W-7EqS8EQySNBDqTVzFH4I-fiajehiheWlrih4Wp/exec
 
 /* ── 공통: 로그 기록 ─────────────────────────────── */
 function writeLog(eventType, email, sheetName, detail, result) {
@@ -41,7 +41,6 @@ function doGet(e) {
     else if (action === 'searchNews')    data = searchNews(p.keyword || '');
     else if (action === 'getAllNews')    data = getAllNews();
     else if (action === 'getStats')      data = getStats();
-    else if (action === 'list')          data = listResources();
     else                                 data = { ok: false, msg: 'unknown action' };
   } catch (err) {
     data = { ok: false, msg: String(err) };
@@ -58,12 +57,11 @@ function doPost(e) {
   let data;
 
   try {
-    if      (action === 'update')   data = updateRow(p);
-    else if (action === 'delete')   data = deleteRow(p);
-    else if (action === 'reply')    data = sendReply(p);
-    else if (action === 'hit')      data = recordHit(p);
-    else if (p.type === 'resource') data = saveResource(p);
-    else                            data = saveContact(p);
+    if      (action === 'update') data = updateRow(p);
+    else if (action === 'delete') data = deleteRow(p);
+    else if (action === 'reply')  data = sendReply(p);
+    else if (action === 'hit')    data = recordHit(p);
+    else                          data = saveContact(p);
   } catch (err) {
     data = { ok: false, msg: String(err) };
   }
@@ -369,32 +367,6 @@ function getStats() {
   const resources = resSheet ? Math.max(0, resSheet.getLastRow() - 1) : 0;
 
   return { ok: true, visits, news, resources };
-}
-
-/* ── 게시판 (FAQ·공지사항·자료실 공용, doGet action=list) ── */
-function listResources() {
-  const ss    = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName('자료실');
-  if (!sheet || sheet.getLastRow() <= 1) return [];
-
-  return sheet.getRange(2, 1, sheet.getLastRow() - 1, 8).getValues()
-    .map(r => ({
-      id: r[0], category: r[1], author: r[2],
-      title: r[3], content: r[4], link: r[5], date: r[6],
-    }))
-    .filter(p => p.title);
-}
-
-/* ── 게시판 등록 (doPost type=resource) ───────────── */
-function saveResource(p) {
-  const ss    = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName('자료실') || ss.insertSheet('자료실');
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['id','category','author','title','content','link','date','timestamp']);
-  }
-  sheet.appendRow([p.id, p.category, p.author, p.title, p.content||'', p.link||'', p.date, p.timestamp]);
-  writeLog('SUBMIT', p.author||'', '자료실', p.title||'', 'OK');
-  return { ok: true };
 }
 
 /* ── 논문 수집 (트리거 실행) ──────────────────────── */

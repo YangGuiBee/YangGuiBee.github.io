@@ -180,6 +180,14 @@ function doPost(e) {
 [5]발행처   [6]원문링크 [7]Stars   [8]초록
 ```
 
+### 자료실 시트 (8컬럼) — FAQ·공지사항·자료실 공용 게시판
+```
+[0]id [1]category [2]author [3]title [4]content [5]link [6]date [7]timestamp
+```
+> `category` 값으로 `faq.js`(faq)/`notice.js`(notice)/`resources.js`(ml, itg 등)가 필터링한다.
+> Apps Script 액션: 조회는 `doGet?action=list`(배열 그대로 반환, `{ok,data}` 래핑 없음),
+> 등록은 `doPost` body에 `type=resource` 포함.
+
 > **컬럼 순서 변경 시 Apps Script의 인덱스 참조도 반드시 함께 수정한다.**
 
 ---
