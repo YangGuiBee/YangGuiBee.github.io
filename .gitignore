@@ -7,14 +7,11 @@ AILawMap/scripts/_pr_body.log
 AILawMap/scripts/__pycache__/
 AILawMap/html_check_result.txt
 ITCAS/
-Lecture/
 RestroomMap/
 
-# 강의 준비중 자료 — push 금지(2026-08-22). AI Governance/의 기존 3개 파일은
-# 과거에 이미 커밋·push된 상태라 .gitignore로는 소급 제외되지 않고 그대로 유지됨.
-AI Governance/
+# 강의 준비중 자료 — push 금지(2026-08-22). Lecture/·research/도 2026-09-05부로
+# AIG/ 하위로 통합돼 AIG/ 규칙 하나로 커버됨(개별 항목 제거).
 AIG/
-research/
 
 # 독립 저장소·미완성/내부용 자료 — push 금지(2026-08-22)
 dev-standards-kit/
