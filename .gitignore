@@ -27,6 +27,7 @@ BOKQM/
 # 소속 아님, deploy.ps1의 git add -A로부터 보호(2026-08-27)
 KIS/
 scripts/
+CoolingCenter/
 
 # 도구 내부 상태·개인 자료·제3자 자료 — deploy.ps1의 git add -A로부터 보호(2026-08-22 사고 재발 방지)
 .bkit/
