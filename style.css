@@ -334,7 +334,8 @@ body {
   .hero-sub { font-size: 0.82rem; margin-bottom: 1rem; word-break: keep-all; line-height: 1.6; }
   .hero-sub br { display: none; }
   .hero-btns { gap: 0.5rem; }
-  .btn { padding: 0.65rem 1rem; font-size: 0.82rem; flex: 1; justify-content: center; }
+  .btn { padding: 0.65rem 0.4rem; font-size: 0.78rem; flex: 1; justify-content: center; text-align: center; }
+  .btn svg { display: none; }
   .profile-card { padding: 1rem; border-radius: 18px; }
   .card-top { gap: 0.75rem; margin-bottom: 0.85rem; }
   .avatar, .avatar-img { width: 46px; height: 46px; border-radius: 12px; }
@@ -354,6 +355,11 @@ body {
   .strip-items { flex-direction: column; gap: 0.5rem; }
   .strip-sep { display: none; }
   .strip-item { font-size: 0.8rem; }
+  .stats-section { padding: 0.8rem 0.6rem; }
+  .stat-icon { display: none; }
+  .stat-card { padding: 0.6rem 0.4rem 0.5rem; gap: 0.15rem; }
+  .stat-num { font-size: 1.15rem; }
+  .stat-label { font-size: 0.68rem; }
 }
 
 /* ── 햄버거 메뉴 ── */
