@@ -339,6 +339,7 @@ body {
   .profile-card { padding: 1rem; border-radius: 18px; }
   .card-top { gap: 0.75rem; margin-bottom: 0.85rem; }
   .avatar, .avatar-img { width: 46px; height: 46px; border-radius: 12px; }
+  .avatar-ring { border-radius: 14px; }
   .card-name { font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .card-name span { font-size: 0.82rem; }
   .card-role { font-size: 0.6rem; }
