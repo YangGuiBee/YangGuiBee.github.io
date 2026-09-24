@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공지사항 — AI Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/resources.css" />
+  <!-- Google Analytics 4 — G-36JYMFZV2W를 실제 측정 ID로 교체하세요 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36JYMFZV2W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-36JYMFZV2W');
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="courses.html">강의소개</a></li>
+        <li><a href="notice.html" class="active">공지사항</a></li>
+        <li><a href="resources.html">자료실</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://yangguibee.github.io/AILawMap" target="_blank">AI관련법</a></li>
+        <li><a href="paper.html">AI논문</a></li>
+        <li><a href="algorithms.html">AI알고리즘</a></li>
+        <li><a href="map.html">모델 맵</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button></div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-title">공지사항</h1>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <section class="board-section">
+    <div class="board-wrap">
+
+      <!-- 검색 -->
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="제목 또는 내용으로 검색..." />
+      </div>
+
+      <!-- 게시글 목록 -->
+      <div class="board-list" id="boardList"></div>
+
+      <!-- 빈 상태 -->
+      <div class="board-empty" id="boardEmpty" hidden>
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <p>등록된 공지가 없습니다.</p>
+      </div>
+
+      <!-- 공지 등록 폼 (관리자) -->
+      <div class="upload-section">
+        <div class="upload-bar">
+          <button id="uploadToggleBtn" class="upload-toggle" onclick="adminLogin()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            공지 등록
+          </button>
+          <div class="admin-bar">
+            <span id="adminStatus" class="admin-status"></span>
+            <button class="admin-logout-btn" onclick="adminLogout()">로그아웃</button>
+          </div>
+          <button class="admin-login-hint" onclick="openLoginModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            관리자
+          </button>
+        </div>
+
+        <form id="uploadForm" class="upload-form" hidden novalidate>
+          <div class="form-section-title" id="formTitle">공지 등록</div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="u-author">작성자 <span class="req">*</span></label>
+              <input type="text" id="u-author" name="author" placeholder="Yang Hee Jung" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="u-title">제목 <span class="req">*</span></label>
+            <input type="text" id="u-title" name="title" placeholder="공지 제목을 입력하세요" required />
+          </div>
+          <div class="field">
+            <label for="u-content">내용</label>
+            <textarea id="u-content" name="content" placeholder="내용을 입력하세요." rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label for="u-link">파일 링크 (Google Drive)</label>
+            <input type="url" id="u-link" name="link" placeholder="https://drive.google.com/..." />
+            <p class="field-hint">파일은 Google Drive에 업로드 후 공유 링크를 붙여넣으세요.</p>
+          </div>
+          <div class="upload-actions">
+            <button type="button" class="cancel-btn" onclick="toggleUpload()">취소</button>
+            <button type="submit" class="submit-btn">등록하기</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 관리자 로그인 모달 -->
+  <div class="modal-overlay" id="loginOverlay" onclick="closeLoginModal()">
+    <div class="modal login-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeLoginModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="login-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <h3 class="login-title">관리자 로그인</h3>
+      <p class="login-desc">공지를 등록·수정·삭제하려면 비밀번호를 입력하세요.</p>
+      <div class="field">
+        <label for="loginPw">비밀번호</label>
+        <input type="password" id="loginPw" placeholder="비밀번호 입력" autocomplete="current-password" />
+      </div>
+      <p id="loginError" class="login-error" hidden>비밀번호가 올바르지 않습니다.</p>
+      <button class="submit-btn login-submit-btn" onclick="submitLogin()">확인</button>
+    </div>
+  </div>
+
+  <!-- 게시글 상세 모달 -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/notice.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI논문 — AI Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/paper.css?v=202609241146" />
+  <!-- Google Analytics 4 — G-36JYMFZV2W를 실제 측정 ID로 교체하세요 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36JYMFZV2W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-36JYMFZV2W');
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="courses.html">강의소개</a></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="resources.html">자료실</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://yangguibee.github.io/AILawMap" target="_blank">AI관련법</a></li>
+        <li><a href="paper.html" class="active">AI논문</a></li>
+        <li><a href="algorithms.html">AI알고리즘</a></li>
+        <li><a href="map.html">모델 맵</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button></div>
+  </nav>
+
+  <section class="news-hero">
+    <div class="news-hero-inner">
+      <h1 class="news-page-title">AI논문</h1>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <section class="news-section">
+
+    <!-- 검색창 -->
+    <div class="news-search-wrap">
+      <svg class="news-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="newsSearch" class="news-search-input" placeholder="제목 · 저자로 과거 자료 검색..." />
+      <button id="newsSearchClear" class="news-search-clear" hidden>✕</button>
+    </div>
+
+    <!-- 탭 + 건수 -->
+    <div class="news-filter-bar">
+      <div class="news-tabs" id="newsTabs">
+        <button class="news-tab active" data-cat="all">전체</button>
+        <button class="news-tab" data-cat="머신러닝">머신러닝</button>
+        <button class="news-tab" data-cat="AI거버넌스">AI거버넌스</button>
+      </div>
+      <span class="news-count" id="newsCount"></span>
+    </div>
+
+    <!-- 카드 그리드 -->
+    <div id="newsGrid" class="news-grid">
+      <div class="news-loading">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+        <p>최신 연구를 불러오는 중…</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/paper.js?v=202609241146"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
