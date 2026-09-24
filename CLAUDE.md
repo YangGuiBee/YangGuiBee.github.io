@@ -70,6 +70,9 @@
 
 ## 4. 파일 구조 및 역할
 
+> **페이지(.html)는 항상 루트에 둔다** — GitHub Pages URL(북마크·QR코드 등)이 바뀌지 않도록. css/js/이미지만 폴더로 분리한다.
+> `deploy.ps1`의 캐시버스팅 스캔이 비재귀(`Get-ChildItem *.html`, 하위폴더 미탐색)이므로 html을 폴더로 옮기면 캐시버스팅이 깨진다.
+
 ```
 C:\AI\
 ├── index.html          # 메인 (히어로 + 강사 프로필)
@@ -77,22 +80,32 @@ C:\AI\
 ├── notice.html         # 공지사항
 ├── resources.html      # 자료실
 ├── faq.html            # FAQ
-├── contact.html        # 강의문의 + 관리자 패널
-├── news.html           # AI논문 브라우저
+├── contact.html         # 강의문의 + 관리자 패널
+├── paper.html           # AI논문 브라우저
+├── algorithms.html      # 알고리즘 맵
+├── map.html             # AI모델 맵
 │
-├── config.js           # ★ SCRIPT_URL 단일 관리 (수정 시 여기만)
-├── nav.js              # 공통 햄버거 메뉴 (모든 페이지 로드)
-├── main.js             # index.html 전용 인터랙션
-├── contact.js          # 강의문의 로직 (OTP, CRUD, 관리자)
-├── news.js             # AI논문 로직 (JSONP, 탭, 검색)
+├── css/
+│   ├── style.css         # 공통 스타일 (nav, hero, 반응형)
+│   ├── contact.css       # 강의문의 전용 스타일
+│   ├── paper.css         # AI논문 전용 스타일
+│   ├── courses.css / resources.css / map.css / algorithms.css
 │
-├── style.css           # 공통 스타일 (nav, hero, 반응형)
-├── contact.css         # 강의문의 전용 스타일
-├── news.css            # AI논문 전용 스타일
+├── js/
+│   ├── config.js         # ★ SCRIPT_URL 단일 관리 (수정 시 여기만)
+│   ├── nav.js             # 공통 햄버거 메뉴 (모든 페이지 로드)
+│   ├── main.js             # index.html 전용 인터랙션
+│   ├── contact.js          # 강의문의 로직 (OTP, CRUD, 관리자)
+│   ├── paper.js             # AI논문 로직 (JSONP, 탭, 검색)
+│   ├── notice.js / faq.js / resources.js / algorithms.js / map.js
 │
-├── deploy.ps1          # ★ 배포 스크립트 (캐시 버스팅 자동화)
+├── img/                  # konkukc.png, konkuk.png, konkuks.png, yhj.png
+├── gas/
+│   └── appsscript.js     # Apps Script 백엔드 소스 전체본(에디터에 별도 업로드, HTML 미참조)
+│
+├── deploy.ps1           # ★ 배포 스크립트 (캐시 버스팅 자동화, html은 루트만 스캔)
 └── docs/
-    └── workflow.html   # 프로젝트 워크플로우 문서
+    └── workflow.html    # 프로젝트 워크플로우 문서 (아직 미생성)
 ```
 
 ---
@@ -115,12 +128,12 @@ C:\AI\
   </div>
 </nav>
 
-<!-- 2. Apps Script 연동 시 config.js 먼저 로드 -->
-<script src="config.js"></script>
-<script src="페이지.js?v=1"></script>
+<!-- 2. Apps Script 연동 시 config.js 먼저 로드 (js/ 경로 필수) -->
+<script src="js/config.js"></script>
+<script src="js/페이지.js?v=1"></script>
 
 <!-- 3. nav.js는 항상 마지막에 로드 -->
-<script src="nav.js"></script>
+<script src="js/nav.js"></script>
 ```
 
 ---
