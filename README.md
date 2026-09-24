@@ -3,6 +3,9 @@
 건국대학교 공학대학원 AI 전공 · Yang Hee Jung 겸임교수
 
 - 사이트: https://yangguibee.github.io
+- AI모델: https://yangguibee.github.io/map.html
+- AI관련법: https://yangguibee.github.io/AILawMap
+- AI정보: https://yangguibee.github.io/KIS
 
 ## SOS 시리즈
 
