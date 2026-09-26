@@ -14,6 +14,7 @@
 | 서비스 | 설명 | 링크 |
 |---|---|---|
 | EmergencyRoom | 병원응급실 | https://sos-er.vercel.app |
+| Pharmacy(Recipe) | 24시약국(처방전) | https://sos-rx.vercel.app |
 | RestroomMap | 공공화장실 | https://sos-wc.vercel.app |
 | CoolingCenter | 무더위·한파 쉼터 | https://sos-cool.vercel.app |
 | Parking | 주차장 | https://sos-parking.vercel.app |
