@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI거버넌스 체크리스트 — AI Study</title>
+  <meta name="description" content="조직과 AI 시스템을 선택하면 AI기본법·개인정보 보호법·가이드라인 기준 적용방안과 점검표를 만들어 줍니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/governance.css" />
+  <!-- Google Analytics 4 — G-36JYMFZV2W를 실제 측정 ID로 교체하세요 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36JYMFZV2W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-36JYMFZV2W');
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="courses.html">강의소개</a></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="resources.html">자료실</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://yangguibee.github.io/AILawMap" target="_blank">AI관련법</a></li>
+        <li><a href="paper.html">AI논문</a></li>
+        <li><a href="algorithms.html">AI알고리즘</a></li>
+        <li><a href="map.html">모델 맵</a></li>
+        <li><a href="governance.html" class="active">AI거버넌스 체크리스트</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-title">AI거버넌스 체크리스트</h1>
+      <p class="page-desc">조직과 AI 시스템을 고르면 6단계(준비·식별·평가·통제·운영·개선) 적용방안과 점검표를 만들어 줍니다.(참고: AI기본법·시행령, 개인정보 보호법, 과기정통부 가이드라인 5종, 개인정보위 생성형 AI 가이드, 대한민국 인공지능 윤리원칙을 규칙으로 정리)</p>
+    </div>
+    <div class="bg-grid"></div>
+    <div class="bg-blob blob-1"></div>
+  </section>
+
+  <main class="gov">
+    <div class="gov-parts">
+      <div><b>공통부문</b>모든 조직에 항상 적용</div>
+      <div><b>조직특화부문</b>조직 유형(국가기관등·개보법 공공기관·학교)·해외 사업자·개인정보 규모</div>
+      <div><b>시스템특화부문</b>지위·고영향 13개 분야·생성형·개인정보</div>
+    </div>
+
+    <form id="govForm" class="gov-form" onsubmit="return false">
+      <div class="g-examples"><span>샘플 적용사례 불러오기</span><div id="examples"></div></div>
+
+      <section class="g-card">
+        <h2 class="g-h2"><span>1</span>조직 정보</h2>
+        <div id="orgForm"></div>
+      </section>
+
+      <section class="g-card">
+        <h2 class="g-h2"><span>2</span>AI 시스템 <small class="g-hint">보고서는 시스템 하나씩 만듭니다 — 다른 시스템은 내용을 바꿔 다시 만드세요</small></h2>
+        <div id="sysForm"></div>
+      </section>
+
+      <div class="g-actions">
+        <button type="button" class="g-btn" id="makeReport">적용방안 만들기</button>
+        <button type="button" class="g-btn g-btn-text" id="resetForm">처음부터</button>
+      </div>
+      <p class="g-error" id="formError" role="alert"></p>
+    </form>
+
+    <section class="gov-report" id="report" hidden>
+      <div class="r-tools"><button type="button" class="g-btn g-btn-line" id="printReport">인쇄 / PDF 저장</button></div>
+      <div id="reportBody"></div>
+      <p class="r-legend">
+        <b>필수</b> 법령상 의무 · <b>해당 시 필수</b> 고영향으로 확인되면 의무 · <b>노력 의무</b> 법령상 노력 의무 ·
+        <b>준용</b> 직접 의무는 아니지만 사업자 기준을 빌려 스스로 함 · <b>권장</b> 이 체크리스트의 제안
+      </p>
+    </section>
+  </main>
+
+  <script src="js/governance-rules.js"></script>
+  <script src="js/governance.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

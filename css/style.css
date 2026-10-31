@@ -46,8 +46,8 @@ body {
 }
 
 .nav-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 2rem; height: 64px;
+  max-width: 75rem; margin: 0 auto;
+  padding: 0 2rem; height: 4rem;
   display: flex; align-items: center; gap: 2rem;
 }
 .logo {
@@ -70,6 +70,13 @@ body {
   transition: color 0.18s, background 0.18s;
 }
 .nav-links a:hover { color: var(--text); background: rgba(0,102,51,0.07); }
+.nav-links a { white-space: nowrap; }
+/* 메뉴 9개 — 햄버거 전환(900px) 전 중간 폭에서는 간격·글자를 줄여 한 줄 유지 */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .nav-inner { gap: 1rem; padding: 0 1.25rem; }
+  .nav-links a { padding: 0.4rem 0.45rem; font-size: 0.8rem; }
+  .nav-cta { margin-left: 0; padding: 0.45rem 0.9rem; }
+}
 .nav-links a.active { color: var(--accent); background: rgba(0,102,51,0.1); }
 
 .nav-cta {
@@ -87,12 +94,12 @@ body {
 .hero {
   position: relative; min-height: 100vh;
   display: flex; align-items: center;
-  padding: 100px 2rem 60px; overflow: hidden;
+  padding: 6.25rem 2rem 3.75rem; overflow: hidden;
 }
 .hero-inner {
   position: relative; z-index: 2;
-  max-width: 1200px; margin: 0 auto; width: 100%;
-  display: grid; grid-template-columns: 1fr 460px;
+  max-width: 75rem; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 28.75rem;
   gap: 5rem; align-items: center;
 }
 
@@ -116,7 +123,7 @@ body {
   box-shadow: 0 0 8px #006633;
   display: none;
 }
-.badge-logo { height: 30px; width: auto; border-radius: 4px; object-fit: contain; }
+.badge-logo { height: 1.875rem; width: auto; border-radius: 4px; object-fit: contain; }
 
 .hero-headline {
   font-size: clamp(2.5rem, 4.2vw, 3.8rem);
@@ -137,7 +144,7 @@ body {
 .hero-sub {
   font-size: 1.05rem; line-height: 1.82;
   color: var(--text-muted); margin-bottom: 2.5rem;
-  font-weight: 400; max-width: 460px;
+  font-weight: 400; max-width: 28.75rem;
 }
 
 .hero-btns { display: flex; gap: 0.85rem; flex-wrap: wrap; }
@@ -171,7 +178,7 @@ body {
 .hero-right { display: flex; justify-content: flex-end; }
 
 .profile-card {
-  position: relative; width: 100%; max-width: 420px;
+  position: relative; width: 100%; max-width: 26.25rem;
   background: linear-gradient(145deg, rgba(0,102,51,0.05) 0%, rgba(0,102,51,0.02) 100%);
   backdrop-filter: blur(24px) saturate(160%);
   border-radius: 24px; padding: 2rem; overflow: hidden;
@@ -209,12 +216,12 @@ body {
 }
 .avatar-wrap { position: relative; flex-shrink: 0; }
 .avatar {
-  width: 64px; height: 64px; border-radius: 18px;
+  width: 4rem; height: 4rem; border-radius: 18px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   display: flex; align-items: center; justify-content: center;
   font-size: 1.75rem; font-weight: 900; color: #fff;
 }
-.avatar-img { width: 64px; height: 64px; border-radius: 18px; object-fit: cover; display: block; }
+.avatar-img { width: 4rem; height: 4rem; border-radius: 18px; object-fit: cover; display: block; }
 .avatar-ring {
   position: absolute; inset: -2px; border-radius: 20px;
   background: linear-gradient(135deg, #006633, #66aa88, #00cc77);
@@ -412,7 +419,7 @@ body {
   padding: 1.2rem 1rem;
 }
 .stats-inner {
-  max-width: 640px; margin: 0 auto;
+  max-width: 40rem; margin: 0 auto;
   display: flex; gap: 0.7rem;
   justify-content: center;
 }
@@ -447,6 +454,16 @@ body {
 }
 .stat-label {
   font-size: 0.72rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em;
+}
+
+/* ── 메인 페이지 큰 화면 — 기준 글자 크기를 화면 폭에 맞춰 키워 전체를 비례 확대 ── */
+@media (min-width: 1440px) {
+  html.home { font-size: clamp(16px, calc(0.85vw + 3.5px), 28px); }
+}
+/* 메인 페이지 데스크톱 — 히어로+통계가 한 화면(100vh)에 꽉 차도록 */
+@media (min-width: 901px) {
+  body.home { display: flex; flex-direction: column; min-height: 100vh; }
+  body.home .hero { flex: 1; min-height: 0; }
 }
 
 /* ── 애니메이션 ── */

@@ -1,0 +1,164 @@
+/* ── AI거버넌스 체크리스트 전용 ── */
+
+/* PAGE HERO (다른 페이지와 같은 형식) */
+.page-hero {
+  position: relative; padding: 74px 2rem 8px;
+  text-align: center; overflow: hidden;
+  background: linear-gradient(to bottom, #f0f7f2 0%, #e4f1e8 40%, #d6eadc 70%, #e8f3eb 100%);
+}
+.page-hero-inner { position: relative; z-index: 2; }
+.page-title {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 800; letter-spacing: -0.3px;
+  background: linear-gradient(120deg, #006633, #339966);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin: 0 0 0.15rem;
+}
+.page-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+
+.gov { max-width: 1100px; margin: 0 auto; padding: 0.8rem 1.25rem 4rem; word-break: keep-all; }
+
+.gov-parts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 0.6rem; }
+.gov-parts div {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.4rem 0.8rem; font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;
+}
+.gov-parts b { display: block; color: var(--accent); font-size: 0.86rem; margin-bottom: 0.05rem; }
+
+/* 폼 */
+.g-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 14px;
+  padding: 0.7rem 1.25rem 0.5rem; margin-bottom: 0.6rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.g-h2 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.5rem; }
+.g-h2 span {
+  width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem;
+}
+.g-field { margin-bottom: 0.4rem; }
+.g-label { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+.g-hint { font-weight: 400; font-size: 0.74rem; color: var(--text-dim); margin-left: 0.5rem; }
+.g-opts { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
+.g-inline-label { font-size: 0.86rem; font-weight: 700; color: var(--text); margin: 0 0.2rem 0 1rem; }
+.g-opt {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.28rem 0.75rem; border: 1px solid var(--border-hi); border-radius: 99px;
+  font-size: 0.82rem; color: var(--text-muted); cursor: pointer; background: #fff;
+  transition: background 0.15s, border-color 0.15s, color 0.15s; line-height: 1.35;
+}
+.g-opt:hover { border-color: var(--accent2); }
+.g-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.g-opt.on { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.g-opt:focus-within { outline: 2px solid var(--accent2); outline-offset: 2px; }
+
+.g-sys { border: 1px solid var(--border); border-radius: 12px; padding: 0.55rem 1rem 0.15rem; margin-bottom: 0.3rem; background: var(--surface); }
+.g-sys-head { display: flex; gap: 0.5rem; align-items: center; }
+/* AI 시스템 카드 — 레이블 왼쪽, 입력 오른쪽 한 줄 */
+.g-row { display: grid; grid-template-columns: 10rem 1fr; gap: 0.75rem; align-items: start; }
+.g-row .g-label { margin-bottom: 0; padding-top: 0.3rem; line-height: 1.35; }
+.g-row .g-hint { display: block; margin: 0.05rem 0 0; line-height: 1.3; }
+.g-row .g-sys-head { min-width: 0; }
+.g-name {
+  flex: 1; font: inherit; font-weight: 700; font-size: 0.95rem;
+  padding: 0.3rem 0.7rem; border: 1px solid var(--border-hi); border-radius: 8px; background: #fff;
+}
+
+.g-btn {
+  font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  padding: 0.7rem 1.4rem; border-radius: 10px; border: none;
+  background: linear-gradient(135deg, #006633, #008844); color: #fff;
+}
+.g-btn-line { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
+.g-btn-sm { font-size: 0.8rem; padding: 0.3rem 0.85rem; border-radius: 8px; }
+.g-examples { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin-bottom: 0.6rem; font-size: 0.82rem; color: var(--text-muted); }
+.g-examples > span { font-weight: 700; }
+#examples { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.g-btn-text { background: none; color: var(--text-dim); padding-left: 0.6rem; padding-right: 0.6rem; }
+.g-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.g-error { color: #b42318; font-size: 0.86rem; font-weight: 600; min-height: 1.4em; margin-top: 0.3rem; }
+
+/* 보고서 */
+.gov-report { margin-top: 2rem; border-top: 2px solid var(--accent); padding-top: 1.25rem; }
+.r-tools { text-align: right; margin-bottom: 0.5rem; }
+.r-head h2 { font-size: 1.3rem; font-weight: 900; }
+.r-meta { font-size: 0.84rem; color: var(--text-muted); margin: 0.2rem 0 0.6rem; }
+.r-count { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.r-count span { font-size: 0.8rem; }
+.r-h3 { font-size: 1rem; font-weight: 800; margin: 1.5rem 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.r-h3 small { font-weight: 400; font-size: 0.78rem; color: var(--text-dim); }
+.r-stn {
+  width: 1.5rem; height: 1.5rem; border-radius: 6px; background: var(--accent); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem;
+}
+.r-tw { overflow-x: auto; }
+.r-tbl { width: 100%; border-collapse: collapse; font-size: 0.82rem; line-height: 1.55; }
+.r-tbl th { background: var(--surface2); text-align: left; padding: 0.45rem 0.6rem; font-weight: 700; white-space: nowrap; }
+.r-tbl td { border-bottom: 1px solid var(--border); padding: 0.5rem 0.6rem; vertical-align: top; }
+.r-tbl a { color: #1f5fa8; }
+.r-tbl .nw { white-space: nowrap; }
+.c-part { width: 9rem; }
+.c-basis { width: 15rem; color: var(--text-muted); }
+.c-lv { width: 6.5rem; white-space: nowrap; }
+.c-chk { width: 2.5rem; text-align: center; font-size: 1rem; }
+
+.pt { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 6px; font-size: 0.74rem; font-weight: 700; }
+.pt-common { background: #e8f2ec; color: #006633; }
+.pt-org { background: #e6eefb; color: #1f4e8a; }
+.pt-sys { background: #f3ecfb; color: #5b2d91; }
+
+.lv-must, .lv-if, .lv-effort, .lv-apply, .lv-rec { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 99px; font-weight: 700; font-size: 0.74rem; }
+.lv-must { background: #fde8e7; color: #b42318; }
+.lv-if { background: #fff1e0; color: #b45309; }
+.lv-effort { background: #fff8d6; color: #8a6d00; }
+.lv-apply { background: #e6eefb; color: #1f4e8a; }
+.lv-rec { background: #eef1ef; color: #4b5d52; }
+
+.hi { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 6px; font-weight: 700; font-size: 0.74rem; margin-right: 0.2rem; }
+.hi-high { background: #fde8e7; color: #b42318; }
+.hi-review { background: #fff1e0; color: #b45309; }
+.hi-low { background: #e8f2ec; color: #006633; }
+.hi-out { background: #eef1ef; color: #4b5d52; }
+
+.r-legend { font-size: 0.76rem; color: var(--text-muted); line-height: 1.7; margin-top: 1.2rem; }
+
+/* 큰 화면 — 화면 폭에 맞춰 넓게 */
+@media (min-width: 1440px) {
+  .gov { max-width: min(88vw, 1600px); }
+  .g-label, .g-opt, .r-tbl { font-size: 0.9rem; }
+}
+
+/* 휴대폰 */
+@media (max-width: 640px) {
+  .gov { padding: 1rem 0.75rem 3rem; }
+  .gov-parts { grid-template-columns: 1fr; }
+  .g-card { padding: 0.9rem 0.8rem; }
+  .g-sys { padding: 0.75rem 0.7rem 0.1rem; }
+  .g-opt { font-size: 0.78rem; padding: 0.4rem 0.65rem; }
+  .g-actions .g-btn { flex: 1 1 100%; }
+  .g-row { grid-template-columns: 5.5rem 1fr; gap: 0.5rem; }
+  .g-row .g-label { font-size: 0.8rem; }
+  /* 점검표는 카드형으로 */
+  .r-tbl:not(.r-sum) thead { display: none; }
+  .r-tbl:not(.r-sum), .r-tbl:not(.r-sum) tbody, .r-tbl:not(.r-sum) tr, .r-tbl:not(.r-sum) td { display: block; width: auto; }
+  .r-tbl:not(.r-sum) tr { border: 1px solid var(--border); border-radius: 10px; padding: 0.5rem 0.6rem; margin-bottom: 0.5rem; position: relative; }
+  .r-tbl:not(.r-sum) td { border: none; padding: 0.15rem 0; }
+  .r-tbl:not(.r-sum) .c-chk { position: absolute; top: 0.45rem; right: 0.6rem; }
+  .r-tbl:not(.r-sum) .c-basis { font-size: 0.76rem; }
+  /* 시스템별 판정표도 카드형 — 칸 이름을 앞에 붙임 */
+  .r-sum thead { display: none; }
+  .r-sum, .r-sum tbody, .r-sum tr, .r-sum td { display: block; width: auto; }
+  .r-sum tr { border: 1px solid var(--border); border-radius: 10px; padding: 0.5rem 0.6rem; margin-bottom: 0.5rem; }
+  .r-sum td { border: none; padding: 0.15rem 0; white-space: normal !important; }
+  .r-sum td[data-label]::before { content: attr(data-label); display: inline-block; min-width: 4.2rem; font-weight: 700; color: var(--text-dim); font-size: 0.74rem; }
+}
+
+/* 인쇄 / PDF */
+@media print {
+  .nav, .page-hero, .gov-parts, .gov-form, .r-tools { display: none !important; }
+  .gov { max-width: none; padding: 0; }
+  .gov-report { margin: 0; border: none; }
+  .r-tbl { font-size: 9pt; }
+  .r-tbl tr { break-inside: avoid; }
+  .r-tbl a { color: inherit; text-decoration: none; }
+}
