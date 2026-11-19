@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>연구이론 맵 — AI Study</title>
+  <meta name="description" content="연구유형·분석단위·설명(종속변수) 등 13개 질문에 답하면 연구에 맞는 이론을 순위로 추천하는 연구이론 맵" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/research.css?v=202611191751" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36JYMFZV2W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-36JYMFZV2W');
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">AI <span>Study</span></a>
+      <ul class="nav-links">
+        <li><a href="courses.html">강의소개</a></li>
+        <li><a href="notice.html">공지사항</a></li>
+        <li><a href="resources.html">자료실</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="https://yangguibee.github.io/AILawMap" target="_blank">AI관련법</a></li>
+        <li><a href="paper.html">AI논문</a></li>
+        <li><a href="algorithms.html">AI알고리즘</a></li>
+        <li><a href="map.html">모델 맵</a></li>
+        <li><a href="research.html" class="active">연구이론 맵</a></li>
+        <li><a href="governance.html">AI거버넌스 체크리스트</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">강의 문의</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-title">연구이론 맵</h1>
+      <p class="page-desc">질문에 답할수록 내 연구에 맞는 이론이 오른쪽에 순위로 정리됩니다. 모르는 질문은 건너뛰어도 됩니다.</p>
+      <p class="page-desc rm-count" id="rmCount"></p>
+    </div>
+  </section>
+
+  <section class="rm-section">
+    <div class="rm-toolbar">
+      <span class="rm-toolbar-label">시연 예시</span>
+      <div class="rm-examples" id="rmExamples"></div>
+    </div>
+    <div class="rm-layout">
+      <div class="rm-questions" id="rmQuestions"></div>
+      <aside class="rm-side">
+        <div class="rm-side-inner">
+          <div class="rm-tabs" role="tablist">
+            <button type="button" class="rm-tab on" data-tab="theory">추천 이론</button>
+            <button type="button" class="rm-tab" data-tab="framework">프레임워크(기준틀)</button>
+          </div>
+          <div class="rm-summary" id="rmSummary"></div>
+          <div id="rmResults"></div>
+          <p class="rm-foot">이론 = 연구분석 틀(무엇을 어떤 구조로 볼지). 분석방법·연구방법론과는 다른 층입니다.
+            원전 서지는 2026-11-14 일괄 확인.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script src="js/research-data.js?v=202611191751"></script>
+  <script src="js/research.js?v=202611191751"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+/* ── research.html 전용 — 연구이론 맵 ── */
+.page-hero {
+  position: relative; padding: 74px 2rem 10px; text-align: center; overflow: hidden;
+  background: linear-gradient(to bottom, #f0f7f2 0%, #e4f1e8 40%, #d6eadc 70%, #e8f3eb 100%);
+}
+.page-hero-inner { position: relative; z-index: 2; }
+.page-title {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); font-weight: 800; letter-spacing: -0.3px;
+  background: linear-gradient(120deg, #006633, #339966);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin: 0 0 0.15rem;
+}
+.page-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0.2rem 0 0; }
+.rm-count { font-size: 0.7rem; color: var(--text-dim); }
+.nav-links a.active { color: var(--accent); background: rgba(0,102,51,0.1); }
+
+/* 가로 화면을 가득 쓰되, 아주 넓은 모니터에서는 2400px에서 멈춤 */
+.rm-section { max-width: 2400px; margin: 0 auto; padding: 1rem 2rem 60px; }
+
+/* 시연 예시 */
+.rm-toolbar { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+.rm-toolbar-label { font-size: 0.72rem; font-weight: 700; color: var(--accent); }
+.rm-examples { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.rm-ex {
+  font-family: 'Noto Sans KR', sans-serif; font-size: 0.74rem; padding: 0.35rem 0.75rem; border-radius: 99px;
+  border: 1px solid var(--border-hi); background: var(--surface); color: var(--text-muted); cursor: pointer;
+}
+.rm-ex:hover { background: var(--surface2); color: var(--text); }
+.rm-ex.reset { border-style: dashed; }
+
+/* 2단 배치 */
+.rm-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, 30%); gap: 1.25rem; align-items: start; }
+.rm-layout > * { min-width: 0; }   /* 그리드 칸이 내용 폭만큼 늘어나 모바일에서 넘치는 것 방지 */
+
+/* 질문 */
+/* 촘촘하게: 질문 한 개 = 한 줄(왼쪽 제목·설명 | 오른쪽 선택지), 전체 질문이 한 화면에 들어오도록 */
+.rm-step { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.4rem 0.9rem; margin-bottom: 0.4rem; }
+.rm-step-title { font-size: 0.74rem; font-weight: 800; color: var(--accent); margin: 0 0 0.15rem; letter-spacing: 0.02em; }
+.rm-branch {
+  display: grid; grid-template-columns: 255px minmax(0, 1fr); column-gap: 0.8rem; align-items: center;
+}
+.rm-branch > .rm-bhead { grid-column: 1; }
+.rm-branch > .rm-chips { grid-column: 2; }
+.rm-branch + .rm-branch { border-top: 1px dashed var(--border-hi); margin-top: 0.22rem; padding-top: 0.22rem; }
+.rm-bhead { font-size: 0.86rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+.rm-no { color: var(--accent2); font-weight: 600; }
+.rm-role { font-size: 0.62rem; font-weight: 700; padding: 0.05rem 0.45rem; border-radius: 99px; background: var(--surface3); color: var(--text-muted); }
+.rm-role.key { background: #006633; color: #fff; }
+.rm-kind { margin-left: auto; font-size: 0.64rem; color: var(--text-dim); font-weight: 500; }
+/* 선택한 질문에만 보이는 개별 취소(칩을 다시 눌러도 취소됨) */
+.rm-clear {
+  font-family: 'Noto Sans KR', sans-serif; font-size: 0.62rem; font-weight: 600; padding: 0.05rem 0.4rem;
+  border-radius: 99px; border: 1px solid #e0b4b4; background: #fff; color: #b03030; cursor: pointer;
+}
+.rm-clear:hover { background: #fdecec; }
+.rm-chips { display: flex; flex-wrap: wrap; gap: 0.22rem; }
+.rm-chip {
+  font-family: 'Noto Sans KR', sans-serif; font-size: 0.7rem; padding: 0.15rem 0.48rem; border-radius: 99px;
+  border: 1px solid var(--border-hi); background: #fff; color: var(--text); cursor: pointer; transition: all 0.15s;
+}
+.rm-chip:hover { border-color: var(--accent2); }
+.rm-chip.on { background: linear-gradient(135deg, #006633, #008844); color: #fff; border-color: transparent; }
+
+/* 결과 */
+.rm-side { position: sticky; top: 76px; }
+.rm-side-inner {
+  background: #fff; border: 1.5px solid rgba(0,102,51,0.3); border-radius: 16px; padding: 0.9rem 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06); max-height: calc(100vh - 96px); overflow-y: auto;
+}
+.rm-tabs { display: flex; gap: 0.3rem; margin-bottom: 0.6rem; }
+.rm-tab {
+  flex: 1; font-family: 'Noto Sans KR', sans-serif; font-size: 0.78rem; font-weight: 700; padding: 0.45rem 0.5rem;
+  border-radius: 9px; border: 1px solid var(--border-hi); background: var(--surface); color: var(--text-muted); cursor: pointer;
+}
+.rm-tab.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.rm-summary { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.6rem; }
+.rm-sum { font-size: 0.66rem; padding: 0.1rem 0.45rem; border-radius: 6px; background: var(--surface2); color: var(--text-muted); }
+.rm-sum.dim { background: none; color: var(--text-dim); }
+.rm-note { font-size: 0.74rem; color: var(--text-muted); background: var(--surface); border-left: 3px solid var(--accent2); padding: 0.4rem 0.6rem; margin: 0 0 0.6rem; border-radius: 4px; }
+.rm-empty { font-size: 0.82rem; color: var(--text-muted); text-align: center; padding: 1.5rem 0.5rem; line-height: 1.7; }
+.rm-list { list-style: none; margin: 0; padding: 0; }
+.rm-list.build { margin-bottom: 0.8rem; }
+.rm-item { border: 1px solid var(--border); border-radius: 11px; margin-bottom: 0.45rem; padding: 0.5rem 0.65rem; background: #fff; }
+.rm-item.open { border-color: var(--accent2); box-shadow: 0 4px 14px rgba(0,102,51,0.1); }
+.rm-item-head {
+  width: 100%; display: flex; align-items: center; gap: 0.55rem; background: none; border: 0; padding: 0;
+  cursor: pointer; text-align: left; font-family: 'Noto Sans KR', sans-serif; color: var(--text);
+}
+.rm-rank {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff;
+  font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
+}
+.rm-name { flex: 1; font-size: 0.86rem; font-weight: 700; line-height: 1.3; }
+.rm-name small { display: block; font-size: 0.68rem; font-weight: 500; color: var(--text-dim); }
+.rm-score { font-size: 0.8rem; font-weight: 800; color: var(--accent); font-family: 'Inter', sans-serif; }
+.rm-bar { height: 4px; background: var(--surface2); border-radius: 99px; margin: 0.35rem 0 0.3rem; overflow: hidden; }
+.rm-bar i { display: block; height: 100%; background: linear-gradient(90deg, #339966, #006633); border-radius: 99px; }
+.rm-hits { display: flex; flex-wrap: wrap; gap: 0.2rem; }
+.rm-hit { font-size: 0.62rem; padding: 0.02rem 0.4rem; border-radius: 99px; background: rgba(0,102,51,0.08); color: var(--accent); }
+.rm-detail { font-size: 0.76rem; color: var(--text); line-height: 1.6; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-hi); }
+.rm-detail > div { margin-bottom: 0.25rem; }
+.rm-detail b { color: var(--accent); margin-right: 0.3rem; }
+.rm-caution { background: #fff7e6; border-radius: 6px; padding: 0.3rem 0.45rem; }
+.rm-caution b { color: #9a5b00; }
+.rm-fam { font-size: 0.66rem; color: var(--text-dim); }
+.rm-more {
+  width: 100%; font-family: 'Noto Sans KR', sans-serif; font-size: 0.74rem; padding: 0.4rem; margin-top: 0.2rem;
+  border: 1px dashed var(--border-hi); background: none; border-radius: 8px; color: var(--text-muted); cursor: pointer;
+}
+.rm-foot { font-size: 0.64rem; color: var(--text-dim); margin: 0.7rem 0 0; line-height: 1.5; }
+
+/* 중간 폭 이하: 질문을 다시 위아래(제목 → 설명 → 선택지)로 */
+@media (max-width: 1100px) {
+  .rm-branch { display: block; }
+  .rm-branch > .rm-chips { margin-top: 0.3rem; }
+}
+
+/* 좁은 화면: 결과를 위로 올려 한 줄로 */
+@media (max-width: 900px) {
+  .rm-layout { grid-template-columns: minmax(0, 1fr); }
+  .rm-side { position: static; order: -1; }
+  .rm-side-inner { max-height: none; }
+}
+@media (max-width: 480px) {
+  .page-hero { padding: 82px 1rem 10px; }
+  .rm-section { padding: 0.8rem 1rem 60px; }
+  .rm-step { padding: 0.8rem 0.8rem; }
+}
